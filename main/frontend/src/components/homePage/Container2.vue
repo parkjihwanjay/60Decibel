@@ -96,6 +96,6 @@ span {
 .icon-head {
   margin-top: 1rem;
   text-align: center;
-  font-size: 0.85rem;
+  font-size: 0.9rem;
 }
 </style>

@@ -65,9 +65,7 @@ export default {
 * {
   color: rgb(94, 94, 94);
 }
-.v-carousel {
-  /* height: 65vh; */
-}
+
 .v-responsive__content {
   height: 100%;
 }
@@ -86,6 +84,9 @@ export default {
 }
 .carousel-txt-head {
   font-size: 1.6rem;
+}
+.carousel-txt-main {
+  font-size: 1.05rem;
 }
 .carousel-bold {
   font-weight: bolder;
