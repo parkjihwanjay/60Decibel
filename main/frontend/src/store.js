@@ -2,14 +2,43 @@ import Vue from "vue";
 import Vuex from "vuex";
 import router from "./router";
 import axios from "axios";
+import { fetchProfileList } from "./api/axios.js"
 
 Vue.use(Vuex);
 
-export default new Vuex.Store({
+// export const store = new Vuex.Store({
+//   state: {
+//     profile: {
+//       "avatar": null,
+//       "gender": "남성",
+//       "birth_date": "2019-08-06",
+//       "height": 10,
+//       "weight": 10,
+//       "name": "이인우",
+//       "had_checkup": true,
+//       "had_checkup_true": "1년 이내",
+//       "diagnosed_disease": "고혈압",
+//       "taking_medicine": true,
+//       "what_medicine": "비타민",
+//       "family_history": "고혈압",
+//       "drinking": true, "drinking_per_week": 1,
+//       "smoking": "예",
+//       "how_long_smoking": 1,
+//       "how_much_smoking": 1,
+//       "job": "개발자",
+//       "relevant_data": "{'기름진 음식을 많이 먹음', '식사 불규칙'}",
+//       "user": "ant"
+//     }
+//   }
+// })
+export const store = new Vuex.Store({
+  // export default new Vuex.Store({
   state: {
     userInfo: null,
     isLogin: false,
-    isLoginError: false
+    isLoginError: false,
+    profile: {},
+    stomach: {}
   },
   mutations: {
     loginSuccess(state, payload) {
@@ -26,6 +55,9 @@ export default new Vuex.Store({
       state.isLogin = false;
       state.isLoginError = false;
       state.userInfo = null;
+    },
+    SET_PROFILE(state, profile) {
+      state.profile = profile;
     }
   },
   actions: {
@@ -89,6 +121,15 @@ export default new Vuex.Store({
         .catch(() => {
           alert("이메일과 비밀번호를 확인하세요.");
         });
+    },
+    getProfileInfo({ commit }) {
+      fetchProfileList()
+        .then(({ data }) => {
+          commit('SET_PROFILE', data)
+        })
+        .catch(error => {
+          console.log(error)
+        })
     }
   }
 });
