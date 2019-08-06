@@ -88,7 +88,7 @@ input[type="password"] {
   color: rgb(54, 54, 54);
   font-size: 0.9rem;
   font-weight: 700;
-  transition: 0.5s;
+  /* transition: 0.5s; */
 }
 .button:hover {
   box-shadow: 5px 7px 10px 2px rgba(0, 0, 0, 0.308);
@@ -102,5 +102,8 @@ input[type="password"] {
 .bold {
   color: rgb(248, 215, 26);
   font-weight: 700;
+}
+a:visited {
+  color: rgb(248, 215, 26);
 }
 </style>

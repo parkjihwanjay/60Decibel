@@ -19,7 +19,8 @@
         <img class="icon" src="../../assets/thumbs.png" />
         <p class="icon-head">
           진료의
-          <br />질은 높이고!
+          <br />질은
+          <span>높이고!</span>
         </p>
         <p class="icon-main"></p>
       </div>
@@ -27,7 +28,8 @@
         <img class="icon" src="../../assets/patient.png" />
         <p class="icon-head">
           소통의
-          <br />불편함은 줄이고!
+          <br />불편함은
+          <span>줄이고!</span>
         </p>
         <p class="icon-main"></p>
       </div>
@@ -42,6 +44,10 @@ export default {
 };
 </script>
 <style scoped>
+span {
+  color: rgb(65, 65, 65);
+  font-weight: 700;
+}
 .container2 {
   display: flex;
   flex-direction: column;

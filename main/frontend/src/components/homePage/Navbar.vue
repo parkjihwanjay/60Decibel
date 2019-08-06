@@ -46,6 +46,12 @@ export default {
 
 <style scope>
 /* nav bar */
+a:link {
+  color: rgb(53, 53, 53);
+}
+a:visited {
+  color: rgb(53, 53, 53);
+}
 
 .navhead {
   display: flex;
