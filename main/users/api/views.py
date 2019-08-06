@@ -3,6 +3,7 @@ from rest_framework.views import APIView
 from users.api.serializers import UserDisplaySerializer
 
 
+
 class CurrentUserAPIView(APIView):
 
     def get(self, request):

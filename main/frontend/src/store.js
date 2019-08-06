@@ -5,11 +5,26 @@ import axios from "axios";
 
 Vue.use(Vuex);
 
+axios.defaults.xsrfCookieName = "csrftoken";
+axios.defaults.xsrfHeaderName = "X-CSRFToken";
+
+const enhanceAccessToeken = () => {
+  const { access_token } = localStorage;
+  if (!access_token) return;
+  axios.defaults.headers.common["Authorization"] =
+    localStorage.getItem["access_token"];
+};
+enhanceAccessToeken();
+
 export default new Vuex.Store({
   state: {
     userInfo: null,
     isLogin: false,
-    isLoginError: false
+    isLoginError: false,
+    endpoints: {
+      obtainJWT: "http://127.0.0.1:8000/api/rest-auth/obtain_token/",
+      refreshJWT: "http://127.0.0.1:8000/api/rest-auth/refresh_token/"
+    }
   },
   mutations: {
     loginSuccess(state, payload) {
@@ -26,6 +41,7 @@ export default new Vuex.Store({
       state.isLogin = false;
       state.isLoginError = false;
       state.userInfo = null;
+      delete localStorage.access_token;
     }
   },
   actions: {
@@ -40,6 +56,8 @@ export default new Vuex.Store({
           let token = res.data.token;
           //토큰을 로컬 스토리지에 저장
           localStorage.setItem("access_token", token);
+          axios.defaults.headers.common["Authorization"] =
+            localStorage.getItem["access_token"];
           this.dispatch("getMemberInfo");
           router.push({ name: "home" });
           console.log(res);
@@ -50,6 +68,7 @@ export default new Vuex.Store({
     },
     logout({ commit }) {
       commit("logout");
+      axios.defaults.headers.common["Authorization"] = undefined;
       router.push({ name: "home" });
     },
     signup(dispatch, loginObj) {
@@ -71,19 +90,19 @@ export default new Vuex.Store({
       let token = localStorage.getItem("access_token");
       let config = {
         headers: {
-          "access-token": token
+          Authorization: "JWT " + token,
+          "Content-Type": "application/json"
         }
       };
       //토큰 -> 멤버 정보 반환
       //새로고침 --> 토큰만 갖고 멤버 정보 요청가능
       axios
-        .get("https://127.0.0.1:8000/api/user/", config)
+        .get("http://127.0.0.1:8000/api/user/", config)
         .then(response => {
           let userInfo = {
-            pk: response.data.data.pk,
-            username: response.data.data.username,
-            email: response.data.data.email
+            username: response.data.username
           };
+          console.log(userInfo);
           commit("loginSuccess", userInfo);
         })
         .catch(() => {
