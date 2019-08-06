@@ -61,7 +61,7 @@ export default {
   background-color: #125b7f;
   width: 100%;
   height: 2.8rem;
-  padding: 0 2rem;
+  padding: 0 2.05rem;
 }
 a {
   color: white;
