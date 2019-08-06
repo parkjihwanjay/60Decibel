@@ -1,18 +1,27 @@
 <template>
   <div class="about">
     <Navbar />
-    <h1>This is an about page</h1>
+    <Container1 />
+    <Container2 />
+    <Container3 />
   </div>
 </template>
 <script>
 import Navbar from "../components/homePage/Navbar.vue";
+import Container1 from "../components/aboutPage/Container1.vue";
+import Container2 from "../components/aboutPage/Container2.vue";
+import Container3 from "../components/aboutPage/Container3.vue";
+
 export default {
   name: "about",
   data() {
     return {};
   },
   components: {
-    Navbar
+    Navbar,
+    Container1,
+    Container2,
+    Container3
   }
 };
 </script>

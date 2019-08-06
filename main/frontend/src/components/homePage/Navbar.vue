@@ -46,7 +46,12 @@ export default {
 
 <style scope>
 /* nav bar */
-
+a:link {
+  color: rgb(53, 53, 53);
+}
+a:visited {
+  color: rgb(53, 53, 53);
+}
 .navhead {
   display: flex;
   justify-content: space-between;
@@ -105,7 +110,6 @@ export default {
   width: 100%;
   padding: 20px 20px;
 }
-
 .expand-enter-active,
 .expand-leave-active {
   transition-property: opacity, height;

@@ -20,5 +20,8 @@ export default {
 * {
   font-family: "NanumSquare", sans-serif;
 }
+a{
+  text-decoration: none;
+}
 </style>
 
