@@ -6,7 +6,6 @@ import { fetchProfileList } from "./api/axios.js"
 
 Vue.use(Vuex);
 
-<<<<<<< HEAD
 // export const store = new Vuex.Store({
 //   state: {
 //     profile: {
@@ -32,9 +31,7 @@ Vue.use(Vuex);
 //     }
 //   }
 // })
-export const store = new Vuex.Store({
-  // export default new Vuex.Store({
-=======
+
 axios.defaults.xsrfCookieName = "csrftoken";
 axios.defaults.xsrfHeaderName = "X-CSRFToken";
 
@@ -45,22 +42,18 @@ const enhanceAccessToeken = () => {
     localStorage.getItem["access_token"];
 };
 enhanceAccessToeken();
-
+// export const store = new Vuex.Store({
 export default new Vuex.Store({
->>>>>>> f3af3fedab1291b38e5f9b753b2a8cbf449d4e7d
   state: {
     userInfo: null,
     isLogin: false,
     isLoginError: false,
-<<<<<<< HEAD
     profile: {},
-    stomach: {}
-=======
+    stomach: {},
     endpoints: {
       obtainJWT: "http://127.0.0.1:8000/api/rest-auth/obtain_token/",
       refreshJWT: "http://127.0.0.1:8000/api/rest-auth/refresh_token/"
     }
->>>>>>> f3af3fedab1291b38e5f9b753b2a8cbf449d4e7d
   },
   mutations: {
     loginSuccess(state, payload) {
@@ -77,13 +70,11 @@ export default new Vuex.Store({
       state.isLogin = false;
       state.isLoginError = false;
       state.userInfo = null;
-<<<<<<< HEAD
     },
     SET_PROFILE(state, profile) {
       state.profile = profile;
-=======
       delete localStorage.access_token;
->>>>>>> f3af3fedab1291b38e5f9b753b2a8cbf449d4e7d
+
     }
   },
   actions: {
@@ -111,6 +102,7 @@ export default new Vuex.Store({
     logout({ commit }) {
       commit("logout");
       axios.defaults.headers.common["Authorization"] = undefined;
+
       router.push({ name: "home" });
     },
     signup(dispatch, loginObj) {
@@ -145,6 +137,7 @@ export default new Vuex.Store({
             username: response.data.username
           };
           console.log(userInfo);
+
           commit("loginSuccess", userInfo);
         })
         .catch(() => {

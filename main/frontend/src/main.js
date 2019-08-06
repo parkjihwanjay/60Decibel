@@ -10,11 +10,7 @@ import "@babel/polyfill";
 // .components/surveyPage/example에 적용. 플러그인으로 사용하기 위해 .plugins에 vue-scrollactive plugin인 생성 후, main.js에서 플러그인 호출
 import "./plugins/vue-scrollactive";
 import router from "./router";
-<<<<<<< HEAD
-import { store } from "./store.js";
-=======
 import store from "./store.js";
->>>>>>> f3af3fedab1291b38e5f9b753b2a8cbf449d4e7d
 import axios from "axios";
 Vue.prototype.$axios = axios;
 Vue.config.productionTip = false;
