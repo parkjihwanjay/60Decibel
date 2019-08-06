@@ -25,7 +25,7 @@
       <li v-else>단발성 통증입니다.</li>
       <li>{{this.$store.state.stomach.created_at}}통증입니다.</li>
       <li>0~10 중 {{this.$store.state.stomach.pain_score}}에 해당하는 통증입니다.</li>
-      <li>작성일 : {{this.$store.state.stomach.created_at}}</li>
+      <li v-if>작성일 : {{this.$store.state.stomach.created_at}}</li>
       <li>작성일 : {{this.$store.state.stomach.created_at}}</li>
       <li>작성일 : {{this.$store.state.stomach.created_at}}</li>
       <li>작성일 : {{this.$store.state.stomach.created_at}}</li>
