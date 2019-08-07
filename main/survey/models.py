@@ -7,13 +7,13 @@ class SurveyMeta(models.Model):
 
     symptom = models.CharField(max_length=20)
     author = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
-    created_at = models.DateTimeField(auto_now_add=True)
+    created_at = models.CharField(max_length=30, blank=True, null=True)
     # default=date.today로 해도 될 듯?
 
     # 과거력
 
     # 이전에 건강검진을 받은 적이 있나요?
-    had_checkup = models.BooleanField(default=False)
+    had_checkup = models.CharField(max_length=30, default=False)
 
     # 몇 년 전에 받았나요?
     under_one = "1년 이내"
@@ -41,7 +41,7 @@ class SurveyMeta(models.Model):
     diagnosed_disease = models.CharField(max_length=3, choices=disease_list)
 
     # 드시고 계시는 약이 있나요?
-    taking_medicine = models.BooleanField(default=False)
+    taking_medicine = models.CharField(max_length=30, default=False)
 
     # 드시고 계신 약물을 알려주세요
     what_medicine = models.CharField(max_length=20, blank=True, null=True)
@@ -53,10 +53,11 @@ class SurveyMeta(models.Model):
     # 사회력
 
     # 술을 드시나요?
-    drinking = models.BooleanField(default=False)
+    drinking = models.CharField(max_length=30, default=False)
 
     # 매주 몇 병 드시나요?
-    drinking_per_week = models.PositiveSmallIntegerField(blank=True, null=True)
+    drinking_per_week = models.CharField(
+        max_length=30, blank=True, null=True)
 
     # 흡연하시나요?
     smoking_true = "예"
@@ -68,10 +69,10 @@ class SurveyMeta(models.Model):
     smoking = models.CharField(max_length=3, choices=do_you_smoke)
 
     # 몇년째 피고 계신가요?
-    how_long_smoking = models.PositiveSmallIntegerField(default=0)
+    how_long_smoking = models.CharField(max_length=30, default=0)
 
     # 몇 갑씩 피시나요
-    how_much_smoking = models.PositiveSmallIntegerField(default=0)
+    how_much_smoking = models.CharField(max_length=30, default=0)
 
     # 직업이 무엇인가요?
     job = models.CharField(max_length=20, blank=True, null=True)
@@ -131,7 +132,12 @@ class StomachacheSurvey(SurveyMeta):
         ('repeat', '반복됩니다'),
         ('no_repeat', '단발성입니다'),
     ]
-    PAIN_PER_DAY = [
+    PAIN_HOW_OFTEN_DAY = [
+        ('one_day', '하루에'),
+        ('one_week', '일주일')
+    ]
+
+    PAIN_HOW_OFTEN_MANY = [
         ('0_to_1', '0~1회'),
         ('2_to_3', '2~3회'),
         ('4_to_5', '4회~5회'),
@@ -220,37 +226,47 @@ class StomachacheSurvey(SurveyMeta):
         ('nothing', '해당사항 없음'),
     ]
 
-    abdomen_hurted = "복부를 다친 적이 있음"
-    abdomen_surgery = "복부 수술을 받은 적이 있음"
-    abdomen_nothing = "해당없음"
-    abdomen_history = (
-        (abdomen_hurted, "복부를 다친 적이 있음"), (abdomen_surgery,
-                                           "복부 수술을 받은 적이 있음"), (abdomen_nothing, "해당없음")
-    )
+    TRUE_OR_FALSE = [
+        ('True', "예"),
+        ('False', "아니오")
+    ]
+
+    ABDOMEN_HISTORY = [
+        ('abdomen_hurted', "복부를 다친 적이 있음"),
+        ('abdomen_surgery', "복부 수술을 받은 적이 있음"),
+        ('abdomen_nothing', "해당없음")
+    ]
 
     # Onset
     symptom_start = models.CharField(choices=SYMTPOM_START, max_length=50)
-    symptom_start_less_than_month = models.DateField(default='2019-07-23')
+    symptom_start_less_than_month = models.CharField(
+        max_length=30, default='2019-07-23')
     fast_or_slow = models.CharField(choices=FAST_OR_SLOW, max_length=20)
-    symtpon_situation = models.CharField(max_length=50)
+    symtpom_situation = models.CharField(max_length=50)
 
     # location
     symtpom_location = models.CharField(max_length=20, choices=PAIN_POSITION, default="NULL")
-    location_move = models.BooleanField(default=False)
+
+    location_move = models.CharField(max_length=20, choices=TRUE_OR_FALSE, default="False")
+    
     location_move_how = models.CharField(max_length=100)
-    pain_spread = models.BooleanField(default=False)
+    pain_spread = models.CharField(max_length=20, choices=TRUE_OR_FALSE, default="False")
     pain_spread_where = models.CharField(max_length=100)
 
     # Duration
     pain_duration = models.CharField(choices=PAIN_DURATION, max_length=20)
-    pain_repeated = models.BooleanField(default=False)
-    pain_per_day = models.CharField(choices=PAIN_PER_DAY, max_length=20)
+    pain_repeated = models.CharField(max_length=20, choices=TRUE_OR_FALSE, default="False")
+    # pain_per_day = models.CharField(choices=PAIN_PER_DAY, max_length=20)
+    
+    # 지환 : pain_per_day를 삭제하고 두개 필드 추가
+    pain_how_often_day = models.CharField(choices=PAIN_HOW_OFTEN_DAY, max_length=20)
+    pain_how_often_many = models.CharField(choices=PAIN_HOW_OFTEN_MANY, max_length=20)
 
     # Course
-    pain_worse = models.BooleanField(default=False)
+    pain_worse = models.CharField(max_length=20, choices=TRUE_OR_FALSE, default="False")
 
     # Experience
-    pain_experience = models.BooleanField(default=False)
+    pain_experience = models.CharField(max_length=20, choices=TRUE_OR_FALSE, default="False")
 
     # character
     pain_character = models.CharField(choices=PAIN_CHARACTER, max_length=20)
@@ -280,7 +296,7 @@ class StomachacheSurvey(SurveyMeta):
 
     # 다음 중 해당 사항에 모두 체크해주세요
 
-    abdomen_relevant = models.CharField(max_length=30, choices=abdomen_history)
+    abdomen_relevant = models.CharField(max_length=30, choices=ABDOMEN_HISTORY)
     # abdomen_relevant = models.CharField(max_length=100)
 
     def __str__(self):

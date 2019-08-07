@@ -85,13 +85,18 @@ ASSOCIATED_SYMPTOM_URINARY = [
 
 ]
 
-abdomen_hurted = "복부를 다친 적이 있음"
-abdomen_surgery = "복부 수술을 받은 적이 있음"
-abdomen_nothing = "해당없음"
-abdomen_history = (
-    (abdomen_hurted, "복부를 다친 적이 있음"), (abdomen_surgery,
-                                       "복부 수술을 받은 적이 있음"), (abdomen_nothing, "해당없음")
-)
+# abdomen_hurted = "복부를 다친 적이 있음"
+# abdomen_surgery = "복부 수술을 받은 적이 있음"
+# abdomen_nothing = "해당없음"
+# abdomen_history = (
+#     (abdomen_hurted, "복부를 다친 적이 있음"), (abdomen_surgery,
+#                                        "복부 수술을 받은 적이 있음"), (abdomen_nothing, "해당없음")
+# )
+abdomen_relevant = [
+    ('abdomen_hurted', "복부를 다친 적이 있음"),
+    ('abdomen_surgery', "복부 수술을 받은 적이 있음"),
+    ('abdomen_nothing', "해당없음")
+]
 
 
 class StomachacheSurveyCreateSerializer(serializers.ModelSerializer):
@@ -108,7 +113,7 @@ class StomachacheSurveyCreateSerializer(serializers.ModelSerializer):
     associated_symptom_urinary = serializers.MultipleChoiceField(
         ASSOCIATED_SYMPTOM_URINARY)
     factor = serializers.MultipleChoiceField(FACTOR)
-    abdomen_relevant = serializers.MultipleChoiceField(abdomen_history)
+    abdomen_relevant = serializers.MultipleChoiceField(abdomen_relevant)
 
     class Meta:
         model = StomachacheSurvey
@@ -127,8 +132,8 @@ class StomachacheSurveySerializer(serializers.ModelSerializer):
         model = StomachacheSurvey
         fields = "__all__"
 
-    def get_created_at(self, instance):
-        return instance.created_at.strftime("%Y %B %d")
+    # def get_created_at(self, instance):
+    #     return instance.created_at.strftime("%Y %B %d")
 
     def get_author(self, instance):
         return str(instance.author)
@@ -148,5 +153,5 @@ class SurveyMetaSerializer(serializers.ModelSerializer):
                    "drinking_per_week", "smoking", "how_long_smoking", 
                    "how_much_smoking", "job", "relevant_data"]
 
-    def get_created_at(self, instance):
-        return instance.created_at.strftime("%Y %B %d")
+    # def get_created_at(self, instance):
+    #     return instance.created_at.strftime("%Y %B %d")

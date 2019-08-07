@@ -11,9 +11,6 @@ export default {
   created() {
     const userId = this.$route.params.user;
     this.$store.dispatch("getProfileInfo", userId);
-  },
-  components: {
-    Navbar
   }
 };
 </script>

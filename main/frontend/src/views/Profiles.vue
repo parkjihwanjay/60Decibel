@@ -1,31 +1,20 @@
 <template>
   <div class="profile">
     <navbar class="nav" />
-    <ul>
-      <img v-bind:src="`${profile.avatar}`" />
-      <li>이름 : {{ profile.name }}</li>
-      <li>성별 : {{ profile.gender }}</li>
-      <li>생년월일 : {{ profile.birth_date }}</li>
-      <li>신장 : {{ profile.height }}</li>
-      <li>체중 : {{ profile.weight }}</li>
-      <br />
-      <li v-if="`${profile.had_checkup}=false`">{{ profile.had_checkup_true }}년 전에 건강검진을 받았습니다.</li>
-      <li>이전에 {{ profile.diagnosed_disease }}을 진단받았습니다.</li>
-      <li v-if="`${profile.taking_medicine}`">{{ profile.what_medicine }}을 복용중입니다.</li>
-      <li>{{ profile.family_history }}와(과) 같은 가족력이 있습니다.</li>
-      <br />
-      <li v-if="`${profile.drinking}`">매주 {{ profile.drinking_per_week }}병의 술을 마십니다.</li>
-      <li
-        v-if="`${profile.smoking}`"
-      >담배를 {{ profile.how_long_smoking }}년 동안 {{ profile.how_long_smoking }}갑씩 피우고 있습니다.</li>
-      <li v-if="`${ profile.job }`">직업 : {{ profile.job }}</li>
-      <li v-if="`${profile.relevant_data}`">기타 특이사항 : {{ profile.relevant_data }}</li>
-    </ul>
+    <prof-header class="header" />
+    <porf-body1 class="body1" />
+    <porf-body2 class="body2" />
+    <porf-body3 class="body3" />
   </div>
 </template>
 <script>
 import { mapState } from "vuex";
 import Navbar from "../components/homePage/Navbar.vue";
+import ProfHeader from "../components/profilePage/ProfileHeader.vue";
+import PorfBody1 from "../components/profilePage/ProfileBody.vue";
+import PorfBody2 from "../components/profilePage/ProfileBody2.vue";
+import PorfBody3 from "../components/profilePage/ProfileBody3.vue";
+
 export default {
   computed: {
     ...mapState(["profile"])
@@ -35,14 +24,17 @@ export default {
     this.$store.dispatch("getProfileInfo", userId);
   },
   components: {
-    Navbar
+    Navbar,
+    ProfHeader,
+    PorfBody1,
+    PorfBody2,
+    PorfBody3
   }
 };
 </script>
 <style scoped>
-.profile {
-  background-color: aqua;
-}
+/* nav */
+
 .nav /deep/ .navhead {
   border-bottom: none;
 }
@@ -50,10 +42,29 @@ export default {
   background-color: transparent;
 }
 .nav /deep/ .fa-bars {
-  color: rgb(78, 78, 78);
+  color: rgb(255, 255, 255);
 }
 .nav /deep/ .navhead-brand-logo {
-  content: url("../assets/likelion.png");
+  content: url("../assets/home.png");
+  width: 1.8rem;
+  height: 1.8rem;
+  margin-left: 0.6rem;
+}
+
+/* layout */
+
+.header {
+  height: 28rem;
+  background-color: darkcyan;
+}
+.body1 {
+  background-color: darkgoldenrod;
+}
+.body2 {
+  background-color: darkolivegreen;
+}
+.body3 {
+  background-color: darkgrey;
 }
 </style>
 
