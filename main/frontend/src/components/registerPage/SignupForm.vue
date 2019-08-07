@@ -10,11 +10,28 @@
       </div>
       <form class="signup-box">
         <p>아이디</p>
-        <input type="text" v-model="username" name="username" placeholder="아이디 입력" />
-        <p>이메일</p>
-        <input type="text" v-model="email" name="email" placeholder="이메일 입력" />
-        <p>비밀번호</p>
         <input
+          v-if="random_user.username"
+          type="text"
+          name="username"
+          v-bind:value="random_user.username"
+        />
+        <input v-else type="text" v-model="username" name="username" placeholder="아이디 입력" />
+
+        <p>이메일</p>
+        <input v-if="random_user.email" type="text" name="email" v-bind:value="random_user.email" />
+        <input v-else type="text" v-model="email" name="email" placeholder="이메일 입력" />
+
+        <p>비밀번호</p>
+
+        <input
+          v-if="random_user.password1"
+          type="password"
+          name="userpassword1"
+          v-bind:value="random_user.password1"
+        />
+        <input
+          v-else
           type="password"
           v-model="password1"
           name="userpassword1"
@@ -22,10 +39,17 @@
         />
         <p>비밀번호 확인</p>
         <input
+          v-if="random_user.password2"
+          type="password"
+          name="userpassword2"
+          v-bind:value="random_user.password2"
+        />
+        <input
+          v-else
           type="password"
           v-model="password2"
           name="userpassword2"
-          placeholder="비밀번호를 다시 한 번 입력해주세요"
+          placeholder="6~12자리 비밀번호 입력"
         />
         <br />
       </form>
@@ -39,7 +63,7 @@
           type="submit"
           class="button"
           name="submit"
-          @click="signup({username, email,password1, password2})"
+          @click="signup({username, email, password1, password2})"
           value="회원가입"
         />
       </div>
@@ -58,8 +82,12 @@ export default {
       password2: null
     };
   },
+
   methods: {
     ...mapActions(["signup"])
+  },
+  computed: {
+    ...mapState(["random_user"])
   }
 };
 </script>
