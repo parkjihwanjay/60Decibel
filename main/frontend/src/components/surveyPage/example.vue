@@ -686,6 +686,33 @@
           <input type="text" v-model="survey_data.other_factor" placeholder="여기를 수정해보세요" />
         </label>
       </div>
+
+      <div>
+        <label>
+          과거 복부 관련 경험이 있나요?
+          <input
+            type="checkbox"
+            v-model="survey_data.abdomen_relevant"
+            value="abdomen_hurted"
+            placeholder="여기를 수정해보세요"
+          />
+          복부를 다친 적이 있음
+          <input
+            type="checkbox"
+            v-model="survey_data.abdomen_relevant"
+            value="abdomen_surgery"
+            placeholder="여기를 수정해보세요"
+          />
+          복부 수술을 받은 적이 있음
+          <input
+            type="checkbox"
+            v-model="survey_data.abdomen_relevant"
+            value="abdomen_nothing"
+            placeholder="여기를 수정해보세요"
+          />
+          해당없음
+        </label>
+      </div>
     </div>
     <input type="submit" class="button" name="submit" @click="survey({survey_data})" value="제출" />
   </div>
@@ -721,7 +748,8 @@ export default {
         associated_symptom_urinary: [],
         associated_symptom_others: [],
         factor: [],
-        other_factor: ""
+        other_factor: "",
+        abdomen_relevant: []
       }
     };
   },
