@@ -20,11 +20,7 @@ export default new Vuex.Store({
   state: {
     userInfo: null,
     isLogin: false,
-    isLoginError: false,
-    endpoints: {
-      obtainJWT: "http://127.0.0.1:8000/api/rest-auth/obtain_token/",
-      refreshJWT: "http://127.0.0.1:8000/api/rest-auth/refresh_token/"
-    }
+    isLoginError: false
   },
   mutations: {
     loginSuccess(state, payload) {
@@ -69,7 +65,6 @@ export default new Vuex.Store({
     logout({ commit }) {
       commit("logout");
       axios.defaults.headers.common["Authorization"] = undefined;
-      router.push({ name: "home" });
     },
     signup(dispatch, loginObj) {
       // login --> 토큰 반환
