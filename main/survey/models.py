@@ -7,13 +7,13 @@ class SurveyMeta(models.Model):
 
     symptom = models.CharField(max_length=20)
     author = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
-    created_at = models.DateTimeField(auto_now_add=True)
+    created_at = models.CharField(max_length=30, blank=True, null=True)
     # default=date.today로 해도 될 듯?
 
     # 과거력
 
     # 이전에 건강검진을 받은 적이 있나요?
-    had_checkup = models.BooleanField(default=False)
+    had_checkup = models.CharField(max_length=30, default=False)
 
     # 몇 년 전에 받았나요?
     under_one = "1년 이내"
@@ -41,7 +41,7 @@ class SurveyMeta(models.Model):
     diagnosed_disease = models.CharField(max_length=3, choices=disease_list)
 
     # 드시고 계시는 약이 있나요?
-    taking_medicine = models.BooleanField(default=False)
+    taking_medicine = models.CharField(max_length=30, default=False)
 
     # 드시고 계신 약물을 알려주세요
     what_medicine = models.CharField(max_length=20, blank=True, null=True)
@@ -53,10 +53,11 @@ class SurveyMeta(models.Model):
     # 사회력
 
     # 술을 드시나요?
-    drinking = models.BooleanField(default=False)
+    drinking = models.CharField(max_length=30, default=False)
 
     # 매주 몇 병 드시나요?
-    drinking_per_week = models.PositiveSmallIntegerField(blank=True, null=True)
+    drinking_per_week = models.CharField(
+        max_length=30, blank=True, null=True)
 
     # 흡연하시나요?
     smoking_true = "예"
@@ -68,10 +69,10 @@ class SurveyMeta(models.Model):
     smoking = models.CharField(max_length=3, choices=do_you_smoke)
 
     # 몇년째 피고 계신가요?
-    how_long_smoking = models.PositiveSmallIntegerField(default=0)
+    how_long_smoking = models.CharField(max_length=30, default=0)
 
     # 몇 갑씩 피시나요
-    how_much_smoking = models.PositiveSmallIntegerField(default=0)
+    how_much_smoking = models.CharField(max_length=30, default=0)
 
     # 직업이 무엇인가요?
     job = models.CharField(max_length=20, blank=True, null=True)
@@ -238,7 +239,8 @@ class StomachacheSurvey(SurveyMeta):
 
     # Onset
     symptom_start = models.CharField(choices=SYMTPOM_START, max_length=50)
-    symptom_start_less_than_month = models.CharField(max_length=100)
+    symptom_start_less_than_month = models.CharField(
+        max_length=30, default='2019-07-23')
     fast_or_slow = models.CharField(choices=FAST_OR_SLOW, max_length=20)
     symtpom_situation = models.CharField(max_length=50)
 

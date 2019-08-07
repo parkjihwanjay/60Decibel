@@ -1,7 +1,8 @@
 <template>
   <div class="profile">
     <ul>
-      <!-- <img v-bind:src="`${profile.avatar}`" /> -->
+      <img v-if="`${profile.avatar}===null`" src="../assets/60db.png" />
+      <img v-else v-bind:src="`${profile.avatar}`" />
       <li>이름 : {{ profile.name }}</li>
       <li>성별 : {{ profile.gender }}</li>
       <li>생년월일 : {{ profile.birth_date }}</li>
