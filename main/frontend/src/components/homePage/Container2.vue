@@ -84,8 +84,8 @@ span {
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  width: 34%;
-  height: 20%;
+  width: 105px;
+  height: 150px;
   font-weight: 400;
   padding-bottom: 2%;
 }

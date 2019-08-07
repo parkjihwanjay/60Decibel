@@ -77,7 +77,7 @@ export default {
 .signup-cont {
   box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.308);
   border-radius: 5px;
-  height: 100vh;
+  height: 680px;
   width: 90%;
   background-color: white;
 }
@@ -95,8 +95,8 @@ export default {
   justify-content: space-around;
   width: 17rem;
   margin-left: 2.5rem;
-  margin-bottom: 2rem;
-  padding-top: 3.5rem;
+  margin-bottom: 3.5rem;
+  padding-top: 4rem;
   color: rgb(83, 83, 83);
 }
 .signup-box p {
@@ -141,7 +141,7 @@ input[type="password"]:focus {
   justify-content: center;
   align-items: center;
   margin-top: 1.5rem;
-  margin-bottom: 0.7rem;
+  margin-bottom: 1rem;
   margin-right: 6rem;
   font-size: 0.9rem;
 }

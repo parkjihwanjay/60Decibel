@@ -61,41 +61,41 @@ export default {
   background-color: #125b7f;
   width: 100%;
   height: 2.8rem;
-  padding: 0 2rem;
+  padding: 0 2.05rem;
 }
 a {
   color: white;
 }
 .animate {
-  -webkit-animation-duration: 1s;
-  animation-duration: 1s;
+  -webkit-animation-duration: 0.8s;
+  animation-duration: 0.8s;
   -webkit-animation-fill-mode: both;
   animation-fill-mode: both;
 }
 .one {
-  -webkit-animation-delay: 0.6s;
-  -moz-animation-delay: 0.6s;
-  animation-delay: 0.3s;
+  -webkit-animation-delay: 0.2s;
+  -moz-animation-delay: 0.2s;
+  animation-delay: 0.2s;
 }
 .two {
+  -webkit-animation-delay: 0.3s;
+  -moz-animation-delay: 0.3s;
+  animation-delay: 0.3s;
+}
+.three {
+  -webkit-animation-delay: 0.35s;
+  -moz-animation-delay: 0.35s;
+  animation-delay: 0.35s;
+}
+.four {
   -webkit-animation-delay: 0.4s;
   -moz-animation-delay: 0.4s;
   animation-delay: 0.4s;
 }
-.three {
-  -webkit-animation-delay: 0.75s;
-  -moz-animation-delay: 0.75s;
-  animation-delay: 0.75s;
-}
-.four {
-  -webkit-animation-delay: 0.8s;
-  -moz-animation-delay: 0.8s;
-  animation-delay: 0.8s;
-}
 .five {
-  -webkit-animation-delay: 0.85s;
-  -moz-animation-delay: 0.85s;
-  animation-delay: 0.85s;
+  -webkit-animation-delay: 0.45s;
+  -moz-animation-delay: 0.45s;
+  animation-delay: 0.45s;
 }
 
 @-webkit-keyframes fadeInUp {

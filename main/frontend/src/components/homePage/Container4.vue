@@ -19,7 +19,7 @@ export default {};
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 70vh;
+  height: 490px;
 }
 .con4-txt {
   margin-bottom: 1.4rem;
@@ -38,7 +38,7 @@ export default {};
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  margin-bottom: 1rem;
+  margin-bottom: 20px;
 }
 .icon1 {
   width: 12rem;
