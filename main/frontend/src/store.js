@@ -135,6 +135,7 @@ export const store = new Vuex.Store({
       axios
         .get(`http://127.0.0.1:8000/api/profiles/${userId}/`, config)
         .then(({ data }) => {
+          console.log(data);
           commit("SET_PROFILE", data);
         })
         .catch(error => {
