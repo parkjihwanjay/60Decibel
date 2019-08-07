@@ -24,7 +24,8 @@ export const store = new Vuex.Store({
         isLoginError: false,
         profile: {},
         stomach: {},
-        survey_history: []
+        survey_history: [],
+        random_user: {}
     },
     getters: {
         fetchedProfile(state) {
@@ -57,6 +58,9 @@ export const store = new Vuex.Store({
         },
         SET_SURVEY_HISTORY(state, survey_history) {
             state.survey_history = survey_history;
+        },
+        SET_QUICK_START(state, startObj) {
+            state.random_user = startObj;
         }
     },
     actions: {
@@ -178,6 +182,37 @@ export const store = new Vuex.Store({
                     console.log(error);
                 })
             ``;
+        },
+        start({ commit }) {
+            let startObj = {};
+            let username = "";
+
+            let possible =
+                "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+            for (var i = 0; i < 5; i++)
+                username += possible.charAt(
+                    Math.floor(Math.random() * possible.length)
+                );
+            let email = "";
+            for (i = 0; i < 5; i++)
+                email += possible.charAt(Math.floor(Math.random() * possible.length));
+
+            let password1 = "60dbfighithing!!";
+            let password2 = password1;
+
+            startObj["username"] = username;
+            startObj["email"] = email + "@naver.com";
+            startObj["password1"] = password2;
+            startObj["password2"] = password2;
+            commit("SET_QUICK_START", startObj);
+            router.push({ name: "signup" });
+            // axios
+            //     .post("http://127.0.0.1:8000/api/rest-auth/registration/", startObj)
+            //     // loginObj = {email,password}
+            //     .then(res => {
+            //         router.push({ name: "home" });
+            //         console.log(res);
+            //     });
         },
         survey(dispatch, survey_data) {
             console.log(survey_data);
