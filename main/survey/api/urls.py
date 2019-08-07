@@ -7,7 +7,6 @@ urlpatterns = [
     path('surveys/stomach/', StomachacheSurveyCreateView.as_view(),
          name="stomach-create"),
     path("surveys/<str:author>/", OwnSurveyListView.as_view(), name="survey-history"),
-    path("surveys/<str:author>/stomach/<int:id>/",
+    path("stomach/<int:id>/",
          StomachacheSurveyRetrieveView.as_view(), name="stomach-history")
 ]
-

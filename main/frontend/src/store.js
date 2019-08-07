@@ -2,35 +2,8 @@ import Vue from "vue";
 import Vuex from "vuex";
 import router from "./router";
 import axios from "axios";
-import { fetchProfileList } from "./api/axios.js"
 
 Vue.use(Vuex);
-
-// export const store = new Vuex.Store({
-//   state: {
-//     profile: {
-//       "avatar": null,
-//       "gender": "남성",
-//       "birth_date": "2019-08-06",
-//       "height": 10,
-//       "weight": 10,
-//       "name": "이인우",
-//       "had_checkup": true,
-//       "had_checkup_true": "1년 이내",
-//       "diagnosed_disease": "고혈압",
-//       "taking_medicine": true,
-//       "what_medicine": "비타민",
-//       "family_history": "고혈압",
-//       "drinking": true, "drinking_per_week": 1,
-//       "smoking": "예",
-//       "how_long_smoking": 1,
-//       "how_much_smoking": 1,
-//       "job": "개발자",
-//       "relevant_data": "{'기름진 음식을 많이 먹음', '식사 불규칙'}",
-//       "user": "ant"
-//     }
-//   }
-// })
 
 axios.defaults.xsrfCookieName = "csrftoken";
 axios.defaults.xsrfHeaderName = "X-CSRFToken";
@@ -42,17 +15,20 @@ const enhanceAccessToeken = () => {
     localStorage.getItem["access_token"];
 };
 enhanceAccessToeken();
-// export const store = new Vuex.Store({
-export default new Vuex.Store({
+
+// export default new Vuex.Store({
+export const store = new Vuex.Store({
   state: {
     userInfo: null,
     isLogin: false,
     isLoginError: false,
     profile: {},
     stomach: {},
-    endpoints: {
-      obtainJWT: "http://127.0.0.1:8000/api/rest-auth/obtain_token/",
-      refreshJWT: "http://127.0.0.1:8000/api/rest-auth/refresh_token/"
+    survey_history: []
+  },
+  getters: {
+    fetchedProfile(state) {
+      return state.profile;
     }
   },
   mutations: {
@@ -73,8 +49,14 @@ export default new Vuex.Store({
     },
     SET_PROFILE(state, profile) {
       state.profile = profile;
-      delete localStorage.access_token;
-
+      // delete localStorage.access_token;
+      // 인우: 이거머임 ?
+    },
+    SET_STOMACH(state, stomach) {
+      state.stomach = stomach;
+    },
+    SET_SURVEY_HISTORY(state, survey_history) {
+      state.survey_history = survey_history;
     }
   },
   actions: {
@@ -144,13 +126,53 @@ export default new Vuex.Store({
           alert("이메일과 비밀번호를 확인하세요.");
         });
     },
-    getProfileInfo({ commit }) {
-      fetchProfileList()
+    getProfileInfo({ commit }, userId) {
+      let token = localStorage.getItem("access_token");
+      let config = {
+        headers: {
+          Authorization: "JWT " + token,
+          "Content-Type": "application/json"
+        }
+      };
+      axios.get(`http://127.0.0.1:8000/api/profiles/${userId}/`, config)
         .then(({ data }) => {
-          commit('SET_PROFILE', data)
+          commit('SET_PROFILE', data);
         })
         .catch(error => {
-          console.log(error)
+          console.log(error);
+        })
+    },
+    getStomachInfo({ commit }, stomachId) {
+      let token = localStorage.getItem("access_token");
+      let config = {
+        headers: {
+          Authorization: "JWT " + token,
+          "Content-Type": "application/json"
+        }
+      };
+      axios.get(`http://127.0.0.1:8000/api/stomach/${stomachId}/`, config)
+        .then(({ data }) => {
+          console.log(data)
+          commit('SET_STOMACH', data);
+        })
+        .catch(error => {
+          console.log(error);
+        })
+    },
+    getSurveyHistory({ commit }, authorId) {
+      let token = localStorage.getItem("access_token");
+      let config = {
+        headers: {
+          Authorization: "JWT " + token,
+          "Content-Type": "application/json"
+        }
+      };
+      axios.get(`http://127.0.0.1:8000/api/surveys/${authorId}/`, config)
+        .then(({ data }) => {
+          commit('SET_SURVEY_HISTORY', data);
+        })
+        .catch(error => {
+          console.log(error);
         })
     }
   }
