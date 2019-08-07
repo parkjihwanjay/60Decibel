@@ -48,7 +48,7 @@
 <script>
 import { mapState, mapActions } from "vuex";
 import TransitionExpand from "./NavEffect.vue";
-import store from "../../store.js";
+import { store } from "../../store.js";
 export default {
   name: `Nav`,
   components: {
