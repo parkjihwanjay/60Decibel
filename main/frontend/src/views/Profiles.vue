@@ -1,14 +1,15 @@
 <template>
   <div class="profile">
+    <navbar class="nav" />
     <ul>
-      <!-- <img v-bind:src="`${profile.avatar}`" /> -->
+      <img v-bind:src="`${profile.avatar}`" />
       <li>이름 : {{ profile.name }}</li>
       <li>성별 : {{ profile.gender }}</li>
       <li>생년월일 : {{ profile.birth_date }}</li>
       <li>신장 : {{ profile.height }}</li>
       <li>체중 : {{ profile.weight }}</li>
       <br />
-      <li v-if="`${profile.had_checkup}`">{{ profile.had_checkup_true }}년 전에 건강검진을 받았습니다.</li>
+      <li v-if="`${profile.had_checkup}=false`">{{ profile.had_checkup_true }}년 전에 건강검진을 받았습니다.</li>
       <li>이전에 {{ profile.diagnosed_disease }}을 진단받았습니다.</li>
       <li v-if="`${profile.taking_medicine}`">{{ profile.what_medicine }}을 복용중입니다.</li>
       <li>{{ profile.family_history }}와(과) 같은 가족력이 있습니다.</li>
@@ -24,6 +25,7 @@
 </template>
 <script>
 import { mapState } from "vuex";
+import Navbar from "../components/homePage/Navbar.vue";
 export default {
   computed: {
     ...mapState(["profile"])
@@ -31,6 +33,27 @@ export default {
   created() {
     const userId = this.$route.params.user;
     this.$store.dispatch("getProfileInfo", userId);
+  },
+  components: {
+    Navbar
   }
 };
 </script>
+<style scoped>
+.profile {
+  background-color: aqua;
+}
+.nav /deep/ .navhead {
+  border-bottom: none;
+}
+.nav /deep/ .navhead-icon:hover {
+  background-color: transparent;
+}
+.nav /deep/ .fa-bars {
+  color: rgb(78, 78, 78);
+}
+.nav /deep/ .navhead-brand-logo {
+  content: url("../assets/likelion.png");
+}
+</style>
+

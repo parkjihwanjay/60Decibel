@@ -54,7 +54,7 @@ export default {
 }
 .buttons {
   display: flex;
-  justify-content: flex-end;
+   justify-content: space-between;
   align-items: center;
   position: absolute;
   bottom: 0;
