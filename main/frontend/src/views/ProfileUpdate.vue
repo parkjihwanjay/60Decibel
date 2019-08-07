@@ -3,37 +3,143 @@
     <form method="put" enctype="multipart/form-data">
       <label>사진을 업로드해주세요</label>
       <img class="thumb" :src="avatar" />
-      <input type="text" v-model="gender" />
-      <input type="text" v-model="birth" />
-      <input type="text" v-model="height" />
-      <input type="text" v-model="weight" />
-      <input type="text" v-model="name" />
-      <input type="text" v-model="checkup" />
-      <input type="text" v-model="checkupTrue" />
-      <input type="text" v-model="diagnosedDisease" />
-      <input type="text" v-model="takingMedicine" />
-      <input type="text" v-model="whatMedicine" />
-      <input type="text" v-model="familyHistory" />
-      <input type="text" v-model="drinking" />
-      <input type="text" v-model="drinkingPerWeek" />
-      <input type="text" v-model="smoking" />
-      <input type="text" v-model="howLongSmoking" />
-      <input type="text" v-model="howMuchSmoking" />
-      <input type="text" v-model="job" />
-      <input type="text" v-model="relevantData" />
+      <br />
+      <span>성별을 골라주세요 :</span>
+      <label for="male">
+        <input type="radio" v-model="gender" name="gender" id="male" value="남성" />남성
+      </label>
+      <label for="female">
+        <input type="radio" v-model="gender" name="gender" id="female" value="여성" />여성
+      </label>
+      <br />
+      <span>생년월일을 입력해주세요</span>
+      <input type="date" v-model="birth_date" v-bind:placeholder="profile.birth_date" />
+      <br />
+      <span>신장을 입력해주세요</span>
+      <input type="number" v-model="height" v-bind:placeholder="profile.height" />
+      <br />
+      <span>체중을 입력해주세요</span>
+      <input type="number" v-model="weight" v-bind:placeholder="profile.weight" />
+      <br />
+      <span>성함을 입력해주세요</span>
+      <input type="text" v-model="name" v-bind:placeholder="profile.name" />
+      <br />
+      <br />
+      <span>과거력</span>
+      <br />
+      <br />
+      <span>이전에 건강검진을 받은 적이 있나요?</span>
+      <label for="yes">
+        <input type="radio" v-model="had_checkup" name="had_checkup" id="yes" value="True" />네
+      </label>
+      <label for="no">
+        <input type="radio" v-model="had_checkup" name="had_checkup" id="no" value="False" />아니오
+      </label>
+      <br />
+      <label for="had_long_before">몇 년 전에 받았나요?</label>
+      <select name="how_long_before" v-model="had_checkup_true" id="had_long_before">
+        <option value="under_one">1년 이내</option>
+        <option value="one_to_three">1~3년</option>
+        <option value="three_to_five">3~5년</option>
+        <option value="five_to_ten">5~10년</option>
+        <option value="over_ten">10년 이상</option>
+      </select>
+      <br />
+      <label for="disease_list">이전에 진단받은 병이 있나요?</label>
+      <select name="disease_list" v-model="diagnosed_disease" id="disease_list">
+        <option value="high_blood_pressure">고혈압</option>
+        <option value="hepatitis">간염</option>
+        <option value="tuberculosis">결핵</option>
+        <option value="none">없음</option>
+        <option value="etc">기타</option>
+      </select>
+      <br />
+      <span>드시고 계시는 약이 있나요?</span>
+      <label for="yes">
+        <input type="radio" v-model="taking_medicine" name="taking_medicine" id="yes" value="True" />네
+      </label>
+      <label for="no">
+        <input type="radio" v-model="taking_medicine" name="taking_medicine" id="no" value="False" />아니오
+      </label>
+      <br />
+      <span>드시고 계신 약물을 알려주세요</span>
+      <input type="text" v-model="what_medicine" v-bind:placeholder="profile.what_medicine" />
+      <br />
+      <label for="family_disease">가족분들이 진단받은 병이 있나요?</label>
+      <select name="family_disease" v-model="family_history" id="family_disease">
+        <option value="high_blood_pressure">고혈압</option>
+        <option value="hepatitis">간염</option>
+        <option value="tuberculosis">결핵</option>
+        <option value="none">없음</option>
+        <option value="etc">기타</option>
+      </select>
+      <br />
+      <br />
+      <span>사회력</span>
+      <br />
+      <br />
+      <span>술을 드시나요?</span>
+      <label for="yes">
+        <input type="radio" v-model="drinking" name="drinking" id="yes" value="True" />네
+      </label>
+      <label for="no">
+        <input type="radio" v-model="drinking" name="drinking" id="no" value="False" />아니오
+      </label>
+      <br />
+      <span>매주 몇 병 드시나요?</span>
+      <input
+        type="number"
+        v-model="drinking_per_week"
+        v-bind:placeholder="profile.drinking_per_week"
+      />
+      <br />
+      <span>흡연하시나요?</span>
+      <label for="yes">
+        <input type="radio" v-model="smoking" name="smoking" id="yes" value="True" />네
+      </label>
+      <label for="no">
+        <input type="radio" v-model="smoking" name="smoking" id="no" value="False" />아니오
+      </label>
+      <br />
+      <span>몇 년째 피고 계신가요?</span>
+      <input type="number" v-model="how_long_smoking" v-bind:placeholder="profile.how_long_smoking" />
+      <br />
+      <span>몇 갑씩 피고 계신가요?</span>
+      <input type="number" v-model="how_much_smoking" v-bind:placeholder="profile.how_much_smoking" />
+      <br />
+      <span>직업을 입력해주세요</span>
+      <input type="text" v-model="job" v-bind:placeholder="profile.job" />
+      <br />
+      <label for="bad_habits">다음 중 해당되는 사항에 모두 체크해주세요</label>
+      <select name="bad_habits" v-model="relevant_data" id="bad_habits">
+        <option value="stress">스트레스를 많이 받는 편</option>
+        <option value="irregular_meals">식사 불규칙</option>
+        <option value="greasy_meals">기름진 음식을 많이 먹음</option>
+        <option value="irregular_sleep">수면시간 불규칙</option>
+      </select>
+      <br />
     </form>
     <input
       type="submit"
       class="button"
       name="submit"
-      @click="update({avatar, gender,birth, height, weight, name, checkup, checkupTrue, diagnosedDisease, takingMedicine, whatMedicine, familyHistory, drinking, drinkingPerWeek,
-        smoking,howLongSmoking, howMuchSmoking, job, relevantData})"
+      @click="update({avatar, gender, birth_date, height, weight, name, had_heckup, had_checkup_true, diagnosed_disease, taking_medicine, what_medicine, family_history, drinking, drinking_per_week,
+        smoking,how_long_smoking, how_much_smoking, job, relevant_data})"
       value="프로필 업데이트"
     />
   </div>
 </template>
 <script>
-export default {};
+import { mapState } from "vuex";
+export default {
+  computed: {
+    ...mapState(["profile"])
+  },
+  created() {
+    const userId = this.$route.params.user;
+    this.$store.dispatch("getProfileInfo", userId);
+  }
+};
 </script>
 <style scoped>
 </style>
