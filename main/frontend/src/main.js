@@ -12,6 +12,7 @@ import "./plugins/vue-scrollactive";
 import router from "./router";
 import { store } from "./store.js";
 import axios from "axios";
+
 Vue.prototype.$axios = axios;
 Vue.config.productionTip = false;
 
@@ -23,5 +24,8 @@ new Vue({
   // beforeCreate() {
   //   this.$store.dispatch("getMemberInfo");
   // },
+  component: {
+    App
+  },
   render: h => h(App)
 }).$mount("#app");

@@ -23,11 +23,11 @@ export default {
   width: 100%;
   height: 100vh;
   color: #fff;
-  background: linear-gradient(-45deg, #0a4b8b, #35c3c0);
-  /* background-size: 400% 400%; */
-  /* -webkit-animation: Gradient 15s ease infinite;
+  background: linear-gradient(-45deg, #033063, #053f79, #27adab, #5ef3f1);
+  background-size: 400% 400%;
+  -webkit-animation: Gradient 15s ease infinite;
   -moz-animation: Gradient 15s ease infinite;
-  animation: Gradient 15s ease infinite; */
+  animation: Gradient 15s ease infinite;
 }
 .header {
   width: 100%;
@@ -37,7 +37,7 @@ export default {
   width: 100%;
   height: 50%;
 }
-/* @-webkit-keyframes Gradient {
+@-webkit-keyframes Gradient {
   0% {
     background-position: 0% 50%;
   }
@@ -71,5 +71,5 @@ export default {
   100% {
     background-position: 0% 50%;
   }
-} */
+}
 </style>

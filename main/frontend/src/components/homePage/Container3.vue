@@ -46,7 +46,7 @@ span {
 .cont3-txt-main {
   padding: 0 2rem;
   color: #363636;
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   font-weight: 400;
   text-align: center;
   line-height: 1.1rem;
