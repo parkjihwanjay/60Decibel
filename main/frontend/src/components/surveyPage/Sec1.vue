@@ -1,23 +1,58 @@
 <template>
   <div class="section">
-    <v-expansion-panels v-model="expand" accordion class="expansion">
-      <v-expansion-panel class="panel" v-for="(item,i) in 5" :key="i">
-        <v-expansion-panel-header class="header animate fadeInDown two">
-          Item
-          <template v-slot:actions>
-            <v-icon></v-icon>
-          </template>
-        </v-expansion-panel-header>
-        <v-expansion-panel-content class="content animate fadeInUp one">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-          <br />
-          <br />
-          <div class="ans animate fadeInRightBig three"></div>
-          <div class="ans animate fadeInRightBig four"></div>
-          <div class="ans animate fadeInRightBig five"></div>
-        </v-expansion-panel-content>
-      </v-expansion-panel>
-    </v-expansion-panels>
+    <p class="question-header">증상의 시작</p>
+    <div class="question-body">
+      <v-expansion-panels v-model="expand" accordion class="expansion">
+        <v-expansion-panel class="q1-1">
+          <v-expansion-panel-header class="header animate fadeInDown two">
+            Q1.
+            <template v-slot:actions>
+              <v-icon></v-icon>
+            </template>
+          </v-expansion-panel-header>
+          <v-expansion-panel-content class="content animate fadeInUp one">
+            여기가 질문입니다요 ~~~~~
+            <br />
+            <br />
+            <div class="ans animate fadeInRightBig three">여기가</div>
+            <div class="ans animate fadeInRightBig four">선택지</div>
+            <div class="ans animate fadeInRightBig five">입니다</div>
+          </v-expansion-panel-content>
+        </v-expansion-panel>
+        <v-expansion-panel class="q1-2">
+          <v-expansion-panel-header class="header animate fadeInDown two">
+            Q1.
+            <template v-slot:actions>
+              <v-icon></v-icon>
+            </template>
+          </v-expansion-panel-header>
+          <v-expansion-panel-content class="content animate fadeInUp one">
+            여기가 질문입니다요 ~~~~~
+            <br />
+            <br />
+            <div class="ans animate fadeInRightBig three">여기가</div>
+            <div class="ans animate fadeInRightBig four">선택지</div>
+            <div class="ans animate fadeInRightBig five">입니다</div>
+          </v-expansion-panel-content>
+        </v-expansion-panel>
+        <v-expansion-panel class="q1-3">
+          <v-expansion-panel-header class="header animate fadeInDown two">
+            Q1.
+            <template v-slot:actions>
+              <v-icon></v-icon>
+            </template>
+          </v-expansion-panel-header>
+          <v-expansion-panel-content class="content animate fadeInUp one">
+            여기가 질문입니다요 ~~~~~
+            <br />
+            <br />
+            <div class="ans animate fadeInRightBig three">여기가</div>
+            <div class="ans animate fadeInRightBig four">선택지</div>
+            <div class="ans animate fadeInRightBig five">입니다</div>
+          </v-expansion-panel-content>
+        </v-expansion-panel>
+      </v-expansion-panels>
+    </div>
     <div class="buttons">
       <router-link :to="{name:'sec2'}">다음</router-link>
     </div>
@@ -34,10 +69,18 @@ export default {
 };
 </script>
 <style scoped>
+/* question header */
+.question-header {
+  margin-top: 2rem;
+  padding-left: 2.5rem;
+  font-size: 1.7rem;
+}
+/* question body */
 .v-expansion-panels {
-  height: 80%;
+  width: 100%;
+  height: 90%;
   box-shadow: none;
-  padding: 1rem 1.5rem;
+  padding: 0.5rem 1.5rem;
 }
 .v-expansion-panel-content {
   height: 46vh;
@@ -47,10 +90,12 @@ export default {
 }
 .ans {
   width: 90%;
-  height: 30px;
+  height: 44px;
   background-color: #cecece;
-  margin: 5px auto;
+  margin: 10px auto;
 }
+
+/* question footer */
 .buttons {
   display: flex;
   justify-content: flex-end;
@@ -66,38 +111,42 @@ export default {
 a {
   color: white;
 }
+
+/* transition time set */
 .animate {
-  -webkit-animation-duration: 1s;
-  animation-duration: 1s;
+  -webkit-animation-duration: 0.8s;
+  animation-duration: 0.8s;
   -webkit-animation-fill-mode: both;
   animation-fill-mode: both;
 }
 .one {
-  -webkit-animation-delay: 0.6s;
-  -moz-animation-delay: 0.6s;
-  animation-delay: 0.3s;
+  -webkit-animation-delay: 0.2s;
+  -moz-animation-delay: 0.2s;
+  animation-delay: 0.2s;
 }
 .two {
+  -webkit-animation-delay: 0.3s;
+  -moz-animation-delay: 0.3s;
+  animation-delay: 0.3s;
+}
+.three {
+  -webkit-animation-delay: 0.35s;
+  -moz-animation-delay: 0.35s;
+  animation-delay: 0.35s;
+}
+.four {
   -webkit-animation-delay: 0.4s;
   -moz-animation-delay: 0.4s;
   animation-delay: 0.4s;
 }
-.three {
-  -webkit-animation-delay: 0.75s;
-  -moz-animation-delay: 0.75s;
-  animation-delay: 0.75s;
-}
-.four {
-  -webkit-animation-delay: 0.8s;
-  -moz-animation-delay: 0.8s;
-  animation-delay: 0.8s;
-}
 .five {
-  -webkit-animation-delay: 0.85s;
-  -moz-animation-delay: 0.85s;
-  animation-delay: 0.85s;
+  -webkit-animation-delay: 0.45s;
+  -moz-animation-delay: 0.45s;
+  animation-delay: 0.45s;
 }
+/* transition effect */
 
+/* fadeInUP */
 @-webkit-keyframes fadeInUp {
   from {
     opacity: 0;
@@ -128,6 +177,8 @@ a {
   -webkit-animation-name: fadeInUp;
   animation-name: fadeInUp;
 }
+
+/* fadeInDown */
 .fadeInDown {
   -webkit-animation-name: fadeInDown;
   animation-name: fadeInDown;
@@ -156,6 +207,8 @@ a {
     transform: none;
   }
 }
+
+/* fadeinRight */
 .fadeInRightBig {
   -webkit-animation-name: fadeInRightBig;
   animation-name: fadeInRightBig;

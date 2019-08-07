@@ -31,7 +31,7 @@ export default {
 }
 .header {
   width: 100%;
-  height: 50%;
+  height: 48%;
 }
 .footer {
   width: 100%;
