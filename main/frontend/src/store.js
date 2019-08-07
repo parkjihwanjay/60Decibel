@@ -16,14 +16,19 @@ const enhanceAccessToeken = () => {
 };
 enhanceAccessToeken();
 
-export default new Vuex.Store({
+// export default new Vuex.Store({
+export const store = new Vuex.Store({
   state: {
     userInfo: null,
     isLogin: false,
     isLoginError: false,
-    endpoints: {
-      obtainJWT: "http://127.0.0.1:8000/api/rest-auth/obtain_token/",
-      refreshJWT: "http://127.0.0.1:8000/api/rest-auth/refresh_token/"
+    profile: {},
+    stomach: {},
+    survey_history: []
+  },
+  getters: {
+    fetchedProfile(state) {
+      return state.profile;
     }
   },
   mutations: {
@@ -41,7 +46,17 @@ export default new Vuex.Store({
       state.isLogin = false;
       state.isLoginError = false;
       state.userInfo = null;
-      delete localStorage.access_token;
+    },
+    SET_PROFILE(state, profile) {
+      state.profile = profile;
+      // delete localStorage.access_token;
+      // 인우: 이거머임 ?
+    },
+    SET_STOMACH(state, stomach) {
+      state.stomach = stomach;
+    },
+    SET_SURVEY_HISTORY(state, survey_history) {
+      state.survey_history = survey_history;
     }
   },
   actions: {
@@ -69,7 +84,6 @@ export default new Vuex.Store({
     logout({ commit }) {
       commit("logout");
       axios.defaults.headers.common["Authorization"] = undefined;
-      router.push({ name: "home" });
     },
     signup(dispatch, loginObj) {
       // login --> 토큰 반환
@@ -103,10 +117,63 @@ export default new Vuex.Store({
             username: response.data.username
           };
           console.log(userInfo);
+
           commit("loginSuccess", userInfo);
         })
         .catch(() => {
           alert("이메일과 비밀번호를 확인하세요.");
+        });
+    },
+    getProfileInfo({ commit }, userId) {
+      let token = localStorage.getItem("access_token");
+      let config = {
+        headers: {
+          Authorization: "JWT " + token,
+          "Content-Type": "application/json"
+        }
+      };
+      axios
+        .get(`http://127.0.0.1:8000/api/profiles/${userId}/`, config)
+        .then(({ data }) => {
+          commit("SET_PROFILE", data);
+        })
+        .catch(error => {
+          console.log(error);
+        });
+    },
+    getStomachInfo({ commit }, stomachId) {
+      let token = localStorage.getItem("access_token");
+      let config = {
+        headers: {
+          Authorization: "JWT " + token,
+          "Content-Type": "application/json"
+        }
+      };
+      axios
+        .get(`http://127.0.0.1:8000/api/stomach/${stomachId}/`, config)
+        .then(({ data }) => {
+          console.log(data);
+          commit("SET_STOMACH", data);
+        })
+        .catch(error => {
+          console.log(error);
+        });
+    },
+    getSurveyHistory({ commit }, authorId) {
+      let token = localStorage.getItem("access_token");
+      let config = {
+        headers: {
+          Authorization: "JWT " + token,
+          "Content-Type": "application/json"
+        }
+      };
+      axios
+        .get(`http://127.0.0.1:8000/api/surveys/${authorId}/`, config)
+        .then(({ data }) => {
+          commit("SET_SURVEY_HISTORY", data);
+        })
+        .catch(error => {
+          console.log(error);
         });
     }
   }

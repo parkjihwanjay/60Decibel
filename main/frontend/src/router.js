@@ -106,10 +106,20 @@ export default new Router({
       component: () => import("./views/ProfileUpdate.vue")
     },
     {
-      path: "/profiles",
+      path: "/profiles/:user",
       name: "profiles",
       // beforeEnter: requireAuth,
       component: () => import("./views/Profiles.vue")
+    },
+    {
+      path: "/stomach/:id",
+      name: "stomach-retrieve",
+      component: () => import("./views/Result.vue")
+    },
+    {
+      path: "/surveys/:author",
+      name: "survey-history",
+      component: () => import("./views/SurveyList.vue")
     }
   ]
 });

@@ -5,6 +5,9 @@
     <Container2 />
     <Container3 />
     <Container4 />
+    <div class="surveybtn">
+      <div class="btn">선택지입니다</div>
+    </div>
   </div>
 </template>
 
@@ -28,5 +31,18 @@ export default {
 };
 </script>
 <style scoped>
+.surveybtn {
+  display: flex;
+  justify-content: center;
+}
+.btn {
+  text-align: center;
+  width: 90%;
+  height: 50px;
+  background-color: rgb(181, 141, 218);
+  border-radius: 10px;
+  position: fixed;
+  bottom: 0;
+}
 </style>
 

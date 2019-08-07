@@ -23,15 +23,7 @@ export default {
   width: 100%;
   height: 100vh;
   color: #fff;
-  background: linear-gradient(
-    -45deg,
-    #f97794,
-    #b42283,
-    #2c34a7,
-    #0a4b8b,
-    #35c3c0,
-    #35c3c0
-  );
+  background: linear-gradient(-45deg, #033063, #053f79, #27adab, #5ef3f1);
   background-size: 400% 400%;
   -webkit-animation: Gradient 15s ease infinite;
   -moz-animation: Gradient 15s ease infinite;
@@ -39,7 +31,7 @@ export default {
 }
 .header {
   width: 100%;
-  height: 50%;
+  height: 48%;
 }
 .footer {
   width: 100%;

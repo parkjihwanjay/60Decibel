@@ -57,12 +57,12 @@ export default {
 .login-box p {
   margin: 0;
   padding: 0;
-  font-size: 0.85rem;
+  font-size: 1rem;
   font-weight: 500;
 }
 .login-box input {
   width: 100%;
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
 }
 .login-box input[type="text"],
 input[type="password"] {
@@ -70,7 +70,10 @@ input[type="password"] {
   border-bottom: 1.5px solid #fff;
   background: transparent;
   outline: none;
-  height: 30px;
+  height: 35px;
+}
+.login-box input[type="password"] {
+  font-family: "맑은고딕";
 }
 .login-btn {
   display: flex;
@@ -81,12 +84,12 @@ input[type="password"] {
   border-radius: 10px;
   box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.308);
   outline-color: rgb(32, 114, 207);
-  width: 14rem;
+  width: 15rem;
   height: 3rem;
   margin: auto;
-  margin-top: 0.2rem;
+  margin-top: 1rem;
   color: rgb(54, 54, 54);
-  font-size: 0.9rem;
+  font-size: 1rem;
   font-weight: 700;
   /* transition: 0.5s; */
 }
@@ -97,7 +100,7 @@ input[type="password"] {
   display: flex;
   justify-content: center;
   margin-top: 1.3rem;
-  font-size: 0.85rem;
+  font-size: 0.9rem;
 }
 .bold {
   color: rgb(248, 215, 26);

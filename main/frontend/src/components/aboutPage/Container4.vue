@@ -18,7 +18,7 @@
       <p>제작된 컨텐츠와 어플리케이션이 실제 사용자에게 적합하고 실용성이 있는지를 알아보고, 지속적으로 피드백을 제공합니다.</p>
     </div>
     <div>
-      <p class="txt-head">고려대 멋쟁이사자처럼</h3>
+      <p class="txt-head">고려대 </h3>
       <p class="txt-bold">개발</p>
       <img class="icon" src="../../assets/about_kulion.png" />
       <p>대화 컨텐츠를 사용하기 편리하도록 스마트폰 어플로 제작할 예정입니다. 현재, 베타테스트 진행을 위한 웹앱 제작중에 있습니다.</p>

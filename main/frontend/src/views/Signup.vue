@@ -1,42 +1,34 @@
 <template>
-  <div class="login">
-    <login-logo class="header" />
-    <signup-form class="footer" />
+  <div class="signup">
+    <signup-form />
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import LoginLogo from "../components/registerPage/LoginLogo.vue";
 import SignupForm from "../components/registerPage/SignupForm.vue";
 
 export default {
-  name: "login",
+  name: "signup",
   components: {
-    LoginLogo,
     SignupForm
   }
 };
 </script>
 <style scoped>
-.login {
+.signup {
+  display: flex;
+  justify-content: center;
   width: 100%;
-  height: 100vh;
-  color: #fff;
+  height: 120vh;
+
   background: linear-gradient(-45deg, #0a4b8b, #35c3c0);
   /* background-size: 400% 400%; */
   /* -webkit-animation: Gradient 15s ease infinite;
   -moz-animation: Gradient 15s ease infinite;
   animation: Gradient 15s ease infinite; */
 }
-.header {
-  width: 100%;
-  height: 50%;
-}
-.footer {
-  width: 100%;
-  height: 50%;
-}
+
 /* @-webkit-keyframes Gradient {
   0% {
     background-position: 0% 50%;
