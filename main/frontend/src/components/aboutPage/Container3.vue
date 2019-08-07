@@ -1,35 +1,84 @@
 <template>
-  <div>
-    <h2>Members</h2>
-    <div>
-      <h3>고려대 의과대학</h3>
-      <h4>컨텐츠 개발</h4>
-      <img class="icon" src="../../assets/about_doc_1.png" />
-      <p>정형화된 진료 대화를 정리하고, 의대 교수님들(이민구 교수님, 김은선 교수님)의 검증을 거쳐 양질의 컨텐츠를 개발합니다.</p>
+  <div class="container2">
+    <div class="under-line">
+      <p class="txt-main">
+        <span>Service</span>
+      </p>
+    </div>
+    <div class="service-icon">
+      <img :class="{imgborder:icon1}" class="icon img-round" src="../../assets/about_survey.png" />
+      <img :class="{imgborder:icon2}" class="icon img-round" src="../../assets/about_survey.png" />
     </div>
     <div>
-      <h3>고려대 장애인권위원회</h3>
-      <h4>마케팅</h4>
-      <img class="icon" src="../../assets/about_kuda.png" />
-      <p>제작된 컨텐츠와 어플리케이션이 실제 사용자에게 적합하고 실용성이 있는지를 알아보고, 지속적으로 피드백을 제공합니다.</p>
+      <p class="txt-main">01</p>
+      <p class="txt-head">설문조사</p>
+      <!-- TODO: 설문조사 페이지 -->
+      <p class="txt-main">
+        환자는 설문기록을 통해 자신의 건강상태를 정확히 알리고,
+        <br />의사는 환자의 건강상태를 빠른 속도로 빠짐없이 진료할 수 있습니다.
+      </p>
     </div>
     <div>
-      <h3>고려대 멋쟁이사자처럼</h3>
-      <h4>개발</h4>
-      <img class="icon" src="../../assets/about_kulion.png" />
-      <p>대화 컨텐츠를 사용하기 편리하도록 스마트폰 어플로 제작할 예정입니다. 현재, 베타테스트 진행을 위한 웹앱 제작중에 있습니다.</p>
+      <p class="txt-main">02</p>
+      <p class="txt-head">진료대화 카드</p>
+      <!-- TODO: 진료대화 페이지 -->
+      <p class="txt-main">
+        대면 진료시 정형화된 진료대화를 미리 버튼으로 만들어서
+        <br />환자가 의사의 진료대화를 더 잘 이해하도록 돕습니다.
+      </p>
     </div>
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      service: 1,
+      icon1: true,
+      icon2: false
+    };
+  }
+};
 </script>
 
 
 <style scoped>
+.container2 {
+  height: 50vh;
+}
+.txt-head {
+  font-size: 1.6rem;
+}
+.txt-main {
+  font-size: 1.05rem;
+}
+.under-line {
+  height: 20px;
+  text-align: center;
+}
+span {
+  color: #0d4d8d;
+  font-weight: 700;
+  display: inline-block;
+  vertical-align: center;
+  border-bottom: 1px solid;
+}
 .icon {
   width: 75px;
   height: 75px;
+}
+.imgborder {
+  border: 3px solid #0d4d8d;
+}
+.img-round {
+  border-radius: 50%;
+}
+span {
+  color: #0d4d8d;
+  font-weight: 700;
+}
+.service-box {
+  display: flex;
 }
 </style>

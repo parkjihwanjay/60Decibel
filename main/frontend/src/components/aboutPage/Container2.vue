@@ -1,20 +1,18 @@
 <template>
-  <div>
-    <h2>Service</h2>
-    <div>
-      <h3>01</h3>
-      <h4>설문조사</h4>
-      <!-- TODO: 설문조사 페이지 -->
-      <img class="icon" src="../../assets/about_survey.png" />
-      <p>환자는 설문기록을 통해 자신의 건강상태를 정확히 알리고, 의사는 환자의 건강상태를 빠른 속도로 빠짐없이 진료할 수 있습니다.</p>
+  <div class="container2">
+    <div class="under-line">
+      <p class="txt-main">
+        <span class="span-bottom">About 60DB</span>
+      </p>
     </div>
-    <div>
-      <h3>02</h3>
-      <h4>진료대화 카드</h4>
-      <!-- TODO: 진료대화 페이지 -->
-      <img class="icon" src="../../assets/about_survey.png" />
-      <p>대면 진료시 정형화된 진료대화를 미리 버튼으로 만들어서 환자가 의사의 진료대화를 더 잘 이해하도록 합니다.</p>
+    <div class="txt-body">
+      60DB는 청각장애인이 듣지 못하는
+      <span class="txt-bold">60db이하의 소리</span>를 채워주는 서비스를 제공합니다.
     </div>
+    <!-- <div class="img-main-animation">
+      <img class="icon patient" src="../../assets/about_patient.png" />
+      <img class="icon doctor" src="../../assets/about_doctor.png" />
+    </div>-->
   </div>
 </template>
 
@@ -22,8 +20,37 @@
 export default {};
 </script>
 
-
 <style scoped>
+.container2 {
+  height: 13vh;
+}
+.txt-head {
+  font-size: 1.6rem;
+}
+.txt-bold {
+  font-weight: bolder;
+  font-weight: 800;
+  color: #0d4d8d;
+}
+.txt-main {
+  font-size: 1.05rem;
+}
+.under-line {
+  text-align: center;
+}
+span {
+  color: #0d4d8d;
+  font-weight: 700;
+}
+.span-bottom {
+  display: inline-block;
+  vertical-align: center;
+  border-bottom: 1px solid;
+}
+.txt-body {
+  padding-top: 0.6rem;
+  text-align: center;
+}
 .icon {
   width: 75px;
   height: 75px;
