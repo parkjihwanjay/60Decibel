@@ -1,5 +1,6 @@
 <template>
   <div class="whole-survey">
+    <nav-bar />
     <main>
       <transition :name="sectionSlider" v-on:before-enter="debug" v-on:before-leave="debug">
         <router-view />
@@ -9,6 +10,7 @@
 </template>
 
 <script>
+import NavBar from "../components/homePage/Navbar.vue";
 export default {
   name: "wholeSurvey",
   data() {
@@ -25,6 +27,9 @@ export default {
     debug() {
       //debugger
     }
+  },
+  components: {
+    NavBar: NavBar
   }
 };
 
@@ -42,31 +47,9 @@ body {
   height: 100%;
 }
 .whole-survey {
-  height: 100vh;
-}
-nav {
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  background-color: #125b7f;
-  font-size: 0.8rem;
-  position: sticky;
-  top: 0;
-  z-index: 1;
-}
-a {
-  color: white;
-  text-decoration: none;
-  text-transform: uppercase;
-  font-weight: bold;
-  padding: 1em 0;
-  margin: 0 1em;
-  border-bottom: 2px solid transparent;
+  height: 80vh;
 }
 
-a.router-link-exact-active {
-  border-color: inherit;
-}
 main {
   min-height: 100%;
   display: grid;
