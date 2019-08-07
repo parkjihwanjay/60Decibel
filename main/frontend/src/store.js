@@ -84,8 +84,6 @@ export const store = new Vuex.Store({
     logout({ commit }) {
       commit("logout");
       axios.defaults.headers.common["Authorization"] = undefined;
-
-      router.push({ name: "home" });
     },
     signup(dispatch, loginObj) {
       // login --> 토큰 반환
@@ -134,13 +132,14 @@ export const store = new Vuex.Store({
           "Content-Type": "application/json"
         }
       };
-      axios.get(`http://127.0.0.1:8000/api/profiles/${userId}/`, config)
+      axios
+        .get(`http://127.0.0.1:8000/api/profiles/${userId}/`, config)
         .then(({ data }) => {
-          commit('SET_PROFILE', data);
+          commit("SET_PROFILE", data);
         })
         .catch(error => {
           console.log(error);
-        })
+        });
     },
     getStomachInfo({ commit }, stomachId) {
       let token = localStorage.getItem("access_token");
@@ -150,14 +149,15 @@ export const store = new Vuex.Store({
           "Content-Type": "application/json"
         }
       };
-      axios.get(`http://127.0.0.1:8000/api/stomach/${stomachId}/`, config)
+      axios
+        .get(`http://127.0.0.1:8000/api/stomach/${stomachId}/`, config)
         .then(({ data }) => {
-          console.log(data)
-          commit('SET_STOMACH', data);
+          console.log(data);
+          commit("SET_STOMACH", data);
         })
         .catch(error => {
           console.log(error);
-        })
+        });
     },
     getSurveyHistory({ commit }, authorId) {
       let token = localStorage.getItem("access_token");
@@ -167,13 +167,14 @@ export const store = new Vuex.Store({
           "Content-Type": "application/json"
         }
       };
-      axios.get(`http://127.0.0.1:8000/api/surveys/${authorId}/`, config)
+      axios
+        .get(`http://127.0.0.1:8000/api/surveys/${authorId}/`, config)
         .then(({ data }) => {
-          commit('SET_SURVEY_HISTORY', data);
+          commit("SET_SURVEY_HISTORY", data);
         })
         .catch(error => {
           console.log(error);
-        })
+        });
     }
   }
 });
