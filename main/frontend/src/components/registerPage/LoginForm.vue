@@ -19,6 +19,7 @@
         <a>아이디/비밀번호 찾기 |</a>
         <a class="bold">
           <router-link :to="{ name: 'signup' }">&nbsp;&nbsp;회원가입</router-link>
+          <div @click="start">바로시작</div>
         </a>
       </div>
     </div>
@@ -37,7 +38,8 @@ export default {
     ...mapState(["isLogin", "isLoginError"])
   },
   methods: {
-    ...mapActions(["login"])
+    ...mapActions(["login"]),
+    ...mapActions(["start"])
   }
 };
 </script>
