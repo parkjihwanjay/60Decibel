@@ -59,7 +59,6 @@
               <br />
               <br />
               <input
-                type="month"
                 v-model="survey_data.symptom_start_less_than_month"
                 class="ans animate fadeInRightBig three"
                 placeholder="여기를 수정해보세요"
@@ -133,7 +132,7 @@
               <br />
               <input
                 type="checkbox"
-                v-model="survey_data.symptom_location"
+                v-model="survey_data.symtpom_location"
                 value="whole abdomen"
                 class="ans animate fadeInRightBig three"
                 placeholder="여기를 수정해보세요"
@@ -141,7 +140,7 @@
               <br />
               <input
                 type="checkbox"
-                v-model="survey_data.symptom_location"
+                v-model="survey_data.symtpom_location"
                 class="ans animate fadeInRightBig four"
                 value="sternal"
                 placeholder="여기를 수정해보세요"
@@ -149,7 +148,7 @@
               <br />
               <input
                 type="checkbox"
-                v-model="survey_data.symptom_location"
+                v-model="survey_data.symtpom_location"
                 class="ans animate fadeInRightBig five"
                 value="umbilicus"
                 placeholder="여기를 수정해보세요"
@@ -157,7 +156,7 @@
               <br />
               <input
                 type="checkbox"
-                v-model="survey_data.symptom_location"
+                v-model="survey_data.symtpom_location"
                 class="ans animate fadeInRightBig six"
                 value="flank"
                 placeholder="여기를 수정해보세요"
@@ -165,7 +164,7 @@
               <br />
               <input
                 type="checkbox"
-                v-model="survey_data.symptom_location"
+                v-model="survey_data.symtpom_location"
                 class="ans animate fadeInRightBig seven"
                 value="LUQ"
                 placeholder="여기를 수정해보세요"
@@ -173,7 +172,7 @@
               <br />
               <input
                 type="checkbox"
-                v-model="survey_data.symptom_location"
+                v-model="survey_data.symtpom_location"
                 class="ans animate fadeInRightBig eight"
                 value="LLQ"
                 placeholder="여기를 수정해보세요"
@@ -181,7 +180,7 @@
               <br />
               <input
                 type="checkbox"
-                v-model="survey_data.symptom_location"
+                v-model="survey_data.symtpom_location"
                 value="RUQ"
                 class="ans animate fadeInRightBig nine"
                 placeholder="여기를 수정해보세요"
@@ -189,7 +188,7 @@
               <br />
               <input
                 type="checkbox"
-                v-model="survey_data.symptom_location"
+                v-model="survey_data.symtpom_location"
                 class="ans animate fadeInRightBig ten"
                 value="RLQ"
                 placeholder="여기를 수정해보세요"
@@ -359,7 +358,7 @@
                 type="radio"
                 v-model="survey_data.pain_repeated"
                 class="ans animate fadeInRightBig three"
-                value="repeat"
+                value="True"
                 placeholder="여기를 수정해보세요"
               />반복됩니다.
               <br />
@@ -367,7 +366,7 @@
                 type="radio"
                 v-model="survey_data.pain_repeated"
                 class="ans animate fadeInRightBig four"
-                value="no_repeat"
+                value="False"
                 placeholder="여기를 수정해보세요"
               />단발성입니다
               <br />
@@ -484,7 +483,7 @@
               <br />
               <br />
               <input
-                type="radio"
+                type="checkbox"
                 class="ans animate fadeInRightBig three"
                 v-model="survey_data.pain_character"
                 value="crushing"
@@ -492,7 +491,7 @@
               />쥐어짜듯
               <br />
               <input
-                type="radio"
+                type="checkbox"
                 class="ans animate fadeInRightBig four"
                 v-model="survey_data.pain_character"
                 value="burning"
@@ -501,7 +500,7 @@
               타는듯
               <br />
               <input
-                type="radio"
+                type="checkbox"
                 class="ans animate fadeInRightBig five"
                 v-model="survey_data.pain_character"
                 value="stabbing"
@@ -510,7 +509,7 @@
               베이듯
               <br />
               <input
-                type="radio"
+                type="checkbox"
                 class="ans animate fadeInRightBig six"
                 v-model="survey_data.pain_character"
                 value="splitting"
@@ -1083,8 +1082,8 @@
         </v-expansion-panel>
       </v-expansion-panels>
     </div>
-
-    <input type="submit" class="button" name="submit" @click="survey" value="제출" />
+    
+    <input type="submit" class="button" name="submit" @click="survey(survey_data)" value="제출" />
   </div>
 </template>
 
@@ -1094,42 +1093,41 @@ export default {
   name: "scroll",
   data() {
     return {
+
       survey_data: {
-        symptom_start: "",
-        symptom_start_less_than_month: "",
-        fast_or_slow: "",
-        symtpom_situation: "",
-        symptom_location: [],
-        location_move: "",
-        location_move_how: "",
-        pain_spread: "",
-        pain_spread_where: "",
-        pain_duration: "",
-        pain_repeated: "",
-        pain_how_often_day: "",
-        pain_how_often_many: "",
-        pain_worse: "",
-        pain_experience: "",
-        pain_character: "",
-        pain_score: "",
-        associated_symptom_digestive: [],
-        associated_symptom_circulatory: [],
-        associated_symptom_gynecology: [],
-        associated_symptom_whole_body: [],
-        associated_symptom_urinary: [],
-        associated_symptom_others: [],
-        factor: [],
-        other_factor: "",
-        abdomen_relevant: []
+        "symptom_start" : "",
+        "symptom_start_less_than_month" : "",
+        "fast_or_slow" : "",
+        "symtpom_situation": "",
+        "symtpom_location": [],
+        "location_move": "",
+        "location_move_how": "",
+        "pain_spread": "",
+        "pain_spread_where": "",
+        "pain_duration": "",
+        "pain_repeated": "",
+        "pain_how_often_day": "",
+        "pain_how_often_many": "",
+        "pain_worse": "",
+        "pain_experience": "",
+        "pain_character": [],
+        "pain_score": "",
+        "associated_symptom_digestive": [],
+        "associated_symptom_circulatory": [],
+        "associated_symptom_gynecology": [],
+        "associated_symptom_whole_body": [],
+        "associated_symptom_urinary": [],
+        "associated_symptom_others": "",
+        "factor": [],
+        "other_factor": "",
+        "abdomen_relevant": [],
       }
     };
   },
+
   methods: {
     onItemChanged() {},
     ...mapActions(["survey"]),
-    survey() {
-      console.log(this.survey_data);
-    }
   }
 };
 </script>
