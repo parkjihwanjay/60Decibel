@@ -24,6 +24,9 @@
         <a class="nav-menu">
           <router-link to="/about">About 60dB</router-link>
         </a>
+        <a class="nav-menu">
+          <router-link to="/survey">설문조사 시작</router-link>
+        </a>
       </div>
     </transition-expand>
 
@@ -61,10 +64,10 @@ export default {
     };
   },
   computed: {
-    ...mapState(["isLogin", "isLoginError", "logout"])
+    ...mapState(["isLogin", "isLoginError"])
   },
   methods: {
-    ...mapActions(["getMemberInfo"]),
+    ...mapActions(["getMemberInfo", "logout"]),
     onClickLogout() {
       // logout 변이 실행 후 리다이렉트
       store.dispatch("logout").then(() => this.$router.push("/"));

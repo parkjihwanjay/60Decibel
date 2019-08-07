@@ -5,10 +5,11 @@ import Home from "./views/Home.vue";
 // import { store } from "./store.js";
 Vue.use(Router);
 
-// const requireAuth = () => (from, to, next) => {
-//   const isAuthenticated = false;
-//   if (isAuthenticated) return next();
-//   next("/login?returnPath=home");
+// const requireAuth = () => (to, from, next) => {
+//   if (!localStorage.getItem["access_token"]) {
+//     alert("먼저 로그인을 진행해주세요");
+//     return next("/login");
+//   }
 // };
 
 export default new Router({
@@ -34,6 +35,7 @@ export default new Router({
       redirect: "/sec1",
       name: "survey",
       component: () => import("./views/Survey.vue"),
+      // beforeEnter: requireAuth(),
       children: [
         {
           path: "/sec1",
@@ -108,7 +110,7 @@ export default new Router({
       component: () => import("./views/ProfileUpdate.vue")
     },
     {
-      path: "/profiles/username",
+      path: "/profiles/:user",
       name: "profiles",
       // beforeEnter: requireAuth,
       component: () => import("./views/Profiles.vue")

@@ -26,7 +26,7 @@
 import { mapState } from "vuex";
 export default {
   computed: {
-    ...mapState(["profile"])
+    ...mapState(["profile", "userInfo"])
   },
   created() {
     const userId = this.$route.params.user;

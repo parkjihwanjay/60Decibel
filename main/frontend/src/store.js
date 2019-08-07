@@ -46,11 +46,11 @@ export const store = new Vuex.Store({
       state.isLogin = false;
       state.isLoginError = false;
       state.userInfo = null;
+      delete localStorage.access_token;
+      // 인우: 이거머임 ?
     },
     SET_PROFILE(state, profile) {
       state.profile = profile;
-      // delete localStorage.access_token;
-      // 인우: 이거머임 ?
     },
     SET_STOMACH(state, stomach) {
       state.stomach = stomach;
@@ -73,7 +73,7 @@ export const store = new Vuex.Store({
           localStorage.setItem("access_token", token);
           axios.defaults.headers.common["Authorization"] =
             localStorage.getItem["access_token"];
-          this.dispatch("getMemberInfo");
+          // this.dispatch("getMemberInfo");
           router.push({ name: "home" });
           console.log(res);
         })
@@ -84,6 +84,7 @@ export const store = new Vuex.Store({
     logout({ commit }) {
       commit("logout");
       axios.defaults.headers.common["Authorization"] = undefined;
+      alert("로그아웃 완료");
     },
     signup(dispatch, loginObj) {
       // login --> 토큰 반환
@@ -176,5 +177,6 @@ export const store = new Vuex.Store({
           console.log(error);
         });
     }
+    // updateProfileInfo()
   }
 });
