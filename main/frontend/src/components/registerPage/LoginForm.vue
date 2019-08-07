@@ -72,6 +72,9 @@ input[type="password"] {
   outline: none;
   height: 30px;
 }
+.login-box input[type="password"] {
+  font-family: "맑은고딕";
+}
 .login-btn {
   display: flex;
   flex-direction: column;
