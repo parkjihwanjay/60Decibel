@@ -1,7 +1,7 @@
 <template>
   <div class="con4">
     <div class="con4-txt">60데시벨과 함께하는 사람들</div>
-    <div class="row"></div>
+    <div class="underline"></div>
     <div class="icons">
       <img class="icon1" src="../../assets/medi.png" />
       <img class="icon2" src="../../assets/60db.png" />
@@ -21,28 +21,37 @@ export default {};
   width: 100%;
   height: 70vh;
 }
-.row {
-  width: 60%;
-  height: 10px;
-  border: 1px solid gray;
+.con4-txt {
+  margin-bottom: 1.4rem;
+  color: #313131;
+  font-weight: 500;
+  font-size: 1.5rem;
+}
+.underline {
+  width: 50%;
+  height: 5vh;
+  border-top: 1.5px solid rgba(160, 160, 160, 0.671);
+  margin-bottom: 2rem;
 }
 .icons {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
+  margin-bottom: 1rem;
 }
 .icon1 {
-  width: 100px;
-  height: 50px;
+  width: 12rem;
+  height: 4.5rem;
 }
 .icon2 {
-  width: 100px;
-  height: 50px;
+  width: 8rem;
+  height: 6rem;
+  margin-bottom: 0.5rem;
 }
 .icon3 {
-  width: 100px;
-  height: 50px;
+  width: 10.5rem;
+  height: 2.5rem;
 }
 </style>
 

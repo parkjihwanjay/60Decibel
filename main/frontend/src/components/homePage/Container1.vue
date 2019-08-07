@@ -1,7 +1,7 @@
 <template>
   <v-carousel
     class="v-carousel"
-    height="63vh"
+    height="62vh"
     :show-arrows="false"
     :hide-delimiters="hideDelimiters"
     :cycle="cycle"
@@ -15,7 +15,7 @@
           <span class="carousel-bold">60데시벨</span>을 채워드립니다.
         </p>
         <br />
-        <p class="carousel-txt-main">진료 전 문진표 작성을 통해</p>
+        <p class="carousel-txt-main">진료 전 의료설문을 작성하여</p>
         <p class="carousel-txt-main">불편함 없고 정확한 진료를 경험해보세요.</p>
       </div>
       <div class="carousel-txt" v-if="i===1">
@@ -65,9 +65,7 @@ export default {
 * {
   color: rgb(94, 94, 94);
 }
-.v-carousel {
-  height: 65vh;
-}
+
 .v-responsive__content {
   height: 100%;
 }
@@ -86,6 +84,9 @@ export default {
 }
 .carousel-txt-head {
   font-size: 1.6rem;
+}
+.carousel-txt-main {
+  font-size: 1.05rem;
 }
 .carousel-bold {
   font-weight: bolder;

@@ -42,27 +42,31 @@ class StomachacheSurveyCreateView(generics.CreateAPIView):
                         smoking=smoking, how_long_smoking=how_long_smoking, how_much_smoking=how_much_smoking, job=job, 
                         relevant_data=relevant_data)
 
-class MultipleFieldLookupMixin(object):
-    """
-    Apply this mixin to any view or viewset to get multiple field filtering
-    based on a `lookup_fields` attribute, instead of the default single field filtering.
-    """
-    def get_object(self):
-        queryset = self.get_queryset()             # Get the base queryset
-        queryset = self.filter_queryset(queryset)  # Apply any filter backends
-        filter = {}
-        for field in self.lookup_fields:
-            if self.kwargs[field]: # Ignore empty fields.
-                filter[field] = self.kwargs[field]
-        obj = get_object_or_404(queryset, **filter)  # Lookup the object
-        self.check_object_permissions(self.request, obj)
-        return obj
+# class MultipleFieldLookupMixin(object):
+#     """
+#     Apply this mixin to any view or viewset to get multiple field filtering
+#     based on a `lookup_fields` attribute, instead of the default single field filtering.
+#     """
+#     def get_object(self):
+#         queryset = self.get_queryset()             # Get the base queryset
+#         queryset = self.filter_queryset(queryset)  # Apply any filter backends
+#         filter = {}
+#         for field in self.lookup_fields:
+#             if self.kwargs[field]: # Ignore empty fields.
+#                 filter[field] = self.kwargs[field]
+#         obj = get_object_or_404(queryset, **filter)  # Lookup the object
+#         self.check_object_permissions(self.request, obj)
+#         return obj
 
-class StomachacheSurveyRetrieveView(MultipleFieldLookupMixin, generics.RetrieveAPIView):
-    queryset = StomachacheSurvey.objects.all()
+class StomachacheSurveyRetrieveView(generics.RetrieveAPIView):
     serializer_class = StomachacheSurveySerializer
     permission_classes = [IsOwnerOrNot]
-    lookup_fields = ["author","id"]
+    lookup_field = "id"
+    def get_queryset(self):
+
+        queryset = StomachacheSurvey.objects.filter(author=self.request.user)
+        return queryset
+
 
 class OwnSurveyListView(generics.ListAPIView):
     serializer_class = SurveyMetaSerializer
@@ -72,7 +76,8 @@ class OwnSurveyListView(generics.ListAPIView):
     search_fields = ["author__username", "symptom", "created_at"]
     def get_queryset(self):
 
-        queryset = StomachacheSurvey.objects.filter(author=self.request.user)
+        queryset = SurveyMeta.objects.filter(author=self.request.user)
+        # 인우 : 이거 모두 다 한테 잘못 설정되어있을 듯 내가 공지해야 함
         return queryset
 
 class SurveyMetaListView(generics.ListAPIView):
