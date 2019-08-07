@@ -14,11 +14,11 @@
     <transition-expand v-if="this.$store.state.isLogin === true">
       <div class="navexpand" v-if="expanded">
         <a class="nav-menu">
-          <router-link to="/profiles">{{this.$store.state.userInfo.username}}</router-link>
+          <router-link to="/profiles/username">{{this.$store.state.userInfo.username}}</router-link>
         </a>
         <br />
         <a class="nav-menu">
-          <a href @click.prevent="onClickLogout">로그아웃</a>
+          <a @click.prevent="onClickLogout">로그아웃</a>
         </a>
         <br />
         <a class="nav-menu">
@@ -48,7 +48,8 @@
 <script>
 import { mapState, mapActions } from "vuex";
 import TransitionExpand from "./NavEffect.vue";
-import store from "../../store.js";
+import { store } from "../../store.js";
+
 export default {
   name: `Nav`,
   components: {
@@ -65,7 +66,7 @@ export default {
   methods: {
     ...mapActions(["getMemberInfo"]),
     onClickLogout() {
-      // LOGOUT 변이 실행 후 리다이렉트
+      // logout 변이 실행 후 리다이렉트
       store.dispatch("logout").then(() => this.$router.push("/"));
     }
   }

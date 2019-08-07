@@ -2,7 +2,7 @@ import Vue from "vue";
 import Router from "vue-router";
 // import Home from "./views/Home.vue";
 import Home from "./views/Home.vue";
-
+// import { store } from "./store.js";
 Vue.use(Router);
 
 // const requireAuth = () => (from, to, next) => {
@@ -14,7 +14,8 @@ Vue.use(Router);
 export default new Router({
   hashbang: false,
   mode: "history",
-  routes: [{
+  routes: [
+    {
       path: "/",
       name: "home",
       component: Home
@@ -26,14 +27,15 @@ export default new Router({
       // this generates a separate chunk (about.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
       component: () =>
-        import( /* webpackChunkName: "about" */ "./views/About.vue")
+        import(/* webpackChunkName: "about" */ "./views/About.vue")
     },
     {
       path: "/survey",
       redirect: "/sec1",
       name: "survey",
       component: () => import("./views/Survey.vue"),
-      children: [{
+      children: [
+        {
           path: "/sec1",
           name: "sec1",
           meta: {
@@ -106,10 +108,11 @@ export default new Router({
       component: () => import("./views/ProfileUpdate.vue")
     },
     {
-      path: "/profiles/:user",
+      path: "/profiles/username",
       name: "profiles",
       // beforeEnter: requireAuth,
       component: () => import("./views/Profiles.vue")
+      // `"/profiles/${store.state.userInfo.username}"`
     },
     {
       path: "/stomach/:id",
