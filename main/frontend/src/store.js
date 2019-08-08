@@ -156,7 +156,7 @@ export const store = new Vuex.Store({
                     alert("이메일과 비밀번호를 확인하세요.");
                 });
         },
-        getProfileInfo({ commit }, userId) {
+        getProfileInfo({ commit }) {
             let token = localStorage.getItem("access_token");
             let config = {
                 headers: {
@@ -165,7 +165,7 @@ export const store = new Vuex.Store({
                 }
             };
             axios
-                .get(`http://127.0.0.1:8000/api/profiles/${userId}/`, config)
+                .get("http://127.0.0.1:8000/api/profiles/", config)
                 .then(({ data }) => {
                     commit("SET_PROFILE", data);
                 })
@@ -257,8 +257,9 @@ export const store = new Vuex.Store({
 
                     console.log(res);
                 })
-                .catch(() => {
+                .catch((error) => {
                     alert("왜 안될까?");
+                    console.log(error);
                 });
         },
         updateProfileInfo(dispatch, update) {
@@ -274,6 +275,7 @@ export const store = new Vuex.Store({
                 .put("http://127.0.0.1:8000/api/profileupdate/", update, config)
                 .then(res => {
                     console.log(res);
+                    router.push({ name: "profiles" });
                 })
                 .catch(error => {
                     console.log(error);

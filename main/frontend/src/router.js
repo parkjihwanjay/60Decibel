@@ -119,7 +119,7 @@ export default new Router({
             import("./views/ProfileUpdate.vue")
     },
     {
-        path: "/profiles/:user",
+        path: "/profiles",
         name: "profiles",
         // beforeEnter: requireAuth,
         component: () =>

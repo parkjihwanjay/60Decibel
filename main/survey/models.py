@@ -5,15 +5,15 @@ from profiles.models import Profile
 
 class SurveyMeta(models.Model):
 
-    symptom = models.CharField(max_length=20)
+    symptom = models.CharField(max_length=30)
     author = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
-    created_at = models.CharField(max_length=30, blank=True, null=True)
+    created_at = models.DateTimeField(auto_now_add=True)
     # default=date.today로 해도 될 듯?
 
     # 과거력
 
     # 이전에 건강검진을 받은 적이 있나요?
-    had_checkup = models.CharField(max_length=30, default=False)
+    had_checkup = models.CharField(max_length=30, default="", blank=True, null=True)
 
     # 몇 년 전에 받았나요?
     under_one = "1년 이내"
@@ -26,71 +26,71 @@ class SurveyMeta(models.Model):
                                                        "3-5년"), (five_to_ten, "5-10년"), (over_ten, "10년 이상")
     )
     had_checkup_true = models.CharField(
-        max_length=6, choices=how_long_before, blank=True, null=True)
+        max_length=30, choices=how_long_before, default="", blank=True, null=True)
 
     # 이전에 진단받은 병이 있나요?
-    high_blood_pressure = "고혈압"
-    hepatitis = "간염"
-    tuberculosis = "결핵"
-    none = "없음"
-    etc = "기타"
-    disease_list = (
-        (high_blood_pressure, '고혈압'), (hepatitis,
-                                       '간염'), (tuberculosis, '결핵'), (none, '없음'), (etc, '기타')
-    )
-    diagnosed_disease = models.CharField(max_length=3, choices=disease_list)
+    # high_blood_pressure = "고혈압"
+    # hepatitis = "간염"
+    # tuberculosis = "결핵"
+    # none = "없음"
+    # etc = "기타"
+    # disease_list = (
+    #     (high_blood_pressure, '고혈압'), (hepatitis,
+    #                                    '간염'), (tuberculosis, '결핵'), (none, '없음'), (etc, '기타')
+    # )
+    diagnosed_disease = models.CharField(max_length=30, default="", blank=True, null=True)
 
     # 드시고 계시는 약이 있나요?
-    taking_medicine = models.CharField(max_length=30, default=False)
+    taking_medicine = models.CharField(max_length=30, default="", blank=True, null=True)
 
     # 드시고 계신 약물을 알려주세요
-    what_medicine = models.CharField(max_length=20, blank=True, null=True)
+    what_medicine = models.CharField(max_length=30, default="", blank=True, null=True)
     # 복용하고 있는 약물이 복수라면...? 필드를 조정하거나 max_length를 조정해야 하나..?
 
     # 가족분들이 진단 받은 병이 있나요?
-    family_history = models.CharField(max_length=3, choices=disease_list)
+    family_history = models.CharField(max_length=30, default="", blank=True, null=True)
 
     # 사회력
 
     # 술을 드시나요?
-    drinking = models.CharField(max_length=30, default=False)
+    drinking = models.CharField(max_length=30, default="", blank=True, null=True)
 
     # 매주 몇 병 드시나요?
     drinking_per_week = models.CharField(
-        max_length=30, blank=True, null=True)
+        max_length=30, default="", blank=True, null=True)
 
     # 흡연하시나요?
-    smoking_true = "예"
-    smoking_false = "아니오"
-    smoking_quit = "끊었음"
-    do_you_smoke = (
-        (smoking_true, "예"), (smoking_false, "아니오"), (smoking_quit, "끊었음")
-    )
-    smoking = models.CharField(max_length=3, choices=do_you_smoke)
+    # smoking_true = "예"
+    # smoking_false = "아니오"
+    # smoking_quit = "끊었음"
+    # do_you_smoke = (
+    #     (smoking_true, "예"), (smoking_false, "아니오"), (smoking_quit, "끊었음")
+    # )
+    smoking = models.CharField(max_length=30, default="", blank=True, null=True)
 
     # 몇년째 피고 계신가요?
-    how_long_smoking = models.CharField(max_length=30, default=0)
+    how_long_smoking = models.CharField(max_length=30, default="", blank=True, null=True)
 
     # 몇 갑씩 피시나요
-    how_much_smoking = models.CharField(max_length=30, default=0)
+    how_much_smoking = models.CharField(max_length=30, default="", blank=True, null=True)
 
     # 직업이 무엇인가요?
-    job = models.CharField(max_length=20, blank=True, null=True)
+    job = models.CharField(max_length=30, default="", blank=True, null=True)
     # 직업을 꼭 말하고 싶지 않을 수도 있죠
 
     # 다음 중 해당사항에 체크해주세요
-    stress = "스트레스를 많이 받는 편"
-    irregular_meals = "식사 불규칙"
-    greasy_meals = "기름진 음식을 많이 먹음"
-    irregular_sleep = "수면시간 불규칙"
-    nothing="해당사항 없음"    
-    bad_habits = (
-        (stress, "스트레스를 많이 받는 편"), (irregular_meals, "식사 불규칙"),
-        (greasy_meals, "기름진 음식을 많이 먹음"), (irregular_sleep, "수면시간 불규칙"),
-        (nothing, "해당사항 없음")
-    )
+    # stress = "스트레스를 많이 받는 편"
+    # irregular_meals = "식사 불규칙"
+    # greasy_meals = "기름진 음식을 많이 먹음"
+    # irregular_sleep = "수면시간 불규칙"
+    # nothing="해당사항 없음"    
+    # bad_habits = (
+    #     (stress, "스트레스를 많이 받는 편"), (irregular_meals, "식사 불규칙"),
+    #     (greasy_meals, "기름진 음식을 많이 먹음"), (irregular_sleep, "수면시간 불규칙"),
+    #     (nothing, "해당사항 없음")
+    # )
     relevant_data = models.CharField(
-        max_length=13, choices=bad_habits, blank=True, null=True)
+        max_length=30, default="", blank=True, null=True)
 
 
     def __str__(self):
@@ -238,65 +238,65 @@ class StomachacheSurvey(SurveyMeta):
     ]
 
     # Onset
-    symptom_start = models.CharField(choices=SYMTPOM_START, max_length=50)
+    symptom_start = models.CharField(choices=SYMTPOM_START, max_length=50, default="", blank=True, null=True)
     symptom_start_less_than_month = models.CharField(
-        max_length=30, default='2019-07-23')
-    fast_or_slow = models.CharField(choices=FAST_OR_SLOW, max_length=20)
-    symtpom_situation = models.CharField(max_length=50)
+        max_length=30, default="", blank=True, null=True)
+    fast_or_slow = models.CharField(choices=FAST_OR_SLOW, max_length=30, default="", blank=True, null=True)
+    symtpom_situation = models.CharField(max_length=50, default="", blank=True, null=True)
 
     # location
-    symtpom_location = models.CharField(max_length=20, choices=PAIN_POSITION, default="NULL")
+    symtpom_location = models.CharField(max_length=30, choices=PAIN_POSITION, default="", blank=True, null=True)
 
-    location_move = models.CharField(max_length=20, choices=TRUE_OR_FALSE, default="False")
+    location_move = models.CharField(max_length=30, choices=TRUE_OR_FALSE, default="", blank=True, null=True)
     
-    location_move_how = models.CharField(max_length=100)
-    pain_spread = models.CharField(max_length=20, choices=TRUE_OR_FALSE, default="False")
-    pain_spread_where = models.CharField(max_length=100)
+    location_move_how = models.CharField(max_length=100, default="", blank=True, null=True)
+    pain_spread = models.CharField(max_length=30, choices=TRUE_OR_FALSE, default="", blank=True, null=True)
+    pain_spread_where = models.CharField(max_length=100, default="", blank=True, null=True)
 
     # Duration
-    pain_duration = models.CharField(choices=PAIN_DURATION, max_length=20)
-    pain_repeated = models.CharField(max_length=20, choices=TRUE_OR_FALSE, default="False")
-    # pain_per_day = models.CharField(choices=PAIN_PER_DAY, max_length=20)
+    pain_duration = models.CharField(choices=PAIN_DURATION, max_length=30, default="", blank=True, null=True)
+    pain_repeated = models.CharField(max_length=30, choices=TRUE_OR_FALSE, default="", blank=True, null=True)
+    # pain_per_day = models.CharField(choices=PAIN_PER_DAY, max_length=30)
     
     # 지환 : pain_per_day를 삭제하고 두개 필드 추가
-    pain_how_often_day = models.CharField(choices=PAIN_HOW_OFTEN_DAY, max_length=20)
-    pain_how_often_many = models.CharField(choices=PAIN_HOW_OFTEN_MANY, max_length=20)
+    pain_how_often_day = models.CharField(choices=PAIN_HOW_OFTEN_DAY, max_length=30, default="", blank=True, null=True)
+    pain_how_often_many = models.CharField(choices=PAIN_HOW_OFTEN_MANY, max_length=30, default="", blank=True, null=True)
 
     # Course
-    pain_worse = models.CharField(max_length=20, choices=TRUE_OR_FALSE, default="False")
+    pain_worse = models.CharField(max_length=30, choices=TRUE_OR_FALSE, default="", blank=True, null=True)
 
     # Experience
-    pain_experience = models.CharField(max_length=20, choices=TRUE_OR_FALSE, default="False")
+    pain_experience = models.CharField(max_length=30, choices=TRUE_OR_FALSE, default="", blank=True, null=True)
 
     # character
-    pain_character = models.CharField(choices=PAIN_CHARACTER, max_length=20)
-    pain_score = models.CharField(choices=PAIN_SCORE, max_length=20)
+    pain_character = models.CharField(choices=PAIN_CHARACTER, max_length=30, default="", blank=True, null=True)
+    pain_score = models.CharField(choices=PAIN_SCORE, max_length=30, default="", blank=True, null=True)
 
     # associated symptom
     associated_symptom_digestive = models.CharField(
-        choices=ASSOCIATED_SYMPTOM_DIGESTIVE, max_length=20)
+        choices=ASSOCIATED_SYMPTOM_DIGESTIVE, max_length=30, default="", blank=True, null=True)
 
     associated_symptom_circulatory = models.CharField(
-        choices=ASSOCIATED_SYMPTOM_CIRCULATORY, max_length=20)
+        choices=ASSOCIATED_SYMPTOM_CIRCULATORY, max_length=30, default="", blank=True, null=True)
 
     associated_symptom_gynecology = models.CharField(
-        choices=ASSOCIATED_SYMPTOM_GYNECOLOGY, max_length=20)
+        choices=ASSOCIATED_SYMPTOM_GYNECOLOGY, max_length=30, default="", blank=True, null=True)
 
     associated_symptom_whole_body = models.CharField(
-        choices=ASSOCIATED_SYMPTOM_WHOLE_BODY, max_length=20)
+        choices=ASSOCIATED_SYMPTOM_WHOLE_BODY, max_length=30, default="", blank=True, null=True)
 
     associated_symptom_urinary = models.CharField(
-        choices=ASSOCIATED_SYMPTOM_URINARY, max_length=20)
+        choices=ASSOCIATED_SYMPTOM_URINARY, max_length=30, default="", blank=True, null=True)
 
-    associated_symptom_others = models.CharField(max_length=100)
+    associated_symptom_others = models.CharField(max_length=100, default="", blank=True, null=True)
 
     # factor
-    factor = models.CharField(choices=FACTOR, max_length=20)
-    other_factor = models.CharField(max_length=100)
+    factor = models.CharField(choices=FACTOR, max_length=30, default="", blank=True, null=True)
+    other_factor = models.CharField(max_length=100, default="", blank=True, null=True)
 
     # 다음 중 해당 사항에 모두 체크해주세요
 
-    abdomen_relevant = models.CharField(max_length=30, choices=ABDOMEN_HISTORY)
+    abdomen_relevant = models.CharField(max_length=30, choices=ABDOMEN_HISTORY, default="", blank=True, null=True)
     # abdomen_relevant = models.CharField(max_length=100)
 
     def __str__(self):
