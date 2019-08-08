@@ -22,6 +22,12 @@ export default new Router({
             component: Home
         },
         {
+            path: "/card",
+            name: "card",
+            component: () =>
+                import( /* webpackChunkName: "about" */ "./views/Card.vue")
+        },
+        {
             path: "/about",
             name: "about",
             // route level code-splitting
