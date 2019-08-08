@@ -7,9 +7,9 @@ from profiles.api.views import ProfileListAPIView, ProfileRetrieveAPIView, Profi
 # 이렇게 하면 프로필 조회페이지에서 업데이트도 가능함
 
 urlpatterns = [
-    path("profiles/", ProfileListAPIView.as_view(), name="profile-list"),
+#     path("profiles/", ProfileListAPIView.as_view(), name="profile-list"),
     # path("", include(router.urls)),
-    path("profiles/<str:user>/", ProfileRetrieveAPIView.as_view(),
+    path("profiles/", ProfileRetrieveAPIView.as_view(),
          name="profile-detail"),
     path("profileupdate/",
          ProfileUpdateAPIView.as_view(), name="profile-update"),

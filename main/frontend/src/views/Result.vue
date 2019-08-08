@@ -38,7 +38,7 @@
       <p class="height-head">신장</p>
       <p class="height-body">{{ profile.height }}</p>
       <p class="weight-head">체중</p>
-      <p class="weight-body">{{profile.weight }}</p>
+      <p class="weight-body">{{ profile.weight }}</p>
       <li v-if="`${profile.had_checkup}=false`">{{ profile.had_checkup_true }}년 전에 건강검진을 받았습니다.</li>
       <li>이전에 {{ profile.diagnosed_disease }}을 진단받았습니다.</li>
       <li v-if="`${profile.taking_medicine}`">{{ profile.what_medicine }}을 복용중입니다.</li>
@@ -61,7 +61,7 @@ export default {
   created() {
     const stomachId = this.$route.params.id;
     this.$store.dispatch("getStomachInfo", stomachId);
-    this.$store.dispatch("getProfileInfo", stomachId);
+    this.$store.dispatch("getProfileInfo");
   }
 };
 </script>
