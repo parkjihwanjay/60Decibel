@@ -110,6 +110,7 @@ export default new Router({
       component: () => import("./views/ProfileUpdate.vue")
     },
     {
+      //:user값이 this.$route.params.user 형태로 받아와짐.
       path: "/profiles/:user",
       name: "profiles",
       // beforeEnter: requireAuth,

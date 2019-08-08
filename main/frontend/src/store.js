@@ -73,7 +73,7 @@ export const store = new Vuex.Store({
           localStorage.setItem("access_token", token);
           axios.defaults.headers.common["Authorization"] =
             localStorage.getItem["access_token"];
-          // this.dispatch("getMemberInfo");
+          this.dispatch("getMemberInfo");
           router.push({ name: "home" });
           console.log(res);
         })
@@ -137,6 +137,7 @@ export const store = new Vuex.Store({
         .get(`http://127.0.0.1:8000/api/profiles/${userId}/`, config)
         .then(({ data }) => {
           commit("SET_PROFILE", data);
+          console.log(data);
         })
         .catch(error => {
           console.log(error);

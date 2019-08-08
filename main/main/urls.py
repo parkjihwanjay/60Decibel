@@ -19,6 +19,12 @@ from django.urls import include, path, re_path
 from django_registration.backends.one_step.views import RegistrationView
 
 from rest_framework_jwt.views import obtain_jwt_token, refresh_jwt_token
+
+#이미지 업로드 경로 지정을 위해 작성
+from django.conf.urls.static import static
+from django.conf import settings
+#이미지 업로드 모듈 추가 완료
+
 # https://django-registration.readthedocs.io/en/3.0/activation-workflow.html
 
 urlpatterns = [
@@ -49,4 +55,4 @@ urlpatterns = [
 
     # 위의 url 이외의 pattern이 입력될 경우 index로 보낸다
     # re_path(r"^.*$", IndexTemplateView.as_view(), name="entry-point"),
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

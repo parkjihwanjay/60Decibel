@@ -1,7 +1,8 @@
 <template>
   <div class="profile">
     <ul>
-      <!-- <img v-bind:src="`${profile.avatar}`" /> -->
+      <img v-bind:src="`${profile.avatar}`" />
+      <!-- <li>{{profile.avatar}}</li> -->
       <li>이름 : {{ profile.name }}</li>
       <li>성별 : {{ profile.gender }}</li>
       <li>생년월일 : {{ profile.birth_date }}</li>

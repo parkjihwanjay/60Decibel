@@ -22,10 +22,11 @@
         </a>
         <br />
         <a class="nav-menu">
-          <router-link to="/about">About 60dB</router-link>
-        </a>
-        <a class="nav-menu">
           <router-link to="/survey">설문조사 시작</router-link>
+        </a>
+        <br />
+        <a class="nav-menu">
+          <router-link to="/about">About 60dB</router-link>
         </a>
       </div>
     </transition-expand>
@@ -52,7 +53,6 @@
 import { mapState, mapActions } from "vuex";
 import TransitionExpand from "./NavEffect.vue";
 import { store } from "../../store.js";
-
 export default {
   name: `Nav`,
   components: {
