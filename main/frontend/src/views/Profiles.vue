@@ -21,13 +21,14 @@
       <li v-if="`${ profile.job }`">직업 : {{ profile.job }}</li>
       <li v-if="`${profile.relevant_data}`">기타 특이사항 : {{ profile.relevant_data }}</li>
     </ul>
+    <router-link to="/profileupdate">프로필 수정하기</router-link>
   </div>
 </template>
 <script>
 import { mapState } from "vuex";
 export default {
   computed: {
-    ...mapState(["profile"])
+    ...mapState(["profile", "userInfo"])
   },
   created() {
     const userId = this.$route.params.user;

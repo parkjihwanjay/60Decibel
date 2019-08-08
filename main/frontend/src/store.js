@@ -48,22 +48,25 @@ export const store = new Vuex.Store({
             state.isLoginError = false;
             state.userInfo = null;
         },
+        // 프로필 상태 변이
         SET_PROFILE(state, profile) {
             state.profile = profile;
-            // delete localStorage.access_token;
-            // 인우: 이거머임 ?
         },
+        // 복통 상태 변이
         SET_STOMACH(state, stomach) {
             state.stomach = stomach;
         },
+        // 설문조사 이력 변이
         SET_SURVEY_HISTORY(state, survey_history) {
             state.survey_history = survey_history;
         },
+        //설문조사 빠른 시작하기 변이
         SET_QUICK_START(state, startObj) {
             state.random_user = startObj;
         }
     },
     actions: {
+        //   로그인 function
         login(dispatch, loginObj) {
             // login --> 토큰 반환
             axios
@@ -85,6 +88,7 @@ export const store = new Vuex.Store({
                     alert("이메일과 비밀번호를 확인하세요.");
                 });
         },
+        // 로그아웃 function
         logout({ commit }) {
             commit("logout");
             axios.defaults.headers.common["Authorization"] = undefined;
@@ -126,6 +130,7 @@ export const store = new Vuex.Store({
                     });
             }
         },
+        //유저 세션 유지 function
         getMemberInfo({ commit }) {
             //로컬 스토리지에 저장된 토큰을 저장한다.
             let token = localStorage.getItem("access_token");
@@ -201,8 +206,7 @@ export const store = new Vuex.Store({
                 })
                 .catch(error => {
                     console.log(error);
-                })
-                ``;
+                })``;
         },
         start({ commit }) {
             let startObj = {};
@@ -255,6 +259,21 @@ export const store = new Vuex.Store({
                 })
                 .catch(() => {
                     alert("왜 안될까?");
+                });
+        },
+        updateProfileInfo(dispatch, update) {
+            console.log(update);
+            let token = localStorage.getItem("access_token");
+            let config = {
+                headers: {
+                    Authorization: "JWT " + token,
+                    "Content-Type": "application/json"
+                }
+            };
+            axios
+                .put("http://127.0.0.1:8000/api/profiles/admin/update/", update, config)
+                .then(res => {
+                    console.log(res);
                 });
         }
     }

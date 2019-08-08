@@ -14,11 +14,15 @@
     <transition-expand v-if="this.$store.state.isLogin === true">
       <div class="navexpand" v-if="expanded">
         <a class="nav-menu">
-          <router-link to="/profiles">{{this.$store.state.userInfo.username}}</router-link>
+          <router-link to="/profiles/username">{{this.$store.state.userInfo.username}}</router-link>
         </a>
         <br />
         <a class="nav-menu">
-          <a href @click.prevent="onClickLogout">로그아웃</a>
+          <a @click.prevent="onClickLogout">로그아웃</a>
+        </a>
+        <br />
+        <a class="nav-menu">
+          <router-link to="/survey_test">설문조사 시작</router-link>
         </a>
         <br />
         <a class="nav-menu">
@@ -60,12 +64,12 @@ export default {
     };
   },
   computed: {
-    ...mapState(["isLogin", "isLoginError", "logout"])
+    ...mapState(["isLogin", "isLoginError"])
   },
   methods: {
-    ...mapActions(["getMemberInfo"]),
+    ...mapActions(["getMemberInfo", "logout"]),
     onClickLogout() {
-      // LOGOUT 변이 실행 후 리다이렉트
+      // logout 변이 실행 후 리다이렉트
       store.dispatch("logout").then(() => this.$router.push("/"));
     }
   }
