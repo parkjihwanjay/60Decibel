@@ -70,7 +70,7 @@ export const store = new Vuex.Store({
         login(dispatch, loginObj) {
             // login --> 토큰 반환
             axios
-                .post("http://127.0.0.1:8000/api/rest-auth/login/", loginObj)
+                .post("http://54.180.144.241:8000/api/rest-auth/login/", loginObj)
                 // loginObj = {email,password}
                 .then(res => {
                     // 접근 성공시, 토큰 값이 반환된다. (실제로는 토큰과 함께 유저 id를 받아온다.)
@@ -104,7 +104,7 @@ export const store = new Vuex.Store({
                 quickLogin["username"] = username;
                 quickLogin["password"] = password;
                 axios
-                    .post("http://127.0.0.1:8000/api/rest-auth/registration/", this.state.random_user)
+                    .post("http://54.180.144.241:8000/api/rest-auth/registration/", this.state.random_user)
                     // loginObj = {email,password}
                     .then(res => {
                         alert("회원가입이 성공적으로 이뤄졌습니다.");
@@ -118,7 +118,7 @@ export const store = new Vuex.Store({
             }
             else {
                 axios
-                    .post("http://127.0.0.1:8000/api/rest-auth/registration/", loginObj)
+                    .post("http://54.180.144.241:8000/api/rest-auth/registration/", loginObj)
                     // loginObj = {email,password}
                     .then(res => {
                         alert("회원가입이 성공적으로 이뤄졌습니다.");
@@ -143,7 +143,7 @@ export const store = new Vuex.Store({
             //토큰 -> 멤버 정보 반환
             //새로고침 --> 토큰만 갖고 멤버 정보 요청가능
             axios
-                .get("http://127.0.0.1:8000/api/user/", config)
+                .get("http://54.180.144.241:8000/api/user/", config)
                 .then(response => {
                     let userInfo = {
                         username: response.data.username
@@ -165,7 +165,7 @@ export const store = new Vuex.Store({
                 }
             };
             axios
-                .get("http://127.0.0.1:8000/api/profiles/", config)
+                .get("http://54.180.144.241:8000/api/profiles/", config)
                 .then(({ data }) => {
                     commit("SET_PROFILE", data);
                 })
@@ -182,7 +182,7 @@ export const store = new Vuex.Store({
                 }
             };
             axios
-                .get(`http://127.0.0.1:8000/api/stomach/${stomachId}/`, config)
+                .get(`http://54.180.144.241:8000/api/stomach/${stomachId}/`, config)
                 .then(({ data }) => {
                     console.log(data);
                     commit("SET_STOMACH", data);
@@ -200,7 +200,7 @@ export const store = new Vuex.Store({
                 }
             };
             axios
-                .get(`http://127.0.0.1:8000/api/surveys/${authorId}/`, config)
+                .get(`http://54.180.144.241:8000/api/surveys/${authorId}/`, config)
                 .then(({ data }) => {
                     commit("SET_SURVEY_HISTORY", data);
                 })
@@ -232,7 +232,7 @@ export const store = new Vuex.Store({
             commit("SET_QUICK_START", startObj);
             router.push({ name: "signup" });
             // axios
-            //     .post("http://127.0.0.1:8000/api/rest-auth/registration/", startObj)
+            //     .post("http://54.180.144.241:8000/api/rest-auth/registration/", startObj)
             //     // loginObj = {email,password}
             //     .then(res => {
             //         router.push({ name: "home" });
@@ -249,7 +249,7 @@ export const store = new Vuex.Store({
                 }
             };
             axios
-                .post("http://127.0.0.1:8000/api/surveys/stomach/", survey_data, config)
+                .post("http://54.180.144.241:8000/api/surveys/stomach/", survey_data, config)
                 // loginObj = {email,password}
                 .then(res => {
                     // 접근 성공시, 토큰 값이 반환된다. (실제로는 토큰과 함께 유저 id를 받아온다.)
@@ -272,7 +272,7 @@ export const store = new Vuex.Store({
                 }
             };
             axios
-                .put("http://127.0.0.1:8000/api/profileupdate/", update, config)
+                .put("http://54.180.144.241:8000/api/profileupdate/", update, config)
                 .then(res => {
                     console.log(res);
                     router.push({ name: "profiles" });
