@@ -137,7 +137,6 @@
             <img
               src="../../assets/stethoscope.png"
               class="img-modal"
-              :class="{imgclicked: dialog5}"
             />
           </div>
         </v-card-text>
