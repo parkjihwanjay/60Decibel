@@ -9,7 +9,9 @@ axios.defaults.xsrfCookieName = "csrftoken";
 axios.defaults.xsrfHeaderName = "X-CSRFToken";
 
 const enhanceAccessToeken = () => {
-  const { access_token } = localStorage;
+  const {
+    access_token
+  } = localStorage;
   if (!access_token) return;
   axios.defaults.headers.common["Authorization"] =
     localStorage.getItem["access_token"];
@@ -82,7 +84,9 @@ export const store = new Vuex.Store({
           axios.defaults.headers.common["Authorization"] =
             localStorage.getItem["access_token"];
           this.dispatch("getMemberInfo");
-          router.push({ name: "home" });
+          router.push({
+            name: "home"
+          });
           console.log(res);
         })
         .catch(() => {
@@ -90,11 +94,15 @@ export const store = new Vuex.Store({
         });
     },
     // 로그아웃 function
-    logout({ commit }) {
+    logout({
+      commit
+    }) {
       commit("logout");
       axios.defaults.headers.common["Authorization"] = undefined;
 
-      router.push({ name: "home" });
+      router.push({
+        name: "home"
+      });
     },
     // 회원가입 fuction
     signup(dispatch, loginObj) {
@@ -104,7 +112,9 @@ export const store = new Vuex.Store({
         // loginObj = {email,password}
         .then(res => {
           alert("회원가입이 성공적으로 이뤄졌습니다.");
-          router.push({ name: "login" });
+          router.push({
+            name: "login"
+          });
           console.log(res);
         })
         .catch(() => {
@@ -112,7 +122,9 @@ export const store = new Vuex.Store({
         });
     },
     //유저 세션 유지 function
-    getMemberInfo({ commit }) {
+    getMemberInfo({
+      commit
+    }) {
       //로컬 스토리지에 저장된 토큰을 저장한다.
       let token = localStorage.getItem("access_token");
       let config = {
@@ -137,7 +149,9 @@ export const store = new Vuex.Store({
           alert("이메일과 비밀번호를 확인하세요.");
         });
     },
-    getProfileInfo({ commit }, userId) {
+    getProfileInfo({
+      commit
+    }, userId) {
       let token = localStorage.getItem("access_token");
       let config = {
         headers: {
@@ -147,14 +161,18 @@ export const store = new Vuex.Store({
       };
       axios
         .get(`http://127.0.0.1:8000/api/profiles/${userId}/`, config)
-        .then(({ data }) => {
+        .then(({
+          data
+        }) => {
           commit("SET_PROFILE", data);
         })
         .catch(error => {
           console.log(error);
         });
     },
-    getStomachInfo({ commit }, stomachId) {
+    getStomachInfo({
+      commit
+    }, stomachId) {
       let token = localStorage.getItem("access_token");
       let config = {
         headers: {
@@ -164,7 +182,9 @@ export const store = new Vuex.Store({
       };
       axios
         .get(`http://127.0.0.1:8000/api/stomach/${stomachId}/`, config)
-        .then(({ data }) => {
+        .then(({
+          data
+        }) => {
           console.log(data);
           commit("SET_STOMACH", data);
         })
@@ -172,7 +192,9 @@ export const store = new Vuex.Store({
           console.log(error);
         });
     },
-    getSurveyHistory({ commit }, authorId) {
+    getSurveyHistory({
+      commit
+    }, authorId) {
       let token = localStorage.getItem("access_token");
       let config = {
         headers: {
@@ -182,14 +204,19 @@ export const store = new Vuex.Store({
       };
       axios
         .get(`http://127.0.0.1:8000/api/surveys/${authorId}/`, config)
-        .then(({ data }) => {
+        .then(({
+          data
+        }) => {
           commit("SET_SURVEY_HISTORY", data);
         })
         .catch(error => {
           console.log(error);
-        })``;
+        })
+      ``;
     },
-    start({ commit }) {
+    start({
+      commit
+    }) {
       let startObj = {};
       let username = "";
 
@@ -211,7 +238,9 @@ export const store = new Vuex.Store({
       startObj["password1"] = password2;
       startObj["password2"] = password2;
       commit("SET_QUICK_START", startObj);
-      router.push({ name: "signup" });
+      router.push({
+        name: "signup"
+      });
       // axios
       //     .post("http://127.0.0.1:8000/api/rest-auth/registration/", startObj)
       //     // loginObj = {email,password}

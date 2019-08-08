@@ -81,15 +81,15 @@ export default new Router({
                     component: () =>
                         import("./components/surveyPage/Sec5.vue")
                 },
-                {
-                    path: "/sec6",
-                    name: "sec6",
-                    meta: {
-                        page: 6
-                    },
-                    component: () =>
-                        import("./components/surveyPage/Sec6.vue")
-                }
+                // {
+                //     path: "/sec6",
+                //     name: "sec6",
+                //     meta: {
+                //         page: 6
+                //     },
+                //     component: () =>
+                //         import("./components/surveyPage/Sec6.vue")
+                // }
             ]
         },
         {

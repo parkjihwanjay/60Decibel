@@ -46,6 +46,9 @@ export default {
   height: 1.5rem;
   margin-left: 0.6rem;
 }
+.nav /deep/ .navhead-start {
+  display: none;
+}
 
 /* layout */
 .profile {

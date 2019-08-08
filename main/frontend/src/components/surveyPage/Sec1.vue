@@ -11,44 +11,118 @@
             </template>
           </v-expansion-panel-header>
           <v-expansion-panel-content class="content animate fadeInUp one">
-            여기가 질문입니다요 ~~~~~
+            <p class="question">통증이 언제부터 시작되었나요?</p>
             <br />
             <br />
-            <div class="ans animate fadeInRightBig three">여기가</div>
-            <div class="ans animate fadeInRightBig four">선택지</div>
-            <div class="ans animate fadeInRightBig five">입니다</div>
+            <div class="answers">
+              <div class="answer animate fadeInRightBig three">
+                <input
+                  type="radio"
+                  value="less_than_month"
+                  v-model="survey_data.symptom_start"
+                  class="ans"
+                />한 달이 안됐습니다.
+              </div>
+              <br />
+              <div class="answer animate fadeInRightBig four">
+                <input
+                  type="radio"
+                  value="more_than_month"
+                  v-model="survey_data.symptom_start"
+                  class="ans"
+                />한 달이 넘었습니다.
+              </div>
+            </div>
+            <br />
           </v-expansion-panel-content>
         </v-expansion-panel>
-        <v-expansion-panel class="q1-2">
+
+        <v-expansion-panel class="q2-1">
           <v-expansion-panel-header class="header animate fadeInDown two">
-            Q1.
+            Q2.
             <template v-slot:actions>
               <v-icon></v-icon>
             </template>
           </v-expansion-panel-header>
           <v-expansion-panel-content class="content animate fadeInUp one">
-            여기가 질문입니다요 ~~~~~
+            <p class="question">통증이 언제 시작되었나요?</p>
             <br />
             <br />
-            <div class="ans animate fadeInRightBig three">여기가</div>
-            <div class="ans animate fadeInRightBig four">선택지</div>
-            <div class="ans animate fadeInRightBig five">입니다</div>
+            <div class="answers">
+              <div class="answer">
+                <input
+                  type="text"
+                  v-model="survey_data.symptom_start_less_than_month"
+                  class="ans-txt"
+                  placeholder="예) 5일전"
+                />
+              </div>
+            </div>
           </v-expansion-panel-content>
         </v-expansion-panel>
-        <v-expansion-panel class="q1-3">
+        <v-expansion-panel class="q3-3">
           <v-expansion-panel-header class="header animate fadeInDown two">
-            Q1.
+            Q3.
             <template v-slot:actions>
               <v-icon></v-icon>
             </template>
           </v-expansion-panel-header>
           <v-expansion-panel-content class="content animate fadeInUp one">
-            여기가 질문입니다요 ~~~~~
+            <p class="question">
+              통증이 급격히 생겼나요?
+              <br />서서히 생겼나요?
+            </p>
             <br />
             <br />
-            <div class="ans animate fadeInRightBig three">여기가</div>
-            <div class="ans animate fadeInRightBig four">선택지</div>
-            <div class="ans animate fadeInRightBig five">입니다</div>
+            <div class="answers">
+              <div class="answer animate fadeInRightBig three">
+                <input
+                  type="radio"
+                  v-model="survey_data.fast_or_slow"
+                  value="fast"
+                  class="ans"
+                  placeholder="여기를 수정해보세요"
+                />
+                갑자기
+              </div>
+              <br />
+              <div class="answer animate fadeInRightBig four">
+                <input
+                  type="radio"
+                  v-model="survey_data.fast_or_slow"
+                  value="slow"
+                  class="ans"
+                  placeholder="여기를 수정해보세요"
+                />서서히
+              </div>
+            </div>
+            <br />
+          </v-expansion-panel-content>
+        </v-expansion-panel>
+        <v-expansion-panel class="q3-3">
+          <v-expansion-panel-header class="header animate fadeInDown two">
+            Q4.
+            <template v-slot:actions>
+              <v-icon></v-icon>
+            </template>
+          </v-expansion-panel-header>
+          <v-expansion-panel-content class="content animate fadeInUp one">
+            <p class="question">
+              처음 복통이 시작되었을때
+              <br />어떤 상황이었나요?
+            </p>
+            <br />
+            <br />
+            <div class="answers">
+              <div class="answer">
+                <input
+                  type="text"
+                  v-model="survey_data.symtpom_situation"
+                  class="ans-txt"
+                  placeholder="예)회식에서.."
+                />
+              </div>
+            </div>
           </v-expansion-panel-content>
         </v-expansion-panel>
       </v-expansion-panels>
@@ -60,11 +134,21 @@
 </template>
 
 <script>
+import { mapState, mapActions } from "vuex";
 export default {
   data() {
     return {
-      expand: 0
+      expand: 0,
+      survey_data: {
+        symptom_start: "",
+        symptom_start_less_than_month: "",
+        fast_or_slow: "",
+        symtpom_situation: ""
+      }
     };
+  },
+  methods: {
+    ...mapActions(["survey"])
   }
 };
 </script>
@@ -88,13 +172,47 @@ export default {
 .section {
   height: 100vh;
 }
-.ans {
-  width: 90%;
-  height: 44px;
-  background-color: #cecece;
-  margin: 10px auto;
-}
 
+/* 1차 수정 01:07 */
+
+.question {
+  font-size: 1.2rem;
+  line-height: 1.5rem;
+}
+.answers {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  line-height: 0.5em;
+}
+.answer {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: #1985bb;
+  border-radius: 7px;
+  width: 15rem;
+  height: 2.7rem;
+
+  color: rgb(255, 255, 255);
+}
+.answer input::placeholder {
+  color: rgba(88, 88, 88, 0.5);
+}
+.ans {
+  margin: 0 1rem;
+}
+.ans-txt {
+  width: 100%;
+  height: 100%;
+  border: #1985bb solid 1px;
+  border-radius: 7px;
+  outline: none;
+  background-color: white;
+  padding-left: 1rem;
+  color: rgb(56, 56, 56);
+}
 /* question footer */
 .buttons {
   display: flex;
