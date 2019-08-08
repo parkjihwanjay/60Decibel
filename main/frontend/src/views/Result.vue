@@ -27,18 +27,41 @@
       <li>통증이 {{stomach.factor}}와 같은 상황에 심해지거나 완화됩니다.</li>
       <li>그 외 {{stomach.other_factor}}와 같은 상황에도 통증이 심해지거나 완화됩니다.</li>
       <li>복부에 관한 과거이력 : {{stomach.abdomen_relevant}}</li>
+      <span>사회력 과거력</span>
+      <br />
+      <p class="name">{{ profile.name }}</p>
+      <p class="job1" v-if="`${ profile.job }`">{{ profile.job }}</p>
+      <p class="job2" v-else>메롱</p>&nbsp;&nbsp;|&nbsp;&nbsp;
+      <p class="birth">{{ profile.birth_date }}</p>
+      <p class="gender-head">성별</p>
+      <p class="gender-body">{{ profile.gender }}</p>
+      <p class="height-head">신장</p>
+      <p class="height-body">{{ profile.height }}</p>
+      <p class="weight-head">체중</p>
+      <p class="weight-body">{{ profile.weight }}</p>
+      <li v-if="`${profile.had_checkup}=false`">{{ profile.had_checkup_true }}년 전에 건강검진을 받았습니다.</li>
+      <li>이전에 {{ profile.diagnosed_disease }}을 진단받았습니다.</li>
+      <li v-if="`${profile.taking_medicine}`">{{ profile.what_medicine }}을 복용중입니다.</li>
+      <li>{{ profile.family_history }}와(과) 같은 가족력이 있습니다.</li>
+      <li v-if="`${profile.drinking}`">매주 {{ profile.drinking_per_week }}병의 술을 마십니다.</li>
+      <li
+        v-if="`${profile.smoking}`"
+      >담배를 {{ profile.how_long_smoking }}년 동안 {{ profile.how_long_smoking }}갑씩 피우고 있습니다.</li>
+      <li v-if="`${profile.relevant_data}`">기타 특이사항 : {{ profile.relevant_data }}</li>
     </ul>
   </div>
 </template>
+
 <script>
 import { mapState } from "vuex";
 export default {
   computed: {
-    ...mapState(["stomach"])
+    ...mapState(["stomach", "profile"])
   },
   created() {
     const stomachId = this.$route.params.id;
     this.$store.dispatch("getStomachInfo", stomachId);
+    this.$store.dispatch("getProfileInfo");
   }
 };
 </script>

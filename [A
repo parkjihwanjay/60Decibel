@@ -1,0 +1,386 @@
+[33mcommit 7c226a0ed5f71e090d9c17bb0f78bb4e7a3751a3[m[33m ([m[1;36mHEAD -> [m[1;32mant[m[33m)[m
+Author: antlikelion <ignorant_woo@naver.com>
+Date:   Fri Aug 9 01:34:26 2019 +0900
+
+    프로필 업데이트 진짜 완성했습니다
+
+[33mcommit 8e227f9ad4d6a557cc189728c786ee6e4aff475f[m[33m ([m[1;31morigin/ant[m[33m)[m
+Author: antlikelion <ignorant_woo@naver.com>
+Date:   Thu Aug 8 20:00:35 2019 +0900
+
+    설문결과 레더링 페이지에 프로필 정보 추가
+
+[33mcommit 1517184b2e5f64dc8ba2e6e3748df91101ceea36[m
+Merge: 27289e1 03eabce
+Author: antlikelion <ignorant_woo@naver.com>
+Date:   Thu Aug 8 17:06:11 2019 +0900
+
+    Merge branch 'master' of https://github.com/RyanKor/60DB into ant
+
+[33mcommit 27289e11d13d42ae2fedf7a379f8fba21bf7d954[m
+Author: antlikelion <ignorant_woo@naver.com>
+Date:   Thu Aug 8 16:51:25 2019 +0900
+
+    store.js 수정 반영
+
+[33mcommit d119561aaffd2d381506a2bad8d4a2531468166b[m
+Merge: b151e25 8af8eb4
+Author: antlikelion <ignorant_woo@naver.com>
+Date:   Thu Aug 8 16:49:08 2019 +0900
+
+    store.js 충돌 부분 수정
+
+[33mcommit 03eabce8093048a730270139bd9fc6ab898c884c[m[33m ([m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Merge: fc6cc5b dcf2b9e
+Author: SeungTaeKim <equus3144@gmail.com>
+Date:   Thu Aug 8 16:39:44 2019 +0900
+
+    Merge pull request #15 from RyanKor/frontend
+    
+    Frontend
+
+[33mcommit dcf2b9e398d7593f2ee9f96d48f9d151bda21ce1[m
+Merge: 48ab2fa 6a4ba68
+Author: SeungTaeKim <equus3144@gmail.com>
+Date:   Thu Aug 8 16:39:11 2019 +0900
+
+    Merge pull request #14 from RyanKor/seungtae
+    
+    Seungtae
+
+[33mcommit 6a4ba68409a098607dcb9d10c04fc4556d5c1d37[m
+Merge: 8af8eb4 48ab2fa
+Author: SeungTaeKim <equus3144@gmail.com>
+Date:   Thu Aug 8 16:38:57 2019 +0900
+
+    Merge branch 'frontend' into seungtae
+
+[33mcommit fc6cc5b0c594334d41c66a9c9b8aa664f01228d1[m
+Merge: 33cb8d8 48ab2fa
+Author: SeungTaeKim <equus3144@gmail.com>
+Date:   Thu Aug 8 16:35:50 2019 +0900
+
+    Merge pull request #13 from RyanKor/frontend
+    
+    Frontend
+
+[33mcommit b151e25a0ae6fdc43197ac39a078f7eb7bd487b6[m
+Author: antlikelion <ignorant_woo@naver.com>
+Date:   Thu Aug 8 16:35:30 2019 +0900
+
+    랜덤 계정으로 회원가입 후 로그인 된 채로 main페이지로 이동
+
+[33mcommit 8af8eb4204b3a653d586dfba59b0795bfdbeff8f[m[33m ([m[1;31morigin/seungtae[m[33m)[m
+Merge: 8c6da0c 33cb8d8
+Author: RyanKor <equus3144@gmail.com>
+Date:   Thu Aug 8 16:32:05 2019 +0900
+
+    profile update ongoing
+
+[33mcommit 48ab2facf550184ed8ad297cc2994ac784fd7a7c[m[33m ([m[1;31morigin/frontend[m[33m)[m
+Merge: 0a4f0b6 428cfce
+Author: sanghaC <48586856+sanghaC@users.noreply.github.com>
+Date:   Thu Aug 8 15:13:31 2019 +0900
+
+    Merge pull request #12 from RyanKor/sangha
+    
+    Sangha
+
+[33mcommit 428cfce4057a2082056e72934d565864c9fc6dd3[m[33m ([m[1;31morigin/sangha[m[33m)[m
+Author: Sang_Ha <sanghac19@gmail.com>
+Date:   Thu Aug 8 14:57:34 2019 +0900
+
+    profile ui update
+
+[33mcommit 0a4f0b68a2dd9ed1e70873d162425b2acaf038d2[m
+Merge: 8c64d99 12a58d1
+Author: sanghaC <48586856+sanghaC@users.noreply.github.com>
+Date:   Thu Aug 8 14:55:02 2019 +0900
+
+    Merge pull request #11 from RyanKor/sangha
+    
+    Sangha
+
+[33mcommit 8c6da0c942624f8ee69dbeaafff9f9bfbe0bb671[m
+Merge: 3b57826 2912211
+Author: RyanKor <equus3144@gmail.com>
+Date:   Thu Aug 8 09:28:33 2019 +0900
+
+    conflic resolved
+
+[33mcommit a87ba7df87dec23e9f363ed75bef155c4c539444[m
+Merge: 12a58d1 33cb8d8
+Author: Sang_Ha <sanghac19@gmail.com>
+Date:   Thu Aug 8 04:05:25 2019 +0900
+
+    Merge branch 'master' of https://github.com/RyanKor/60DB into sangha
+
+[33mcommit 12a58d1a5714b9bf19c863e9e4ca9faae0485135[m
+Merge: afe7ae3 d2886ce
+Author: Sang_Ha <sanghac19@gmail.com>
+Date:   Thu Aug 8 04:04:15 2019 +0900
+
+    profile 컴포넌트 분리 및 2차 임시저장
+
+[33mcommit 33cb8d87d75a4c21c29e3a70dde4f48badb923b5[m
+Merge: d2886ce 7ebc2d1
+Author: parkjihwanjay <48053238+parkjihwanjay@users.noreply.github.com>
+Date:   Thu Aug 8 04:01:30 2019 +0900
+
+    Merge pull request #10 from RyanKor/parkjihwan_jay
+    
+    Parkjihwan jay
+    
+    바로 시작하기를 누르면 랜덤 유저를 생성하여 회원 가입 폼에 랜더링까지 완료했습니다.
+    
+    다만, 그 정보로 회원가입은 아직 안됩니다. 회원 가입 폼 component 안에 있는 데이터를 아직 못 건드렸는데 너무 피곤해서 여기서 마치려고 합니다.
+    
+    후임자분이 잘 해결해주시길 바랍니다.
+
+[33mcommit 7ebc2d12b0e07417b8c215383740e3ec039711a9[m[33m ([m[1;31morigin/parkjihwan_jay[m[33m)[m
+Author: ParkJiHwan <cc6656@naver.com>
+Date:   Thu Aug 8 03:58:54 2019 +0900
+
+    랜덤 유저 회원가입 폼에 랜더링
+
+[33mcommit 17457a28cc0c55ce6f190e55b628fe91c23182c5[m
+Author: ParkJiHwan <cc6656@naver.com>
+Date:   Thu Aug 8 03:10:54 2019 +0900
+
+    바로시작하면 랜덤 계정 회원가입
+
+[33mcommit afe7ae321809e9b333a3d1b72d7075222a20ec93[m
+Author: Sang_Ha <sanghac19@gmail.com>
+Date:   Thu Aug 8 03:07:01 2019 +0900
+
+    profile & 임시저장
+
+[33mcommit d2886ce6d9fc03b6c272115d1f0b210be7a632af[m
+Merge: d3add46 3a0d555
+Author: parkjihwanjay <48053238+parkjihwanjay@users.noreply.github.com>
+Date:   Thu Aug 8 03:02:25 2019 +0900
+
+    Merge pull request #9 from RyanKor/parkjihwan_jay
+    
+    Parkjihwan jay
+
+[33mcommit 3a0d5558ca516e60e1eb7e7e8eebf640d1dcebc3[m
+Merge: 2c2db48 d3add46
+Author: ParkJiHwan <cc6656@naver.com>
+Date:   Thu Aug 8 03:00:28 2019 +0900
+
+    설문조사 post 완료
+
+[33mcommit 2c2db480dd204fdae6d666dc758a361548c27f2b[m
+Author: ParkJiHwan <cc6656@naver.com>
+Date:   Thu Aug 8 02:51:24 2019 +0900
+
+    설문조사 post 성공
+
+[33mcommit d3add461f1b5c5a5158fcc9956c82af57a2d2276[m
+Merge: 2912211 a6d90b2
+Author: antlikelion <48678284+antlikelion@users.noreply.github.com>
+Date:   Thu Aug 8 02:49:56 2019 +0900
+
+    Merge pull request #8 from RyanKor/ant
+    
+    모든 모델 필드 CharField로 변경 + 프런트에서 avatar 디폴트 이미지 설정
+
+[33mcommit a6d90b24cb6bff55b2ffa7c685fd28406e1ac7fb[m
+Author: antlikelion <ignorant_woo@naver.com>
+Date:   Thu Aug 8 02:48:18 2019 +0900
+
+    모든 모델 필드 CharField로 변경 + 프런트에서 avatar 디폴트 이미지 설정
+
+[33mcommit 3b57826ce2f75bf1a58ac1f14285ad0deae686c6[m
+Author: RyanKor <equus3144@gmail.com>
+Date:   Thu Aug 8 00:28:52 2019 +0900
+
+    seungtae
+
+[33mcommit 9e90538d60b69721d4f8396b36890ba29122749d[m
+Author: ParkJiHwan <cc6656@naver.com>
+Date:   Wed Aug 7 21:40:09 2019 +0900
+
+    주석 삭제
+
+[33mcommit 0583f44b4610543074b784064939308993293995[m
+Author: ParkJiHwan <cc6656@naver.com>
+Date:   Wed Aug 7 21:34:40 2019 +0900
+
+    설문 페이지 css 적용
+
+[33mcommit bf5bd74ad69e7bf921a1aee37fc0d95d1cb1651f[m
+Author: ParkJiHwan <cc6656@naver.com>
+Date:   Wed Aug 7 21:33:34 2019 +0900
+
+    설문 페이지 css 적용
+
+[33mcommit 2912211d5b93fab020918b13ee713eae5af3ef73[m
+Merge: e4d6181 915c7bd
+Author: antlikelion <48678284+antlikelion@users.noreply.github.com>
+Date:   Wed Aug 7 20:21:52 2019 +0900
+
+    Merge pull request #7 from RyanKor/ant
+    
+    프로필 업데이트 view input form 대략적으로 작성함
+
+[33mcommit 915c7bd618fa167220358a21d01790e1854fdc18[m
+Author: antlikelion <ignorant_woo@naver.com>
+Date:   Wed Aug 7 20:19:31 2019 +0900
+
+    프로필 업데이트 view input form 대략적으로 작성함
+
+[33mcommit 64334df8897347d4d902843228fe2e3843d05f43[m
+Merge: a7143d1 e4d6181
+Author: RyanKor <equus3144@gmail.com>
+Date:   Wed Aug 7 19:57:43 2019 +0900
+
+    Merge branch 'master' of https://github.com/RyanKor/60DB into seungtae
+
+[33mcommit e4d61817db17e1170c7ebb025377033c7e2adedd[m
+Merge: 67cb848 8c64d99
+Author: sanghaC <48586856+sanghaC@users.noreply.github.com>
+Date:   Wed Aug 7 19:57:27 2019 +0900
+
+    Merge pull request #6 from RyanKor/frontend
+    
+    Frontend
+
+[33mcommit a7143d138d86b173aeb004eadef19f05cafcd060[m
+Merge: db756b1 67cb848
+Author: RyanKor <equus3144@gmail.com>
+Date:   Wed Aug 7 19:56:16 2019 +0900
+
+    Merge branch 'master' of https://github.com/RyanKor/60DB into seungtae
+
+[33mcommit 8c64d999ff41156dc16c92e5ad5e1611b602bd2e[m
+Merge: e328e5c 6fc5f0b
+Author: sanghaC <48586856+sanghaC@users.noreply.github.com>
+Date:   Wed Aug 7 18:44:20 2019 +0900
+
+    Merge pull request #5 from RyanKor/sangha
+    
+    Sangha
+
+[33mcommit db756b1f5aa69df4f97ef6e0a8f93fdc6377cdfa[m
+Author: RyanKor <equus3144@gmail.com>
+Date:   Wed Aug 7 18:38:33 2019 +0900
+
+    login session added
+
+[33mcommit 6fc5f0b8b8d8fca87a928b747a1ece314dd7dd05[m
+Author: Sang_Ha <sanghac19@gmail.com>
+Date:   Wed Aug 7 18:38:21 2019 +0900
+
+    홈 고정버튼
+
+[33mcommit 67cb848e3052e5b4c89592acd87142a3f556929e[m
+Merge: ecf4afc bf907fa
+Author: antlikelion <48678284+antlikelion@users.noreply.github.com>
+Date:   Wed Aug 7 17:37:09 2019 +0900
+
+    Merge pull request #4 from RyanKor/seungtae
+    
+    Seungtae
+
+[33mcommit bf907faaac151bbc86a8b661cb30ed7544fd6fa8[m
+Merge: a18d11e ecf4afc
+Author: RyanKor <equus3144@gmail.com>
+Date:   Wed Aug 7 17:34:24 2019 +0900
+
+    conflic fixed
+
+[33mcommit a18d11edbcccc57f4cc810351200958b997449f6[m
+Author: RyanKor <equus3144@gmail.com>
+Date:   Wed Aug 7 17:31:52 2019 +0900
+
+    store.js login / logout 수정
+
+[33mcommit ecf4afce2bf21172ddcc486c4f4ae4ee78371015[m
+Merge: eb2f77a e328e5c
+Author: sanghaC <48586856+sanghaC@users.noreply.github.com>
+Date:   Wed Aug 7 16:43:06 2019 +0900
+
+    Merge pull request #3 from RyanKor/frontend
+    
+    Frontend
+
+[33mcommit eb2f77acdcec8034b640adeea103d1e52481df79[m
+Merge: f3af3fe 2c336dc
+Author: antlikelion <48678284+antlikelion@users.noreply.github.com>
+Date:   Wed Aug 7 16:40:11 2019 +0900
+
+    Merge pull request #2 from RyanKor/ant
+    
+    Ant
+
+[33mcommit e328e5c28f8acbe44f63e5fa132fb599c7a87d1d[m
+Author: Sang_Ha <sanghac19@gmail.com>
+Date:   Wed Aug 7 16:39:31 2019 +0900
+
+    상하 회원가입
+
+[33mcommit 2c336dc4ebf04e5ea3361db8354ac3fcb966b274[m
+Author: antlikelion <ignorant_woo@naver.com>
+Date:   Wed Aug 7 16:31:25 2019 +0900
+
+    프로필, 복통 설문 결과, 설문 목록 조회 렌더링
+
+[33mcommit 1c3c643ed9ccbeb52beed891079c29e30299b003[m
+Author: Sang_Ha <sanghac19@gmail.com>
+Date:   Wed Aug 7 01:34:50 2019 +0900
+
+    surveyPage UI 1차
+
+[33mcommit 37f950801ecbec1bd9ff1347fbe4f30a6174ebd7[m
+Author: Sang_Ha <sanghac19@gmail.com>
+Date:   Wed Aug 7 01:28:09 2019 +0900
+
+    survey UI 1차
+
+[33mcommit 2ca8c2d060a75d00912e986aa619587e0b671a1b[m[33m ([m[1;32mmaster[m[33m)[m
+Author: antlikelion <ignorant_woo@naver.com>
+Date:   Wed Aug 7 01:20:57 2019 +0900
+
+    git pull을 위함
+
+[33mcommit edc29113dcf8b178600878fdd6d9fcf1a10f6a48[m
+Merge: e380a66 f3af3fe
+Author: antlikelion <ignorant_woo@naver.com>
+Date:   Wed Aug 7 01:08:47 2019 +0900
+
+    git pull을 위함
+
+[33mcommit e380a665deabfffb4e24b4335c523dcfa703e6da[m
+Author: antlikelion <ignorant_woo@naver.com>
+Date:   Wed Aug 7 01:04:08 2019 +0900
+
+    pull을 받기 위함입니다.
+
+[33mcommit f3af3fedab1291b38e5f9b753b2a8cbf449d4e7d[m
+Merge: 30b6f11 ff46e18
+Author: antlikelion <48678284+antlikelion@users.noreply.github.com>
+Date:   Wed Aug 7 00:57:05 2019 +0900
+
+    Merge pull request #1 from RyanKor/seungtae
+    
+    get info completed
+
+[33mcommit ff46e18833dc5128e9c06fa0ea6a8c84903767a4[m
+Author: RyanKor <equus3144@gmail.com>
+Date:   Wed Aug 7 00:54:29 2019 +0900
+
+    get info completed
+
+[33mcommit aeeed419f34ac7f1d083ee99243a6b19da89ad06[m
+Author: Sang_Ha <sanghac19@gmail.com>
+Date:   Tue Aug 6 16:15:01 2019 +0900
+
+    a tag밑줄 수정 & 함께하는 사람들 완성
+
+[33mcommit 30b6f1125c4bc9920759dc12900a31a549929505[m
+Author: RyanKor <equus3144@gmail.com>
+Date:   Tue Aug 6 14:41:34 2019 +0900
+
+    likelion hacks
