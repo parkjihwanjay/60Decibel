@@ -2,16 +2,18 @@ import Vue from "vue";
 import Router from "vue-router";
 // import Home from "./views/Home.vue";
 import Home from "./views/Home.vue";
-
+// import { store } from "./store.js";
 Vue.use(Router);
 
-// const requireAuth = () => (from, to, next) => {
-//   const isAuthenticated = false;
-//   if (isAuthenticated) return next();
-//   next("/login?returnPath=home");
+// const requireAuth = () => (to, from, next) => {
+//   if (!localStorage.getItem["access_token"]) {
+//     alert("먼저 로그인을 진행해주세요");
+//     return next("/login");
+//   }
 // };
 
 export default new Router({
+
     hashbang: false,
     mode: "history",
     routes: [{

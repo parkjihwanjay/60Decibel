@@ -29,9 +29,9 @@ new Vue({
   store,
   // 이거 profile에 대한 store임
   vuetify,
-  // beforeCreate() {
-  //   this.$store.dispatch("getMemberInfo");
-  // },
+  beforeCreate() {
+    this.$store.dispatch("getMemberInfo");
+  },
   component: {
     App
   },
