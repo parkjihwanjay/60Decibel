@@ -11,6 +11,6 @@ urlpatterns = [
     # path("", include(router.urls)),
     path("profiles/<str:user>/", ProfileRetrieveAPIView.as_view(),
          name="profile-detail"),
-    path("profiles/<str:user>/update/",
+    path("profileupdate/",
          ProfileUpdateAPIView.as_view(), name="profile-update"),
 ]

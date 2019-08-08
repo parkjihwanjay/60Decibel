@@ -75,7 +75,7 @@ export default {
 }
 .footer {
   background-color: darkorange;
-  width: ;
+  width: 100%;
   height: 8rem;
 }
 </style>
