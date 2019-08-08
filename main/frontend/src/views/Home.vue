@@ -15,7 +15,8 @@ import Container2 from "../components/homePage/Container2.vue";
 import Container3 from "../components/homePage/Container3.vue";
 import Container4 from "../components/homePage/Container4.vue";
 import Navbar from "../components/homePage/Navbar.vue";
-
+import { store } from "../store.js";
+import { mapState, mapActions } from "vuex";
 export default {
   name: "home",
 
@@ -25,6 +26,12 @@ export default {
     Container3,
     Container4,
     Navbar
+  },
+  computed: {
+    ...mapState(["isLogin", "isLoginError"])
+  },
+  methods: {
+    ...mapActions(["getMemberInfo", "logout"])
   }
 };
 </script>
