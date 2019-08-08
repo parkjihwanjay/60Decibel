@@ -74,6 +74,7 @@
 <script>
 import { mapState, mapActions } from "vuex";
 export default {
+  name: "signupForm",
   data() {
     return {
       username: null,

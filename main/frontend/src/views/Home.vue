@@ -5,9 +5,6 @@
     <Container2 />
     <Container3 />
     <Container4 />
-    <div class="surveybtn">
-      <div class="btn">선택지입니다</div>
-    </div>
   </div>
 </template>
 
@@ -21,6 +18,7 @@ import Navbar from "../components/homePage/Navbar.vue";
 
 export default {
   name: "home",
+
   components: {
     Container1,
     Container2,
@@ -31,11 +29,11 @@ export default {
 };
 </script>
 <style scoped>
-.surveybtn {
+.survey-btn {
   display: flex;
   justify-content: center;
 }
-.btn {
+.show-on-scroll {
   text-align: center;
   width: 90%;
   height: 50px;

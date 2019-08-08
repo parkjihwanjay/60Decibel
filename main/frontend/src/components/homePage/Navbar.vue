@@ -82,6 +82,7 @@ a:visited {
 }
 .navhead {
   display: flex;
+  background-color: transparent;
   justify-content: space-between;
   align-items: center;
   border-bottom: 1px solid rgba(192, 192, 192, 0.562);
@@ -104,7 +105,7 @@ a:visited {
 .navhead-icon {
   display: flex;
   justify-content: center;
-  background-color: white;
+  background-color: transparent;
   border: 1px solid rgba(128, 128, 128, 0.24);
   border-radius: 3px;
   width: 44px;
