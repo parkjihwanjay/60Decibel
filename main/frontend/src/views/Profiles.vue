@@ -1,8 +1,8 @@
 <template>
   <div class="profile">
     <ul>
-      <img v-bind:src="`${profile.avatar}`" />
-      <!-- <li>{{profile.avatar}}</li> -->
+      <img v-if="`${profile.avatar}===null`" src="../assets/60db.png" />
+      <img v-else v-bind:src="`${profile.avatar}`" />
       <li>이름 : {{ profile.name }}</li>
       <li>성별 : {{ profile.gender }}</li>
       <li>생년월일 : {{ profile.birth_date }}</li>
@@ -21,6 +21,7 @@
       <li v-if="`${ profile.job }`">직업 : {{ profile.job }}</li>
       <li v-if="`${profile.relevant_data}`">기타 특이사항 : {{ profile.relevant_data }}</li>
     </ul>
+    <router-link to="/profileupdate">프로필 수정하기</router-link>
   </div>
 </template>
 <script>

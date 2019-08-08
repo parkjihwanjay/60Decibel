@@ -1,6 +1,6 @@
 <template>
   <div class="whole-survey">
-    <nav-bar />
+    <NavBar />
     <main>
       <transition :name="sectionSlider" v-on:before-enter="debug" v-on:before-leave="debug">
         <router-view />

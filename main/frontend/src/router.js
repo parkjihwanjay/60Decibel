@@ -32,10 +32,9 @@ export default new Router({
     },
     {
       path: "/survey",
-      redirect: "/sec1",
+      // redirect: "/sec1",
       name: "survey",
       component: () => import("./views/Survey.vue"),
-      // beforeEnter: requireAuth(),
       children: [
         {
           path: "/sec1",
@@ -110,12 +109,10 @@ export default new Router({
       component: () => import("./views/ProfileUpdate.vue")
     },
     {
-      //:user값이 this.$route.params.user 형태로 받아와짐.
       path: "/profiles/:user",
       name: "profiles",
       // beforeEnter: requireAuth,
       component: () => import("./views/Profiles.vue")
-      // `"/profiles/${store.state.userInfo.username}"`
     },
     {
       path: "/stomach/:id",
@@ -126,6 +123,12 @@ export default new Router({
       path: "/surveys/:author",
       name: "survey-history",
       component: () => import("./views/SurveyList.vue")
+    },
+    // 박지환 추가
+    {
+      path: "/survey_test",
+      name: "survey_test",
+      component: () => import("./components/surveyPage/example.vue")
     }
   ]
 });
