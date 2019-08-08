@@ -5,9 +5,6 @@
     <Container2 />
     <Container3 />
     <Container4 />
-    <div class="surveybtn">
-      <div class="btn">설문조사 시작</div>
-    </div>
   </div>
 </template>
 
@@ -22,6 +19,7 @@ import { store } from "../store.js";
 import { mapState, mapActions } from "vuex";
 export default {
   name: "home",
+
   components: {
     Container1,
     Container2,
@@ -38,11 +36,11 @@ export default {
 };
 </script>
 <style scoped>
-.surveybtn {
+.survey-btn {
   display: flex;
   justify-content: center;
 }
-.btn {
+.show-on-scroll {
   text-align: center;
   width: 90%;
   height: 50px;

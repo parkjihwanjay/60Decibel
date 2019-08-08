@@ -1,11 +1,17 @@
 <template>
   <div class="con4">
-    <div class="con4-txt">60데시벨과 함께하는 사람들</div>
-    <div class="underline"></div>
-    <div class="icons">
-      <img class="icon1" src="../../assets/medi.png" />
-      <img class="icon2" src="../../assets/60db.png" />
-      <img class="icon3" src="../../assets/likelion.png" />
+    <div data-aos="fade-up" data-aos-duration="1200">
+      <div class="con4-txt">60데시벨과 함께하는 사람들</div>
+      <div class="flex">
+        <div class="underline"></div>
+      </div>
+    </div>
+    <div data-aos="fade-up" data-aos-duration="1400" data-aos-delay="300">
+      <div class="icons">
+        <img class="icon1" src="../../assets/medi.png" />
+        <img class="icon2" src="../../assets/60db.png" />
+        <img class="icon3" src="../../assets/likelion.png" />
+      </div>
     </div>
   </div>
 </template>
@@ -27,8 +33,12 @@ export default {};
   font-weight: 500;
   font-size: 1.5rem;
 }
+.flex {
+  display: flex;
+  justify-content: center;
+}
 .underline {
-  width: 50%;
+  width: 15rem;
   height: 5vh;
   border-top: 1.5px solid rgba(160, 160, 160, 0.671);
   margin-bottom: 2rem;
