@@ -28,7 +28,7 @@ export default {
 .txt-head-big {
   text-align: center;
   color: #0d4d8d;
-  font-size: 2.2rem;
+  font-size: 1.6rem;
   padding-top: 10%;
   padding-bottom: 3%;
 }
@@ -39,7 +39,7 @@ export default {
 .txt-main {
   text-align: center;
   font-size: 1.05rem;
-  line-height: 160%;
+  line-height: 140%;
 }
 .img-main {
   margin-top: 5%;

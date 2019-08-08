@@ -7,6 +7,7 @@
     </div>
     <div class="txt-body">
       60DB는 청각장애인이 듣지 못하는
+      <br />
       <span class="txt-bold">60db이하의 소리</span>를 채워주는 서비스를 제공합니다.
     </div>
     <!-- <div class="img-main-animation">
@@ -22,7 +23,7 @@ export default {};
 
 <style scoped>
 .container2 {
-  height: 13vh;
+  height: 19vh;
 }
 .txt-head {
   font-size: 1.6rem;
@@ -50,6 +51,7 @@ span {
 .txt-body {
   padding-top: 0.6rem;
   text-align: center;
+  line-height: 140%;
 }
 .icon {
   width: 75px;
