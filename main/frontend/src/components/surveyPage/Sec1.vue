@@ -49,7 +49,7 @@
             <br />
             <br />
             <div class="answers">
-              <div class="answer">
+              <div class="answer animate fadeInRightBig three">
                 <input
                   type="text"
                   v-model="survey_data.symptom_start_less_than_month"
@@ -114,7 +114,7 @@
             <br />
             <br />
             <div class="answers">
-              <div class="answer">
+              <div class="answer animate fadeInRightBig three">
                 <input
                   type="text"
                   v-model="survey_data.symtpom_situation"
@@ -166,6 +166,11 @@ export default {
   box-shadow: none;
   padding: 0.5rem 1.5rem;
 }
+.v-expansion-panel-header {
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: #125b7f;
+}
 .v-expansion-panel-content {
   height: 46vh;
 }
@@ -190,7 +195,7 @@ export default {
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  background-color: #1985bb;
+  background-color: #2592c9;
   border-radius: 7px;
   width: 15rem;
   height: 2.7rem;

@@ -26,10 +26,6 @@
         </a>
         <br />
         <a class="nav-menu">
-          <router-link to="/survey_test">설문조사 시작</router-link>
-        </a>
-        <br />
-        <a class="nav-menu">
           <router-link to="/about">About 60dB</router-link>
         </a>
       </div>
@@ -113,7 +109,7 @@ a:visited {
   border-radius: 5px;
   margin-left: 1.5rem;
   padding: 1px;
-  background: linear-gradient(135deg, #b1bfd8, #6782b4);
+  background: linear-gradient(135deg, #37aec4, #0e587a);
   color: white;
   font-size: 1rem;
   font-weight: 700;
