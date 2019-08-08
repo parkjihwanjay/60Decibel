@@ -271,9 +271,12 @@ export const store = new Vuex.Store({
                 }
             };
             axios
-                .put("http://127.0.0.1:8000/api/profiles/admin/update/", update, config)
+                .put("http://127.0.0.1:8000/api/profileupdate/", update, config)
                 .then(res => {
                     console.log(res);
+                })
+                .catch(error => {
+                    console.log(error);
                 });
         }
     }

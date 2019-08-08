@@ -4,7 +4,7 @@
       <span>현재 이미지</span>
       <img class="thumb" v-bind="profile.avatar" />
       <label>프로필 이미지 변경하기</label>
-
+      <!-- <input type="file" v-model="update.avatar"/> -->
       <br />
       <span>성별을 골라주세요 :</span>
       <label for="male">
@@ -15,7 +15,7 @@
       </label>
       <br />
       <span>생년월일을 입력해주세요</span>
-      <input type="date" v-model="update.birth_date" v-bind:placeholder="profile.birth_date" />
+      <input type="date" v-model="update.birth_date" />
       <br />
       <span>신장을 입력해주세요</span>
       <input type="number" v-model="update.height" v-bind:placeholder="profile.height" />
@@ -156,7 +156,7 @@ export default {
   data() {
     return {
       update: {
-        avatar: null,
+        // avatar: null,
         gender: "",
         birth_date: "",
         height: "",
@@ -183,7 +183,10 @@ export default {
   },
   methods: {
     ...mapActions(["updateProfileInfo"])
-    // this.$store.dispatch("updateProfileInfo", update);
+    // updateProfile(update, owner) {
+    //   console.log(update, owner)
+    //   this.$store.dispatch("updateProfileInfo", update);
+    // }
   },
   created() {
     const userId = this.$route.params.user;

@@ -24,8 +24,6 @@ class ProfileRetrieveAPIView(generics.RetrieveAPIView):
 class ProfileUpdateAPIView(generics.UpdateAPIView):
     serializer_class = ProfileUpdateSerializer
     permission_classes = [IsOwnerOnly]
-    lookup_field = "user"
-
 
     def get_object(self):
         profile_object = self.request.user.profile
