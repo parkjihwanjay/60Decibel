@@ -1,17 +1,23 @@
 <template>
   <div class="cont3">
     <div class="cont3-txt-head">
-      <span>60데시벨</span> 이렇게 사용하세요!
+      <div data-aos="fade-in" data-aos-duration="1500">
+        <span>60데시벨</span> 이렇게 사용하세요!
+      </div>
     </div>
-    <img class="mockup" src="../../assets/White_mockup.png" />
-    <div class="cont3-txt-main">
-      설문조사를 완료하면
-      <span>
-        실제 의료차트와
-        <br />유사한 형식
-      </span>으로 응답 결과가 출력됩니다.
-      <br />현장 진료 시, 환자는 출력된 페이지를 제출하고
-      <br />의사는 환자의 상태를 한눈에 확인할 수 있습니다!
+    <div data-aos="fade-in" data-aos-duration="1300" data-aos-delay="100">
+      <img class="mockup" src="../../assets/White_mockup.png" />
+    </div>
+    <div data-aos="fade-in" data-aos-duration="1300" data-aos-delay="120">
+      <div class="cont3-txt-main">
+        설문조사를 완료하면
+        <span>
+          실제 의료차트와
+          <br />유사한 형식
+        </span>으로 응답 결과가 출력됩니다.
+        <br />현장 진료 시, 환자는 출력된 페이지를 제출하고
+        <br />의사는 환자의 상태를 한눈에 확인할 수 있습니다!
+      </div>
     </div>
   </div>
 </template>

@@ -1,38 +1,82 @@
 <template>
   <div class="profile">
-    <ul>
-      <img v-if="`${profile.avatar}===null`" src="../assets/60db.png" />
-      <img v-else v-bind:src="`${profile.avatar}`" />
-      <li>이름 : {{ profile.name }}</li>
-      <li>성별 : {{ profile.gender }}</li>
-      <li>생년월일 : {{ profile.birth_date }}</li>
-      <li>신장 : {{ profile.height }}</li>
-      <li>체중 : {{ profile.weight }}</li>
-      <br />
-      <li v-if="`${profile.had_checkup}`">{{ profile.had_checkup_true }}년 전에 건강검진을 받았습니다.</li>
-      <li>이전에 {{ profile.diagnosed_disease }}을 진단받았습니다.</li>
-      <li v-if="`${profile.taking_medicine}`">{{ profile.what_medicine }}을 복용중입니다.</li>
-      <li>{{ profile.family_history }}와(과) 같은 가족력이 있습니다.</li>
-      <br />
-      <li v-if="`${profile.drinking}`">매주 {{ profile.drinking_per_week }}병의 술을 마십니다.</li>
-      <li
-        v-if="`${profile.smoking}`"
-      >담배를 {{ profile.how_long_smoking }}년 동안 {{ profile.how_long_smoking }}갑씩 피우고 있습니다.</li>
-      <li v-if="`${ profile.job }`">직업 : {{ profile.job }}</li>
-      <li v-if="`${profile.relevant_data}`">기타 특이사항 : {{ profile.relevant_data }}</li>
-    </ul>
-    <router-link to="/profileupdate">프로필 수정하기</router-link>
+    <navbar class="nav" />
+    <prof-header class="header" />
+    <prof-body1 class="body1" />
+    <prof-body2 class="body2" />
+    <prof-body3 class="body3" />
+    <prof-footer class="footer" />
   </div>
 </template>
 <script>
-import { mapState } from "vuex";
+import Navbar from "../components/homePage/Navbar.vue";
+import ProfHeader from "../components/profilePage/ProfileHeader.vue";
+import ProfBody1 from "../components/profilePage/ProfileBody.vue";
+import ProfBody2 from "../components/profilePage/ProfileBody2.vue";
+import ProfBody3 from "../components/profilePage/ProfileBody3.vue";
+import ProfFooter from "../components/profilePage/ProfileFooter.vue";
+
 export default {
-  computed: {
-    ...mapState(["profile", "userInfo"])
-  },
-  created() {
-    const userId = this.$route.params.user;
-    this.$store.dispatch("getProfileInfo", userId);
+  components: {
+    Navbar,
+    ProfHeader,
+    ProfBody1,
+    ProfBody2,
+    ProfBody3,
+    ProfFooter
   }
 };
 </script>
+<style scoped>
+/* nav */
+
+.nav /deep/ .navhead {
+  padding: 0 1rem;
+  padding-top: 1rem;
+  border-bottom: none;
+}
+.nav /deep/ .navhead-icon:hover {
+  background-color: transparent;
+}
+.nav /deep/ .fa-bars {
+  color: rgb(255, 255, 255);
+}
+.nav /deep/ .navhead-brand-logo {
+  content: url("../assets/home.png");
+  width: 1.5rem;
+  height: 1.5rem;
+  margin-left: 0.6rem;
+}
+
+/* layout */
+.profile {
+  background: linear-gradient(-45deg, #ea5455, #feb692);
+}
+.header {
+  background-color: transparent;
+  width: 100%;
+  height: 28rem;
+}
+.body1 {
+  background-color: white;
+  border-bottom: 1px solid rgb(158, 158, 158);
+  width: 100%;
+  height: 8rem;
+}
+.body2 {
+  background-color: darkolivegreen;
+  width: 100%;
+  height: 12rem;
+}
+.body3 {
+  background-color: darkgrey;
+  width: 100%;
+  height: 12rem;
+}
+.footer {
+  background-color: darkorange;
+  width: ;
+  height: 8rem;
+}
+</style>
+
