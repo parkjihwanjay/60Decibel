@@ -1,23 +1,153 @@
 <template>
   <div class="section">
-    <v-expansion-panels v-model="expand" accordion class="expansion">
-      <v-expansion-panel class="panel" v-for="(item,i) in 5" :key="i">
-        <v-expansion-panel-header class="header animate fadeInDown two">
-          Item
-          <template v-slot:actions>
-            <v-icon></v-icon>
-          </template>
-        </v-expansion-panel-header>
-        <v-expansion-panel-content class="content animate fadeInUp one">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-          <br />
-          <br />
-          <div class="ans animate fadeInRightBig three"></div>
-          <div class="ans animate fadeInRightBig four"></div>
-          <div class="ans animate fadeInRightBig five"></div>
-        </v-expansion-panel-content>
-      </v-expansion-panel>
-    </v-expansion-panels>
+    <p class="question-header">증상의 정도</p>
+    <div class="question-body">
+      <v-expansion-panels v-model="expand" accordion class="expansion">
+        <v-expansion-panel class="q1-1">
+          <v-expansion-panel-header class="header animate fadeInDown two">
+            Q1.
+            <template v-slot:actions>
+              <v-icon></v-icon>
+            </template>
+          </v-expansion-panel-header>
+          <v-expansion-panel-content class="content animate fadeInUp one">
+            <p class="question">통증의 양상</p>
+            <br />
+            <br />
+            <div class="answer">
+              <input
+                type="checkbox"
+                class="ans animate fadeInRightBig three"
+                v-model="survey_data.pain_character"
+                value="crushing"
+                placeholder="여기를 수정해보세요"
+              />쥐어짜듯
+            </div>
+            <br />
+            <div class="answer">
+              <input
+                type="checkbox"
+                class="ans animate fadeInRightBig four"
+                v-model="survey_data.pain_character"
+                value="burning"
+                placeholder="여기를 수정해보세요"
+              />
+              타는듯
+            </div>
+            <br />
+            <div class="answer">
+              <input
+                type="checkbox"
+                class="ans animate fadeInRightBig five"
+                v-model="survey_data.pain_character"
+                value="stabbing"
+                placeholder="여기를 수정해보세요"
+              />
+              베이듯
+            </div>
+            <br />
+            <div class="answer">
+              <input
+                type="checkbox"
+                class="ans animate fadeInRightBig six"
+                v-model="survey_data.pain_character"
+                value="splitting"
+                placeholder="여기를 수정해보세요"
+              />찢어지듯
+            </div>
+            <br />
+          </v-expansion-panel-content>
+        </v-expansion-panel>
+        <v-expansion-panel class="q1-2">
+          <v-expansion-panel-header class="header animate fadeInDown two">
+            Q2.
+            <template v-slot:actions>
+              <v-icon></v-icon>
+            </template>
+          </v-expansion-panel-header>
+          <v-expansion-panel-content class="content animate fadeInUp one">
+            <p class="question">통증점수</p>
+            <br />
+            <br />
+            <div class="answer">
+              <input
+                type="range"
+                class="ans animate fadeInRightBig three"
+                min="0"
+                max="10"
+                v-model="survey_data.pain_score"
+                placeholder="여기를 수정해보세요"
+              />
+            </div>
+          </v-expansion-panel-content>
+        </v-expansion-panel>
+        <v-expansion-panel class="q1-2">
+          <v-expansion-panel-header class="header animate fadeInDown two">
+            Q2.
+            <template v-slot:actions>
+              <v-icon></v-icon>
+            </template>
+          </v-expansion-panel-header>
+          <v-expansion-panel-content class="content animate fadeInUp one">
+            <p class="question">통증이 점점 심해지나요?</p>
+            <br />
+            <br />
+            <div class="answer">
+              <input
+                type="radio"
+                v-model="survey_data.pain_worse"
+                class="ans animate fadeInRightBig three"
+                value="True"
+                placeholder="여기를 수정해보세요"
+              />예
+            </div>
+            <br />
+            <div class="answer">
+              <input
+                type="radio"
+                v-model="survey_data.pain_worse"
+                class="ans animate fadeInRightBig four"
+                value="False"
+              />아니오
+            </div>
+            <br />
+          </v-expansion-panel-content>
+        </v-expansion-panel>
+        <v-expansion-panel class="q1-3">
+          <v-expansion-panel-header class="header animate fadeInDown two">
+            Q3.
+            <template v-slot:actions>
+              <v-icon></v-icon>
+            </template>
+          </v-expansion-panel-header>
+          <v-expansion-panel-content class="content animate fadeInUp one">
+            <p class="question">이전에도 비슷한 통증이 있던적이 있나요?</p>
+            <br />
+            <br />
+            <div class="answer">
+              <input
+                type="radio"
+                v-model="survey_data.pain_experience"
+                class="ans animate fadeInRightBig three"
+                value="True"
+                placeholder="여기를 수정해보세요"
+              />예
+            </div>
+            <br />
+            <div class="answer">
+              <input
+                type="radio"
+                v-model="survey_data.pain_experience"
+                class="ans animate fadeInRightBig four"
+                value="False"
+                placeholder="여기를 수정해보세요"
+              />아니오
+            </div>
+            <br />
+          </v-expansion-panel-content>
+        </v-expansion-panel>
+      </v-expansion-panels>
+    </div>
     <div class="buttons">
       <router-link :to="{name:'sec3'}">이전</router-link>
       <router-link :to="{name:'sec5'}">다음</router-link>
@@ -26,10 +156,17 @@
 </template>
 
 <script>
+import { mapState, mapActions } from "vuex";
 export default {
   data() {
     return {
-      expand: 0
+      expand: 0,
+      survey_data: {
+        pain_worse: "",
+        pain_experience: "",
+        pain_character: [],
+        pain_score: ""
+      }
     };
   }
 };
@@ -47,14 +184,12 @@ export default {
   height: 100vh;
 }
 .ans {
-  width: 90%;
-  height: 30px;
   background-color: #cecece;
   margin: 5px auto;
 }
 .buttons {
   display: flex;
-   justify-content: space-between;
+  justify-content: space-between;
   align-items: center;
   position: absolute;
   bottom: 0;

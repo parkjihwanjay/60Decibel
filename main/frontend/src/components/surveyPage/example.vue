@@ -296,6 +296,7 @@
               />
             </v-expansion-panel-content>
           </v-expansion-panel>
+
           <v-expansion-panel class="q1-2">
             <v-expansion-panel-header class="header animate fadeInDown two">
               Q2.
@@ -1083,7 +1084,7 @@
         </v-expansion-panel>
       </v-expansion-panels>
     </div>
-    
+
     <input type="submit" class="button" name="submit" @click="survey(survey_data)" value="제출" />
   </div>
 </template>
@@ -1094,41 +1095,40 @@ export default {
   name: "scroll",
   data() {
     return {
-
       survey_data: {
-        "symptom_start" : "",
-        "symptom_start_less_than_month" : "",
-        "fast_or_slow" : "",
-        "symtpom_situation": "",
-        "symtpom_location": [],
-        "location_move": "",
-        "location_move_how": "",
-        "pain_spread": "",
-        "pain_spread_where": "",
-        "pain_duration": "",
-        "pain_repeated": "",
-        "pain_how_often_day": "",
-        "pain_how_often_many": "",
-        "pain_worse": "",
-        "pain_experience": "",
-        "pain_character": [],
-        "pain_score": "",
-        "associated_symptom_digestive": [],
-        "associated_symptom_circulatory": [],
-        "associated_symptom_gynecology": [],
-        "associated_symptom_whole_body": [],
-        "associated_symptom_urinary": [],
-        "associated_symptom_others": "",
-        "factor": [],
-        "other_factor": "",
-        "abdomen_relevant": [],
+        symptom_start: "",
+        symptom_start_less_than_month: "",
+        fast_or_slow: "",
+        symtpom_situation: "",
+        symtpom_location: [],
+        location_move: "",
+        location_move_how: "",
+        pain_spread: "",
+        pain_spread_where: "",
+        pain_duration: "",
+        pain_repeated: "",
+        pain_how_often_day: "",
+        pain_how_often_many: "",
+        pain_worse: "",
+        pain_experience: "",
+        pain_character: [],
+        pain_score: "",
+        associated_symptom_digestive: [],
+        associated_symptom_circulatory: [],
+        associated_symptom_gynecology: [],
+        associated_symptom_whole_body: [],
+        associated_symptom_urinary: [],
+        associated_symptom_others: "",
+        factor: [],
+        other_factor: "",
+        abdomen_relevant: []
       }
     };
   },
 
   methods: {
     onItemChanged() {},
-    ...mapActions(["survey"]),
+    ...mapActions(["survey"])
   }
 };
 </script>

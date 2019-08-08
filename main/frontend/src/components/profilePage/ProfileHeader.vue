@@ -20,6 +20,29 @@
         </p>
       </div>
     </div>
+    <div class="contents2">
+      <div class="box">
+        <div class="icon">
+          <img src="../../assets/love1.png" />
+          <p class="box-head">성별</p>
+        </div>
+        <p class="box-body">{{ profile.gender }}</p>
+      </div>
+      <div class="box">
+        <div class="icon">
+          <img src="../../assets/ruler1.png" />
+          <p class="box-head">신장</p>
+        </div>
+        <p class="box-body">{{ profile.height }}cm</p>
+      </div>
+      <div class="box">
+        <div class="icon">
+          <img src="../../assets/scale1.png" />
+          <p class="box-head">체중</p>
+        </div>
+        <p class="box-body">{{profile.weight }}kg</p>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -39,6 +62,10 @@ export default {
 <style scoped>
 .prof-header {
   color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
 }
 
 .contents {
@@ -46,7 +73,7 @@ export default {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100%;
+  height: 70%;
 }
 .prof-img {
   display: flex;
@@ -64,7 +91,7 @@ export default {
 }
 .prof-name {
   color: white;
-  font-size: 1.7rem;
+  font-size: 1.9rem;
   margin-top: 3rem;
 }
 .prof-JobBirth {
@@ -74,5 +101,41 @@ export default {
 .prof-intro {
   margin-top: 1rem;
   font-size: 0.9rem;
+}
+
+.contents2 {
+  display: flex;
+  justify-content: space-around;
+  width: 90%;
+  height: 20%;
+}
+.box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  margin: 0 1rem;
+}
+.icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 0.5rem;
+}
+img {
+  width: 20px;
+  height: 20px;
+  margin-bottom: 0.2rem;
+}
+.box-head {
+  width: 3rem;
+  color: #ffffff;
+  font-size: 0.9em;
+  text-align: center;
+}
+.box-body {
+  color: rgb(196, 30, 99);
+  font-size: 1.6rem;
 }
 </style>

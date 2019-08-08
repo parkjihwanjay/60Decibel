@@ -9,15 +9,18 @@ axios.defaults.xsrfCookieName = "csrftoken";
 axios.defaults.xsrfHeaderName = "X-CSRFToken";
 
 const enhanceAccessToeken = () => {
+
     const { access_token } = localStorage;
     if (!access_token) return;
     axios.defaults.headers.common["Authorization"] =
         localStorage.getItem["access_token"];
+
 };
 enhanceAccessToeken();
 
 // export default new Vuex.Store({
 export const store = new Vuex.Store({
+
     state: {
         userInfo: null,
         isLogin: false,
@@ -92,6 +95,7 @@ export const store = new Vuex.Store({
         logout({ commit }) {
             commit("logout");
             axios.defaults.headers.common["Authorization"] = undefined;
+
 
             router.push({ name: "home" });
         },
@@ -221,6 +225,7 @@ export const store = new Vuex.Store({
             let email = "";
             for (i = 0; i < 5; i++)
                 email += possible.charAt(Math.floor(Math.random() * possible.length));
+
 
             let password1 = "60dbfighithing!!";
             let password2 = password1;

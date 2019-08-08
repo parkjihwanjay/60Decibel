@@ -3,6 +3,7 @@ from datetime import date
 from django.core.validators import MinValueValidator, MaxValueValidator
 from users.models import CustomUser
 
+
 class Profile(models.Model):
     user = models.OneToOneField(
         CustomUser, on_delete=models.CASCADE, related_name='profile')
@@ -36,6 +37,7 @@ class Profile(models.Model):
     # 과거력
 
     # 이전에 건강검진을 받은 적이 있나요?
+
     had_checkup = models.CharField(max_length=30, default="", blank=True, null=True)
 
     # 몇 년 전에 받았나요?
@@ -111,6 +113,7 @@ class Profile(models.Model):
     #                                                              "기름진 음식을 많이 먹음"), (irregular_sleep, "수면시간 불규칙")
     # )
     relevant_data = models.CharField(
+
         max_length=30, default="", blank=True, null=True)
 
     def __str__(self):

@@ -2,7 +2,6 @@
   <div class="profile">
     <navbar class="nav" />
     <prof-header class="header" />
-    <prof-body1 class="body1" />
     <prof-body2 class="body2" />
     <prof-body3 class="body3" />
     <prof-footer class="footer" />
@@ -47,6 +46,9 @@ export default {
   height: 1.5rem;
   margin-left: 0.6rem;
 }
+.nav /deep/ .navhead-start {
+  display: none;
+}
 
 /* layout */
 .profile {
@@ -55,13 +57,13 @@ export default {
 .header {
   background-color: transparent;
   width: 100%;
-  height: 28rem;
+  height: 37rem;
 }
 .body1 {
   background-color: white;
   border-bottom: 1px solid rgb(158, 158, 158);
   width: 100%;
-  height: 8rem;
+  height: 10rem;
 }
 .body2 {
   background-color: darkolivegreen;
