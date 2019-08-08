@@ -55,7 +55,7 @@ INSTALLED_APPS = [
 
     'crispy_forms',
     'webpack_loader',
-    'corsheaders',
+    'corsheaders'
 ]
 
 MIDDLEWARE = [
@@ -67,7 +67,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    
+
 ]
 
 ROOT_URLCONF = 'main.urls'
@@ -203,7 +203,7 @@ JWT_AUTH = {
     # This is an instance of Python's datetime.timedelta. This will be added to datetime.utcnow() to set the expiration time.
     # Default is datetime.timedelta(seconds=300)(5 minutes).
     'JWT_EXPIRATION_DELTA': datetime.timedelta(hours=1),
-    
+
     'JWT_ALLOW_REFRESH': True,
     'JWT_AUTH_HEADER_PREFIX': 'JWT',
 
@@ -222,7 +222,7 @@ JWT_AUTH = {
     'JWT_RESPONSE_PAYLOAD_HANDLER':
     'rest_framework_jwt.utils.jwt_response_payload_handler',
 
-    }
+}
 
 REST_USE_JWT = True
 

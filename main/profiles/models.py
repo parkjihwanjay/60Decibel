@@ -21,15 +21,13 @@ class Profile(models.Model):
     gender = models.CharField(
         max_length=6, choices=gender_choices)
 
-    birth_date = models.DateField(default=date.today)
+    birth_date = models.CharField(max_length=30, default=date.today)
 
-    height = models.PositiveSmallIntegerField(default=160,
-        validators=[MaxValueValidator(250)])
+    height = models.CharField(max_length=30, default=160)
     # 5.인우 : validator는 나중에 좀 더 손봐야 할 것 같습니다. 장난으로 키 막 300 이렇게 적을까봐 일단
     # 넣어봤어요.
 
-    weight = models.PositiveSmallIntegerField(default=60,
-        validators=[MaxValueValidator(200)])
+    weight = models.CharField(max_length=30, default=60)
     # 6.인우 : validator는 나중에 좀 더 손봐야 할 것 같습니다. 장난으로 몸무게 막 300 이렇게 적을까봐 일단
     # 넣어봤어요.
 
@@ -38,7 +36,7 @@ class Profile(models.Model):
     # 과거력
 
     # 이전에 건강검진을 받은 적이 있나요?
-    had_checkup = models.BooleanField(default=False)
+    had_checkup = models.CharField(max_length=30, default=False)
 
     # 몇 년 전에 받았나요?
     under_one = "1년 이내"
@@ -66,7 +64,7 @@ class Profile(models.Model):
     diagnosed_disease = models.CharField(max_length=3, choices=disease_list)
 
     # 드시고 계시는 약이 있나요?
-    taking_medicine = models.BooleanField(default=False)
+    taking_medicine = models.CharField(max_length=30, default=False)
 
     # 드시고 계신 약물을 알려주세요
     what_medicine = models.CharField(max_length=20, blank=True, null=True)
@@ -78,10 +76,11 @@ class Profile(models.Model):
     # 사회력
 
     # 술을 드시나요?
-    drinking = models.BooleanField(default=False)
+    drinking = models.CharField(max_length=30, default=False)
 
     # 매주 몇 병 드시나요?
-    drinking_per_week = models.PositiveSmallIntegerField(blank=True, null=True)
+    drinking_per_week = models.CharField(
+        max_length=30, blank=True, null=True)
 
     # 흡연하시나요?
     smoking_true = "예"
@@ -93,10 +92,10 @@ class Profile(models.Model):
     smoking = models.CharField(max_length=3, choices=do_you_smoke)
 
     # 몇년째 피고 계신가요?
-    how_long_smoking = models.PositiveSmallIntegerField(default=0)
+    how_long_smoking = models.CharField(max_length=30, default=0)
 
     # 몇 갑씩 피시나요
-    how_much_smoking = models.PositiveSmallIntegerField(default=0)
+    how_much_smoking = models.CharField(max_length=30, default=0)
 
     # 직업이 무엇인가요?
     job = models.CharField(max_length=20, blank=True, null=True)

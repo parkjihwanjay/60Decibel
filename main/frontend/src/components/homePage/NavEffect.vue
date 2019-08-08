@@ -1,4 +1,4 @@
-<<script>
+<script>
 export default {
   name: `TransitionExpand`,
   functional: true,

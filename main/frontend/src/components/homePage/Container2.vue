@@ -2,44 +2,52 @@
   <div class="container2">
     <div class="cont2-txt">
       <div class="cont2-txt-head">
-        <span class="span1">언제 어디서든</span> 간편한 설문으로
-        <br />건강을 관리하세요.
+        <div data-aos="fade-up" data-aos-duration="1000" data-aos-delay="800">
+          <span class="span1">언제 어디서든</span> 간편한 설문으로
+          <br />건강을 관리하세요.
+        </div>
       </div>
     </div>
-    <div class="cont2-icons">
-      <div class="icon-box">
-        <img class="icon" src="../../assets/survey.png" />
-        <p class="icon-head">
-          모바일
-          <br />사전설문으로
-        </p>
-        <p class="icon-main"></p>
-      </div>
-      <div class="icon-box">
-        <img class="icon" src="../../assets/thumbs.png" />
-        <p class="icon-head">
-          진료의
-          <br />질은
-          <span>높이고!</span>
-        </p>
-        <p class="icon-main"></p>
-      </div>
-      <div class="icon-box">
-        <img class="icon" src="../../assets/patient.png" />
-        <p class="icon-head">
-          소통의
-          <br />불편함은
-          <span>줄이고!</span>
-        </p>
-        <p class="icon-main"></p>
+    <div data-aos="fade-up" data-aos-duration="800" data-aos-delay="200">
+      <div class="cont2-icons">
+        <div class="icon-box">
+          <img class="icon" src="../../assets/survey.png" />
+          <p class="icon-head">
+            모바일
+            <br />사전설문으로
+          </p>
+          <p class="icon-main"></p>
+        </div>
+        <div class="icon-box">
+          <img class="icon" src="../../assets/thumbs.png" />
+          <p class="icon-head">
+            진료의
+            <br />질은
+            <span>높이고!</span>
+          </p>
+          <p class="icon-main"></p>
+        </div>
+        <div class="icon-box">
+          <img class="icon" src="../../assets/patient.png" />
+          <p class="icon-head">
+            소통의
+            <br />불편함은
+            <span>줄이고!</span>
+          </p>
+          <p class="icon-main"></p>
+        </div>
       </div>
     </div>
   </div>
 </template>
 <script>
+import Container1 from "./Container1";
 export default {
   data() {
     return {};
+  },
+  components: {
+    Container1
   }
 };
 </script>
