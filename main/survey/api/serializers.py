@@ -132,8 +132,8 @@ class StomachacheSurveySerializer(serializers.ModelSerializer):
         model = StomachacheSurvey
         fields = "__all__"
 
-    # def get_created_at(self, instance):
-    #     return instance.created_at.strftime("%Y %B %d")
+    def get_created_at(self, instance):
+        return instance.created_at.strftime("%Y %B %d")
 
     def get_author(self, instance):
         return str(instance.author)
@@ -153,5 +153,5 @@ class SurveyMetaSerializer(serializers.ModelSerializer):
                    "drinking_per_week", "smoking", "how_long_smoking", 
                    "how_much_smoking", "job", "relevant_data"]
 
-    # def get_created_at(self, instance):
-    #     return instance.created_at.strftime("%Y %B %d")
+    def get_created_at(self, instance):
+        return instance.created_at.strftime("%Y %B %d")

@@ -87,68 +87,68 @@ export default new Router({
                     component: () =>
                         import("./components/surveyPage/Sec5.vue")
                 },
-                {
-                    path: "/sec6",
-                    name: "sec6",
-                    meta: {
-                        page: 6
-                    },
-                    component: () =>
-                        import("./components/surveyPage/Sec6.vue")
-                }
+                // {
+                //     path: "/sec6",
+                //     name: "sec6",
+                //     meta: {
+                //         page: 6
+                //     },
+                //     component: () =>
+                //         import("./components/surveyPage/Sec6.vue")
+                // }
             ]
         },
         {
             path: "/result",
             name: "result",
-            // beforeEnter: requireAuth(),
-            component: () =>
-                import("./views/Result.vue")
-        },
-        {
-            path: "/login",
-            name: "login",
-            component: () =>
-                import("./views/Login.vue")
-        },
-        {
-            path: "/signup",
-            name: "signup",
-            component: () =>
-                import("./views/Signup.vue")
-        },
-        {
-            path: "/profileupdate",
-            name: "profileupdate",
-            // beforeEnter: requireAuth,
-            component: () =>
-                import("./views/ProfileUpdate.vue")
-        },
-        {
-            path: "/profiles/:user",
-            name: "profiles",
-            // beforeEnter: requireAuth,
-            component: () =>
-                import("./views/Profiles.vue")
-        },
-        {
-            path: "/stomach/:id",
-            name: "stomach-retrieve",
-            component: () =>
-                import("./views/Result.vue")
-        },
-        {
-            path: "/surveys/:author",
-            name: "survey-history",
-            component: () =>
-                import("./views/SurveyList.vue")
-        },
-        // 박지환 추가
-        {
-            path: "/survey_test",
-            name: "survey_test",
-            component: () =>
-                import("./components/surveyPage/example.vue")
-        },
+        // beforeEnter: requireAuth(),
+        component: () =>
+            import("./views/Result.vue")
+    },
+    {
+        path: "/login",
+        name: "login",
+        component: () =>
+            import("./views/Login.vue")
+    },
+    {
+        path: "/signup",
+        name: "signup",
+        component: () =>
+            import("./views/Signup.vue")
+    },
+    {
+        path: "/profileupdate",
+        name: "profileupdate",
+        // beforeEnter: requireAuth,
+        component: () =>
+            import("./views/ProfileUpdate.vue")
+    },
+    {
+        path: "/profiles",
+        name: "profiles",
+        // beforeEnter: requireAuth,
+        component: () =>
+            import("./views/Profiles.vue")
+    },
+    {
+        path: "/stomach/:id",
+        name: "stomach-retrieve",
+        component: () =>
+            import("./views/Result.vue")
+    },
+    {
+        path: "/surveys/:author",
+        name: "survey-history",
+        component: () =>
+            import("./views/SurveyList.vue")
+    },
+    // 박지환 추가
+    {
+        path: "/survey_test",
+        name: "survey_test",
+        component: () =>
+            import("./components/surveyPage/example.vue")
+    },
     ]
 });

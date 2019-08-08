@@ -4,7 +4,7 @@
       <span>현재 이미지</span>
       <img class="thumb" v-bind="profile.avatar" />
       <label>프로필 이미지 변경하기</label>
-
+      <!-- <input type="file" v-model="update.avatar"/> -->
       <br />
       <span>성별을 골라주세요 :</span>
       <label for="male">
@@ -15,7 +15,7 @@
       </label>
       <br />
       <span>생년월일을 입력해주세요</span>
-      <input type="date" v-model="update.birth_date" v-bind:placeholder="profile.birth_date" />
+      <input type="date" v-model="update.birth_date" />
       <br />
       <span>신장을 입력해주세요</span>
       <input type="number" v-model="update.height" v-bind:placeholder="profile.height" />
@@ -39,22 +39,18 @@
       </label>
       <br />
       <label for="had_long_before">몇 년 전에 받았나요?</label>
-      <select name="how_long_before" v-model="update.had_checkup_true" id="had_long_before">
-        <option value="under_one">1년 이내</option>
-        <option value="one_to_three">1~3년</option>
-        <option value="three_to_five">3~5년</option>
-        <option value="five_to_ten">5~10년</option>
-        <option value="over_ten">10년 이상</option>
-      </select>
+      <input type="radio" v-model="update.had_checkup_true" value="1년 이내" />1년 이내
+      <input type="radio" v-model="update.had_checkup_true" value="1-3년" />1~3년
+      <input type="radio" v-model="update.had_checkup_true" value="3-5년" />3~5년
+      <input type="radio" v-model="update.had_checkup_true" value="5-10년" />5~10년
+      <input type="radio" v-model="update.had_checkup_true" value="10년 이상" />10년 이상
       <br />
       <label for="disease_list">이전에 진단받은 병이 있나요?</label>
-      <select name="disease_list" v-model="update.diagnosed_disease" id="disease_list">
-        <option value="high_blood_pressure">고혈압</option>
-        <option value="hepatitis">간염</option>
-        <option value="tuberculosis">결핵</option>
-        <option value="none">없음</option>
-        <option value="etc">기타</option>
-      </select>
+      <input type="checkbox" v-model="update.diagnosed_disease" value="고혈압" />고혈압
+      <input type="checkbox" v-model="update.diagnosed_disease" value="간염" />간염
+      <input type="checkbox" v-model="update.diagnosed_disease" value="결핵" />결핵
+      <input type="checkbox" v-model="update.diagnosed_disease" value="없음" />없음
+      <input type="checkbox" v-model="update.diagnosed_disease" value="기타" />기타
       <br />
       <span>드시고 계시는 약이 있나요?</span>
       <label for="yes">
@@ -80,13 +76,11 @@
       <input type="text" v-model="update.what_medicine" v-bind:placeholder="profile.what_medicine" />
       <br />
       <label for="family_disease">가족분들이 진단받은 병이 있나요?</label>
-      <select name="family_disease" v-model="update.family_history" id="family_disease">
-        <option value="high_blood_pressure">고혈압</option>
-        <option value="hepatitis">간염</option>
-        <option value="tuberculosis">결핵</option>
-        <option value="none">없음</option>
-        <option value="etc">기타</option>
-      </select>
+      <input type="checkbox" v-model="update.family_history" value="고혈압" />고혈압
+      <input type="checkbox" v-model="update.family_history" value="간염" />간염
+      <input type="checkbox" v-model="update.family_history" value="결핵" />결핵
+      <input type="checkbox" v-model="update.family_history" value="없음" />없음
+      <input type="checkbox" v-model="update.family_history" value="기타" />기타
       <br />
       <br />
       <span>사회력</span>
@@ -133,12 +127,10 @@
       <input type="text" v-model="update.job" v-bind:placeholder="profile.job" />
       <br />
       <label for="bad_habits">다음 중 해당되는 사항에 모두 체크해주세요</label>
-      <select name="bad_habits" v-model="update.relevant_data" id="bad_habits">
-        <option value="stress">스트레스를 많이 받는 편</option>
-        <option value="irregular_meals">식사 불규칙</option>
-        <option value="greasy_meals">기름진 음식을 많이 먹음</option>
-        <option value="irregular_sleep">수면시간 불규칙</option>
-      </select>
+      <input type="checkbox" v-model="update.relevant_data" value="스트레스를 많이 받는 편" />스트레스를 많이 받는 편
+      <input type="checkbox" v-model="update.relevant_data" value="식사 불규칙" />식사 불규칙
+      <input type="checkbox" v-model="update.relevant_data" value="기름진 음식을 많이 먹음" />기름진 음식을 많이 먹음
+      <input type="checkbox" v-model="update.relevant_data" value="수면시간 불규칙" />수면시간 불규칙
       <br />
     </form>
     <input
@@ -156,24 +148,24 @@ export default {
   data() {
     return {
       update: {
-        avatar: null,
+        // avatar: null,
         gender: "",
         birth_date: "",
         height: "",
         weight: "",
         name: "",
         had_checkup: "",
-        had_checkup_true: null,
-        diagnosed_disease: "",
+        had_checkup_true: "",
+        diagnosed_disease: [],
         taking_medicine: "",
-        what_medicine: null,
-        family_history: "",
+        what_medicine: "",
+        family_history: [],
         drinking: "",
-        drinking_per_week: null,
+        drinking_per_week: "",
         smoking: "",
         how_long_smoking: "",
         how_much_smoking: "",
-        job: null,
+        job: "",
         relevant_data: []
       }
     };
@@ -183,11 +175,9 @@ export default {
   },
   methods: {
     ...mapActions(["updateProfileInfo"])
-    // this.$store.dispatch("updateProfileInfo", update);
   },
   created() {
-    const userId = this.$route.params.user;
-    this.$store.dispatch("getProfileInfo", userId);
+    this.$store.dispatch("getProfileInfo");
   }
 };
 </script>
