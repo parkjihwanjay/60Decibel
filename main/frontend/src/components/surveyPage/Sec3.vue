@@ -5,7 +5,7 @@
       <v-expansion-panels v-model="expand" accordion class="expansion">
         <v-expansion-panel class="q1-2">
           <v-expansion-panel-header class="header animate fadeInDown two">
-            Q2.
+            Q1.
             <template v-slot:actions>
               <v-icon></v-icon>
             </template>
@@ -14,54 +14,56 @@
             <p class="question">통증이 얼마나 지속되나요?</p>
             <br />
             <br />
-            <div class="answer">
-              <input
-                type="radio"
-                v-model="survey_data.pain_duration"
-                value="lest_than_10m"
-                class="ans animate fadeInRightBig three"
-                placeholder="여기를 수정해보세요"
-              />10분 미만
-            </div>
-            <br />
-            <div class="answer">
-              <input
-                type="radio"
-                v-model="survey_data.pain_duration"
-                value="from_10m_to_1h"
-                class="ans animate fadeInRightBig four"
-                placeholder="여기를 수정해보세요"
-              />
-              10분-1시간
-            </div>
-            <br />
-            <div class="answer">
-              <input
-                type="radio"
-                v-model="survey_data.pain_duration"
-                value="more_than_1h"
-                class="ans animate fadeInRightBig five"
-                placeholder="여기를 수정해보세요"
-              />
-              1시간이상
-            </div>
-            <br />
-            <div class="answer">
-              <input
-                type="radio"
-                v-model="survey_data.pain_duration"
-                value="all_day"
-                class="ans animate fadeInRightBig six"
-                placeholder="여기를 수정해보세요"
-              />
-              하루종일
+            <div class="answers">
+              <div class="answer animate fadeInRightBig three">
+                <input
+                  type="radio"
+                  v-model="survey_data.pain_duration"
+                  value="lest_than_10m"
+                  class="ans"
+                  placeholder="여기를 수정해보세요"
+                />10분 미만
+              </div>
+              <br />
+              <div class="answer animate fadeInRightBig four">
+                <input
+                  type="radio"
+                  v-model="survey_data.pain_duration"
+                  value="from_10m_to_1h"
+                  class="ans"
+                  placeholder="여기를 수정해보세요"
+                />
+                10분-1시간
+              </div>
+              <br />
+              <div class="answer animate fadeInRightBig five">
+                <input
+                  type="radio"
+                  v-model="survey_data.pain_duration"
+                  value="more_than_1h"
+                  class="ans"
+                  placeholder="여기를 수정해보세요"
+                />
+                1시간이상
+              </div>
+              <br />
+              <div class="answer animate fadeInRightBig six">
+                <input
+                  type="radio"
+                  v-model="survey_data.pain_duration"
+                  value="all_day"
+                  class="ans"
+                  placeholder="여기를 수정해보세요"
+                />
+                하루종일
+              </div>
             </div>
             <br />
           </v-expansion-panel-content>
         </v-expansion-panel>
         <v-expansion-panel class="q1-3">
           <v-expansion-panel-header class="header animate fadeInDown two">
-            Q3.
+            Q2.
             <template v-slot:actions>
               <v-icon></v-icon>
             </template>
@@ -70,37 +72,42 @@
             <p class="question">통증이 주기적으로 있나요?</p>
             <br />
             <br />
-            <div class="answer">
-              <input
-                type="radio"
-                v-model="survey_data.pain_repeated"
-                class="ans animate fadeInRightBig three"
-                value="True"
-                placeholder="여기를 수정해보세요"
-              />반복됩니다.
-            </div>
-            <br />
-            <div class="answer">
-              <input
-                type="radio"
-                v-model="survey_data.pain_repeated"
-                class="ans animate fadeInRightBig four"
-                value="False"
-                placeholder="여기를 수정해보세요"
-              />단발성입니다
+            <div class="answers">
+              <div class="answer animate fadeInRightBig three">
+                <input
+                  type="radio"
+                  v-model="survey_data.pain_repeated"
+                  class="ans"
+                  value="True"
+                  placeholder="여기를 수정해보세요"
+                />반복됩니다.
+              </div>
+              <br />
+              <div class="answer animate fadeInRightBig four">
+                <input
+                  type="radio"
+                  v-model="survey_data.pain_repeated"
+                  class="ans"
+                  value="False"
+                  placeholder="여기를 수정해보세요"
+                />단발성입니다
+              </div>
             </div>
             <br />
           </v-expansion-panel-content>
         </v-expansion-panel>
         <v-expansion-panel class="q1-1">
-          <v-expansion-panel-header class="header animate fadeInDown two">
-            Q1.
+          <v-expansion-panel-header
+            class="header animate fadeInDown two"
+            v-if="survey_data.pain_repeated==='True'"
+          >
+            &nbsp;&nbsp;Q2-1.
             <template v-slot:actions>
               <v-icon></v-icon>
             </template>
           </v-expansion-panel-header>
           <v-expansion-panel-content class="content animate fadeInUp one">
-            <p class="question">통증의 빈도는 어떻게 되세요?</p>
+            <p class="question">반복되는 통증의 빈도는 어느정도 인가요?</p>
             <br />
             <br />통증의 빈도는
             <div class="pain-frequency">
@@ -134,82 +141,94 @@
             </template>
           </v-expansion-panel-header>
           <v-expansion-panel-content class="content animate fadeInUp one">
-            <p class="question">증상 후 달라진 요인이 있나요</p>
+            <p class="question">증상 후 통증이 심화되나요?</p>
             <br />
             <br />
-            <div class="answer">
-              <input
-                type="checkbox"
-                class="ans animate fadeInRightBig three"
-                v-model="survey_data.factor"
-                value="after meal"
-                placeholder="여기를 수정해보세요"
-              />식사후 심해짐
-            </div>
-            <br />
-            <div class="answer">
-              <input
-                type="checkbox"
-                class="ans animate fadeInRightBig three"
-                v-model="survey_data.factor"
-                value="no meal"
-                placeholder="여기를 수정해보세요"
-              />공복에심해짐
-            </div>
-            <br />
-            <div class="answer">
-              <input
-                type="checkbox"
-                class="ans animate fadeInRightBig three"
-                v-model="survey_data.factor"
-                value="after alchol"
-                placeholder="여기를 수정해보세요"
-              />
-              음주후 심해짐
-            </div>
-            <br />
-            <div class="answer">
-              <input
-                type="checkbox"
-                class="ans animate fadeInRightBig three"
-                v-model="survey_data.factor"
-                value="posture"
-                placeholder="여기를 수정해보세요"
-              />
-              자세에따라 통증변화
-            </div>
-            <br />
-            <div class="answer">
-              <input
-                type="checkbox"
-                class="ans animate fadeInRightBig three"
-                v-model="survey_data.factor"
-                value="urination"
-                placeholder="여기를 수정해보세요"
-              />
-              배뇨시 통증변화
-            </div>
-            <br />
-            <div class="answer">
-              <input
-                type="checkbox"
-                class="ans animate fadeInRightBig three"
-                v-model="survey_data.factor"
-                value="defecation"
-                placeholder="여기를 수정해보세요"
-              />
-              배변시 통증변화
-            </div>
-            <br />
-            <div class="answer">
-              <input
-                type="checkbox"
-                class="ans animate fadeInRightBig three"
-                v-model="survey_data.factor"
-                value="nothing"
-                placeholder="여기를 수정해보세요"
-              />
-              해당사항 없음
+            <div class="answers-box animate fadeInRightBig three">
+              <div class="answer-box">
+                <input
+                  type="checkbox"
+                  class="ans"
+                  v-model="survey_data.factor"
+                  value="after meal"
+                  placeholder="여기를 수정해보세요"
+                />식사후 심화
+              </div>
+              <br />
+              <div class="answer-box">
+                <input
+                  type="checkbox"
+                  class="ans"
+                  v-model="survey_data.factor"
+                  value="no meal"
+                  placeholder="여기를 수정해보세요"
+                />공복에 심화
+              </div>
+              <br />
+              <div class="answer-box">
+                <input
+                  type="checkbox"
+                  class="ans"
+                  v-model="survey_data.factor"
+                  value="after alchol"
+                  placeholder="여기를 수정해보세요"
+                />
+                음주후 심화
+              </div>
+              <br />
+              <div class="answer-box">
+                <input
+                  type="checkbox"
+                  class="ans"
+                  v-model="survey_data.factor"
+                  value="posture"
+                  placeholder="여기를 수정해보세요"
+                />
+                자세변화시 심화
+              </div>
+              <br />
+              <div class="answer-box">
+                <input
+                  type="checkbox"
+                  class="ans"
+                  v-model="survey_data.factor"
+                  value="urination"
+                  placeholder="여기를 수정해보세요"
+                />
+                배뇨시 심화
+              </div>
+              <br />
+              <div class="answer-box">
+                <input
+                  type="checkbox"
+                  class="ans"
+                  v-model="survey_data.factor"
+                  value="defecation"
+                  placeholder="여기를 수정해보세요"
+                />
+                배변시 심화
+              </div>
+              <div class="answer-box">
+                <input
+                  type="checkbox"
+                  class="ans"
+                  v-model="survey_data.factor"
+                  value="nothing"
+                  placeholder="여기를 수정해보세요"
+                />
+                완화되는 중
+              </div>
+              <br />
+              <div class="answer-box">
+                <input
+                  type="checkbox"
+                  class="ans"
+                  v-model="survey_data.factor"
+                  value="nothing"
+                  placeholder="여기를 수정해보세요"
+                />
+                해당사항 없음
+              </div>
             </div>
           </v-expansion-panel-content>
         </v-expansion-panel>
@@ -224,12 +243,14 @@
             <p class="question">기타 요인이 있나요?</p>
             <br />
             <br />
-            <input
-              class="ans animate fadeInRightBig three"
-              type="text"
-              v-model="survey_data.other_factor"
-              placeholder="여기를 수정해보세요"
-            />
+            <div class="answer animate fadeInRightBig three">
+              <input
+                class="ans-txt"
+                type="text"
+                v-model="survey_data.other_factor"
+                placeholder="여기에 입력해주세요"
+              />
+            </div>
           </v-expansion-panel-content>
         </v-expansion-panel>
       </v-expansion-panels>
@@ -265,21 +286,94 @@ export default {
 };
 </script>
 <style scoped>
+.question-header {
+  margin-top: 2rem;
+  padding-left: 2.5rem;
+  font-size: 1.7rem;
+}
+/* question body */
 .v-expansion-panels {
+  width: 100%;
   height: 80%;
   box-shadow: none;
-  padding: 1rem 1.5rem;
+  padding: 0.5rem 1.5rem;
 }
+.v-expansion-panel-header {
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: #125b7f;
+}
+
 .v-expansion-panel-content {
-  height: 46vh;
+  height: 40vh;
 }
 .section {
-  height: 100vh;
+  height: 92vh;
+}
+
+/* 1차 수정 01:07 */
+
+.question {
+  font-size: 1.2rem;
+  line-height: 1.5rem;
+}
+.answers-box {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  line-height: 0.5em;
+  width: 100%;
+}
+.answers {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  line-height: 0.5em;
+}
+.answer-box {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: #2592c9;
+  font-size: 0.9rem;
+  border-radius: 7px;
+  width: 8rem;
+  height: 2.7rem;
+  margin: 0.1rem;
+
+  color: rgb(255, 255, 255);
+}
+
+.answer {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: #2592c9;
+  border-radius: 7px;
+  width: 15rem;
+  height: 2.7rem;
+  line-height: 0.2rem;
+
+  color: rgb(255, 255, 255);
+}
+.answer input::placeholder {
+  color: rgba(88, 88, 88, 0.5);
 }
 .ans {
-  background-color: #cecece;
-  margin: 5px auto;
+  margin: 0 0.5rem;
 }
+.ans-txt {
+  width: 100%;
+  height: 100%;
+  border: #1985bb solid 1px;
+  border-radius: 7px;
+  outline: none;
+  background-color: white;
+  padding-left: 1rem;
+  color: rgb(56, 56, 56);
+}
+/* question footer */
 .buttons {
   display: flex;
   justify-content: space-between;
@@ -325,6 +419,11 @@ a {
   -webkit-animation-delay: 0.45s;
   -moz-animation-delay: 0.45s;
   animation-delay: 0.45s;
+}
+.six {
+  -webkit-animation-delay: 0.5s;
+  -moz-animation-delay: 0.5s;
+  animation-delay: 0.5s;
 }
 
 @-webkit-keyframes fadeInUp {

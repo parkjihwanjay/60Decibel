@@ -1,5 +1,8 @@
 <template>
   <div class="formContainer">
+    <div class="logoContainer">
+      <img class="logo" src="../../assets/login_logo2.png" />
+    </div>
     <form class="login-box">
       <p>아이디</p>
       <input type="text" v-model="username" name="username" label="ID를 입력하세요" />
@@ -15,11 +18,13 @@
         @click="login({username, password})"
         value="로그인"
       />
+      <input type="submit" class="button2" name="submit" @click="start" value="바로시작" />
       <div class="login-btn-txt">
         <a>아이디/비밀번호 찾기 |</a>
         <a class="bold">
-          <router-link @click.native="resetRandomUser" :to="{ name: 'signup' }">&nbsp;&nbsp;회원가입</router-link>
-          <div @click="start">바로시작</div>
+
+          <router-link :to="{ name: 'signup' }">&nbsp;&nbsp;회원가입</router-link>
+
         </a>
       </div>
     </div>
@@ -43,6 +48,18 @@ export default {
 };
 </script>
 <style scoped>
+/* logo */
+.logoContainer {
+  display: flex;
+  justify-content: center;
+  width: 100vw;
+}
+.logo {
+  margin-top: 6rem;
+  width: 350px;
+  height: 200px;
+}
+/* form */
 .formContainer {
   width: 100%;
   padding-top: 0.5rem;
@@ -94,7 +111,24 @@ input[type="password"] {
   font-weight: 700;
   /* transition: 0.5s; */
 }
+.button2 {
+  background-color: rgb(255, 182, 47);
+  border-radius: 10px;
+  box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.308);
+  outline-color: rgb(32, 114, 207);
+  width: 15rem;
+  height: 3rem;
+  margin: auto;
+  margin-top: 1rem;
+  color: rgb(54, 54, 54);
+  font-size: 1rem;
+  font-weight: 700;
+  /* transition: 0.5s; */
+}
 .button:hover {
+  box-shadow: 5px 7px 10px 2px rgba(0, 0, 0, 0.308);
+}
+.button2:hover {
   box-shadow: 5px 7px 10px 2px rgba(0, 0, 0, 0.308);
 }
 .login-btn-txt {

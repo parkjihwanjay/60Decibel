@@ -38,8 +38,11 @@
         </v-expansion-panel>
 
         <v-expansion-panel class="q2-1">
-          <v-expansion-panel-header class="header animate fadeInDown two">
-            Q2.
+          <v-expansion-panel-header
+            class="header animate fadeInDown two"
+            v-if="survey_data.symptom_start==='less_than_month'"
+          >
+            &nbsp;&nbsp; Q1-1.
             <template v-slot:actions>
               <v-icon></v-icon>
             </template>
@@ -49,7 +52,7 @@
             <br />
             <br />
             <div class="answers">
-              <div class="answer">
+              <div class="answer animate fadeInRightBig three">
                 <input
                   type="text"
                   v-model="survey_data.symptom_start_less_than_month"
@@ -62,7 +65,7 @@
         </v-expansion-panel>
         <v-expansion-panel class="q3-3">
           <v-expansion-panel-header class="header animate fadeInDown two">
-            Q3.
+            Q2.
             <template v-slot:actions>
               <v-icon></v-icon>
             </template>
@@ -101,7 +104,7 @@
         </v-expansion-panel>
         <v-expansion-panel class="q3-3">
           <v-expansion-panel-header class="header animate fadeInDown two">
-            Q4.
+            Q3.
             <template v-slot:actions>
               <v-icon></v-icon>
             </template>
@@ -114,7 +117,7 @@
             <br />
             <br />
             <div class="answers">
-              <div class="answer">
+              <div class="answer animate fadeInRightBig three">
                 <input
                   type="text"
                   v-model="survey_data.symtpom_situation"
@@ -164,15 +167,20 @@ export default {
 /* question body */
 .v-expansion-panels {
   width: 100%;
-  height: 90%;
+  height: 80%;
   box-shadow: none;
   padding: 0.5rem 1.5rem;
 }
+.v-expansion-panel-header {
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: #125b7f;
+}
 .v-expansion-panel-content {
-  height: 46vh;
+  height: 35vh;
 }
 .section {
-  height: 100vh;
+  height: 92vh;
 }
 
 /* 1차 수정 01:07 */
@@ -192,7 +200,7 @@ export default {
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  background-color: #1985bb;
+  background-color: #2592c9;
   border-radius: 7px;
   width: 15rem;
   height: 2.7rem;

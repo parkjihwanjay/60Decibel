@@ -9,10 +9,14 @@ axios.defaults.xsrfCookieName = "csrftoken";
 axios.defaults.xsrfHeaderName = "X-CSRFToken";
 
 const enhanceAccessToeken = () => {
-  const { access_token } = localStorage;
+
+  const {
+    access_token
+  } = localStorage;
   if (!access_token) return;
   axios.defaults.headers.common["Authorization"] =
     localStorage.getItem["access_token"];
+
 };
 enhanceAccessToeken();
 
@@ -329,6 +333,7 @@ export const store = new Vuex.Store({
         },
         resetRandomUser({ commit }) {
             commit("RESET_RANDOM_USER");
+
         }
       };
       axios
