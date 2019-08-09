@@ -56,6 +56,7 @@ export const store = new Vuex.Store({
             associated_symptom_urinary: [],
             associated_symptom_others: "",
             abdomen_relevant: [],
+            free_to_describe: ""
         }
     },
     getters: {
@@ -134,6 +135,9 @@ export const store = new Vuex.Store({
             state.answer.associated_symptom_others = survey_data.associated_symptom_others;
             state.answer.abdomen_relevant = survey_data.abdomen_relevant;
         },
+        SET_SURVEY_DATA6(state, survey_data) {
+            state.answer.free_to_describe = survey_data.free_to_describe;
+        },
         RESET_SURVEY(state) {
             state.answer.symptom_start = "";
             state.answer.symptom_start_less_than_month = "";
@@ -161,6 +165,7 @@ export const store = new Vuex.Store({
             state.answer.associated_symptom_urinary = [];
             state.answer.associated_symptom_others = "";
             state.answer.abdomen_relevant = [];
+            state.answer.free_to_describe = "";
         },
         RESET_RANDOM_USER(state) {
             state.random_user = {};
@@ -375,7 +380,12 @@ export const store = new Vuex.Store({
             commit("SET_SURVEY_DATA5", survey_data);
             console.log(this.state.answer);
         },
-        setSurveyData6({ commit }) {
+        setSurveyData6({ commit }, survey_data) {
+            commit("SET_SURVEY_DATA6", survey_data);
+            console.log(this.state.answer);
+            this.dispatch("shootSurveyData");
+        },
+        shootSurveyData({ commit }) {
             let token = localStorage.getItem("access_token");
             let config = {
                 headers: {
@@ -388,7 +398,9 @@ export const store = new Vuex.Store({
                 .post("http://54.180.144.241:8000/api/surveys/stomach/", stomachData, config)
                 .then(res => {
                     console.log(res);
+                    let id = res.id;
                     commit("RESET_SURVEY");
+                    router.push({ path: `/stomach/${id}` });
                 })
                 .catch((error) => {
                     console.log(error);

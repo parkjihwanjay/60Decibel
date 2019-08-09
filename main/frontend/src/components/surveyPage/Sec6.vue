@@ -14,7 +14,7 @@
           <br />
           <input
             class="ans animate fadeInRightBig three"
-            v-model="survey_data.associated_symptom_others"
+            v-model="survey_data.free_to_describe"
             placeholder="여기를 수정해보세요"
           />
           <br />
@@ -35,7 +35,7 @@ export default {
     return {
       expand: 0,
       survey_data: {
-        associated_symptom_others: ""
+        free_to_describe: ""
       }
     };
   },
