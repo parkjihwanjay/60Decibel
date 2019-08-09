@@ -1,35 +1,48 @@
 <template>
   <div class="section">
     <v-expansion-panels v-model="expand" accordion class="expansion">
-      <v-expansion-panel class="panel" v-for="(item,i) in 5" :key="i">
+      <v-expansion-panel class="q1-1">
         <v-expansion-panel-header class="header animate fadeInDown two">
-          Item
+          Q2
           <template v-slot:actions>
             <v-icon></v-icon>
           </template>
         </v-expansion-panel-header>
         <v-expansion-panel-content class="content animate fadeInUp one">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+          그외 동반되는 증상이 있나요?
           <br />
           <br />
-          <div class="ans animate fadeInRightBig three"></div>
-          <div class="ans animate fadeInRightBig four"></div>
-          <div class="ans animate fadeInRightBig five"></div>
+          <input
+            class="ans animate fadeInRightBig three"
+            v-model="survey_data.free_to_describe"
+            placeholder="여기를 수정해보세요"
+          />
+          <br />
         </v-expansion-panel-content>
       </v-expansion-panel>
     </v-expansion-panels>
     <div class="buttons">
       <router-link :to="{name:'sec5'}">이전</router-link>
     </div>
+    <button @click="sec6(survey_data)">설문 제출</button>
   </div>
 </template>
 
 <script>
+import { mapState, mapActions } from "vuex";
 export default {
   data() {
     return {
-      expand: 0
+      expand: 0,
+      survey_data: {
+        free_to_describe: ""
+      }
     };
+  },
+  methods: {
+    sec6(survey_data) {
+      this.$store.dispatch("setSurveyData6", survey_data);
+    }
   }
 };
 </script>

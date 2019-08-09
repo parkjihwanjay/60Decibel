@@ -1,71 +1,82 @@
 <template>
   <div class="formContainer">
     <!-- <a class="bold">&nbsp;&nbsp;회원가입</a> -->
-    <div class="signup-cont">
-      <div class="signup-header">
-        <p>
-          60데시벨
-          <span>회원가입</span>
-        </p>
-      </div>
-      <form class="signup-box">
-        <p>아이디</p>
-        <input
-          v-if="random_user.username"
-          type="text"
-          name="username"
-          v-bind:value="random_user.username"
-        />
-        <input v-else type="text" v-model="username" name="username" placeholder="아이디 입력" />
+    <div data-aos="fade-up" data-aos-duration="1000">
+      <div class="signup-cont">
+        <div class="signup-header">
+          <p>
+            60데시벨
+            <span>회원가입</span>
+          </p>
+        </div>
+        <form class="signup-box">
+          <p>아이디</p>
+          <input
+            v-if="random_user.username"
+            type="text"
+            name="username"
+            v-bind:value="random_user.username"
+          />
+          <input v-else type="text" v-model="username" name="username" placeholder="아이디 입력" />
 
-        <p>이메일</p>
-        <input v-if="random_user.email" type="text" name="email" v-bind:value="random_user.email" />
-        <input v-else type="text" v-model="email" name="email" placeholder="이메일 입력" />
+          <p>이메일</p>
+          <input v-if="random_user.email" type="text" name="email" v-bind:value="random_user.email" />
+          <input v-else type="text" v-model="email" name="email" placeholder="이메일 입력" />
 
-        <p>비밀번호</p>
+          <p>비밀번호</p>
 
-        <input
-          v-if="random_user.password1"
-          type="password"
-          name="userpassword1"
-          v-bind:value="random_user.password1"
-        />
-        <input
-          v-else
-          type="password"
-          v-model="password1"
-          name="userpassword1"
-          placeholder="6~12자리 비밀번호 입력"
-        />
-        <p>비밀번호 확인</p>
-        <input
-          v-if="random_user.password2"
-          type="password"
-          name="userpassword2"
-          v-bind:value="random_user.password2"
-        />
-        <input
-          v-else
-          type="password"
-          v-model="password2"
-          name="userpassword2"
-          placeholder="6~12자리 비밀번호 입력"
-        />
-        <br />
-      </form>
-      <div class="privacy">
-        <input type="checkbox" id="checkbox" />
-        <label for="checkbox"></label>
-        <span>이용약관</span>에 동의합니다
-      </div>
-      <div class="login-btn">
-        <input
-          type="submit"
-          class="button"
-          name="submit"
-          @click="signup({username, email, password1, password2})"
-          value="회원가입"
-        />
+          <input
+            v-if="random_user.password1"
+            type="password"
+            name="userpassword1"
+            v-bind:value="random_user.password1"
+          />
+          <input
+            v-else
+            type="password"
+            v-model="password1"
+            name="userpassword1"
+            placeholder="6~12자리 비밀번호 입력"
+          />
+          <p>비밀번호 확인</p>
+          <input
+            v-if="random_user.password2"
+            type="password"
+            name="userpassword2"
+            v-bind:value="random_user.password2"
+          />
+          <input
+            v-else
+            type="password"
+            v-model="password2"
+            name="userpassword2"
+            placeholder="6~12자리 비밀번호 입력"
+          />
+          <br />
+        </form>
+        <div class="privacy">
+          <input type="checkbox" id="checkbox" />
+          <label for="checkbox"></label>
+          <span>이용약관</span>에 동의합니다
+        </div>
+        <div class="login-btn">
+          <input
+            v-if="`${this.$store.state.random_user}`"
+            type="submit"
+            class="button"
+            name="submit"
+            @click="signup_quick()"
+            value="회원가입"
+          />
+          <input
+            v-else
+            type="submit"
+            class="button"
+            name="submit"
+            @click="signup_general({username, email, password1, password2})"
+            value="회원가입"
+          />
+        </div>
       </div>
     </div>
   </div>
@@ -83,9 +94,8 @@ export default {
       password2: null
     };
   },
-
   methods: {
-    ...mapActions(["signup"])
+    ...mapActions(["signup_quick", "signup_general"])
   },
   computed: {
     ...mapState(["random_user"])
@@ -107,7 +117,7 @@ export default {
   box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.308);
   border-radius: 5px;
   height: 680px;
-  width: 90%;
+  width: 100%;
   background-color: white;
 }
 .signup-header p {
@@ -135,7 +145,7 @@ export default {
   font-weight: 500;
 }
 .signup-box input {
-  width: 95%;
+  width: 85%;
   margin-bottom: 2rem;
   font-size: 0.8rem;
 }

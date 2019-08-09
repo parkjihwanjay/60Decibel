@@ -3,10 +3,14 @@
     <div class="navhead">
       <div class="navhead-brand">
         <router-link :to="{ name: 'home' }">
-          <img class="navhead-brand-logo" src="../../assets/logo4.png" />
+          <img class="navhead-brand-logo" src="../../assets/logo.png" />
         </router-link>
       </div>
-      <!-- <p class="navhead-txt">청각장애인을 위한 진료도우미</p> -->
+      <div class="navhead-start" v-if="this.$store.state.isLogin === true">
+        <router-link to="/survey">
+          <div class="start-btn">시작하기</div>
+        </router-link>
+      </div>
       <div class="navhead-icon" @click="expanded = !expanded">
         <i class="fas fa-bars fa-lg"></i>
       </div>
@@ -22,7 +26,7 @@
         </a>
         <br />
         <a class="nav-menu">
-          <router-link to="/survey_test">설문조사 시작</router-link>
+          <router-link to="/survey">설문조사 시작</router-link>
         </a>
         <br />
         <a class="nav-menu">
@@ -94,17 +98,25 @@ a:visited {
   height: 8.5vh;
 }
 .navhead-brand-logo {
-  width: 16.5rem;
+  width: 10rem;
   height: 3rem;
   vertical-align: middle;
 }
-.navhead-txt {
-  color: gray;
-  font-family: "KoreanDREAM3R";
-  letter-spacing: 80%;
-  font-size: 0.6rem;
-  margin-left: 5%;
-  margin-right: 10%;
+.start-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  width: 5.2rem;
+  height: 34px;
+
+  border-radius: 5px;
+  margin-left: 1.5rem;
+  padding: 1px;
+  background: linear-gradient(135deg, #b1bfd8, #6782b4);
+  color: white;
+  font-size: 1rem;
+  font-weight: 700;
 }
 .navhead-icon {
   display: flex;
