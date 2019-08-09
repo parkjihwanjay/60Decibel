@@ -22,42 +22,38 @@ enhanceAccessToeken();
 
 // export default new Vuex.Store({
 export const store = new Vuex.Store({
-
-
-    state: {
-        userInfo: null,
-        isLogin: false,
-        isLoginError: false,
-        profile: {},
-        stomach: {},
-        survey_history: [],
-        random_user: {},
-        answer: {},
-
+  state: {
+    userInfo: null,
+    isLogin: false,
+    isLoginError: false,
+    profile: {},
+    stomach: {},
+    survey_history: [],
+    random_user: {},
+    answer : {}
+  },
+  getters: {
+    fetchedProfile(state) {
+      return state.profile;
+    }
+  },
+  mutations: {
+    loginSuccess(state, payload) {
+      state.isLogin = true;
+      state.isLoginError = false;
+      state.userInfo = payload;
     },
     loginError(state) {
       state.isLogin = false;
       state.isLoginError = false;
       state.userInfo = null;
     },
-
-    mutations: {
-        loginSuccess(state, payload) {
-            state.isLogin = true;
-            state.isLoginError = false;
-            state.userInfo = payload;
-        },
-        loginError(state) {
-            state.isLogin = false;
-            state.isLoginError = false;
-            state.userInfo = null;
-        },
-        logout(state) {
-            state.isLogin = false;
-            state.isLoginError = false;
-            state.userInfo = null;
-        },
-        // 프로필 상태 변이
+    logout(state) {
+      state.isLogin = false;
+      state.isLoginError = false;
+      state.userInfo = null;
+    },
+    // 프로필 상태 변이
         SET_PROFILE(state, profile) {
             state.profile = profile;
         },
@@ -100,7 +96,8 @@ export const store = new Vuex.Store({
         RESET_RANDOM_USER(state) {
             state.random_user = {};
         }
-    },
+ 
+  },
     actions: {
         //   로그인 function
         login(dispatch, loginObj) {
@@ -169,7 +166,6 @@ export const store = new Vuex.Store({
                     });
             }
         },
-
         getMemberInfo({ commit }) {
             //로컬 스토리지에 저장된 토큰을 저장한다.
             let token = localStorage.getItem("access_token");
@@ -247,6 +243,7 @@ export const store = new Vuex.Store({
                     console.log(error);
                 });
         },
+     
         // 지환 : 랜덤 계정을 생성해서 회원가입 폼에 보냄
         start({ commit }) {
             let startObj = {};
@@ -343,9 +340,7 @@ export const store = new Vuex.Store({
         .put("http://54.180.144.241:8000/api/profileupdate/", update, config)
         .then(res => {
           console.log(res);
-          router.push({
-            name: "profiles"
-          });
+          router.push({ name: "profiles" });
         })
         .catch(error => {
           console.log(error);
@@ -353,4 +348,3 @@ export const store = new Vuex.Store({
     }
 
 })
-
