@@ -602,8 +602,8 @@ export default {
     };
   },
   methods: {
-    check: function() {
-      console.log(this.survey_data.associated_symptom_digestive);
+    sec5(survey_data) {
+      this.$store.dispatch("setSurveyData5", survey_data);
     }
   }
 };
