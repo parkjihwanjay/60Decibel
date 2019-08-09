@@ -124,7 +124,7 @@ export const store = new Vuex.Store({
       router.push({ name: "home" });
       localStorage.clear();
     },
-    signup({ commit }, signupObj) {
+    signup(dispatch, signupObj) {
       // login --> 토큰 반환
       if (
         this.state.random_user.username &&
@@ -134,11 +134,15 @@ export const store = new Vuex.Store({
       ) {
         let quickLogin = {};
 
+        let login_info = {};
+
         quickLogin["username"] = this.state.random_user.username;
         quickLogin["email"] = this.state.random_user.email;
         quickLogin["password1"] = this.state.random_user.password1;
         quickLogin["password2"] = this.state.random_user.password2;
 
+        login_info["username"] = quickLogin.username;
+        login_info["password"] = quickLogin.password1;
         axios
           .post(
             "http://54.180.144.241:8000/api/rest-auth/registration/",
@@ -147,8 +151,8 @@ export const store = new Vuex.Store({
           .then(res => {
             alert("회원가입이 성공적으로 이뤄졌습니다.");
             console.log(res);
-            router.push({ name: "home" });
-            commit("RESET_RANDOM_USER");
+            this.dispatch("login", login_info);
+            this.dispatch("resetRandomUser");
           })
           .catch(() => {
             alert("이메일과 비밀번호를 확인하세요.");
@@ -167,13 +171,10 @@ export const store = new Vuex.Store({
             console.log(res);
           })
           .catch(error => {
-            console.log(signupObj);
-            console.log(error);
             alert("이메일과 비밀번호를 확인하세요.");
           });
       }
     },
-
     getMemberInfo({ commit }) {
       //로컬 스토리지에 저장된 토큰을 저장한다.
       let token = localStorage.getItem("access_token");

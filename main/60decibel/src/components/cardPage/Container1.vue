@@ -134,11 +134,7 @@
         <v-card-title>청진기를 대겠습니다</v-card-title>
         <v-card-text>
           <div class="modal-center">
-            <img
-              src="../../assets/stethoscope.png"
-              class="img-modal"
-              :class="{imgclicked: dialog5}"
-            />
+            <img src="../../assets/stethoscope.png" class="img-modal" />
           </div>
         </v-card-text>
         <v-card-actions>
@@ -237,43 +233,43 @@ export default {
   justify-content: center;
 }
 .circle {
-  height: 140px;
-  width: 140px;
-  padding-top: 20px;
+  height: 280px;
+  width: 280px;
+  padding-top: 40px;
 }
 .s {
-  height: 20px;
-  width: 20px;
+  height: 40px;
+  width: 40px;
 }
 .img1 {
-  margin-left: 60px;
+  margin-left: 120px;
 }
 .img2 {
-  margin-top: 2.5px;
-  margin-left: 17.5px;
+  margin-top: 5px;
+  margin-left: 35px;
 }
 .img3 {
-  margin-top: 2.5px;
-  margin-left: 65px;
+  margin-top: 5px;
+  margin-left: 130px;
 }
 .img4 {
-  margin-top: 10px;
+  margin-top: 20px;
 }
 .img5 {
-  margin-top: 10px;
-  margin-left: 100px;
+  margin-top: 20px;
+  margin-left: 200px;
 }
 .img6 {
-  margin-top: 10px;
-  margin-left: 17.5px;
+  margin-top: 20px;
+  margin-left: 35px;
 }
 .img7 {
   margin-top: 10px;
-  margin-left: 65px;
+  margin-left: 130px;
 }
 .img8 {
-  margin-top: 2.5px;
-  margin-left: 60px;
+  margin-top: 5px;
+  margin-left: 130px;
 }
 .img-modal {
   height: 60px;
@@ -302,7 +298,7 @@ span {
 }
 .cardintro {
   width: 100%;
-  margin-top: 40vh;
+  margin-top: 30vh;
   text-align: center;
 }
 </style>

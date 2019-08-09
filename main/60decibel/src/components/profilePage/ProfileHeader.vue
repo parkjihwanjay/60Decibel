@@ -2,21 +2,22 @@
   <div class="prof-header">
     <div class="contents">
       <div class="prof-img">
-        <img v-if="`${profile.avatar}===null`" src="../../assets/60db.png" class="img" />
-        <img v-else v-bind:src="`${profile.avatar}`" class="img" />
+        <img v-if="profile.avatar" v-bind:src="profile.avatar" class="img" />
+        <img v-else src="../../assets/60db.png" class="img" />
       </div>
       <div class="prof-name">
         <p class="name">{{ profile.name }}</p>
       </div>
       <div class="prof-JobBirth">
         <p class="job1" v-if="`${ profile.job }`">{{ profile.job }}</p>
-        <p class="job2" v-else>메롱</p>&nbsp;&nbsp;|&nbsp;&nbsp;
-        <p class="birth">{{ profile.birth_date }}</p>
+        <p class="job2" v-else>[직업]</p>&nbsp;&nbsp;|&nbsp;&nbsp;
+        <p v-if="`${ profile.birth_date }`" class="birth">{{ profile.birth_date }}</p>
+        <p v-else>생년월일</p>
       </div>
       <div class="prof-intro">
         <p class="intro">
-          Lorem ipsum dolor sit amet
-          <br />consectetur adipisicing elit.
+          60DB와 함께
+          <br />더 나은 진료서비스를 경험하세요!
         </p>
       </div>
     </div>
@@ -26,21 +27,24 @@
           <img src="../../assets/love1.png" />
           <p class="box-head">성별</p>
         </div>
-        <p class="box-body">{{ profile.gender }}</p>
+        <p v-if="profile.gender" class="box-body">{{ profile.gender }}</p>
+        <p v-else class="box-body">?</p>
       </div>
       <div class="box">
         <div class="icon">
           <img src="../../assets/ruler1.png" />
           <p class="box-head">신장</p>
         </div>
-        <p class="box-body">{{ profile.height }}cm</p>
+        <p v-if="profile.height" class="box-body">{{ profile.height }}cm</p>
+        <p v-else class="box-body">?</p>
       </div>
       <div class="box">
         <div class="icon">
           <img src="../../assets/scale1.png" />
           <p class="box-head">체중</p>
         </div>
-        <p class="box-body">{{profile.weight }}kg</p>
+        <p v-if="profile.weight" class="box-body">{{ profile.weight }}kg</p>
+        <p v-else class="box-body">?</p>
       </div>
     </div>
   </div>
@@ -101,12 +105,14 @@ export default {
 .prof-intro {
   margin-top: 1rem;
   font-size: 0.9rem;
+  text-align: center;
+  line-height: 140%;
 }
 
 .contents2 {
   display: flex;
   justify-content: space-around;
-  width: 425px;
+  width: 90%;
   height: 20%;
 }
 .box {
@@ -116,6 +122,7 @@ export default {
   align-items: center;
   height: 100%;
   margin: 0 1rem;
+  width: 33%;
 }
 .icon {
   display: flex;
@@ -137,5 +144,7 @@ img {
 .box-body {
   color: rgb(196, 30, 99);
   font-size: 1.6rem;
+  text-align: center;
+  width: 100%;
 }
 </style>

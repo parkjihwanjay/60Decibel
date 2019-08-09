@@ -102,7 +102,7 @@ a:visited {
 }
 .navhead-btns {
   display: flex;
-  justify-content: space-around;
+  justify-content: flex-end;
   align-items: center;
   width: 10rem;
 }

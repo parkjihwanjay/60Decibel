@@ -10,7 +10,6 @@
 <script>
 import Navbar from "../components/homePage/Navbar.vue";
 import ProfHeader from "../components/profilePage/ProfileHeader.vue";
-import ProfBody1 from "../components/profilePage/ProfileBody.vue";
 import ProfBody2 from "../components/profilePage/ProfileBody2.vue";
 import ProfBody3 from "../components/profilePage/ProfileBody3.vue";
 import ProfFooter from "../components/profilePage/ProfileFooter.vue";
@@ -19,7 +18,6 @@ export default {
   components: {
     Navbar,
     ProfHeader,
-    ProfBody1,
     ProfBody2,
     ProfBody3,
     ProfFooter
@@ -63,22 +61,22 @@ export default {
   background-color: white;
   border-bottom: 1px solid rgb(158, 158, 158);
   width: 100%;
-  height: 10rem;
+  min-height: 10rem;
 }
 .body2 {
-  background-color: darkolivegreen;
+  background-color: #ebebeb;
   width: 100%;
-  height: 12rem;
+  min-height: 12rem;
 }
 .body3 {
-  background-color: darkgrey;
+  background: white;
   width: 100%;
-  height: 12rem;
+  min-height: 14rem;
 }
 .footer {
   background-color: darkorange;
   width: 100%;
-  height: 8rem;
+  min-height: 8rem;
 }
 </style>
 
