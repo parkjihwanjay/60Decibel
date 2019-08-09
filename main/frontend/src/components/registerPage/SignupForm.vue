@@ -61,10 +61,19 @@
         </div>
         <div class="login-btn">
           <input
+            v-if="`${this.$store.state.random_user}`"
             type="submit"
             class="button"
             name="submit"
-            @click="signup({username, email, password1, password2})"
+            @click="signup_quick()"
+            value="회원가입"
+          />
+          <input
+            v-else
+            type="submit"
+            class="button"
+            name="submit"
+            @click="signup_general({username, email, password1, password2})"
             value="회원가입"
           />
         </div>
@@ -86,7 +95,7 @@ export default {
     };
   },
   methods: {
-    ...mapActions(["signup"])
+    ...mapActions(["signup_quick", "signup_general"])
   },
   computed: {
     ...mapState(["random_user"])
