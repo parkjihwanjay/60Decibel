@@ -65,15 +65,7 @@
             type="submit"
             class="button"
             name="submit"
-            @click="signup_quick()"
-            value="회원가입"
-          />
-          <input
-            v-else
-            type="submit"
-            class="button"
-            name="submit"
-            @click="signup_general({username, email, password1, password2})"
+            @click="signup({username, email, password1, password2})"
             value="회원가입"
           />
         </div>

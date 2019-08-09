@@ -237,7 +237,7 @@
 
     <div class="buttons">
       <router-link :to="{name:'sec2'}">이전</router-link>
-      <router-link :to="{name:'sec4'}" @click="sec3(survey_data)">다음</router-link>
+      <router-link :to="{name:'sec4'}" @click.native="sec3(survey_data)">다음</router-link>
     </div>
   </div>
 </template>
