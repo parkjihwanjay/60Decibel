@@ -579,13 +579,12 @@
     </div>
     <div class="buttons">
       <router-link :to="{name:'sec4'}">이전</router-link>
-      <!-- <router-link :to="{name:'sec6'}">다음</router-link> -->
+      <router-link :to="{name:'sec6'}" @click.native="sec5(survey_data)">다음</router-link>
     </div>
   </div>
 </template>
 
 <script>
-import { mapState, mapActions } from "vuex";
 export default {
   data() {
     return {
@@ -602,8 +601,9 @@ export default {
     };
   },
   methods: {
-    check: function() {
-      console.log(this.survey_data.associated_symptom_digestive);
+
+    sec5(survey_data) {
+      this.$store.dispatch("setSurveyData5", survey_data);
     }
   }
 };

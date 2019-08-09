@@ -299,6 +299,8 @@ class StomachacheSurvey(SurveyMeta):
     abdomen_relevant = models.CharField(max_length=30, choices=ABDOMEN_HISTORY, default="", blank=True, null=True)
     # abdomen_relevant = models.CharField(max_length=100)
 
+    free_to_describe = models.TextField(default="", blank=True, null=True)
+
     def __str__(self):
         return (self.author.username + '/' + self.symptom + '/' + str(self.id))
         

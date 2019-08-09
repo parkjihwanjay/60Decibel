@@ -14,7 +14,7 @@
           <br />
           <input
             class="ans animate fadeInRightBig three"
-            v-model="survey_data.associated_symptom_others"
+            v-model="survey_data.free_to_describe"
             placeholder="여기를 수정해보세요"
           />
           <br />
@@ -24,6 +24,7 @@
     <div class="buttons">
       <router-link :to="{name:'sec5'}">이전</router-link>
     </div>
+    <button @click.native="sec6(survey_data)">설문 제출</button>
   </div>
 </template>
 
@@ -32,8 +33,16 @@ import { mapState, mapActions } from "vuex";
 export default {
   data() {
     return {
-      expand: 0
+      expand: 0,
+      survey_data: {
+        free_to_describe: ""
+      }
     };
+  },
+  methods: {
+    sec6(survey_data) {
+      this.$store.dispatch("setSurveyData6", survey_data);
+    }
   }
 };
 </script>
