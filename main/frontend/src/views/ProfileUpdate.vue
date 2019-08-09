@@ -1,4 +1,5 @@
 <template>
+
   <div class="profile">
     <navbar class="nav" />
     <ProfUpload class="body" />
