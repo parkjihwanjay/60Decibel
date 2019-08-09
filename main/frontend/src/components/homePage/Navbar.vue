@@ -18,7 +18,7 @@
     <transition-expand v-if="this.$store.state.isLogin === true">
       <div class="navexpand" v-if="expanded">
         <a class="nav-menu">
-          <router-link to="/profiles/username">{{this.$store.state.userInfo.username}}</router-link>
+          <router-link to="/profiles">{{this.$store.state.userInfo.username}}</router-link>
         </a>
         <br />
         <a class="nav-menu">
