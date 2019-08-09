@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="root">
     <!-- <Navbar /> -->
     <router-view />
   </div>
@@ -20,7 +20,7 @@ export default {
 * {
   font-family: "NanumSquare", sans-serif;
 }
-a{
+a {
   text-decoration: none;
 }
 </style>

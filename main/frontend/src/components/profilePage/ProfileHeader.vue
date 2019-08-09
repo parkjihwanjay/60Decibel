@@ -106,7 +106,7 @@ export default {
 .contents2 {
   display: flex;
   justify-content: space-around;
-  width: 90%;
+  width: 425px;
   height: 20%;
 }
 .box {

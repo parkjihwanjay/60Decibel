@@ -14,82 +14,82 @@
             <p class="question">배의 어느 부위가 아픈가요?</p>
             <br />
             <br />
-            <div class="answers">
-              <div class="answer">
+            <div class="answers-box animate fadeInRightBig three">
+              <div class="answer-box">
                 <input
                   type="checkbox"
                   v-model="survey_data.symtpom_location"
                   value="whole abdomen"
-                  class="ans animate fadeInRightBig three"
+                  class="ans"
                   placeholder="여기를 수정해보세요"
                 />복부전체
               </div>
               <br />
-              <div class="answer">
+              <div class="answer-box">
                 <input
                   type="checkbox"
                   v-model="survey_data.symtpom_location"
-                  class="ans animate fadeInRightBig four"
+                  class="ans"
                   value="sternal"
                   placeholder="여기를 수정해보세요"
                 />명치부위
               </div>
               <br />
-              <div class="answer">
+              <div class="answer-box">
                 <input
                   type="checkbox"
                   v-model="survey_data.symtpom_location"
-                  class="ans animate fadeInRightBig five"
+                  class="ans"
                   value="umbilicus"
                   placeholder="여기를 수정해보세요"
                 />배꼽부위
               </div>
               <br />
-              <div class="answer">
+              <div class="answer-box">
                 <input
                   type="checkbox"
                   v-model="survey_data.symtpom_location"
-                  class="ans animate fadeInRightBig six"
+                  class="ans"
                   value="flank"
                   placeholder="여기를 수정해보세요"
                 />옆구리
               </div>
               <br />
-              <div class="answer">
+              <div class="answer-box">
                 <input
                   type="checkbox"
                   v-model="survey_data.symtpom_location"
-                  class="ans animate fadeInRightBig seven"
+                  class="ans"
                   value="LUQ"
                   placeholder="여기를 수정해보세요"
                 />왼쪽 위
               </div>
               <br />
-              <div class="answer">
+              <div class="answer-box">
                 <input
                   type="checkbox"
                   v-model="survey_data.symtpom_location"
-                  class="ans animate fadeInRightBig eight"
+                  class="ans"
                   value="LLQ"
                   placeholder="여기를 수정해보세요"
                 />오른쪽 위
               </div>
               <br />
-              <div class="answer">
+              <div class="answer-box">
                 <input
                   type="checkbox"
                   v-model="survey_data.symtpom_location"
                   value="RUQ"
-                  class="ans animate fadeInRightBig nine"
+                  class="ans"
                   placeholder="여기를 수정해보세요"
                 />왼쪽 아래
               </div>
               <br />
-              <div class="answer">
+              <div class="answer-box">
                 <input
                   type="checkbox"
                   v-model="survey_data.symtpom_location"
-                  class="ans animate fadeInRightBig ten"
+                  class="ans"
                   value="RLQ"
                   placeholder="여기를 수정해보세요"
                 />오른쪽 아래
@@ -110,30 +110,23 @@
             <br />
             <br />
             <div class="answers">
-              <div class="answer">
-                <input
-                  type="radio"
-                  v-model="survey_data.location_move"
-                  value="True"
-                  class="ans animate fadeInRightBig three"
-                />예
+              <div class="answer animate fadeInRightBig three">
+                <input type="radio" v-model="survey_data.location_move" value="True" class="ans" />예
               </div>
               <br />
-              <div class="answer">
-                <input
-                  type="radio"
-                  v-model="survey_data.location_move"
-                  value="False"
-                  class="ans animate fadeInRightBig four"
-                />아니오
+              <div class="answer animate fadeInRightBig four">
+                <input type="radio" v-model="survey_data.location_move" value="False" class="ans" />아니오
               </div>
             </div>
             <br />
           </v-expansion-panel-content>
         </v-expansion-panel>
         <v-expansion-panel class="q1-3">
-          <v-expansion-panel-header class="header animate fadeInDown two">
-            Q3.
+          <v-expansion-panel-header
+            class="header animate fadeInDown two"
+            v-if="survey_data.location_move==='True'"
+          >
+            &nbsp;&nbsp;Q2-1.
             <template v-slot:actions>
               <v-icon></v-icon>
             </template>
@@ -142,18 +135,21 @@
             <p class="question">아픈 부위가 어떻게 이동하나요?</p>
             <br />
             <br />
-            <div class="answer">
-              <input
-                v-model="survey_data.location_move_how"
-                class="ans animate fadeInRightBig three"
-              />
+            <div class="answers">
+              <div class="answer animate fadeInRightBig three">
+                <input
+                  v-model="survey_data.location_move_how"
+                  class="ans-txt"
+                  placeholder="예) 배꼽에서 아랫배로"
+                />
+              </div>
             </div>
           </v-expansion-panel-content>
         </v-expansion-panel>
 
         <v-expansion-panel class="q1-3">
           <v-expansion-panel-header class="header animate fadeInDown two">
-            Q4.
+            Q3.
             <template v-slot:actions>
               <v-icon></v-icon>
             </template>
@@ -163,30 +159,23 @@
             <br />
             <br />
             <div class="answers">
-              <div class="answer">
-                <input
-                  type="radio"
-                  v-model="survey_data.pain_spread"
-                  value="True"
-                  class="ans animate fadeInRightBig three"
-                />예
+              <div class="answer animate fadeInRightBig three">
+                <input type="radio" v-model="survey_data.pain_spread" value="True" class="ans" />예
               </div>
               <br />
-              <div class="answer">
-                <input
-                  type="radio"
-                  v-model="survey_data.pain_spread"
-                  value="False"
-                  class="ans animate fadeInRightBig three"
-                />아니오
+              <div class="answer animate fadeInRightBig three">
+                <input type="radio" v-model="survey_data.pain_spread" value="False" class="ans" />아니오
               </div>
             </div>
             <br />
           </v-expansion-panel-content>
         </v-expansion-panel>
         <v-expansion-panel class="q1-1">
-          <v-expansion-panel-header class="header animate fadeInDown two">
-            Q1.
+          <v-expansion-panel-header
+            class="header animate animate fadeInDown two"
+            v-if="survey_data.pain_spread==='True'"
+          >
+            &nbsp;&nbsp;Q3-1.
             <template v-slot:actions>
               <v-icon></v-icon>
             </template>
@@ -195,13 +184,15 @@
             <p class="question">통증이 어디로 퍼지나요?</p>
             <br />
             <br />
-            <div class="answer">
-              <input
-                type="text"
-                v-model="survey_data.pain_spread_where"
-                class="ans animate fadeInRightBig three"
-                placeholder="여기를 수정해보세요"
-              />
+            <div class="answers">
+              <div class="answer animate fadeInRightBig three">
+                <input
+                  type="text"
+                  v-model="survey_data.pain_spread_where"
+                  class="ans-txt"
+                  placeholder="예) 주변으로, "
+                />
+              </div>
             </div>
           </v-expansion-panel-content>
         </v-expansion-panel>
@@ -241,7 +232,7 @@ export default {
 /* question body */
 .v-expansion-panels {
   width: 100%;
-  height: 90%;
+  height: 80%;
   box-shadow: none;
   padding: 0.5rem 1.5rem;
 }
@@ -251,10 +242,10 @@ export default {
   color: #125b7f;
 }
 .v-expansion-panel-content {
-  height: 46vh;
+  height: 40vh;
 }
 .section {
-  height: 100vh;
+  height: 92vh;
 }
 
 /* 1차 수정 01:07 */
@@ -263,12 +254,31 @@ export default {
   font-size: 1.2rem;
   line-height: 1.5rem;
 }
+.answers-box {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  line-height: 0.5em;
+  width: 100%;
+}
 .answers {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   line-height: 0.5em;
+}
+.answer-box {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: #2592c9;
+  border-radius: 7px;
+  width: 8rem;
+  height: 2.7rem;
+  margin: 0.1rem;
+
+  color: rgb(255, 255, 255);
 }
 .answer {
   display: flex;
@@ -278,6 +288,7 @@ export default {
   border-radius: 7px;
   width: 15rem;
   height: 2.7rem;
+  line-height: 1rem;
 
   color: rgb(255, 255, 255);
 }
@@ -300,7 +311,7 @@ export default {
 /* question footer */
 .buttons {
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   align-items: center;
   position: absolute;
   bottom: 0;

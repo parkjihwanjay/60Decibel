@@ -49,8 +49,8 @@ body {
 .whole-survey {
   height: 80vh;
 }
-.nav /deep/ .navhead-start {
-  display: none;
+.nav /deep/ .start-btn {
+  visibility: hidden;
 }
 
 main {
