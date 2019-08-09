@@ -72,7 +72,6 @@ class OwnSurveyListView(generics.ListAPIView):
     serializer_class = SurveyMetaSerializer
     permission_classes = [IsOwnerOrNot]
     filter_backends = [SearchFilter]
-    lookup_field="author"
     search_fields = ["author__username", "symptom", "created_at"]
     def get_queryset(self):
 

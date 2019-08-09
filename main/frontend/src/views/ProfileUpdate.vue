@@ -4,7 +4,7 @@
       <span>현재 이미지</span>
       <img class="thumb" v-bind="profile.avatar" />
       <label>프로필 이미지 변경하기</label>
-      <!-- <input type="file" v-model="update.avatar"/> -->
+      <input type="file" v-bind:src="update.avatar" />
       <br />
       <span>성별을 골라주세요 :</span>
       <label for="male">
@@ -148,7 +148,7 @@ export default {
   data() {
     return {
       update: {
-        // avatar: null,
+        avatar: null,
         gender: "",
         birth_date: "",
         height: "",

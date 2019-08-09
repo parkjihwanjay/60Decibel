@@ -99,13 +99,6 @@ export default new Router({
         ]
     },
     {
-        path: "/result",
-        name: "result",
-        // beforeEnter: requireAuth(),
-        component: () =>
-            import("./views/Result.vue")
-    },
-    {
         path: "/login",
         name: "login",
         component: () =>
@@ -142,13 +135,6 @@ export default new Router({
         name: "survey-history",
         component: () =>
             import("./views/SurveyList.vue")
-    },
-    // 박지환 추가
-    {
-        path: "/survey_test",
-        name: "survey_test",
-        component: () =>
-            import("./components/surveyPage/example.vue")
-    },
+    }
     ]
 });
