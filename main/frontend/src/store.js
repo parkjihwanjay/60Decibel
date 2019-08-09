@@ -395,7 +395,7 @@ export const store = new Vuex.Store({
                 .post("http://54.180.144.241:8000/api/surveys/stomach/", stomachData, config)
                 .then(res => {
                     console.log(res);
-                    let id = res.id;
+                    let id = res.data.id;
                     commit("RESET_SURVEY");
                     router.push({ path: `/stomach/${id}` });
                 })
