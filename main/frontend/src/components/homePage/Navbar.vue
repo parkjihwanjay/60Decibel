@@ -26,7 +26,7 @@
         </a>
         <br />
         <a class="nav-menu">
-          <router-link to="/survey_test">설문조사 시작</router-link>
+          <router-link to="/survey">설문조사 시작</router-link>
         </a>
         <br />
         <a class="nav-menu">

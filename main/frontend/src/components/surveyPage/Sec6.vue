@@ -24,6 +24,7 @@
     <div class="buttons">
       <router-link :to="{name:'sec5'}">이전</router-link>
     </div>
+    <button @click="sec6(survey_data)">설문 제출</button>
   </div>
 </template>
 
@@ -32,8 +33,16 @@ import { mapState, mapActions } from "vuex";
 export default {
   data() {
     return {
-      expand: 0
+      expand: 0,
+      survey_data: {
+        associated_symptom_others: ""
+      }
     };
+  },
+  methods: {
+    sec6(survey_data) {
+      this.$store.dispatch("setSurveyData6", survey_data);
+    }
   }
 };
 </script>
