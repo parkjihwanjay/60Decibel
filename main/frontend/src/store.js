@@ -56,6 +56,7 @@ export const store = new Vuex.Store({
             associated_symptom_urinary: [],
             associated_symptom_others: "",
             abdomen_relevant: [],
+            free_to_describe: ""
         }
     },
     getters: {
@@ -134,6 +135,9 @@ export const store = new Vuex.Store({
             state.answer.associated_symptom_others = survey_data.associated_symptom_others;
             state.answer.abdomen_relevant = survey_data.abdomen_relevant;
         },
+        SET_SURVEY_DATA6(state, survey_data) {
+            state.answer.free_to_describe = survey_data.free_to_describe;
+        },
         RESET_SURVEY(state) {
             state.answer.symptom_start = "";
             state.answer.symptom_start_less_than_month = "";
@@ -161,6 +165,7 @@ export const store = new Vuex.Store({
             state.answer.associated_symptom_urinary = [];
             state.answer.associated_symptom_others = "";
             state.answer.abdomen_relevant = [];
+            state.answer.free_to_describe = "";
         }
     },
     actions: {
@@ -193,47 +198,45 @@ export const store = new Vuex.Store({
             router.push({ name: "home" });
             localStorage.clear();
         },
-        signup(dispatch, signupObj) {
-            // login --> 토큰 반환
-            if (this.state.random_user) {
-                let quickLogin = {};
-                let username = this.state.random_user.username;
-                let password = this.state.random_user.password1;
-                quickLogin["username"] = username;
-                quickLogin["password"] = password;
-                axios
-                    .post("http://54.180.144.241:8000/api/rest-auth/registration/", this.state.random_user)
-                    // loginObj = {email,password}
-                    .then(res => {
-                        alert("회원가입이 성공적으로 이뤄졌습니다.");
-                        this.dispatch("login", quickLogin);
-                        router.push({ name: "home" });
-                        console.log(res);
-                        this.state.random_user = {};
-                        // commit("RESET_RANDOM_USER");
-                    })
-                    .catch(() => {
-                        alert("이메일과 비밀번호를 확인하세요.");
-                        // commit("RESET_RANDOM_USER");
-                    });
-            }
-            else {
-                axios
-                    .post("http://54.180.144.241:8000/api/rest-auth/registration/", signupObj)
-                    // loginObj = {email,password}
-                    .then(res => {
-                        console.log(this.state.random_user);
-                        console.log(signupObj);
-                        alert("회원가입이 성공적으로 이뤄졌습니다.");
-                        router.push({ name: "login" });
-                        console.log(res);
-                    })
-                    .catch((error) => {
-                        console.log(signupObj);
-                        console.log(error);
-                        alert("이메일과 비밀번호를 확인하세요.");
-                    });
-            }
+        signup_quick({ commit }) {
+            let quickLogin = {};
+            let username = this.state.random_user.username;
+            let password = this.state.random_user.password1;
+            quickLogin["username"] = username;
+            quickLogin["password"] = password;
+            axios
+                .post("http://54.180.144.241:8000/api/rest-auth/registration/", this.state.random_user)
+                // loginObj = {email,password}
+                .then(res => {
+                    alert("회원가입이 성공적으로 이뤄졌습니다.");
+                    this.dispatch("login", quickLogin);
+                    router.push({ name: "home" });
+                    console.log(res);
+                    // this.state.random_user = {};
+                    commit("RESET_RANDOM_USER");
+                })
+                .catch(() => {
+                    alert("이메일과 비밀번호를 확인하세요.");
+                    commit("RESET_RANDOM_USER");
+                });
+        },
+        signup_genral(dispatch, signupObj) {
+            console.log(signupObj);
+            axios
+                .post("http://54.180.144.241:8000/api/rest-auth/registration/", signupObj)
+                // loginObj = {email,password}
+                .then(res => {
+                    console.log(this.state.random_user);
+                    console.log(signupObj);
+                    alert("회원가입이 성공적으로 이뤄졌습니다.");
+                    router.push({ name: "login" });
+                    console.log(res);
+                })
+                .catch((error) => {
+                    console.log(signupObj);
+                    console.log(error);
+                    alert("이메일과 비밀번호를 확인하세요.");
+                });
         },
         //유저 세션 유지 function
         getMemberInfo({ commit }) {
@@ -326,7 +329,6 @@ export const store = new Vuex.Store({
             for (i = 0; i < 5; i++)
                 email += possible.charAt(Math.floor(Math.random() * possible.length));
 
-
             let password1 = "60dbfighithing!!";
             let password2 = password1;
 
@@ -406,7 +408,12 @@ export const store = new Vuex.Store({
             commit("SET_SURVEY_DATA5", survey_data);
             console.log(this.state.answer);
         },
-        setSurveyData6({ commit }) {
+        setSurveyData6({ commit }, survey_data) {
+            commit("SET_SURVEY_DATA6", survey_data);
+            console.log(this.state.answer);
+            this.dispatch("shootSurveyData");
+        },
+        shootSurveyData({ commit }) {
             let token = localStorage.getItem("access_token");
             let config = {
                 headers: {
@@ -419,7 +426,9 @@ export const store = new Vuex.Store({
                 .post("http://54.180.144.241:8000/api/surveys/stomach/", stomachData, config)
                 .then(res => {
                     console.log(res);
+                    let id = res.id;
                     commit("RESET_SURVEY");
+                    router.push({ path: `/stomach/${id}` });
                 })
                 .catch((error) => {
                     console.log(error);
