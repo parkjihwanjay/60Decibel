@@ -29,35 +29,7 @@ export const store = new Vuex.Store({
         stomach: {},
         survey_history: [],
         random_user: {},
-        answer: {
-            symptom_start: "",
-            symptom_start_less_than_month: "",
-            fast_or_slow: "",
-            symtpom_situation: "",
-            symtpom_location: [],
-            location_move: "",
-            location_move_how: "",
-            pain_spread: "",
-            pain_spread_where: "",
-            pain_duration: "",
-            pain_repeated: "",
-            pain_how_often_day: "",
-            pain_how_often_many: "",
-            factor: [],
-            other_factor: "",
-            pain_worse: "",
-            pain_experience: "",
-            pain_character: [],
-            pain_score: "",
-            associated_symptom_digestive: [],
-            associated_symptom_circulatory: [],
-            associated_symptom_gynecology: [],
-            associated_symptom_whole_body: [],
-            associated_symptom_urinary: [],
-            associated_symptom_others: "",
-            abdomen_relevant: [],
-            free_to_describe: ""
-        }
+        answer: {},
     },
     getters: {
         fetchedProfile(state) {
@@ -100,72 +72,25 @@ export const store = new Vuex.Store({
             state.random_user = undefined;
         },
         SET_SURVEY_DATA1(state, survey_data) {
-            state.answer.symptom_start = survey_data.symptom_start;
-            state.answer.symptom_start_less_than_month = survey_data.symptom_start_less_than_month;
-            state.answer.fast_or_slow = survey_data.fast_or_slow;
-            state.answer.symtpom_situation = survey_data.symtpom_situation;
+            state.answer = Object.assign(state.answer, survey_data);
         },
         SET_SURVEY_DATA2(state, survey_data) {
-            state.answer.symtpom_location = survey_data.symtpom_location;
-            state.answer.location_move = survey_data.location_move;
-            state.answer.location_move_how = survey_data.location_move_how;
-            state.answer.pain_spread = survey_data.pain_spread;
-            state.answer.pain_spread_where = survey_data.pain_spread_where;
+            state.answer = Object.assign(state.answer, survey_data);
         },
         SET_SURVEY_DATA3(state, survey_data) {
-            state.answer.pain_duration = survey_data.pain_duration;
-            state.answer.pain_repeated = survey_data.pain_repeated;
-            state.answer.pain_how_often_day = survey_data.pain_how_often_day;
-            state.answer.pain_how_often_many = survey_data.pain_how_often_many;
-            state.answer.factor = survey_data.factor;
-            state.answer.other_factor = survey_data.other_factor;
+            state.answer = Object.assign(state.answer, survey_data);
         },
         SET_SURVEY_DATA4(state, survey_data) {
-            state.answer.pain_worse = survey_data.pain_worse;
-            state.answer.pain_experience = survey_data.pain_experience;
-            state.answer.pain_character = survey_data.pain_character;
-            state.answer.pain_score = survey_data.pain_score;
+            state.answer = Object.assign(state.answer, survey_data);
         },
         SET_SURVEY_DATA5(state, survey_data) {
-            state.answer.associated_symptom_digestive = survey_data.associated_symptom_digestive;
-            state.answer.associated_symptom_circulatory = survey_data.associated_symptom_circulatory;
-            state.answer.associated_symptom_gynecology = survey_data.associated_symptom_gynecology;
-            state.answer.associated_symptom_whole_body = survey_data.associated_symptom_whole_body;
-            state.answer.associated_symptom_urinary = survey_data.associated_symptom_urinary;
-            state.answer.associated_symptom_others = survey_data.associated_symptom_others;
-            state.answer.abdomen_relevant = survey_data.abdomen_relevant;
+            state.answer = Object.assign(state.answer, survey_data);
         },
         SET_SURVEY_DATA6(state, survey_data) {
-            state.answer.free_to_describe = survey_data.free_to_describe;
+            state.answer = Object.assign(state.answer, survey_data);
         },
         RESET_SURVEY(state) {
-            state.answer.symptom_start = "";
-            state.answer.symptom_start_less_than_month = "";
-            state.answer.fast_or_slow = "";
-            state.answer.symtpom_situation = "";
-            state.answer.symtpom_location = [];
-            state.answer.location_move = "";
-            state.answer.location_move_how = "";
-            state.answer.pain_spread = "";
-            state.answer.pain_spread_where = "";
-            state.answer.pain_duration = "";
-            state.answer.pain_repeated = "";
-            state.answer.pain_how_often_day = "";
-            state.answer.pain_how_often_many = "";
-            state.answer.factor = [];
-            state.answer.other_factor = "";
-            state.answer.pain_worse = "";
-            state.answer.pain_experience = "";
-            state.answer.pain_character = [];
-            state.answer.pain_score = "";
-            state.answer.associated_symptom_digestive = [];
-            state.answer.associated_symptom_circulatory = [];
-            state.answer.associated_symptom_gynecology = [];
-            state.answer.associated_symptom_whole_body = [];
-            state.answer.associated_symptom_urinary = [];
-            state.answer.associated_symptom_others = "";
-            state.answer.abdomen_relevant = [];
-            state.answer.free_to_describe = "";
+            state.answer = {}
         },
         RESET_RANDOM_USER(state) {
             state.random_user = {};
@@ -359,6 +284,7 @@ export const store = new Vuex.Store({
         },
         setSurveyData1({ commit }, survey_data) {
             commit("SET_SURVEY_DATA1", survey_data);
+            console.log(survey_data);
             console.log(this.state.answer);
         },
         setSurveyData2({ commit }, survey_data) {

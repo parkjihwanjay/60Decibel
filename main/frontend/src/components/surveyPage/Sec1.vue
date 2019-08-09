@@ -128,7 +128,7 @@
       </v-expansion-panels>
     </div>
     <div class="buttons">
-      <router-link :to="{name:'sec2'}" @click="sec1(survey_data)">다음</router-link>
+      <router-link :to="{name:'sec2'}" @click.native="sec1(survey_data)">다음</router-link>
     </div>
   </div>
 </template>
