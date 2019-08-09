@@ -1,6 +1,6 @@
 <template>
   <div class="whole-survey">
-    <NavBar />
+    <NavBar class="nav" />
     <main>
       <transition :name="sectionSlider" v-on:before-enter="debug" v-on:before-leave="debug">
         <router-view />
@@ -48,6 +48,9 @@ body {
 }
 .whole-survey {
   height: 80vh;
+}
+.nav /deep/ .start-btn {
+  visibility: hidden;
 }
 
 main {

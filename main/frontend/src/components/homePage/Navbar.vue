@@ -6,27 +6,25 @@
           <img class="navhead-brand-logo" src="../../assets/logo.png" />
         </router-link>
       </div>
-      <div class="navhead-start" v-if="this.$store.state.isLogin === true">
-        <router-link to="/survey">
-          <div class="start-btn">시작하기</div>
-        </router-link>
-      </div>
-      <div class="navhead-icon" @click="expanded = !expanded">
-        <i class="fas fa-bars fa-lg"></i>
+      <div class="navhead-btns">
+        <div class="navhead-start" v-if="this.$store.state.isLogin === true">
+          <router-link to="/survey">
+            <div class="start-btn">시작하기</div>
+          </router-link>
+        </div>
+        <div class="navhead-icon" @click="expanded = !expanded">
+          <i class="fas fa-bars fa-lg"></i>
+        </div>
       </div>
     </div>
     <transition-expand v-if="this.$store.state.isLogin === true">
       <div class="navexpand" v-if="expanded">
         <a class="nav-menu">
-          <router-link to="/profiles/username">{{this.$store.state.userInfo.username}}</router-link>
+          <router-link to="/profiles/username">{{this.$store.state.userInfo.username}}님 프로필보기</router-link>
         </a>
         <br />
         <a class="nav-menu">
           <a @click.prevent="onClickLogout">로그아웃</a>
-        </a>
-        <br />
-        <a class="nav-menu">
-          <router-link to="/survey">설문조사 시작</router-link>
         </a>
         <br />
         <a class="nav-menu">
@@ -102,18 +100,23 @@ a:visited {
   height: 3rem;
   vertical-align: middle;
 }
+.navhead-btns {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 10rem;
+}
 .start-btn {
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
   width: 5.2rem;
-  height: 34px;
+  height: 32px;
 
   border-radius: 5px;
-  margin-left: 1.5rem;
   padding: 1px;
-  background: linear-gradient(135deg, #b1bfd8, #6782b4);
+  background: linear-gradient(135deg, #94e2f0, #185dac);
   color: white;
   font-size: 1rem;
   font-weight: 700;

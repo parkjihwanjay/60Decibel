@@ -92,7 +92,7 @@ export default {
   font-size: 1.6rem;
 }
 .carousel-txt-main {
-  font-size: 1.05rem;
+  font-size: 0.95rem;
 }
 .carousel-bold {
   font-weight: bolder;

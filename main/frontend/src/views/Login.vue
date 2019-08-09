@@ -1,19 +1,17 @@
 <template>
   <div class="login">
-    <login-logo class="header" />
     <login-form class="footer" />
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import LoginLogo from "../components/registerPage/LoginLogo.vue";
+
 import LoginForm from "../components/registerPage/LoginForm.vue";
 
 export default {
   name: "login",
   components: {
-    LoginLogo,
     LoginForm
   }
 };
@@ -23,19 +21,16 @@ export default {
   width: 100%;
   height: 100vh;
   color: #fff;
-  background: linear-gradient(-45deg, #033063, #053f79, #27adab, #5ef3f1);
+  background: linear-gradient(-45deg, #0e2b68, #22499c, #27adab, #71fcf9);
   background-size: 400% 400%;
-  -webkit-animation: Gradient 15s ease infinite;
-  -moz-animation: Gradient 15s ease infinite;
-  animation: Gradient 15s ease infinite;
+  -webkit-animation: Gradient 8s ease infinite;
+  -moz-animation: Gradient 8s ease infinite;
+  animation: Gradient 8s ease infinite;
 }
-.header {
-  width: 100%;
-  height: 48%;
-}
+
 .footer {
   width: 100%;
-  height: 50%;
+  height: 100%;
 }
 @-webkit-keyframes Gradient {
   0% {

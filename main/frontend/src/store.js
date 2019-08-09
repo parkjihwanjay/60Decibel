@@ -10,16 +10,19 @@ axios.defaults.xsrfHeaderName = "X-CSRFToken";
 
 const enhanceAccessToeken = () => {
 
-    const { access_token } = localStorage;
-    if (!access_token) return;
-    axios.defaults.headers.common["Authorization"] =
-        localStorage.getItem["access_token"];
+  const {
+    access_token
+  } = localStorage;
+  if (!access_token) return;
+  axios.defaults.headers.common["Authorization"] =
+    localStorage.getItem["access_token"];
 
 };
 enhanceAccessToeken();
 
 // export default new Vuex.Store({
 export const store = new Vuex.Store({
+
 
     state: {
         userInfo: null,
@@ -30,12 +33,14 @@ export const store = new Vuex.Store({
         survey_history: [],
         random_user: {},
         answer: {},
+
     },
-    getters: {
-        fetchedProfile(state) {
-            return state.profile;
-        }
+    loginError(state) {
+      state.isLogin = false;
+      state.isLoginError = false;
+      state.userInfo = null;
     },
+
     mutations: {
         loginSuccess(state, payload) {
             state.isLogin = true;
@@ -331,6 +336,21 @@ export const store = new Vuex.Store({
         },
         resetRandomUser({ commit }) {
             commit("RESET_RANDOM_USER");
+
         }
+      };
+      axios
+        .put("http://54.180.144.241:8000/api/profileupdate/", update, config)
+        .then(res => {
+          console.log(res);
+          router.push({
+            name: "profiles"
+          });
+        })
+        .catch(error => {
+          console.log(error);
+        });
     }
+
 })
+
