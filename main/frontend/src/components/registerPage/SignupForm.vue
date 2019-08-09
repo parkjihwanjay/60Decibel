@@ -64,7 +64,7 @@
             type="submit"
             class="button"
             name="submit"
-            @click="signup(random_user)"
+            @click="signup({username, email, password1, password2})"
             value="회원가입"
           />
         </div>
