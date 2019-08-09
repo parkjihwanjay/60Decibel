@@ -26,6 +26,9 @@
         </a>
         <br />
         <a class="nav-menu">
+          <router-link to="/card">진료카드</router-link>
+        </a>
+        <a class="nav-menu">
           <router-link to="/survey_test">설문조사 시작</router-link>
         </a>
         <br />
