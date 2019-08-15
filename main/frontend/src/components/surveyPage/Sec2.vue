@@ -16,8 +16,8 @@
             <br />
             <div class="answers-box animate fadeInRightBig three">
               <button
-                value="True"
-                @click="button_click_multiple('symtpom_location', 'whole_abdomen')"
+                value="whole abdomen"
+                @click="button_click_multiple('symtpom_location', 'whole abdomen')"
                 class="answer-box"
               >복부전체</button>
 
