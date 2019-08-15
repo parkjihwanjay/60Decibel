@@ -153,6 +153,7 @@ export const store = new Vuex.Store({
             console.log(res);
             this.dispatch("login", login_info);
             this.dispatch("resetRandomUser");
+            router.push({ name: "profileupdate" });
           })
           .catch(() => {
             alert("이메일과 비밀번호를 확인하세요.");
@@ -169,6 +170,7 @@ export const store = new Vuex.Store({
             alert("회원가입이 성공적으로 이뤄졌습니다.");
             router.push({ name: "login" });
             console.log(res);
+            router.push({ name: "home" });
           })
           .catch(error => {
             alert("이메일과 비밀번호를 확인하세요.");
