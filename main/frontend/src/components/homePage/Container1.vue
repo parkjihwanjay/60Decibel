@@ -2,14 +2,13 @@
   <div class="cont1">
     <v-carousel
       class="v-carousel img"
-      height="64vh"
       :show-arrows="true"
       :hide-delimiters="hideDelimiters"
       :cycle="cycle"
       :continuous="true"
     >
       <v-carousel-item class="carousel-img" v-for="(item,i) in items" :key="i" :src="item.src">
-        <div data-aos="fade-up" data-aos-duration="1200" data-aos-offset="2000">
+        <div data-aos="fade-up" data-aos-duration="1200">
           <div class="carousel-txt" v-if="i===0">
             <p class="carousel-txt-head">
               당신의

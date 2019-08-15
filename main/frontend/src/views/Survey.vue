@@ -54,7 +54,6 @@ body {
 }
 
 main {
-  min-height: 100%;
   display: grid;
   grid-template: "main";
   flex: 1;

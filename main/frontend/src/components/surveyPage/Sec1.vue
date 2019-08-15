@@ -6,9 +6,7 @@
         <v-expansion-panel class="q1-1">
           <v-expansion-panel-header class="header animate fadeInDown two">
             Q1.
-            <template v-slot:actions>
-              <v-icon></v-icon>
-            </template>
+            <template v-slot:actions></template>
           </v-expansion-panel-header>
           <v-expansion-panel-content class="content animate fadeInUp one">
             <p class="question">통증이 언제부터 시작되었나요?</p>
@@ -20,14 +18,14 @@
                 @click="button_click('symptom_start', 'less_than_month')"
                 class="answer animate fadeInRightBig three"
               >한 달이 안됐습니다.</button>
+              <br />
+              <button
+                value="more_than_month"
+                @click="button_click('symptom_start', 'more_than_month')"
+                class="answer animate fadeInRightBig three"
+              >한 달이 넘었습니다.</button>
+              <br />
             </div>
-            <br />
-            <button
-              value="more_than_month"
-              @click="button_click('symptom_start', 'more_than_month')"
-              class="answer animate fadeInRightBig three"
-            >한 달이 넘었습니다.</button>
-            <br />
           </v-expansion-panel-content>
         </v-expansion-panel>
 
@@ -37,9 +35,7 @@
             v-if="survey_data.symptom_start === 'less_than_month' "
           >
             &nbsp;&nbsp; Q1-1.
-            <template v-slot:actions>
-              <v-icon></v-icon>
-            </template>
+            <template v-slot:actions></template>
           </v-expansion-panel-header>
           <v-expansion-panel-content class="content animate fadeInUp one">
             <p class="question">통증이 언제 시작되었나요?</p>
@@ -60,9 +56,7 @@
         <v-expansion-panel class="q3-3">
           <v-expansion-panel-header class="header animate fadeInDown two">
             Q2.
-            <template v-slot:actions>
-              <v-icon></v-icon>
-            </template>
+            <template v-slot:actions></template>
           </v-expansion-panel-header>
           <v-expansion-panel-content class="content animate fadeInUp one">
             <p class="question">
@@ -91,9 +85,7 @@
         <v-expansion-panel class="q3-3">
           <v-expansion-panel-header class="header animate fadeInDown two">
             Q3.
-            <template v-slot:actions>
-              <v-icon></v-icon>
-            </template>
+            <template v-slot:actions></template>
           </v-expansion-panel-header>
           <v-expansion-panel-content class="content animate fadeInUp one">
             <p class="question">
@@ -114,6 +106,39 @@
             </div>
           </v-expansion-panel-content>
         </v-expansion-panel>
+        <v-expansion-panel class="q1-3">
+          <v-expansion-panel-header class="header animate fadeInDown two">
+            Q4
+            <template v-slot:actions></template>
+          </v-expansion-panel-header>
+          <v-expansion-panel-content class="content animate fadeInUp one">
+            <p class="question">과거 복부 진료 경험이 있나요?</p>
+            <br />
+            <div class="answers">
+              <button
+                value="abdomen_hurted"
+                @click="button_click_multiple('abdomen_relevant', 'abdomen_hurted')"
+                class="answer"
+              >복부를 다친 적이 있음</button>
+
+              <br />
+
+              <button
+                value="abdomen_surgery"
+                @click="button_click_multiple('abdomen_relevant', 'abdomen_surgery')"
+                class="answer"
+              >복부 수술을 받은 적이 있음</button>
+
+              <br />
+
+              <button
+                value="abdomen_nothing"
+                @click="button_click_multiple('abdomen_relevant', 'abdomen_nothing')"
+                class="answer"
+              >해당없음</button>
+            </div>
+          </v-expansion-panel-content>
+        </v-expansion-panel>
       </v-expansion-panels>
     </div>
     <div class="buttons">
@@ -129,6 +154,7 @@ export default {
       expand: 0,
       survey_data: {
         symtpom_location: [],
+        abdomen_relevant: [],
         symptom_start: ""
       }
     };
@@ -161,9 +187,9 @@ export default {
 /* question body */
 .v-expansion-panels {
   width: 100%;
-  height: 80%;
-  box-shadow: none;
-  padding: 0.5rem 1.5rem;
+  /* height: 80%; */
+  padding: 0 1rem;
+  padding-top: 1rem;
 }
 .v-expansion-panel-header {
   font-weight: 700;
@@ -171,14 +197,16 @@ export default {
   color: #125b7f;
 }
 .v-expansion-panel-content {
-  height: 35vh;
+  height: 220px;
 }
 .section {
-  height: 92vh;
+  height: 93vh;
 }
 
 /* 1차 수정 01:07 */
-
+.fa-check {
+  color: teal;
+}
 .question {
   font-size: 1.2rem;
   line-height: 1.5rem;
@@ -192,13 +220,12 @@ export default {
 }
 .answer {
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
   background-color: #2592c9;
   border-radius: 7px;
-  width: 15rem;
+  width: 13rem;
   height: 2.7rem;
-
   color: rgb(255, 255, 255);
 }
 .answer input::placeholder {

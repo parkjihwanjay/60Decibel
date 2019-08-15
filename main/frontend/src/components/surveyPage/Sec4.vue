@@ -6,19 +6,16 @@
         <v-expansion-panel class="q1-1">
           <v-expansion-panel-header class="header animate fadeInDown two">
             Q1.
-            <template v-slot:actions>
-              <v-icon></v-icon>
-            </template>
+            <template v-slot:actions></template>
           </v-expansion-panel-header>
           <v-expansion-panel-content class="content animate fadeInUp one">
             <p class="question">통증의 양상</p>
             <br />
-            <br />
-            <div class="answers">
+            <div class="answers animate fadeInRightBig three">
               <button
                 value="crushing"
                 @click="button_click_multiple('pain_character', 'crushing')"
-                class="answer-box"
+                class="answer"
               >쥐어짜는듯 함</button>
 
               <br />
@@ -26,7 +23,7 @@
               <button
                 value="burning"
                 @click="button_click_multiple('pain_character', 'burning')"
-                class="answer-box"
+                class="answer"
               >타는듯 함</button>
 
               <br />
@@ -34,7 +31,7 @@
               <button
                 value="stabbing"
                 @click="button_click_multiple('pain_character', 'stabbing')"
-                class="answer-box"
+                class="answer"
               >베이는듯 함</button>
 
               <br />
@@ -42,7 +39,7 @@
               <button
                 value="splitting"
                 @click="button_click_multiple('pain_character', 'splitting')"
-                class="answer-box"
+                class="answer"
               >찢어지듯 함</button>
             </div>
             <br />
@@ -51,15 +48,13 @@
         <v-expansion-panel class="q1-2">
           <v-expansion-panel-header class="header animate fadeInDown two">
             Q2.
-            <template v-slot:actions>
-              <v-icon></v-icon>
-            </template>
+            <template v-slot:actions></template>
           </v-expansion-panel-header>
           <v-expansion-panel-content class="content animate fadeInUp one">
             <p class="question">통증점수</p>
             <br />
             <br />
-
+            <br />
             <input
               type="range"
               class="range animate fadeInRightBig three"
@@ -73,12 +68,11 @@
         <v-expansion-panel class="q1-2">
           <v-expansion-panel-header class="header animate fadeInDown two">
             Q3.
-            <template v-slot:actions>
-              <v-icon></v-icon>
-            </template>
+            <template v-slot:actions></template>
           </v-expansion-panel-header>
           <v-expansion-panel-content class="content animate fadeInUp one">
             <p class="question">통증이 점점 심해지나요?</p>
+            <br />
             <br />
             <br />
             <div class="answers">
@@ -101,12 +95,13 @@
         <v-expansion-panel class="q1-3">
           <v-expansion-panel-header class="header animate fadeInDown two">
             Q4.
-            <template v-slot:actions>
-              <v-icon></v-icon>
-            </template>
+            <template v-slot:actions></template>
           </v-expansion-panel-header>
           <v-expansion-panel-content class="content animate fadeInUp one">
-            <p class="question">이전에도 비슷한 통증이 있던적이 있나요?</p>
+            <p class="question">
+              이전에도 비슷한 통증이 있던적이
+              <br />있나요?
+            </p>
             <br />
             <br />
             <div class="answers">
@@ -171,8 +166,8 @@ export default {
 .v-expansion-panels {
   width: 100%;
   height: 80%;
-  box-shadow: none;
-  padding: 0.5rem 1.5rem;
+  padding: 0 1rem;
+  padding-top: 1rem;
 }
 .v-expansion-panel-header {
   font-weight: 700;
@@ -180,10 +175,10 @@ export default {
   color: #125b7f;
 }
 .v-expansion-panel-content {
-  height: 40vh;
+  height: 260px;
 }
 .section {
-  height: 92vh;
+  height: 93vh;
 }
 
 /* 1차 수정 01:07 */
@@ -204,15 +199,15 @@ export default {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  line-height: 0.5em;
+  line-height: 0.3em;
 }
 .answer-box {
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
   background-color: #2592c9;
   border-radius: 7px;
-  width: 9rem;
+  width: 7rem;
   height: 2.7rem;
   margin: 0.1rem;
 
@@ -232,11 +227,11 @@ export default {
 }
 .answer {
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
   background-color: #2592c9;
   border-radius: 7px;
-  width: 15rem;
+  width: 13rem;
   height: 2.7rem;
   line-height: 0.2rem;
 
@@ -260,7 +255,7 @@ input[type="range"]:focus {
 }
 input[type="range"]::-webkit-slider-runnable-track {
   width: 100%;
-  height: 14px;
+  height: 8px;
   cursor: pointer;
   animate: 0.2s;
   box-shadow: 1px 1px 1px #50555c;
@@ -271,8 +266,8 @@ input[type="range"]::-webkit-slider-runnable-track {
 input[type="range"]::-webkit-slider-thumb {
   box-shadow: 0px 0px 0px #000000;
   border: 0px solid #000000;
-  height: 27px;
-  width: 27px;
+  height: 24px;
+  width: 24px;
   border-radius: 12px;
   background: #529de1;
   cursor: pointer;
