@@ -15,48 +15,35 @@
             <br />
             <br />
             <div class="answers">
-              <div class="answer animate fadeInRightBig three">
-                <input
-                  type="radio"
-                  v-model="survey_data.pain_duration"
-                  value="lest_than_10m"
-                  class="ans"
-                  placeholder="여기를 수정해보세요"
-                />10분 미만
-              </div>
+              <button
+                value="lest_than_10m"
+                @click="button_click('pain_duration', 'lest_than_10m')"
+                class="answer animate fadeInRightBig three"
+              >10분 미만</button>
+
               <br />
-              <div class="answer animate fadeInRightBig four">
-                <input
-                  type="radio"
-                  v-model="survey_data.pain_duration"
-                  value="from_10m_to_1h"
-                  class="ans"
-                  placeholder="여기를 수정해보세요"
-                />
-                10분-1시간
-              </div>
+
+              <button
+                value="from_10m_to_1h"
+                @click="button_click('pain_duration', 'from_10m_to_1h')"
+                class="answer animate fadeInRightBig three"
+              >10분-1시간</button>
+
               <br />
-              <div class="answer animate fadeInRightBig five">
-                <input
-                  type="radio"
-                  v-model="survey_data.pain_duration"
-                  value="more_than_1h"
-                  class="ans"
-                  placeholder="여기를 수정해보세요"
-                />
-                1시간이상
-              </div>
+
+              <button
+                value="more_than_1h"
+                @click="button_click('pain_duration', 'more_than_1h')"
+                class="answer animate fadeInRightBig three"
+              >1시간이상</button>
+
               <br />
-              <div class="answer animate fadeInRightBig six">
-                <input
-                  type="radio"
-                  v-model="survey_data.pain_duration"
-                  value="all_day"
-                  class="ans"
-                  placeholder="여기를 수정해보세요"
-                />
-                하루종일
-              </div>
+
+              <button
+                value="all_day"
+                @click="button_click('pain_duration', 'all_day')"
+                class="answer animate fadeInRightBig three"
+              >하루종일</button>
             </div>
             <br />
           </v-expansion-panel-content>
@@ -73,25 +60,19 @@
             <br />
             <br />
             <div class="answers">
-              <div class="answer animate fadeInRightBig three">
-                <input
-                  type="radio"
-                  v-model="survey_data.pain_repeated"
-                  class="ans"
-                  value="True"
-                  placeholder="여기를 수정해보세요"
-                />반복됩니다.
-              </div>
+              <button
+                value="True"
+                @click="button_click('pain_repeated', 'True')"
+                class="answer animate fadeInRightBig three"
+              >반복됩니다.</button>
+
+              <button
+                value="False"
+                @click="button_click('pain_repeated', 'False')"
+                class="answer animate fadeInRightBig three"
+              >단발성입니다.</button>
+
               <br />
-              <div class="answer animate fadeInRightBig four">
-                <input
-                  type="radio"
-                  v-model="survey_data.pain_repeated"
-                  class="ans"
-                  value="False"
-                  placeholder="여기를 수정해보세요"
-                />단발성입니다
-              </div>
             </div>
             <br />
           </v-expansion-panel-content>
@@ -145,90 +126,67 @@
             <br />
             <br />
             <div class="answers-box animate fadeInRightBig three">
-              <div class="answer-box">
-                <input
-                  type="checkbox"
-                  class="ans"
-                  v-model="survey_data.factor"
-                  value="after meal"
-                  placeholder="여기를 수정해보세요"
-                />식사후 심화
-              </div>
+              <button
+                value="after meal"
+                @click="button_click_multiple('factor', 'after meal')"
+                class="answer-box"
+              >식사후 심화</button>
+
               <br />
-              <div class="answer-box">
-                <input
-                  type="checkbox"
-                  class="ans"
-                  v-model="survey_data.factor"
-                  value="no meal"
-                  placeholder="여기를 수정해보세요"
-                />공복에 심화
-              </div>
+
+              <button
+                value="no meal"
+                @click="button_click_multiple('factor', 'no meal')"
+                class="answer-box"
+              >공복에 심화</button>
+
               <br />
-              <div class="answer-box">
-                <input
-                  type="checkbox"
-                  class="ans"
-                  v-model="survey_data.factor"
-                  value="after alchol"
-                  placeholder="여기를 수정해보세요"
-                />
-                음주후 심화
-              </div>
+
+              <button
+                value="after alchol"
+                @click="button_click_multiple('factor', 'after alchol')"
+                class="answer-box"
+              >음주후 심화</button>
+
               <br />
-              <div class="answer-box">
-                <input
-                  type="checkbox"
-                  class="ans"
-                  v-model="survey_data.factor"
-                  value="posture"
-                  placeholder="여기를 수정해보세요"
-                />
-                자세변화시 심화
-              </div>
+
+              <button
+                value="posture"
+                @click="button_click_multiple('factor', 'posture')"
+                class="answer-box"
+              >자세변화시 심화</button>
+
               <br />
-              <div class="answer-box">
-                <input
-                  type="checkbox"
-                  class="ans"
-                  v-model="survey_data.factor"
-                  value="urination"
-                  placeholder="여기를 수정해보세요"
-                />
-                배뇨시 심화
-              </div>
+
+              <button
+                value="urination"
+                @click="button_click_multiple('factor', 'urination')"
+                class="answer-box"
+              >배뇨시 심화</button>
+
               <br />
-              <div class="answer-box">
-                <input
-                  type="checkbox"
-                  class="ans"
-                  v-model="survey_data.factor"
-                  value="defecation"
-                  placeholder="여기를 수정해보세요"
-                />
-                배변시 심화
-              </div>
-              <div class="answer-box">
-                <input
-                  type="checkbox"
-                  class="ans"
-                  v-model="survey_data.factor"
-                  value="nothing"
-                  placeholder="여기를 수정해보세요"
-                />
-                완화되는 중
-              </div>
+
+              <button
+                value="defecation"
+                @click="button_click_multiple('factor', 'defecation')"
+                class="answer-box"
+              >배변시 심화</button>
+
               <br />
-              <div class="answer-box">
-                <input
-                  type="checkbox"
-                  class="ans"
-                  v-model="survey_data.factor"
-                  value="nothing"
-                  placeholder="여기를 수정해보세요"
-                />
-                해당사항 없음
-              </div>
+
+              <button
+                value="better"
+                @click="button_click_multiple('factor', 'better')"
+                class="answer-box"
+              >완화되는 중</button>
+
+              <br />
+
+              <button
+                value="nothing"
+                @click="button_click_multiple('factor', 'nothing')"
+                class="answer-box"
+              >해당사항 없음</button>
             </div>
           </v-expansion-panel-content>
         </v-expansion-panel>
@@ -268,10 +226,21 @@ export default {
   data() {
     return {
       expand: 0,
-      survey_data: {}
+      survey_data: {
+        factor: []
+      }
     };
   },
   methods: {
+    button_click(model, value) {
+      this.survey_data[model] = value;
+      console.log(this.survey_data);
+    },
+    button_click_multiple(model, value) {
+      this.survey_data[model].push(value);
+      this.survey_data[model] = Array.from(new Set(this.survey_data[model]));
+      console.log(this.survey_data);
+    },
     sec3(survey_data) {
       this.$store.dispatch("setSurveyData3", survey_data);
     }

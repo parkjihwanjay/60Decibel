@@ -15,47 +15,35 @@
             <br />
             <br />
             <div class="answers">
-              <div class="answer animate fadeInRightBig three">
-                <input
-                  type="checkbox"
-                  class="ans"
-                  v-model="survey_data.pain_character"
-                  value="crushing"
-                  placeholder="여기를 수정해보세요"
-                />쥐어짜는듯 함
-              </div>
+              <button
+                value="crushing"
+                @click="button_click_multiple('pain_character', 'crushing')"
+                class="answer-box"
+              >쥐어짜는듯 함</button>
+
               <br />
-              <div class="answer animate fadeInRightBig four">
-                <input
-                  type="checkbox"
-                  class="ans"
-                  v-model="survey_data.pain_character"
-                  value="burning"
-                  placeholder="여기를 수정해보세요"
-                />
-                타는듯 함
-              </div>
+
+              <button
+                value="burning"
+                @click="button_click_multiple('pain_character', 'burning')"
+                class="answer-box"
+              >타는듯 함</button>
+
               <br />
-              <div class="answer animate fadeInRightBig five">
-                <input
-                  type="checkbox"
-                  class="ans"
-                  v-model="survey_data.pain_character"
-                  value="stabbing"
-                  placeholder="여기를 수정해보세요"
-                />
-                베이는듯 함
-              </div>
+
+              <button
+                value="stabbing"
+                @click="button_click_multiple('pain_character', 'stabbing')"
+                class="answer-box"
+              >베이는듯 함</button>
+
               <br />
-              <div class="answer animate fadeInRightBig six">
-                <input
-                  type="checkbox"
-                  class="ans"
-                  v-model="survey_data.pain_character"
-                  value="splitting"
-                  placeholder="여기를 수정해보세요"
-                />찢어지듯 함
-              </div>
+
+              <button
+                value="splitting"
+                @click="button_click_multiple('pain_character', 'splitting')"
+                class="answer-box"
+              >찢어지듯 함</button>
             </div>
             <br />
           </v-expansion-panel-content>
@@ -94,19 +82,18 @@
             <br />
             <br />
             <div class="answers">
-              <div class="answer animate fadeInRightBig three">
-                <input
-                  type="radio"
-                  v-model="survey_data.pain_worse"
-                  class="ans"
-                  value="True"
-                  placeholder="여기를 수정해보세요"
-                />예
-              </div>
+              <button
+                value="True"
+                @click="button_click('pain_worse', 'True')"
+                class="answer animate fadeInRightBig three"
+              >예</button>
               <br />
-              <div class="answer animate fadeInRightBig four">
-                <input type="radio" v-model="survey_data.pain_worse" class="ans" value="False" />아니오
-              </div>
+
+              <button
+                value="False"
+                @click="button_click('pain_worse', 'False')"
+                class="answer animate fadeInRightBig three"
+              >아니오</button>
             </div>
             <br />
           </v-expansion-panel-content>
@@ -123,25 +110,18 @@
             <br />
             <br />
             <div class="answers">
-              <div class="answer animate fadeInRightBig three">
-                <input
-                  type="radio"
-                  v-model="survey_data.pain_experience"
-                  class="ans"
-                  value="True"
-                  placeholder="여기를 수정해보세요"
-                />예
-              </div>
+              <button
+                value="True"
+                @click="button_click('pain_experience', 'True')"
+                class="answer animate fadeInRightBig three"
+              >예</button>
               <br />
-              <div class="answer animate fadeInRightBig four">
-                <input
-                  type="radio"
-                  v-model="survey_data.pain_experience"
-                  class="ans"
-                  value="False"
-                  placeholder="여기를 수정해보세요"
-                />아니오
-              </div>
+
+              <button
+                value="False"
+                @click="button_click('pain_experience', 'False')"
+                class="answer animate fadeInRightBig three"
+              >아니오</button>
             </div>
             <br />
           </v-expansion-panel-content>
@@ -160,10 +140,21 @@ export default {
   data() {
     return {
       expand: 0,
-      survey_data: {}
+      survey_data: {
+        pain_character: []
+      }
     };
   },
   methods: {
+    button_click(model, value) {
+      this.survey_data[model] = value;
+      console.log(this.survey_data);
+    },
+    button_click_multiple(model, value) {
+      this.survey_data[model].push(value);
+      this.survey_data[model] = Array.from(new Set(this.survey_data[model]));
+      console.log(this.survey_data);
+    },
     sec4(survey_data) {
       this.$store.dispatch("setSurveyData4", survey_data);
     }
