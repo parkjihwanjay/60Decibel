@@ -13,7 +13,6 @@
           <v-expansion-panel-content class="content animate fadeInUp one">
             <p class="question">통증이 얼마나 지속되나요?</p>
             <br />
-            <br />
             <div class="answers">
               <button
                 value="lest_than_10m"
@@ -59,13 +58,14 @@
             <p class="question">통증이 주기적으로 있나요?</p>
             <br />
             <br />
+            <br />
             <div class="answers">
               <button
                 value="True"
                 @click="button_click('pain_repeated', 'True')"
                 class="answer animate fadeInRightBig three"
               >반복됩니다.</button>
-
+              <br />
               <button
                 value="False"
                 @click="button_click('pain_repeated', 'False')"
@@ -124,7 +124,7 @@
           <v-expansion-panel-content class="content animate fadeInUp one">
             <p class="question">증상 후 통증이 심화되나요?</p>
             <br />
-            <br />
+
             <div class="answers-box animate fadeInRightBig three">
               <button
                 value="after meal"
@@ -201,13 +201,17 @@
             <p class="question">기타 요인이 있나요?</p>
             <br />
             <br />
-            <div class="answer animate fadeInRightBig three">
-              <input
-                class="ans-txt"
-                type="text"
-                v-model="survey_data.other_factor"
-                placeholder="여기에 입력해주세요"
-              />
+            <br />
+            <br />
+            <div class="answers">
+              <div class="answer animate fadeInRightBig three">
+                <input
+                  class="ans-txt"
+                  type="text"
+                  v-model="survey_data.other_factor"
+                  placeholder="여기에 입력해주세요"
+                />
+              </div>
             </div>
           </v-expansion-panel-content>
         </v-expansion-panel>
@@ -256,9 +260,8 @@ export default {
 /* question body */
 .v-expansion-panels {
   width: 100%;
-  height: 80%;
-  box-shadow: none;
-  padding: 0.5rem 1.5rem;
+  padding: 0 1rem;
+  padding-top: 1rem;
 }
 .v-expansion-panel-header {
   font-weight: 700;
@@ -267,10 +270,11 @@ export default {
 }
 
 .v-expansion-panel-content {
-  height: 40vh;
+  height: 260px;
 }
+
 .section {
-  height: 92vh;
+  height: 93vh;
 }
 
 /* 1차 수정 01:07 */
@@ -291,16 +295,16 @@ export default {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  line-height: 0.5em;
+  line-height: 0.3em;
 }
 .answer-box {
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
   background-color: #2592c9;
   font-size: 0.9rem;
   border-radius: 7px;
-  width: 8rem;
+  width: 7rem;
   height: 2.7rem;
   margin: 0.1rem;
 
@@ -309,11 +313,11 @@ export default {
 
 .answer {
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
   background-color: #2592c9;
   border-radius: 7px;
-  width: 15rem;
+  width: 13rem;
   height: 2.7rem;
   line-height: 0.2rem;
 

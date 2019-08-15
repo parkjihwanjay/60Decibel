@@ -3,20 +3,23 @@
     <v-expansion-panels v-model="expand" accordion class="expansion">
       <v-expansion-panel class="q1-1">
         <v-expansion-panel-header class="header animate fadeInDown two">
-          Q2
+          Q1.
           <template v-slot:actions>
             <v-icon></v-icon>
           </template>
         </v-expansion-panel-header>
         <v-expansion-panel-content class="content animate fadeInUp one">
-          그외 동반되는 증상이 있나요?
+          <p class="question">기타 전달하고 싶은 사항이 있나요?</p>
           <br />
           <br />
-          <input
-            class="ans animate fadeInRightBig three"
-            v-model="survey_data.free_to_describe"
-            placeholder="여기를 수정해보세요"
-          />
+          <br />
+          <div class="answers">
+            <input
+              class="ans-txt animate fadeInRightBig three"
+              v-model="survey_data.free_to_describe"
+              placeholder="여기에 입력해주세요"
+            />
+          </div>
           <br />
         </v-expansion-panel-content>
       </v-expansion-panel>
@@ -24,7 +27,9 @@
     <div class="buttons">
       <router-link :to="{name:'sec5'}">이전</router-link>
     </div>
-    <button @click.native="sec6(survey_data)">설문 제출</button>
+    <div class="button2">
+      <button @click.native="sec6(survey_data)">제출</button>
+    </div>
   </div>
 </template>
 
@@ -54,22 +59,44 @@ export default {
 };
 </script>
 <style scoped>
+.question {
+  font-size: 1.2rem;
+  line-height: 1.5rem;
+}
+
 .v-expansion-panels {
-  height: 80%;
-  box-shadow: none;
   padding: 1rem 1.5rem;
 }
 .v-expansion-panel-content {
-  height: 46vh;
+  height: 220px;
+}
+.v-expansion-panel-header {
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: #125b7f;
 }
 .section {
-  height: 100vh;
+  height: 92vh;
 }
 .ans {
   width: 90%;
   height: 30px;
   background-color: #cecece;
   margin: 5px auto;
+}
+.answers {
+  display: flex;
+  justify-content: center;
+}
+.ans-txt {
+  width: 208px;
+  height: 43.2px;
+  border: #1985bb solid 1px;
+  border-radius: 7px;
+  outline: none;
+  background-color: white;
+  padding-left: 1rem;
+  color: rgb(56, 56, 56);
 }
 .buttons {
   display: flex;
@@ -85,6 +112,29 @@ export default {
 }
 a {
   color: white;
+}
+.button2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(255, 182, 47);
+  border-radius: 10px;
+  box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.308);
+  outline-color: rgb(32, 114, 207);
+  width: 13rem;
+  height: 3rem;
+  margin: auto;
+  margin-top: 5rem;
+  color: rgb(54, 54, 54);
+  font-size: 1.2rem;
+  font-weight: 700;
+  /* transition: 0.5s; */
+}
+.button:hover {
+  box-shadow: 5px 7px 10px 2px rgba(0, 0, 0, 0.308);
+}
+.button2:hover {
+  box-shadow: 5px 7px 10px 2px rgba(0, 0, 0, 0.308);
 }
 .animate {
   -webkit-animation-duration: 0.8s;
