@@ -103,12 +103,13 @@ export const store = new Vuex.Store({
     },
     actions: {
         //   로그인 function
-        login(dispatch, loginObj) {
+        login({ commit }, loginObj) {
             // login --> 토큰 반환
             axios
                 .post("http://54.180.31.52:8000/api/rest-auth/login/", loginObj)
                 // loginObj = {email,password}
                 .then(res => {
+                    // console.log(res.data.user.username)
                     // 접근 성공시, 토큰 값이 반환된다. (실제로는 토큰과 함께 유저 id를 받아온다.)
                     // 토큰을 헤더 정보에 포함시켜서 유저 정보를 요청
                     let token = res.data.token;
@@ -116,9 +117,21 @@ export const store = new Vuex.Store({
                     localStorage.setItem("access_token", token);
                     axios.defaults.headers.common["Authorization"] =
                         localStorage.getItem["access_token"];
+
+                    let userInfo = res.data.user.username
+
+                    localStorage.setItem('isLogin', true);
+                    localStorage.setItem('isLoginError', false);
+                    localStorage.setItem('username', userInfo);
+
+                    commit("loginSuccess", userInfo);
+
                     this.dispatch("getMemberInfo");
-                    router.push({ name: "home" });
-                    console.log(res);
+
+                    if (loginObj.from_signup)
+                        router.push({ name: "profileupdate" })
+                    else
+                        router.push({ name: "home" });
                 })
                 .catch(() => {
                     alert("이메일과 비밀번호를 확인하세요.");
@@ -150,6 +163,7 @@ export const store = new Vuex.Store({
 
                 login_info["username"] = quickLogin.username;
                 login_info["password"] = quickLogin.password1;
+                login_info["from_signup"] = true;
                 axios
                     .post(
                         "http://54.180.31.52:8000/api/rest-auth/registration/",
@@ -178,7 +192,7 @@ export const store = new Vuex.Store({
 
                         login_info["username"] = signupObj.username;
                         login_info["password"] = signupObj.password1;
-
+                        login_info["from_signup"] = true;
                         this.dispatch("login", login_info);
                     })
                     .catch(err => {
@@ -213,15 +227,9 @@ export const store = new Vuex.Store({
                 .then(response => {
                     let userInfo = response.data.username;
                     console.log(userInfo);
-
-                    commit("loginSuccess", userInfo);
-
-                    localStorage.setItem('isLogin', true);
-                    localStorage.setItem('isLoginError', false);
-                    localStorage.setItem('username', userInfo);
                 })
                 .catch(() => {
-                    alert("이메일과 비밀번호를 확인하세요.");
+                    alert("해당 유저가 존재하지 않습니다.");
                 });
         },
         getProfileInfo({ commit }) {

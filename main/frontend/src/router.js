@@ -9,6 +9,7 @@ const requireAuth = () => (to, from, next) => {
     if (localStorage.getItem("isLogin") === "true") {
         next();
     } else {
+        console.log(localStorage.getItem("isLogin"))
         alert("로그인을 먼저 하세요");
         next("/login");
     }
