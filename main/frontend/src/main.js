@@ -9,7 +9,7 @@ import "@babel/polyfill";
 import "./plugins/vue-scrollactive";
 import router from "./router";
 import {
-  store
+    store
 } from "./store.js";
 import axios from "axios";
 
@@ -18,22 +18,29 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 
 AOS.init({
-  offset: 50
+    offset: 50
 });
 
 Vue.prototype.$axios = axios;
 Vue.config.productionTip = false;
 
 new Vue({
-  router,
-  store,
-  // 이거 profile에 대한 store임
-  vuetify,
-  beforeCreate() {
-    this.$store.dispatch("getMemberInfo");
-  },
-  component: {
-    App
-  },
-  render: h => h(App)
+    router,
+    store,
+    // 이거 profile에 대한 store임
+    vuetify,
+    // beforeCreate() {
+    //   this.$store.dispatch("getMemberInfo");
+    // },
+    watch: {
+        '$route': function(to, from) {
+            if (localStorage.getItem('isLogin')) {
+                this.$store.dispatch("alreadyLogin");
+            }
+        }
+    },
+    component: {
+        App
+    },
+    render: h => h(App)
 }).$mount("#app");
