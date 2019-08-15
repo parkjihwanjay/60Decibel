@@ -18,137 +18,99 @@
             <br />
             <br />
             <div class="answers-box animate fadeInRightBig three">
-              <div class="answer-box">
-                <input
-                  type="checkbox"
-                  class="ans"
-                  v-model="survey_data.associated_symptom_digestive"
-                  value="change of appetite"
-                  placeholder="여기를 수정해보세요"
-                />식욕감소
-              </div>
-              <br />
-              <div class="answer-box">
-                <input
-                  type="checkbox"
-                  class="ans"
-                  v-model="survey_data.associated_symptom_digestive"
-                  value="nausea"
-                  placeholder="여기를 수정해보세요"
-                />구역질
-              </div>
-              <br />
-              <div class="answer-box">
-                <input
-                  type="checkbox"
-                  class="ans"
-                  v-model="survey_data.associated_symptom_digestive"
-                  value="vomiting"
-                  placeholder="여기를 수정해보세요"
-                />
-                구토
-              </div>
-              <br />
-              <div class="answer-box">
-                <input
-                  type="checkbox"
-                  class="ans"
-                  v-model="survey_data.associated_symptom_digestive"
-                  value="vomiting blood"
-                  placeholder="여기를 수정해보세요"
-                />
-                토혈
-              </div>
-              <br />
-              <div class="answer-box">
-                <input
-                  type="checkbox"
-                  class="ans"
-                  v-model="survey_data.associated_symptom_digestive"
-                  value="abdominal inflation"
-                  placeholder="여기를 수정해보세요"
-                />
-                복부팽만
-              </div>
-              <br />
-              <div class="answer-box">
-                <input
-                  type="checkbox"
-                  class="ans"
-                  v-model="survey_data.associated_symptom_digestive"
-                  value="lump on abdomen"
-                  placeholder="여기를 수정해보세요"
-                />
-                복부종괴
-              </div>
-              <br />
-              <div class="answer-box">
-                <input
-                  type="checkbox"
-                  class="ans"
-                  v-model="survey_data.associated_symptom_digestive"
-                  value="constipation"
-                  placeholder="여기를 수정해보세요"
-                />
-                변비
-              </div>
-              <br />
-              <div class="answer-box">
-                <input
-                  type="checkbox"
-                  class="ans"
-                  v-model="survey_data.associated_symptom_digestive"
-                  value="diarrhea"
-                  placeholder="여기를 수정해보세요"
-                />
-                설사
-              </div>
-              <br />
-              <div class="answer-box">
-                <input
-                  type="checkbox"
-                  class="ans"
-                  v-model="survey_data.associated_symptom_digestive"
-                  value="rectal_bleeding/melena"
-                  placeholder="여기를 수정해보세요"
-                />
-                혈변/흑변
-              </div>
-              <br />
+              <button
+                value="change of appetite"
+                @click="button_click_multiple('associated_symptom_digestive', 'change of appetite')"
+                class="answer animate fadeInRightBig three"
+              >식욕감소</button>
 
               <br />
-              <div class="answer-box">
-                <input
-                  type="checkbox"
-                  class="ans"
-                  v-model="survey_data.associated_symptom_digestive"
-                  value="steatorrhea"
-                  placeholder="여기를 수정해보세요"
-                />
-                지방변
-              </div>
+
+              <button
+                value="nausea"
+                @click="button_click_multiple('associated_symptom_digestive', 'nausea')"
+                class="answer animate fadeInRightBig three"
+              >구역질</button>
+
               <br />
-              <div class="answer-box">
-                <input
-                  type="checkbox"
-                  class="ans"
-                  v-model="survey_data.associated_symptom_digestive"
-                  value="jaundice"
-                  placeholder="여기를 수정해보세요"
-                />
-                황달
-              </div>
+
+              <button
+                value="vomiting"
+                @click="button_click_multiple('associated_symptom_digestive', 'vomiting')"
+                class="answer animate fadeInRightBig three"
+              >구토</button>
+
               <br />
-              <div class="answer-box">
-                <input
-                  type="checkbox"
-                  class="ans"
-                  v-model="survey_data.associated_symptom_digestive"
-                  value="nothing"
-                  placeholder="여기를 수정해보세요"
-                />
-                해당없음
-              </div>
+
+              <button
+                value="vomiting blood"
+                @click="button_click_multiple('associated_symptom_digestive', 'vomiting blood')"
+                class="answer animate fadeInRightBig three"
+              >토혈</button>
+
+              <br />
+
+              <button
+                value="abdominal inflation"
+                @click="button_click_multiple('associated_symptom_digestive', 'abdominal inflation')"
+                class="answer animate fadeInRightBig three"
+              >복부팽만</button>
+
+              <br />
+
+              <button
+                value="lump on abdomen"
+                @click="button_click_multiple('associated_symptom_digestive', 'lump on abdomen')"
+                class="answer animate fadeInRightBig three"
+              >복부종괴</button>
+
+              <br />
+
+              <button
+                value="constipation"
+                @click="button_click_multiple('associated_symptom_digestive', 'constipation')"
+                class="answer animate fadeInRightBig three"
+              >변비</button>
+
+              <br />
+
+              <button
+                value="diarrhea"
+                @click="button_click_multiple('associated_symptom_digestive', 'diarrhea')"
+                class="answer animate fadeInRightBig three"
+              >설사</button>
+
+              <br />
+
+              <button
+                value="rectal_bleeding/melena"
+                @click="button_click_multiple('associated_symptom_digestive', 'rectal_bleeding/melena')"
+                class="answer animate fadeInRightBig three"
+              >혈변/흑변</button>
+
+              <br />
+
+              <button
+                value="steatorrhea"
+                @click="button_click_multiple('associated_symptom_digestive', 'steatorrhea')"
+                class="answer animate fadeInRightBig three"
+              >지방변</button>
+
+              <br />
+
+              <button
+                value="jaundice"
+                @click="button_click_multiple('associated_symptom_digestive', 'jaundice')"
+                class="answer animate fadeInRightBig three"
+              >황달</button>
+
+              <br />
+
+              <button
+                value="nothing"
+                @click="button_click('associated_symptom_digestive', 'nothing')"
+                class="answer animate fadeInRightBig three"
+              >해당없음</button>
             </div>
             <br />
           </v-expansion-panel-content>
@@ -168,68 +130,43 @@
             <br />
             <br />
             <div class="answers-box animate fadeInRightBig three">
-              <div class="answer-box">
-                <input
-                  type="checkbox"
-                  class="ans"
-                  v-model="survey_data.associated_symptom_circulatory"
-                  value="chest pain"
-                  placeholder="여기를 수정해보세요"
-                />가슴통증
-              </div>
+              <button
+                value="chest pain"
+                @click="button_click_multiple('associated_symptom_circulatory', 'chest pain')"
+                class="answer animate fadeInRightBig three"
+              >가슴통증</button>
+
               <br />
-              <div class="answer-box">
-                <input
-                  type="checkbox"
-                  class="ans"
-                  v-model="survey_data.associated_symptom_circulatory"
-                  value="shortness of breah"
-                  placeholder="여기를 수정해보세요"
-                />호흡곤란
-              </div>
+
+              <button
+                value="shortness of breah"
+                @click="button_click_multiple('associated_symptom_circulatory', 'shortness of breah')"
+                class="answer animate fadeInRightBig three"
+              >호흡곤란</button>
+
               <br />
-              <div class="answer-box">
-                <input
-                  type="checkbox"
-                  class="ans"
-                  v-model="survey_data.associated_symptom_circulatory"
-                  value="cough"
-                  placeholder="여기를 수정해보세요"
-                />
-                기침
-              </div>
+
+              <button
+                value="cough"
+                @click="button_click_multiple('associated_symptom_circulatory', 'cough')"
+                class="answer animate fadeInRightBig three"
+              >기침</button>
+
               <br />
-              <div class="answer-box">
-                <input
-                  type="checkbox"
-                  class="ans"
-                  v-model="survey_data.associated_symptom_circulatory"
-                  value="runny nose"
-                  placeholder="여기를 수정해보세요"
-                />
-                콧물
-              </div>
+
+              <button
+                value="runny nose"
+                @click="button_click_multiple('associated_symptom_circulatory', 'runny nose')"
+                class="answer animate fadeInRightBig three"
+              >콧물</button>
+
               <br />
-              <div class="answer-box">
-                <input
-                  type="checkbox"
-                  class="ans"
-                  v-model="survey_data.associated_symptom_circulatory"
-                  value="nothing"
-                  placeholder="여기를 수정해보세요"
-                />
-                해당없음
-              </div>
-              <div class="answer-box blank">
-                <input
-                  type="checkbox"
-                  class="ans"
-                  v-model="survey_data.associated_symptom_urinary"
-                  value="nothing"
-                  placeholder="여기를 수정해보세요"
-                />
-                해당없음
-              </div>
+
+              <button
+                value="nothing"
+                @click="button_click_multiple('associated_symptom_circulatory', 'nothing')"
+                class="answer animate fadeInRightBig three"
+              >해당없음</button>
             </div>
           </v-expansion-panel-content>
         </v-expansion-panel>
@@ -248,66 +185,43 @@
             <br />
             <br />
             <div class="answers-box animate fadeInRightBig three">
-              <div class="answer-box">
-                <input
-                  type="checkbox"
-                  class="ans"
-                  v-model="survey_data.associated_symptom_gynecology"
-                  value="colporrhagia"
-                  placeholder="여기를 수정해보세요"
-                />질출혈
-              </div>
+              <button
+                value="colporrhagia"
+                @click="button_click_multiple('associated_symptom_gynecology', 'colporrhagia')"
+                class="answer animate fadeInRightBig three"
+              >질출혈</button>
+
               <br />
-              <div class="answer-box">
-                <input
-                  type="checkbox"
-                  class="ans"
-                  v-model="survey_data.associated_symptom_gynecology"
-                  value="leukorrhea"
-                  placeholder="여기를 수정해보세요"
-                />질분비물
-              </div>
+
+              <button
+                value="leukorrhea"
+                @click="button_click_multiple('associated_symptom_gynecology', 'leukorrhea')"
+                class="answer animate fadeInRightBig three"
+              >질분비물</button>
+
               <br />
-              <div class="answer-box">
-                <input
-                  type="checkbox"
-                  class="ans"
-                  v-model="survey_data.associated_symptom_gynecology"
-                  value="menstrual cycle change"
-                  placeholder="여기를 수정해보세요"
-                />생리변화
-              </div>
+
+              <button
+                value="menstrual cycle change"
+                @click="button_click_multiple('associated_symptom_gynecology', 'menstrual cycle change')"
+                class="answer animate fadeInRightBig three"
+              >생리변화</button>
+
               <br />
-              <div class="answer-box">
-                <input
-                  type="checkbox"
-                  class="ans"
-                  v-model="survey_data.associated_symptom_gynecology"
-                  value="pregnant possibility"
-                  placeholder="여기를 수정해보세요"
-                />임신가능성
-              </div>
+
+              <button
+                value="pregnant possibility"
+                @click="button_click_multiple('associated_symptom_gynecology', 'pregnant possibility')"
+                class="answer animate fadeInRightBig three"
+              >임신가능성</button>
+
               <br />
-              <div class="answer-box">
-                <input
-                  type="checkbox"
-                  class="ans"
-                  v-model="survey_data.associated_symptom_gynecology"
-                  value="nothing"
-                  placeholder="여기를 수정해보세요"
-                />
-                해당없음
-              </div>
-              <div class="answer-box blank">
-                <input
-                  type="checkbox"
-                  class="ans"
-                  v-model="survey_data.associated_symptom_urinary"
-                  value="nothing"
-                  placeholder="여기를 수정해보세요"
-                />
-                해당없음
-              </div>
+
+              <button
+                value="nothing"
+                @click="button_click_multiple('associated_symptom_gynecology', 'nothing')"
+                class="answer animate fadeInRightBig three"
+              >해당없음</button>
             </div>
           </v-expansion-panel-content>
         </v-expansion-panel>
@@ -326,101 +240,67 @@
             <br />
             <br />
             <div class="answers-box animate fadeInRightBig three">
-              <div class="answer-box">
-                <input
-                  type="checkbox"
-                  class="ans"
-                  v-model="survey_data.associated_symptom_whole_body"
-                  value="fever"
-                  placeholder="여기를 수정해보세요"
-                />발열
-              </div>
+              <button
+                value="fever"
+                @click="button_click_multiple('associated_symptom_whole_body', 'fever')"
+                class="answer animate fadeInRightBig three"
+              >발열</button>
+
               <br />
-              <div class="answer-box">
-                <input
-                  type="checkbox"
-                  class="ans"
-                  v-model="survey_data.associated_symptom_whole_body"
-                  value="chilling"
-                  placeholder="여기를 수정해보세요"
-                />오한
-              </div>
+
+              <button
+                value="chilling"
+                @click="button_click_multiple('associated_symptom_whole_body', 'chilling')"
+                class="answer animate fadeInRightBig three"
+              >오한</button>
+
               <br />
-              <div class="answer-box">
-                <input
-                  type="checkbox"
-                  class="ans"
-                  v-model="survey_data.associated_symptom_whole_body"
-                  value="fatigue"
-                  placeholder="여기를 수정해보세요"
-                />
-                피로
-              </div>
+
+              <button
+                value="fatigue"
+                @click="button_click_multiple('associated_symptom_whole_body', 'fatigue')"
+                class="answer animate fadeInRightBig three"
+              >피로</button>
+
               <br />
-              <div class="answer-box">
-                <input
-                  type="checkbox"
-                  class="ans"
-                  v-model="survey_data.associated_symptom_whole_body"
-                  value="weight change"
-                  placeholder="여기를 수정해보세요"
-                />
-                체중변화
-              </div>
+
+              <button
+                value="weight change"
+                @click="button_click_multiple('associated_symptom_whole_body', 'weight change')"
+                class="answer animate fadeInRightBig three"
+              >체중변화</button>
+
               <br />
-              <div class="answer-box">
-                <input
-                  type="checkbox"
-                  class="ans"
-                  v-model="survey_data.associated_symptom_whole_body"
-                  value="sweating"
-                  placeholder="여기를 수정해보세요"
-                />
-                식은땀
-              </div>
+
+              <button
+                value="sweating"
+                @click="button_click_multiple('associated_symptom_whole_body', 'sweating')"
+                class="answer animate fadeInRightBig three"
+              >식은땀</button>
+
               <br />
-              <div class="answer-box">
-                <input
-                  type="checkbox"
-                  class="ans"
-                  v-model="survey_data.associated_symptom_whole_body"
-                  value="sleep disturbance"
-                  placeholder="여기를 수정해보세요"
-                />
-                수면곤란
-              </div>
+
+              <button
+                value="sleep disturbance"
+                @click="button_click_multiple('associated_symptom_whole_body', 'sleep disturbance')"
+                class="answer animate fadeInRightBig three"
+              >수면곤란</button>
+
               <br />
-              <div class="answer-box">
-                <input
-                  type="checkbox"
-                  class="ans"
-                  v-model="survey_data.associated_symptom_whole_body"
-                  value="headache"
-                  placeholder="여기를 수정해보세요"
-                />
-                두통
-              </div>
+
+              <button
+                value="headache"
+                @click="button_click_multiple('associated_symptom_whole_body', 'headache')"
+                class="answer animate fadeInRightBig three"
+              >두통</button>
+
               <br />
-              <div class="answer-box">
-                <input
-                  type="checkbox"
-                  class="ans"
-                  v-model="survey_data.associated_symptom_whole_body"
-                  value="nothing"
-                  placeholder="여기를 수정해보세요"
-                />
-                해당없음
-              </div>
-              <div class="answer-box blank">
-                <input
-                  type="checkbox"
-                  class="ans"
-                  v-model="survey_data.associated_symptom_urinary"
-                  value="nothing"
-                  placeholder="여기를 수정해보세요"
-                />
-                해당없음
-              </div>
+
+              <button
+                value="nothing"
+                @click="button_click_multiple('associated_symptom_whole_body', 'nothing')"
+                class="answer animate fadeInRightBig three"
+              >해당없음</button>
             </div>
           </v-expansion-panel-content>
         </v-expansion-panel>
@@ -439,69 +319,51 @@
             <br />
             <br />
             <div class="answers-box animate fadeInRightBig three">
-              <div class="answer-box">
-                <input
-                  type="checkbox"
-                  class="ans"
-                  v-model="survey_data.associated_symptom_urinary"
-                  value="painful urination"
-                  placeholder="여기를 수정해보세요"
-                />배뇨통
-              </div>
+              <button
+                value="painful urination"
+                @click="button_click_multiple('associated_symptom_urinary', 'painful urination')"
+                class="answer animate fadeInRightBig three"
+              >배뇨통</button>
+
               <br />
-              <div class="answer-box">
-                <input
-                  type="checkbox"
-                  class="ans"
-                  v-model="survey_data.associated_symptom_urinary"
-                  value="chnage the quantity of urine"
-                  placeholder="여기를 수정해보세요"
-                />소변량변화
-              </div>
+
+              <button
+                value="chnage the quantity of urine"
+                @click="button_click_multiple('associated_symptom_urinary', 'chnage the quantity of urine')"
+                class="answer animate fadeInRightBig three"
+              >소변량변화</button>
+
               <br />
-              <div class="answer-box">
-                <input
-                  type="checkbox"
-                  class="ans"
-                  v-model="survey_data.associated_symptom_urinary"
-                  value="red urine"
-                  placeholder="여기를 수정해보세요"
-                />
-                혈뇨
-              </div>
+
+              <button
+                value="red urine"
+                @click="button_click_multiple('associated_symptom_urinary', 'red urine')"
+                class="answer animate fadeInRightBig three"
+              >혈뇨</button>
+
               <br />
-              <div class="answer-box">
-                <input
-                  type="checkbox"
-                  class="ans"
-                  v-model="survey_data.associated_symptom_urinary"
-                  value="foamy urine"
-                  placeholder="여기를 수정해보세요"
-                />
-                거품뇨
-              </div>
+
+              <button
+                value="foamy urine"
+                @click="button_click_multiple('associated_symptom_urinary', 'foamy urine')"
+                class="answer animate fadeInRightBig three"
+              >거품뇨</button>
+
               <br />
-              <div class="answer-box">
-                <input
-                  type="checkbox"
-                  class="ans"
-                  v-model="survey_data.associated_symptom_urinary"
-                  value="frequency"
-                  placeholder="여기를 수정해보세요"
-                />
-                잦은 소변
-              </div>
+
+              <button
+                value="frequency"
+                @click="button_click_multiple('associated_symptom_urinary', 'frequency')"
+                class="answer animate fadeInRightBig three"
+              >잦은 소변</button>
+
               <br />
-              <div class="answer-box">
-                <input
-                  type="checkbox"
-                  class="ans"
-                  v-model="survey_data.associated_symptom_urinary"
-                  value="nothing"
-                  placeholder="여기를 수정해보세요"
-                />
-                해당없음
-              </div>
+
+              <button
+                value="nothing"
+                @click="button_click_multiple('associated_symptom_urinary', 'nothing')"
+                class="answer animate fadeInRightBig three"
+              >해당없음</button>
             </div>
           </v-expansion-panel-content>
         </v-expansion-panel>
@@ -540,38 +402,28 @@
             <br />
             <br />
             <div class="answers">
-              <div class="answer">
-                <input
-                  type="checkbox"
-                  v-model="survey_data.abdomen_relevant"
-                  class="ans animate fadeInRightBig three"
-                  value="abdomen_hurted"
-                  placeholder="여기를 수정해보세요"
-                />
-                복부를 다친 적이 있음
-              </div>
+              <button
+                value="abdomen_hurted"
+                @click="button_click_multiple('abdomen_relevant', 'abdomen_hurted')"
+                class="answer"
+              >복부를 다친 적이 있음</button>
+
               <br />
-              <div class="answer">
-                <input
-                  type="checkbox"
-                  v-model="survey_data.abdomen_relevant"
-                  class="ans animate fadeInRightBig three"
-                  value="abdomen_surgery"
-                  placeholder="여기를 수정해보세요"
-                />
-                복부 수술을 받은 적이 있음
-              </div>
+
+              <button
+                value="abdomen_surgery"
+                @click="button_click_multiple('abdomen_relevant', 'abdomen_surgery')"
+                class="answer"
+              >복부 수술을 받은 적이 있음</button>
+
               <br />
-              <div class="answer">
-                <input
-                  type="checkbox"
-                  v-model="survey_data.abdomen_relevant"
-                  class="ans animate fadeInRightBig three"
-                  value="abdomen_nothing"
-                  placeholder="여기를 수정해보세요"
-                />
-                해당없음
-              </div>
+
+              <button
+                value="abdomen_nothing"
+                @click="button_click_multiple('abdomen_relevant', 'abdomen_nothing')"
+                class="answer"
+              >해당없음</button>
+
             </div>
           </v-expansion-panel-content>
         </v-expansion-panel>
@@ -589,10 +441,25 @@ export default {
   data() {
     return {
       expand: 0,
-      survey_data: {}
+      survey_data: {
+        associated_symptom_digestive: [],
+        associated_symptom_circulatory: [],
+        associated_symptom_gynecology: [],
+        associated_symptom_urinary: [],
+        abdomen_relevant: []
+      }
     };
   },
   methods: {
+    button_click(model, value) {
+      this.survey_data[model] = value;
+      console.log(this.survey_data);
+    },
+    button_click_multiple(model, value) {
+      this.survey_data[model].push(value);
+      this.survey_data[model] = Array.from(new Set(this.survey_data[model]));
+      console.log(this.survey_data);
+    },
     sec5(survey_data) {
       this.$store.dispatch("setSurveyData5", survey_data);
     }

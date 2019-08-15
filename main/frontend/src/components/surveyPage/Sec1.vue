@@ -15,24 +15,18 @@
             <br />
             <br />
             <div class="answers">
-              <div class="answer animate fadeInRightBig three">
-                <input
-                  type="radio"
-                  value="less_than_month"
-                  v-model="survey_data.symptom_start"
-                  class="ans"
-                />한 달이 안됐습니다.
-              </div>
-              <br />
-              <div class="answer animate fadeInRightBig four">
-                <input
-                  type="radio"
-                  value="more_than_month"
-                  v-model="survey_data.symptom_start"
-                  class="ans"
-                />한 달이 넘었습니다.
-              </div>
+              <button
+                value="less_than_month"
+                @click="button_click('symptom_start', 'less_than_month')"
+                class="answer animate fadeInRightBig three"
+              >한 달이 안됐습니다.</button>
             </div>
+            <br />
+            <button
+              value="more_than_month"
+              @click="button_click('symptom_start', 'more_than_month')"
+              class="answer animate fadeInRightBig three"
+            >한 달이 넘었습니다.</button>
             <br />
           </v-expansion-panel-content>
         </v-expansion-panel>
@@ -78,26 +72,18 @@
             <br />
             <br />
             <div class="answers">
-              <div class="answer animate fadeInRightBig three">
-                <input
-                  type="radio"
-                  v-model="survey_data.fast_or_slow"
-                  value="fast"
-                  class="ans"
-                  placeholder="여기를 수정해보세요"
-                />
-                갑자기
-              </div>
+              <button
+                value="fast"
+                @click="button_click('fast_or_slow', 'fast')"
+                class="answer animate fadeInRightBig three"
+              >갑자기</button>
               <br />
-              <div class="answer animate fadeInRightBig four">
-                <input
-                  type="radio"
-                  v-model="survey_data.fast_or_slow"
-                  value="slow"
-                  class="ans"
-                  placeholder="여기를 수정해보세요"
-                />서서히
-              </div>
+
+              <button
+                value="slow"
+                @click="button_click('fast_or_slow', 'slow')"
+                class="answer animate fadeInRightBig three"
+              >서서히</button>
             </div>
             <br />
           </v-expansion-panel-content>
@@ -141,11 +127,21 @@ export default {
   data() {
     return {
       expand: 0,
-      survey_data: {}
+      survey_data: {
+        symtpom_location: []
+      }
     };
   },
   methods: {
-    // ...mapActions(["survey"])
+    button_click(model, value) {
+      this.survey_data[model] = value;
+      console.log(this.survey_data);
+    },
+    button_click_multiple(model, value) {
+      this.survey_data[model].push(value);
+      this.survey_data[model] = Array.from(new Set(this.survey_data[model]));
+      console.log(this.survey_data);
+    },
     sec1(survey_data) {
       this.$store.dispatch("setSurveyData1", survey_data);
     }

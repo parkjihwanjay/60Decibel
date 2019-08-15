@@ -15,85 +15,67 @@
             <br />
             <br />
             <div class="answers-box animate fadeInRightBig three">
-              <div class="answer-box">
-                <input
-                  type="checkbox"
-                  v-model="survey_data.symtpom_location"
-                  value="whole abdomen"
-                  class="ans"
-                  placeholder="여기를 수정해보세요"
-                />복부전체
-              </div>
+              <button
+                value="True"
+                @click="button_click_multiple('symtpom_location', 'whole_abdomen')"
+                class="answer-box"
+              >복부전체</button>
+
               <br />
-              <div class="answer-box">
-                <input
-                  type="checkbox"
-                  v-model="survey_data.symtpom_location"
-                  class="ans"
-                  value="sternal"
-                  placeholder="여기를 수정해보세요"
-                />명치부위
-              </div>
+
+              <button
+                value="sternal"
+                @click="button_click_multiple('symtpom_location', 'sternal')"
+                class="answer-box"
+              >명치부위</button>
+
               <br />
-              <div class="answer-box">
-                <input
-                  type="checkbox"
-                  v-model="survey_data.symtpom_location"
-                  class="ans"
-                  value="umbilicus"
-                  placeholder="여기를 수정해보세요"
-                />배꼽부위
-              </div>
+
+              <button
+                value="sternal"
+                @click="button_click_multiple('symtpom_location', 'umbilicus')"
+                class="answer-box"
+              >배꼽부위</button>
+
               <br />
-              <div class="answer-box">
-                <input
-                  type="checkbox"
-                  v-model="survey_data.symtpom_location"
-                  class="ans"
-                  value="flank"
-                  placeholder="여기를 수정해보세요"
-                />옆구리
-              </div>
+
+              <button
+                value="sternal"
+                @click="button_click_multiple('symtpom_location', 'flank')"
+                class="answer-box"
+              >옆구리</button>
+
               <br />
-              <div class="answer-box">
-                <input
-                  type="checkbox"
-                  v-model="survey_data.symtpom_location"
-                  class="ans"
-                  value="LUQ"
-                  placeholder="여기를 수정해보세요"
-                />왼쪽 위
-              </div>
+
+              <button
+                value="LUQ"
+                @click="button_click_multiple('symtpom_location', 'LUQ')"
+                class="answer-box"
+              >왼쪽 위</button>
+
               <br />
-              <div class="answer-box">
-                <input
-                  type="checkbox"
-                  v-model="survey_data.symtpom_location"
-                  class="ans"
-                  value="LLQ"
-                  placeholder="여기를 수정해보세요"
-                />오른쪽 위
-              </div>
+
+              <button
+                value="LLQ"
+                @click="button_click_multiple('symtpom_location', 'LLQ')"
+                class="answer-box"
+              >오른쪽 위</button>
+
               <br />
-              <div class="answer-box">
-                <input
-                  type="checkbox"
-                  v-model="survey_data.symtpom_location"
-                  value="RUQ"
-                  class="ans"
-                  placeholder="여기를 수정해보세요"
-                />왼쪽 아래
-              </div>
+
+              <button
+                value="RUQ"
+                @click="button_click_multiple('symtpom_location', 'RUQ')"
+                class="answer-box"
+              >왼쪽 아래</button>
+
               <br />
-              <div class="answer-box">
-                <input
-                  type="checkbox"
-                  v-model="survey_data.symtpom_location"
-                  class="ans"
-                  value="RLQ"
-                  placeholder="여기를 수정해보세요"
-                />오른쪽 아래
-              </div>
+
+              <button
+                value="RLQ"
+                @click="button_click_multiple('symtpom_location', 'RLQ')"
+                class="answer-box"
+              >오른쪽 아래</button>
             </div>
             <br />
           </v-expansion-panel-content>
@@ -110,13 +92,19 @@
             <br />
             <br />
             <div class="answers">
-              <div class="answer animate fadeInRightBig three">
-                <input type="radio" v-model="survey_data.location_move" value="True" class="ans" />예
-              </div>
+              <button
+                value="True"
+                @click="button_click('location_move', 'True')"
+                class="answer animate fadeInRightBig three"
+              >예</button>
+
               <br />
-              <div class="answer animate fadeInRightBig four">
-                <input type="radio" v-model="survey_data.location_move" value="False" class="ans" />아니오
-              </div>
+
+              <button
+                value="False"
+                @click="button_click('location_move', 'False')"
+                class="answer animate fadeInRightBig three"
+              >아니오</button>
             </div>
             <br />
           </v-expansion-panel-content>
@@ -159,13 +147,19 @@
             <br />
             <br />
             <div class="answers">
-              <div class="answer animate fadeInRightBig three">
-                <input type="radio" v-model="survey_data.pain_spread" value="True" class="ans" />예
-              </div>
+              <button
+                value="True"
+                @click="button_click('pain_spread', 'True')"
+                class="answer animate fadeInRightBig three"
+              >예</button>
+
               <br />
-              <div class="answer animate fadeInRightBig three">
-                <input type="radio" v-model="survey_data.pain_spread" value="False" class="ans" />아니오
-              </div>
+
+              <button
+                value="False"
+                @click="button_click('pain_spread', 'False')"
+                class="answer animate fadeInRightBig three"
+              >아니오</button>
             </div>
             <br />
           </v-expansion-panel-content>
@@ -210,10 +204,21 @@ export default {
   data() {
     return {
       expand: 0,
-      survey_data: {}
+      survey_data: {
+        symtpom_location: []
+      }
     };
   },
   methods: {
+    button_click(model, value) {
+      this.survey_data[model] = value;
+      console.log(this.survey_data);
+    },
+    button_click_multiple(model, value) {
+      this.survey_data[model].push(value);
+      this.survey_data[model] = Array.from(new Set(this.survey_data[model]));
+      console.log(this.survey_data);
+    },
     sec2(survey_data) {
       this.$store.dispatch("setSurveyData2", survey_data);
     }
