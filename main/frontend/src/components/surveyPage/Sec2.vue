@@ -210,13 +210,7 @@ export default {
   data() {
     return {
       expand: 0,
-      survey_data: {
-        symtpom_location: [],
-        location_move: "",
-        location_move_how: "",
-        pain_spread: "",
-        pain_spread_where: ""
-      }
+      survey_data: {}
     };
   },
   methods: {

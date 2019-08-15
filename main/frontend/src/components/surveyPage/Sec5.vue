@@ -589,19 +589,10 @@ export default {
   data() {
     return {
       expand: 0,
-      survey_data: {
-        associated_symptom_digestive: [],
-        associated_symptom_circulatory: [],
-        associated_symptom_gynecology: [],
-        associated_symptom_whole_body: [],
-        associated_symptom_urinary: [],
-        associated_symptom_others: "",
-        abdomen_relevant: []
-      }
+      survey_data: {}
     };
   },
   methods: {
-
     sec5(survey_data) {
       this.$store.dispatch("setSurveyData5", survey_data);
     }
