@@ -68,8 +68,9 @@ export default {
   color: white;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
+  min-height: 600px;
 }
 
 .contents {
@@ -111,8 +112,8 @@ export default {
 
 .contents2 {
   display: flex;
-  justify-content: space-around;
-  width: 90%;
+  justify-content: space-between;
+  min-width: 60%;
   height: 20%;
 }
 .box {

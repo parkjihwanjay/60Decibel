@@ -36,7 +36,7 @@ export default {
 };
 </script>
 <style scoped>
-.survey-btn {
+/* .survey-btn {
   display: flex;
   justify-content: center;
 }
@@ -48,6 +48,6 @@ export default {
   border-radius: 10px;
   position: fixed;
   bottom: 0;
-}
+} */
 </style>
 

@@ -57,4 +57,10 @@ span {
   text-align: center;
   line-height: 1.1rem;
 }
+@media (min-width: 768px) {
+  .cont3 {
+    width: 800px;
+    margin: 0 auto;
+  }
+}
 </style>

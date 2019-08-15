@@ -26,7 +26,8 @@
         <img class="img-center" src="../../assets/survey.png" />
         <p class="txt-detail">
           환자는 설문기록을 통해 자신의 건강상태를 정확히 알리고,
-          <br />의사는 환자의 건강상태를 <br>빠른 속도로 빠짐없이 진료할 수 있습니다.
+          <br />의사는 환자의 건강상태를
+          <br />빠른 속도로 빠짐없이 진료할 수 있습니다.
         </p>
       </div>
       <div v-if="icon2">
@@ -66,7 +67,7 @@ export default {
 
 <style scoped>
 .container3 {
-  height: 76vh;
+  min-height: 480px;
 }
 .txt-bold {
   font-weight: 800;

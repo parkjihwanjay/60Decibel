@@ -113,9 +113,9 @@ a:visited {
   cursor: pointer;
   width: 5.2rem;
   height: 32px;
-
   border-radius: 5px;
   padding: 1px;
+  margin-right: 1rem;
   background: linear-gradient(135deg, #94e2f0, #185dac);
   color: white;
   font-size: 1rem;
@@ -165,5 +165,18 @@ a:visited {
 .expand-enter,
 .expand-leave-to {
   opacity: 0;
+}
+@media (min-width: 768px) {
+  .navhead {
+    margin: 0 auto;
+    border-bottom: none;
+  }
+  .nav {
+    width: 700px;
+    margin: 0 auto;
+  }
+  .navexpand {
+    border-bottom: none;
+  }
 }
 </style>

@@ -1,6 +1,6 @@
 <template>
   <div class="login">
-    <login-form class="footer" />
+    <login-form class="login-form" />
   </div>
 </template>
 
@@ -18,6 +18,8 @@ export default {
 </script>
 <style scoped>
 .login {
+  display: flex;
+  align-items: center;
   width: 100%;
   min-height: 850px;
   color: #fff;
@@ -28,9 +30,8 @@ export default {
   animation: Gradient 8s ease infinite;
 }
 
-.footer {
+.login-form {
   width: 100%;
-  height: 100%;
 }
 @-webkit-keyframes Gradient {
   0% {
