@@ -38,8 +38,8 @@ export const store = new Vuex.Store({
 
     mutations: {
         loginSuccess(state, payload) {
-            state.isLogin = "true";
-            state.isLoginError = "false";
+            state.isLogin = 'true';
+            state.isLoginError = 'false';
             state.userInfo = payload;
         },
         loginError(state) {
@@ -426,9 +426,7 @@ export const store = new Vuex.Store({
         }) {
             commit("RESET_RANDOM_USER");
         },
-        alreadyLogin({
-            commit
-        }) {
+        alreadyLogin({ commit }) {
             console.log("로그인이 되어있을때")
             commit("ALREADY_LOGIN");
         },

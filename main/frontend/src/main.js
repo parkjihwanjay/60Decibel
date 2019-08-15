@@ -29,15 +29,9 @@ new Vue({
     store,
     // 이거 profile에 대한 store임
     vuetify,
-    // beforeCreate() {
-    //   this.$store.dispatch("getMemberInfo");
-    // },
-    watch: {
-        '$route': function(to, from) {
-            if (localStorage.getItem('isLogin')) {
-                this.$store.dispatch("alreadyLogin");
-            }
-        }
+    beforeCreate() {
+        if (localStorage.getItem('isLogin') === 'true')
+            this.$store.dispatch("alreadyLogin");
     },
     component: {
         App
