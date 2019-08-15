@@ -423,7 +423,6 @@
                 @click="button_click_multiple('abdomen_relevant', 'abdomen_nothing')"
                 class="answer"
               >해당없음</button>
-
             </div>
           </v-expansion-panel-content>
         </v-expansion-panel>
@@ -446,6 +445,7 @@ export default {
         associated_symptom_circulatory: [],
         associated_symptom_gynecology: [],
         associated_symptom_urinary: [],
+        associated_symptom_whole_body: [],
         abdomen_relevant: []
       }
     };
