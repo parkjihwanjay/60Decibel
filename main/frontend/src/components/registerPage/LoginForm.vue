@@ -22,7 +22,9 @@
       <div class="login-btn-txt">
         <a>아이디/비밀번호 찾기 |</a>
         <a class="bold">
+
           <router-link :to="{ name: 'signup' }">&nbsp;&nbsp;회원가입</router-link>
+
         </a>
       </div>
     </div>
@@ -41,8 +43,7 @@ export default {
     ...mapState(["isLogin", "isLoginError"])
   },
   methods: {
-    ...mapActions(["login"]),
-    ...mapActions(["start"])
+    ...mapActions(["login", "start", "resetRandomUser"])
   }
 };
 </script>

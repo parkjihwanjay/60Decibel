@@ -131,13 +131,12 @@
       </v-expansion-panels>
     </div>
     <div class="buttons">
-      <router-link :to="{name:'sec2'}">다음</router-link>
+      <router-link :to="{name:'sec2'}" @click.native="sec1(survey_data)">다음</router-link>
     </div>
   </div>
 </template>
 
 <script>
-import { mapState, mapActions } from "vuex";
 export default {
   data() {
     return {
@@ -151,7 +150,10 @@ export default {
     };
   },
   methods: {
-    ...mapActions(["survey"])
+    // ...mapActions(["survey"])
+    sec1(survey_data) {
+      this.$store.dispatch("setSurveyData1", survey_data);
+    }
   }
 };
 </script>

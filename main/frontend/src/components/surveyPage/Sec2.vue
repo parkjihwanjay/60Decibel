@@ -200,13 +200,12 @@
     </div>
     <div class="buttons">
       <router-link :to="{name:'sec1'}">이전</router-link>
-      <router-link :to="{name:'sec3'}">다음</router-link>
+      <router-link :to="{name:'sec3'}" @click.native="sec2(survey_data)">다음</router-link>
     </div>
   </div>
 </template>
 
 <script>
-import { mapState, mapActions } from "vuex";
 export default {
   data() {
     return {
@@ -219,6 +218,11 @@ export default {
         pain_spread_where: ""
       }
     };
+  },
+  methods: {
+    sec2(survey_data) {
+      this.$store.dispatch("setSurveyData2", survey_data);
+    }
   }
 };
 </script>

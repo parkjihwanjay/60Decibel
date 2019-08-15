@@ -85,7 +85,6 @@ export default {
       password2: null
     };
   },
-
   methods: {
     ...mapActions(["signup"])
   },
