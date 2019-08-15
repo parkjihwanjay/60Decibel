@@ -30,21 +30,21 @@ export const store = new Vuex.Store({
         random_user: {},
         answer: {}
     },
-    loginError(state) {
-        state.isLogin = false;
-        state.isLoginError = false;
-        state.userInfo = null;
-    },
 
     mutations: {
         loginSuccess(state, payload) {
-            state.isLogin = "true";
-            state.isLoginError = "false";
+            state.isLogin = 'true';
+            state.isLoginError = 'false';
             state.userInfo = payload;
+        },
+        loginNotYet(state) {
+            state.isLogin = "false";
+            state.isLoginError = "false";
+            state.userInfo = null;
         },
         loginError(state) {
             state.isLogin = "false";
-            state.isLoginError = "false";
+            state.isLoginError = "true";
             state.userInfo = null;
         },
         logout(state) {
@@ -121,14 +121,6 @@ export const store = new Vuex.Store({
                     localStorage.setItem("access_token", token);
                     axios.defaults.headers.common["Authorization"] =
                         localStorage.getItem["access_token"];
-
-                    let userInfo = res.data.user.username
-
-                    localStorage.setItem('isLogin', true);
-                    localStorage.setItem('isLoginError', false);
-                    localStorage.setItem('username', userInfo);
-
-                    commit("loginSuccess", userInfo);
 
                     this.dispatch("getMemberInfo");
 
@@ -227,24 +219,38 @@ export const store = new Vuex.Store({
             commit
         }) {
             //로컬 스토리지에 저장된 토큰을 저장한다.
-            let token = localStorage.getItem("access_token");
-            let config = {
-                headers: {
-                    Authorization: "JWT " + token,
-                    "Content-Type": "application/json"
-                }
-            };
-            //토큰 -> 멤버 정보 반환
-            //새로고침 --> 토큰만 갖고 멤버 정보 요청가능
-            axios
-                .get("http://54.180.31.52:8000/api/user/", config)
-                .then(response => {
-                    let userInfo = response.data.username;
-                    console.log(userInfo);
-                })
-                .catch(() => {
-                    alert("해당 유저가 존재하지 않습니다.");
-                });
+            if (!localStorage.getItem("access_token")) {
+                commit("loginNotYet")
+            } else {
+                let token = localStorage.getItem("access_token");
+                let config = {
+                    headers: {
+                        Authorization: "JWT " + token,
+                        "Content-Type": "application/json"
+                    }
+                };
+                //토큰 -> 멤버 정보 반환
+                //새로고침 --> 토큰만 갖고 멤버 정보 요청가능
+                axios
+                    .get("http://54.180.31.52:8000/api/user/", config)
+                    .then(response => {
+
+                        localStorage.setItem('isLogin', true);
+                        localStorage.setItem('isLoginError', false);
+                        localStorage.setItem('username', userInfo);
+
+                        let userInfo = response.data.username;
+
+                        commit("loginSuccess", userInfo)
+                    })
+                    .catch(() => {
+                        localStorage.setItem('isLogin', false);
+                        localStorage.setItem('isLoginError', false);
+
+                        commit("loginError")
+                    });
+            }
+
         },
         getProfileInfo({
             commit
@@ -426,9 +432,7 @@ export const store = new Vuex.Store({
         }) {
             commit("RESET_RANDOM_USER");
         },
-        alreadyLogin({
-            commit
-        }) {
+        alreadyLogin({ commit }) {
             console.log("로그인이 되어있을때")
             commit("ALREADY_LOGIN");
         },
