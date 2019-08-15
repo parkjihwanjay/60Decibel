@@ -205,7 +205,9 @@ export default {
     return {
       expand: 0,
       survey_data: {
-        symtpom_location: []
+        symtpom_location: [],
+        location_move: "",
+        pain_spread: ""
       }
     };
   },

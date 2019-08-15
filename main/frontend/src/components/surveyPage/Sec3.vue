@@ -227,7 +227,8 @@ export default {
     return {
       expand: 0,
       survey_data: {
-        factor: []
+        factor: [],
+        pain_repeated: ""
       }
     };
   },
