@@ -249,7 +249,7 @@ export default {
         avatar: null,
         gender: "",
         birth_date: "",
-        height: "",
+        height: "135",
         weight: "",
         name: "",
         had_checkup: "",
