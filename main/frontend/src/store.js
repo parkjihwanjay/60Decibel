@@ -125,7 +125,7 @@ export const store = new Vuex.Store({
                     localStorage.setItem('username', userInfo);
 
                     commit("loginSuccess", userInfo);
-
+              
                     this.dispatch("getMemberInfo");
 
                     if (loginObj.from_signup)
