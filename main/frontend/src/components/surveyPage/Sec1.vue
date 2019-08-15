@@ -34,7 +34,7 @@
         <v-expansion-panel class="q2-1">
           <v-expansion-panel-header
             class="header animate fadeInDown two"
-            v-if="is_symptom_start_checked"
+            v-if="survey_data.symptom_start === 'less_than_month' "
           >
             &nbsp;&nbsp; Q1-1.
             <template v-slot:actions>
@@ -128,16 +128,14 @@ export default {
     return {
       expand: 0,
       survey_data: {
-        symtpom_location: []
-      },
-      is_symptom_start_checked: false
+        symtpom_location: [],
+        symptom_start: ""
+      }
     };
   },
   methods: {
     button_click(model, value) {
       this.survey_data[model] = value;
-      if (this.survey_data.symptom_start === "less_than_month")
-        this.is_symptom_start_checked = true;
       // console.log(this.is_symptom_start_checked);
       // console.log(this.survey_data);
     },
