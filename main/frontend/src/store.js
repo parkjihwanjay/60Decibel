@@ -174,11 +174,26 @@ export const store = new Vuex.Store({
                     .then(res => {
                         console.log(signupObj);
                         alert("회원가입이 성공적으로 이뤄졌습니다.");
-                        router.push({ name: "login" });
-                        console.log(res);
+                        let login_info = {};
+
+                        login_info["username"] = signupObj.username;
+                        login_info["password"] = signupObj.password1;
+
+                        this.dispatch("login", login_info);
                     })
-                    .catch(error => {
-                        alert("이메일과 비밀번호를 확인하세요.");
+                    .catch(err => {
+                        console.log(err.response);
+                        if (err.response.data.username)
+                            alert("이미 존재하는 아이디입니다");
+                        else if (err.response.data.email)
+                            alert("이미 존재하는 이메일입니다");
+                        // else if (err.response.data.password)
+                        //     alert("패스워드가 같지 않습니다.");
+                        else if (err.response.data.non_field_errors)
+                            alert("패스워드가 같지 않습니다.");
+                        else if (err.response.data.password1) {
+                            alert(err.response.data.password1[0])
+                        }
                     });
             }
         },
@@ -359,24 +374,24 @@ export const store = new Vuex.Store({
             console.log("로그인이 되어있을때")
             commit("ALREADY_LOGIN");
         },
-        checkToken({ commit }, access_token) {
-            axios
-                .post("http://54.180.144.241:8000/api/rest-auth/verify_token/", access_token)
-                .then(res => {
-                    console.log(res)
-                    localStorage.setItem('isLogin', true);
-                    localStorage.setItem('isLoginError', false);
+        // checkToken({ commit }, access_token) {
+        //     axios
+        //         .post("http://54.180.144.241:8000/api/rest-auth/verify_token/", access_token)
+        //         .then(res => {
+        //             console.log(res)
+        //             localStorage.setItem('isLogin', true);
+        //             localStorage.setItem('isLoginError', false);
 
-                    commit("CHECK_LOGIN");
-                })
-                .catch(() => {
-                    alert("로그인을 다시 해주세요");
-                    localStorage.setItem('isLogin', false);
-                    this.state.isLogin = "false"
-                    router.push('login');
-                })
-                // }
-        }
+        //             commit("CHECK_LOGIN");
+        //         })
+        //         .catch(() => {
+        //             alert("로그인을 다시 해주세요");
+        //             localStorage.setItem('isLogin', false);
+        //             this.state.isLogin = "false"
+        //             router.push('login');
+        //         })
+        //         // }
+        // }
     }
     //   axios
     //     .put("http://54.180.144.241:8000/api/profileupdate/", update, config)
