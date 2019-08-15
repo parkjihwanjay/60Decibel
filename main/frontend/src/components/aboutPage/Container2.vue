@@ -10,10 +10,6 @@
       <br />
       <span class="txt-bold">60db이하의 소리</span>를 채워주는 서비스를 제공합니다.
     </div>
-    <!-- <div class="img-main-animation">
-      <img class="icon patient" src="../../assets/about_patient.png" />
-      <img class="icon doctor" src="../../assets/about_doctor.png" />
-    </div>-->
   </div>
 </template>
 
@@ -23,7 +19,12 @@ export default {};
 
 <style scoped>
 .container2 {
-  height: 19vh;
+  /* background-color: #0d4d8d; */
+  min-height: 170px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 .txt-head {
   font-size: 1.6rem;
@@ -44,8 +45,8 @@ span {
   font-weight: 700;
 }
 .span-bottom {
-  display: inline-block;
-  vertical-align: center;
+  /* display: inline-block; */
+  /* vertical-align: center; */
   border-bottom: 1px solid;
 }
 .txt-body {
@@ -53,8 +54,5 @@ span {
   text-align: center;
   line-height: 140%;
 }
-.icon {
-  width: 75px;
-  height: 75px;
-}
 </style>
+

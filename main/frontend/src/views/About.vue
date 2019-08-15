@@ -16,9 +16,7 @@ import Container4 from "../components/aboutPage/Container4.vue";
 
 export default {
   name: "about",
-  data() {
-    return {};
-  },
+
   components: {
     Navbar,
     Container1,
@@ -28,3 +26,11 @@ export default {
   }
 };
 </script>
+<style scoped>
+.about {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-content: center;
+}
+</style>

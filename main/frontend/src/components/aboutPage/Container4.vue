@@ -91,7 +91,7 @@ export default {
 
 <style scoped>
 .container4 {
-  height: 60vh;
+  min-height: 430px;
 }
 .member-intro {
   width: 35vh;

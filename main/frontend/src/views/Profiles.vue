@@ -64,7 +64,7 @@ export default {
   min-height: 10rem;
 }
 .body2 {
-  background-color: #ebebeb;
+  background-color: #ffffff;
   width: 100%;
   min-height: 12rem;
 }

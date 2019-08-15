@@ -13,7 +13,6 @@ Vue.use(Router);
 // };
 
 export default new Router({
-
     hashbang: false,
     mode: "history",
     routes: [{
@@ -40,16 +39,14 @@ export default new Router({
             path: "/survey",
             redirect: "/sec1",
             name: "survey",
-            component: () =>
-                import("./views/Survey.vue"),
+            component: () => import("./views/Survey.vue"),
             children: [{
                     path: "/sec1",
                     name: "sec1",
                     meta: {
                         page: 1
                     },
-                    component: () =>
-                        import("./components/surveyPage/Sec1.vue")
+                    component: () => import("./components/surveyPage/Sec1.vue")
                 },
                 {
                     path: "/sec2",
@@ -57,8 +54,7 @@ export default new Router({
                     meta: {
                         page: 2
                     },
-                    component: () =>
-                        import("./components/surveyPage/Sec2.vue")
+                    component: () => import("./components/surveyPage/Sec2.vue")
                 },
                 {
                     path: "/sec3",
@@ -66,8 +62,7 @@ export default new Router({
                     meta: {
                         page: 3
                     },
-                    component: () =>
-                        import("./components/surveyPage/Sec3.vue")
+                    component: () => import("./components/surveyPage/Sec3.vue")
                 },
                 {
                     path: "/sec4",
@@ -75,8 +70,7 @@ export default new Router({
                     meta: {
                         page: 4
                     },
-                    component: () =>
-                        import("./components/surveyPage/Sec4.vue")
+                    component: () => import("./components/surveyPage/Sec4.vue")
                 },
                 {
                     path: "/sec5",
@@ -84,8 +78,7 @@ export default new Router({
                     meta: {
                         page: 5
                     },
-                    component: () =>
-                        import("./components/surveyPage/Sec5.vue")
+                    component: () => import("./components/surveyPage/Sec5.vue")
                 },
                 {
                     path: "/sec6",
@@ -93,48 +86,41 @@ export default new Router({
                     meta: {
                         page: 6
                     },
-                    component: () =>
-                        import("./components/surveyPage/Sec6.vue")
+                    component: () => import("./components/surveyPage/Sec6.vue")
                 }
             ]
         },
         {
             path: "/login",
             name: "login",
-            component: () =>
-                import("./views/Login.vue")
+            component: () => import("./views/Login.vue")
         },
         {
             path: "/signup",
             name: "signup",
-            component: () =>
-                import("./views/Signup.vue")
+            component: () => import("./views/Signup.vue")
         },
         {
             path: "/profileupdate",
             name: "profileupdate",
             // beforeEnter: requireAuth,
-            component: () =>
-                import("./views/ProfileUpdate.vue")
+            component: () => import("./views/ProfileUpdate.vue")
         },
         {
             path: "/profiles",
             name: "profiles",
             // beforeEnter: requireAuth,
-            component: () =>
-                import("./views/Profiles.vue")
+            component: () => import("./views/Profiles.vue")
         },
         {
             path: "/stomach/:id",
             name: "stomach-retrieve",
-            component: () =>
-                import("./views/Result.vue")
+            component: () => import("./views/Result.vue")
         },
         {
             path: "/surveys/:author",
             name: "survey-history",
-            component: () =>
-                import("./views/SurveyList.vue")
+            component: () => import("./views/SurveyList.vue")
         }
     ]
 });
