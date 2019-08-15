@@ -6,9 +6,7 @@
         <v-expansion-panel class="q1-1">
           <v-expansion-panel-header class="header animate fadeInDown two">
             Q1.
-            <template v-slot:actions>
-              <v-icon></v-icon>
-            </template>
+            <template v-slot:actions></template>
           </v-expansion-panel-header>
           <v-expansion-panel-content class="content animate fadeInUp one">
             <p class="question">배의 어느 부위가 아픈가요?</p>
@@ -16,8 +14,8 @@
 
             <div class="answers-box animate fadeInRightBig three">
               <button
-                value="True"
-                @click="button_click_multiple('symtpom_location', 'whole_abdomen')"
+                value="whole abdomen"
+                @click="button_click_multiple('symtpom_location', 'whole abdomen')"
                 class="answer-box"
               >복부전체</button>
 
@@ -89,9 +87,7 @@
         <v-expansion-panel class="q1-2">
           <v-expansion-panel-header class="header animate fadeInDown two">
             Q2.
-            <template v-slot:actions>
-              <v-icon></v-icon>
-            </template>
+            <template v-slot:actions></template>
           </v-expansion-panel-header>
           <v-expansion-panel-content class="content animate fadeInUp one">
             <p class="question">아픈 부위가 이동하나요?</p>
@@ -121,9 +117,7 @@
             v-if="survey_data.location_move==='True'"
           >
             &nbsp;&nbsp;Q2-1.
-            <template v-slot:actions>
-              <v-icon></v-icon>
-            </template>
+            <template v-slot:actions></template>
           </v-expansion-panel-header>
           <v-expansion-panel-content class="content animate fadeInUp one">
             <p class="question">아픈 부위가 어떻게 이동하나요?</p>
@@ -144,9 +138,7 @@
         <v-expansion-panel class="q1-3">
           <v-expansion-panel-header class="header animate fadeInDown two">
             Q3.
-            <template v-slot:actions>
-              <v-icon></v-icon>
-            </template>
+            <template v-slot:actions></template>
           </v-expansion-panel-header>
           <v-expansion-panel-content class="content animate fadeInUp one">
             <p class="question">통증이 퍼지나요?</p>
@@ -176,9 +168,7 @@
             v-if="survey_data.pain_spread==='True'"
           >
             &nbsp;&nbsp;Q3-1.
-            <template v-slot:actions>
-              <v-icon></v-icon>
-            </template>
+            <template v-slot:actions></template>
           </v-expansion-panel-header>
           <v-expansion-panel-content class="content animate fadeInUp one">
             <p class="question">통증이 어디로 퍼지나요?</p>
@@ -211,7 +201,9 @@ export default {
     return {
       expand: 0,
       survey_data: {
-        symtpom_location: []
+        symtpom_location: [],
+        location_move: "",
+        pain_spread: ""
       }
     };
   },

@@ -4,17 +4,14 @@
       <v-expansion-panel class="q1-1">
         <v-expansion-panel-header class="header animate fadeInDown two">
           Q1.
-          <template v-slot:actions>
-            <v-icon></v-icon>
-          </template>
+          <template v-slot:actions></template>
         </v-expansion-panel-header>
         <v-expansion-panel-content class="content animate fadeInUp one">
           <p class="question">기타 전달하고 싶은 사항이 있나요?</p>
           <br />
-          <br />
-          <br />
+
           <div class="answers">
-            <input
+            <textarea
               class="ans-txt animate fadeInRightBig three"
               v-model="survey_data.free_to_describe"
               placeholder="여기에 입력해주세요"
@@ -89,13 +86,13 @@ export default {
   justify-content: center;
 }
 .ans-txt {
-  width: 208px;
-  height: 43.2px;
+  display: block;
+  width: 270px;
+  height: 10rem;
   border: #1985bb solid 1px;
-  border-radius: 7px;
   outline: none;
   background-color: white;
-  padding-left: 1rem;
+  padding: 0.5rem;
   color: rgb(56, 56, 56);
 }
 .buttons {

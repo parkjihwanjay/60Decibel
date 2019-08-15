@@ -6,9 +6,7 @@
         <v-expansion-panel class="q1-2">
           <v-expansion-panel-header class="header animate fadeInDown two">
             Q1.
-            <template v-slot:actions>
-              <v-icon></v-icon>
-            </template>
+            <template v-slot:actions></template>
           </v-expansion-panel-header>
           <v-expansion-panel-content class="content animate fadeInUp one">
             <p class="question">통증이 얼마나 지속되나요?</p>
@@ -50,9 +48,7 @@
         <v-expansion-panel class="q1-3">
           <v-expansion-panel-header class="header animate fadeInDown two">
             Q2.
-            <template v-slot:actions>
-              <v-icon></v-icon>
-            </template>
+            <template v-slot:actions></template>
           </v-expansion-panel-header>
           <v-expansion-panel-content class="content animate fadeInUp one">
             <p class="question">통증이 주기적으로 있나요?</p>
@@ -83,9 +79,7 @@
             v-if="survey_data.pain_repeated==='True'"
           >
             &nbsp;&nbsp;Q2-1.
-            <template v-slot:actions>
-              <v-icon></v-icon>
-            </template>
+            <template v-slot:actions></template>
           </v-expansion-panel-header>
           <v-expansion-panel-content class="content animate fadeInUp one">
             <p class="question">반복되는 통증의 빈도는 어느정도 인가요?</p>
@@ -117,9 +111,7 @@
         <v-expansion-panel class="q1-2">
           <v-expansion-panel-header class="header animate fadeInDown two">
             Q3
-            <template v-slot:actions>
-              <v-icon></v-icon>
-            </template>
+            <template v-slot:actions></template>
           </v-expansion-panel-header>
           <v-expansion-panel-content class="content animate fadeInUp one">
             <p class="question">증상 후 통증이 심화되나요?</p>
@@ -193,9 +185,7 @@
         <v-expansion-panel class="q1-3">
           <v-expansion-panel-header class="header animate fadeInDown two">
             Q4
-            <template v-slot:actions>
-              <v-icon></v-icon>
-            </template>
+            <template v-slot:actions></template>
           </v-expansion-panel-header>
           <v-expansion-panel-content class="content animate fadeInUp one">
             <p class="question">기타 요인이 있나요?</p>
@@ -231,7 +221,8 @@ export default {
     return {
       expand: 0,
       survey_data: {
-        factor: []
+        factor: [],
+        pain_repeated: ""
       }
     };
   },
