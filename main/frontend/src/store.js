@@ -122,12 +122,6 @@ export const store = new Vuex.Store({
                     axios.defaults.headers.common["Authorization"] =
                         localStorage.getItem["access_token"];
 
-                    let userInfo = res.data.user.username
-
-                    console.log(userInfo)
-
-                    commit("loginSuccess", userInfo);
-
                     this.dispatch("getMemberInfo");
 
                     if (loginObj.from_signup)
@@ -245,11 +239,9 @@ export const store = new Vuex.Store({
                         localStorage.setItem('isLoginError', false);
                         localStorage.setItem('username', userInfo);
 
-                        commit("loginSuccess")
-
                         let userInfo = response.data.username;
 
-                        console.log(userInfo);
+                        commit("loginSuccess", userInfo)
                     })
                     .catch(() => {
                         localStorage.setItem('isLogin', false);
