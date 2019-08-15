@@ -30,8 +30,15 @@ new Vue({
     // 이거 profile에 대한 store임
     vuetify,
     beforeCreate() {
-        if (localStorage.getItem('isLogin') === 'true')
-            this.$store.dispatch("alreadyLogin");
+        this.$store.dispatch("getMemberInfo");
+    },
+    watch: {
+        '$route' (to, from) {
+            if (localStorage.getItem('access_token')) {
+                console.log("바뀐다")
+                this.$store.dispatch("getMemberInfo");
+            }
+        }
     },
     component: {
         App
