@@ -160,12 +160,7 @@ export default {
   data() {
     return {
       expand: 0,
-      survey_data: {
-        pain_worse: "",
-        pain_experience: "",
-        pain_character: [],
-        pain_score: ""
-      }
+      survey_data: {}
     };
   },
   methods: {

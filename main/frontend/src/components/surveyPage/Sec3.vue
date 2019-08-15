@@ -268,14 +268,7 @@ export default {
   data() {
     return {
       expand: 0,
-      survey_data: {
-        pain_duration: "",
-        pain_repeated: "",
-        pain_how_often_day: "",
-        pain_how_often_many: "",
-        factor: [],
-        other_factor: ""
-      }
+      survey_data: {}
     };
   },
   methods: {

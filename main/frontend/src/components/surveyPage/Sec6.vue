@@ -34,9 +34,7 @@ export default {
   data() {
     return {
       expand: 0,
-      survey_data: {
-        free_to_describe: ""
-      }
+      survey_data: {}
     };
   },
   methods: {

@@ -141,12 +141,7 @@ export default {
   data() {
     return {
       expand: 0,
-      survey_data: {
-        symptom_start: "",
-        symptom_start_less_than_month: "",
-        fast_or_slow: "",
-        symtpom_situation: ""
-      }
+      survey_data: {}
     };
   },
   methods: {
