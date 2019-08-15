@@ -22,8 +22,8 @@ enhanceAccessToeken();
 export const store = new Vuex.Store({
   state: {
     userInfo: null,
-    isLogin: false,
-    isLoginError: false,
+    isLogin: "false",
+    isLoginError: "false",
     profile: {},
     stomach: {},
     survey_history: [],
@@ -38,18 +38,18 @@ export const store = new Vuex.Store({
 
   mutations: {
     loginSuccess(state, payload) {
-      state.isLogin = true;
-      state.isLoginError = false;
+      state.isLogin = "true";
+      state.isLoginError = "false";
       state.userInfo = payload;
     },
     loginError(state) {
-      state.isLogin = false;
-      state.isLoginError = false;
+      state.isLogin = "false";
+      state.isLoginError = "false";
       state.userInfo = null;
     },
     logout(state) {
-      state.isLogin = false;
-      state.isLoginError = false;
+      state.isLogin = "false";
+      state.isLoginError = "false";
       state.userInfo = null;
     },
     // 프로필 상태 변이
@@ -94,16 +94,26 @@ export const store = new Vuex.Store({
     },
     RESET_RANDOM_USER(state) {
       state.random_user = {};
+    },
+    ALREADY_LOGIN(state) {
+      {
+        state.isLogin = localStorage.getItem("isLogin");
+        state.isLoginError = localStorage.getItem("isLoginError");
+        state.userInfo = localStorage.getItem("username");
+      }
     }
   },
   actions: {
     //   로그인 function
-    login(dispatch, loginObj) {
+    login({
+      commit
+    }, loginObj) {
       // login --> 토큰 반환
       axios
         .post("http://54.180.31.52:8000/api/rest-auth/login/", loginObj)
         // loginObj = {email,password}
         .then(res => {
+          // console.log(res.data.user.username)
           // 접근 성공시, 토큰 값이 반환된다. (실제로는 토큰과 함께 유저 id를 받아온다.)
           // 토큰을 헤더 정보에 포함시켜서 유저 정보를 요청
           let token = res.data.token;
@@ -111,11 +121,25 @@ export const store = new Vuex.Store({
           localStorage.setItem("access_token", token);
           axios.defaults.headers.common["Authorization"] =
             localStorage.getItem["access_token"];
+
+          let userInfo = res.data.user.username
+
+          localStorage.setItem('isLogin', true);
+          localStorage.setItem('isLoginError', false);
+          localStorage.setItem('username', userInfo);
+
+          commit("loginSuccess", userInfo);
+
           this.dispatch("getMemberInfo");
-          router.push({
-            name: "home"
-          });
-          console.log(res);
+
+          if (loginObj.from_signup)
+            router.push({
+              name: "profileupdate"
+            })
+          else
+            router.push({
+              name: "home"
+            });
         })
         .catch(() => {
           alert("이메일과 비밀번호를 확인하세요.");
@@ -151,6 +175,7 @@ export const store = new Vuex.Store({
 
         login_info["username"] = quickLogin.username;
         login_info["password"] = quickLogin.password1;
+        login_info["from_signup"] = true;
         axios
           .post(
             "http://54.180.31.52:8000/api/rest-auth/registration/",
@@ -175,13 +200,26 @@ export const store = new Vuex.Store({
           .then(res => {
             console.log(signupObj);
             alert("회원가입이 성공적으로 이뤄졌습니다.");
-            router.push({
-              name: "login"
-            });
-            console.log(res);
+            let login_info = {};
+
+            login_info["username"] = signupObj.username;
+            login_info["password"] = signupObj.password1;
+            login_info["from_signup"] = true;
+            this.dispatch("login", login_info);
           })
-          .catch(error => {
-            alert("이메일과 비밀번호를 확인하세요.");
+          .catch(err => {
+            console.log(err.response);
+            if (err.response.data.username)
+              alert("이미 존재하는 아이디입니다");
+            else if (err.response.data.email)
+              alert("이미 존재하는 이메일입니다");
+            // else if (err.response.data.password)
+            //     alert("패스워드가 같지 않습니다.");
+            else if (err.response.data.non_field_errors)
+              alert("패스워드가 같지 않습니다.");
+            else if (err.response.data.password1) {
+              alert(err.response.data.password1[0])
+            }
           });
       }
     },
@@ -201,15 +239,11 @@ export const store = new Vuex.Store({
       axios
         .get("http://54.180.31.52:8000/api/user/", config)
         .then(response => {
-          let userInfo = {
-            username: response.data.username
-          };
+          let userInfo = response.data.username;
           console.log(userInfo);
-
-          commit("loginSuccess", userInfo);
         })
         .catch(() => {
-          alert("이메일과 비밀번호를 확인하세요.");
+          alert("해당 유저가 존재하지 않습니다.");
         });
     },
     getProfileInfo({
@@ -393,7 +427,31 @@ export const store = new Vuex.Store({
       commit
     }) {
       commit("RESET_RANDOM_USER");
-    }
+    },
+    alreadyLogin({
+      commit
+    }) {
+      console.log("로그인이 되어있을때")
+      commit("ALREADY_LOGIN");
+    },
+    // checkToken({ commit }, access_token) {
+    //     axios
+    //         .post("http://54.180.144.241:8000/api/rest-auth/verify_token/", access_token)
+    //         .then(res => {
+    //             console.log(res)
+    //             localStorage.setItem('isLogin', true);
+    //             localStorage.setItem('isLoginError', false);
+
+    //             commit("CHECK_LOGIN");
+    //         })
+    //         .catch(() => {
+    //             alert("로그인을 다시 해주세요");
+    //             localStorage.setItem('isLogin', false);
+    //             this.state.isLogin = "false"
+    //             router.push('login');
+    //         })
+    //         // }
+    // }
   }
   //   axios
   //     .put("http://54.180.144.241:8000/api/profileupdate/", update, config)

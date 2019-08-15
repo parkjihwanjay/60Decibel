@@ -2,15 +2,20 @@ import Vue from "vue";
 import Router from "vue-router";
 // import Home from "./views/Home.vue";
 import Home from "./views/Home.vue";
-// import { store } from "./store.js";
+import {
+    store
+} from "./store.js";
 Vue.use(Router);
 
-// const requireAuth = () => (to, from, next) => {
-//   if (!localStorage.getItem["access_token"]) {
-//     alert("먼저 로그인을 진행해주세요");
-//     return next("/login");
-//   }
-// };
+const requireAuth = () => (to, from, next) => {
+    if (localStorage.getItem("isLogin") === "true") {
+        next();
+    } else {
+        console.log(localStorage.getItem("isLogin"));
+        alert("로그인을 먼저 하세요");
+        next("/login");
+    }
+};
 
 export default new Router({
     hashbang: false,
@@ -39,6 +44,7 @@ export default new Router({
             path: "/survey",
             redirect: "/sec1",
             name: "survey",
+            beforeEnter: requireAuth(),
             component: () => import("./views/Survey.vue"),
             children: [{
                     path: "/sec1",
@@ -103,23 +109,25 @@ export default new Router({
         {
             path: "/profileupdate",
             name: "profileupdate",
-            // beforeEnter: requireAuth,
+            beforeEnter: requireAuth(),
             component: () => import("./views/ProfileUpdate.vue")
         },
         {
             path: "/profiles",
             name: "profiles",
-            // beforeEnter: requireAuth,
+            beforeEnter: requireAuth(),
             component: () => import("./views/Profiles.vue")
         },
         {
             path: "/stomach/:id",
             name: "stomach-retrieve",
+            beforeEnter: requireAuth(),
             component: () => import("./views/Result.vue")
         },
         {
             path: "/surveys/:author",
             name: "survey-history",
+            beforeEnter: requireAuth(),
             component: () => import("./views/SurveyList.vue")
         }
     ]

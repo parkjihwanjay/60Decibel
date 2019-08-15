@@ -75,56 +75,56 @@
             />없음
           </label>
           <br />
-            <span class="span2" for="had_long_before">건강검진 시기</span>
-            <br />
-            <input
-              class="select selectline"
-              type="radio"
-              v-model="update.had_checkup_true"
-              value="1년 이내"
-            />1년 이내
-            <input
-              class="select selectline"
-              type="radio"
-              v-model="update.had_checkup_true"
-              value="1-3년"
-            />1~3년
-            <input class="select" type="radio" v-model="update.had_checkup_true" value="3-5년" />3~5년
-            <input class="select" type="radio" v-model="update.had_checkup_true" value="5-10년" />5~10년
-            <!-- <input type="radio" v-model="update.had_checkup_true" value="10년 이상" />10년 이상 -->
-            <br />
-            <span class="span2" for="disease_list">병 진단 이력</span>
-            <br />
-            <input
-              type="checkbox"
-              class="select selectline"
-              v-model="update.diagnosed_disease"
-              value="고혈압"
-            />고혈압
-            <input
-              class="select selectline"
-              type="checkbox"
-              v-model="update.diagnosed_disease"
-              value="간염"
-            />간염
-            <input
-              class="select selectline"
-              type="checkbox"
-              v-model="update.diagnosed_disease"
-              value="결핵"
-            />결핵
-            <input
-              class="select selectline"
-              type="checkbox"
-              v-model="update.diagnosed_disease"
-              value="없음"
-            />없음
-            <input
-              class="select selectline"
-              type="checkbox"
-              v-model="update.diagnosed_disease"
-              value="기타"
-            />기타
+          <span class="span2" for="had_long_before">건강검진 시기</span>
+          <br />
+          <input
+            class="select selectline"
+            type="radio"
+            v-model="update.had_checkup_true"
+            value="1년 이내"
+          />1년 이내
+          <input
+            class="select selectline"
+            type="radio"
+            v-model="update.had_checkup_true"
+            value="1-3년"
+          />1~3년
+          <input class="select" type="radio" v-model="update.had_checkup_true" value="3-5년" />3~5년
+          <input class="select" type="radio" v-model="update.had_checkup_true" value="5-10년" />5~10년
+          <!-- <input type="radio" v-model="update.had_checkup_true" value="10년 이상" />10년 이상 -->
+          <br />
+          <span class="span2" for="disease_list">병 진단 이력</span>
+          <br />
+          <input
+            type="checkbox"
+            class="select selectline"
+            v-model="update.diagnosed_disease"
+            value="고혈압"
+          />고혈압
+          <input
+            class="select selectline"
+            type="checkbox"
+            v-model="update.diagnosed_disease"
+            value="간염"
+          />간염
+          <input
+            class="select selectline"
+            type="checkbox"
+            v-model="update.diagnosed_disease"
+            value="결핵"
+          />결핵
+          <input
+            class="select selectline"
+            type="checkbox"
+            v-model="update.diagnosed_disease"
+            value="없음"
+          />없음
+          <input
+            class="select selectline"
+            type="checkbox"
+            v-model="update.diagnosed_disease"
+            value="기타"
+          />기타
           <br />
           <span class="span2">복용중인 약</span>
           <br />
@@ -182,7 +182,7 @@
             class="inputsmall"
             type="number"
             v-model="update.drinking_per_week"
-            v-bind:placeholder="profile.drinking_per_week"
+            value="profile.drinking_per_week"
           />
           <br />
           <span class="span3">흡연 여부</span>
@@ -223,7 +223,7 @@
     <!-- 버튼 안보임-->
     <div class="updatecomplete">
       <v-btn
-        @click.native="updateProfileInfo(update)"
+        @click.native="updateProfileInfo(update, profile)"
         class="button"
         color="#669999"
         to="/profiles"
@@ -246,10 +246,10 @@ export default {
   data() {
     return {
       update: {
-        // avatar: null,
+        avatar: null,
         gender: "",
         birth_date: "",
-        height: "",
+        height: "135",
         weight: "",
         name: "",
         had_checkup: "",
@@ -272,10 +272,68 @@ export default {
     ...mapState(["profile"])
   },
   methods: {
-    ...mapActions(["updateProfileInfo"]),
-    diagnosistrue: function() {
-      diagnosis = 'True';
-      console.log(diagnosis);
+    // ...mapActions(["updateProfileInfo"]),
+    updateProfileInfo(update, profile) {
+      console.log(update);
+      console.log(profile);
+      if (!update.avatar) {
+        update.avatar = profile.avatar;
+      }
+      if (!update.gender) {
+        update.gender = profile.gender;
+      }
+      if (!update.birth_date) {
+        update.birth_date = profile.birth_date;
+      }
+      if (!update.height) {
+        update.height = profile.height;
+      }
+      if (!update.weight) {
+        update.weight = profile.weight;
+      }
+      if (!update.name) {
+        update.name = profile.name;
+      }
+      if (!update.had_checkup) {
+        update.had_checkup = profile.had_checkup;
+      }
+      if (!update.had_checkup_true) {
+        update.had_checkup_true = profile.had_checkup_true;
+      }
+      if (!update.diagnosed_disease) {
+        update.diagnosed_disease = profile.diagnosed_disease;
+      }
+      if (!update.taking_medicine) {
+        update.taking_medicine = profile.taking_medicine;
+      }
+      if (!update.what_medicine) {
+        update.what_medicine = profile.what_medicine;
+      }
+      if (!update.family_history) {
+        update.family_history = profile.family_history;
+      }
+      if (!update.drinking) {
+        update.drinking = profile.drinking;
+      }
+      if (!update.drinking_per_week) {
+        update.drinking_per_week = profile.drinking_per_week;
+      }
+      if (!update.smoking) {
+        update.smoking = profile.smoking;
+      }
+      if (!update.how_long_smoking) {
+        update.how_long_smoking = profile.how_long_smoking;
+      }
+      if (!update.how_much_smoking) {
+        update.how_much_smoking = profile.how_much_smoking;
+      }
+      if (!update.job) {
+        update.job = profile.job;
+      }
+      if (!update.relevant_data) {
+        update.relevant_data = profile.relevant_data;
+      }
+      this.$store.dispatch("updateProfileInfo", update);
     }
   },
   created() {
