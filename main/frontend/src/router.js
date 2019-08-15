@@ -2,15 +2,17 @@ import Vue from "vue";
 import Router from "vue-router";
 // import Home from "./views/Home.vue";
 import Home from "./views/Home.vue";
-// import { store } from "./store.js";
+import { store } from "./store.js";
 Vue.use(Router);
 
-// const requireAuth = () => (to, from, next) => {
-//   if (!localStorage.getItem["access_token"]) {
-//     alert("먼저 로그인을 진행해주세요");
-//     return next("/login");
-//   }
-// };
+const requireAuth = () => (to, from, next) => {
+    if (localStorage.getItem("isLogin") === "true") {
+        next();
+    } else {
+        alert("로그인을 먼저 하세요");
+        next("/login");
+    }
+};
 
 export default new Router({
 
@@ -25,7 +27,7 @@ export default new Router({
             path: "/card",
             name: "card",
             component: () =>
-                import( /* webpackChunkName: "about" */ "./views/Card.vue")
+                import ( /* webpackChunkName: "about" */ "./views/Card.vue")
         },
         {
             path: "/about",
@@ -34,14 +36,15 @@ export default new Router({
             // this generates a separate chunk (about.[hash].js) for this route
             // which is lazy-loaded when the route is visited.
             component: () =>
-                import( /* webpackChunkName: "about" */ "./views/About.vue")
+                import ( /* webpackChunkName: "about" */ "./views/About.vue")
         },
         {
             path: "/survey",
             redirect: "/sec1",
             name: "survey",
+            beforeEnter: requireAuth(),
             component: () =>
-                import("./views/Survey.vue"),
+                import ("./views/Survey.vue"),
             children: [{
                     path: "/sec1",
                     name: "sec1",
@@ -49,7 +52,7 @@ export default new Router({
                         page: 1
                     },
                     component: () =>
-                        import("./components/surveyPage/Sec1.vue")
+                        import ("./components/surveyPage/Sec1.vue")
                 },
                 {
                     path: "/sec2",
@@ -58,7 +61,7 @@ export default new Router({
                         page: 2
                     },
                     component: () =>
-                        import("./components/surveyPage/Sec2.vue")
+                        import ("./components/surveyPage/Sec2.vue")
                 },
                 {
                     path: "/sec3",
@@ -67,7 +70,7 @@ export default new Router({
                         page: 3
                     },
                     component: () =>
-                        import("./components/surveyPage/Sec3.vue")
+                        import ("./components/surveyPage/Sec3.vue")
                 },
                 {
                     path: "/sec4",
@@ -76,7 +79,7 @@ export default new Router({
                         page: 4
                     },
                     component: () =>
-                        import("./components/surveyPage/Sec4.vue")
+                        import ("./components/surveyPage/Sec4.vue")
                 },
                 {
                     path: "/sec5",
@@ -85,7 +88,7 @@ export default new Router({
                         page: 5
                     },
                     component: () =>
-                        import("./components/surveyPage/Sec5.vue")
+                        import ("./components/surveyPage/Sec5.vue")
                 },
                 {
                     path: "/sec6",
@@ -94,7 +97,7 @@ export default new Router({
                         page: 6
                     },
                     component: () =>
-                        import("./components/surveyPage/Sec6.vue")
+                        import ("./components/surveyPage/Sec6.vue")
                 }
             ]
         },
@@ -102,39 +105,41 @@ export default new Router({
             path: "/login",
             name: "login",
             component: () =>
-                import("./views/Login.vue")
+                import ("./views/Login.vue")
         },
         {
             path: "/signup",
             name: "signup",
             component: () =>
-                import("./views/Signup.vue")
+                import ("./views/Signup.vue")
         },
         {
             path: "/profileupdate",
             name: "profileupdate",
-            // beforeEnter: requireAuth,
+            beforeEnter: requireAuth(),
             component: () =>
-                import("./views/ProfileUpdate.vue")
+                import ("./views/ProfileUpdate.vue")
         },
         {
             path: "/profiles",
             name: "profiles",
-            // beforeEnter: requireAuth,
+            beforeEnter: requireAuth(),
             component: () =>
-                import("./views/Profiles.vue")
+                import ("./views/Profiles.vue")
         },
         {
             path: "/stomach/:id",
             name: "stomach-retrieve",
+            beforeEnter: requireAuth(),
             component: () =>
-                import("./views/Result.vue")
+                import ("./views/Result.vue")
         },
         {
             path: "/surveys/:author",
             name: "survey-history",
+            beforeEnter: requireAuth(),
             component: () =>
-                import("./views/SurveyList.vue")
+                import ("./views/SurveyList.vue")
         }
     ]
 });
