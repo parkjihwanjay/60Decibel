@@ -6,16 +6,13 @@
         <v-expansion-panel class="q1-3">
           <v-expansion-panel-header class="header animate fadeInDown two">
             Q1.
-            <template v-slot:actions>
-              <v-icon></v-icon>
-            </template>
+            <template v-slot:actions></template>
           </v-expansion-panel-header>
-          <v-expansion-panel-content class="content animate fadeInUp one">
+          <v-expansion-panel-content style="height:250px;" class="content animate fadeInUp one">
             <p class="question">
               소화기
               <span>(모두선택)</span>
             </p>
-            <br />
             <br />
             <div class="answers-box animate fadeInRightBig three">
               <button
@@ -118,9 +115,7 @@
         <v-expansion-panel class="q1-1">
           <v-expansion-panel-header class="header animate fadeInDown two">
             Q2.
-            <template v-slot:actions>
-              <v-icon></v-icon>
-            </template>
+            <template v-slot:actions></template>
           </v-expansion-panel-header>
           <v-expansion-panel-content class="content animate fadeInUp one">
             <p class="question">
@@ -167,15 +162,18 @@
                 @click="button_click_multiple('associated_symptom_circulatory', 'nothing')"
                 class="answer animate fadeInRightBig three"
               >해당없음</button>
+              <button
+                value="nothing"
+                @click="button_click_multiple('associated_symptom_circulatory', 'nothing')"
+                class="answer blank animate fadeInRightBig three"
+              >해당없음</button>
             </div>
           </v-expansion-panel-content>
         </v-expansion-panel>
         <v-expansion-panel class="q1-2">
           <v-expansion-panel-header class="header animate fadeInDown two">
             Q3.
-            <template v-slot:actions>
-              <v-icon></v-icon>
-            </template>
+            <template v-slot:actions></template>
           </v-expansion-panel-header>
           <v-expansion-panel-content class="content animate fadeInUp one">
             <p class="question">
@@ -222,22 +220,24 @@
                 @click="button_click_multiple('associated_symptom_gynecology', 'nothing')"
                 class="answer animate fadeInRightBig three"
               >해당없음</button>
+              <button
+                value="nothing"
+                @click="button_click_multiple('associated_symptom_circulatory', 'nothing')"
+                class="answer blank animate fadeInRightBig three"
+              >해당없음</button>
             </div>
           </v-expansion-panel-content>
         </v-expansion-panel>
         <v-expansion-panel class="q1-3">
           <v-expansion-panel-header class="header animate fadeInDown two">
             Q4.
-            <template v-slot:actions>
-              <v-icon></v-icon>
-            </template>
+            <template v-slot:actions></template>
           </v-expansion-panel-header>
           <v-expansion-panel-content class="content animate fadeInUp one">
             <p class="question">
               전신증상
               <span>(모두선택)</span>
             </p>
-            <br />
             <br />
             <div class="answers-box animate fadeInRightBig three">
               <button
@@ -301,15 +301,18 @@
                 @click="button_click_multiple('associated_symptom_whole_body', 'nothing')"
                 class="answer animate fadeInRightBig three"
               >해당없음</button>
+              <button
+                value="nothing"
+                @click="button_click_multiple('associated_symptom_circulatory', 'nothing')"
+                class="answer blank animate fadeInRightBig three"
+              >해당없음</button>
             </div>
           </v-expansion-panel-content>
         </v-expansion-panel>
         <v-expansion-panel class="q1-1">
           <v-expansion-panel-header class="header animate fadeInDown two">
             Q5.
-            <template v-slot:actions>
-              <v-icon></v-icon>
-            </template>
+            <template v-slot:actions></template>
           </v-expansion-panel-header>
           <v-expansion-panel-content class="content animate fadeInUp one">
             <p class="question">
@@ -370,16 +373,14 @@
         <v-expansion-panel class="q1-1">
           <v-expansion-panel-header class="header animate fadeInDown two">
             Q6
-            <template v-slot:actions>
-              <v-icon></v-icon>
-            </template>
+            <template v-slot:actions></template>
           </v-expansion-panel-header>
           <v-expansion-panel-content class="content animate fadeInUp one">
             <p class="question">그외 동반되는 증상이 있나요?</p>
             <br />
             <br />
             <div class="answers">
-              <div class="answer animate fadeInRightBig three">
+              <div class="answer-box animate fadeInRightBig three">
                 <input
                   class="ans-txt"
                   v-model="survey_data.associated_symptom_others"
@@ -388,42 +389,6 @@
               </div>
             </div>
             <br />
-          </v-expansion-panel-content>
-        </v-expansion-panel>
-        <v-expansion-panel class="q1-3">
-          <v-expansion-panel-header class="header animate fadeInDown two">
-            Q5
-            <template v-slot:actions>
-              <v-icon></v-icon>
-            </template>
-          </v-expansion-panel-header>
-          <v-expansion-panel-content class="content animate fadeInUp one">
-            <p class="question">과거 복부 관련 경험이 있나요?</p>
-            <br />
-            <br />
-            <div class="answers">
-              <button
-                value="abdomen_hurted"
-                @click="button_click_multiple('abdomen_relevant', 'abdomen_hurted')"
-                class="answer"
-              >복부를 다친 적이 있음</button>
-
-              <br />
-
-              <button
-                value="abdomen_surgery"
-                @click="button_click_multiple('abdomen_relevant', 'abdomen_surgery')"
-                class="answer"
-              >복부 수술을 받은 적이 있음</button>
-
-              <br />
-
-              <button
-                value="abdomen_nothing"
-                @click="button_click_multiple('abdomen_relevant', 'abdomen_nothing')"
-                class="answer"
-              >해당없음</button>
-            </div>
           </v-expansion-panel-content>
         </v-expansion-panel>
       </v-expansion-panels>
@@ -445,8 +410,7 @@ export default {
         associated_symptom_circulatory: [],
         associated_symptom_gynecology: [],
         associated_symptom_urinary: [],
-        associated_symptom_whole_body: [],
-        abdomen_relevant: []
+        associated_symptom_whole_body: []
       }
     };
   },
@@ -476,8 +440,8 @@ export default {
 .v-expansion-panels {
   width: 100%;
   height: 80%;
-  box-shadow: none;
-  padding: 0.5rem 1.5rem;
+  padding: 0 1rem;
+  padding-top: 1rem;
 }
 .v-expansion-panel-header {
   font-weight: 700;
@@ -485,14 +449,12 @@ export default {
   color: #125b7f;
 }
 .v-expansion-panel-content {
-  height: 40vh;
+  height: 220px;
 }
 .section {
   height: 100vh;
 }
-.content {
-  height: 40vh;
-}
+
 /* 1차 수정 01:07 */
 
 .question {
@@ -503,7 +465,6 @@ export default {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  line-height: 0.5em;
   width: 100%;
 }
 .answers {
@@ -520,7 +481,7 @@ export default {
   background-color: #2592c9;
   font-size: 0.9rem;
   border-radius: 7px;
-  width: 5.5rem;
+  width: 13rem;
   height: 2.7rem;
   margin: 0.1rem 0.1rem;
 
@@ -529,13 +490,13 @@ export default {
 
 .answer {
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
   background-color: #2592c9;
   border-radius: 7px;
-  width: 15rem;
+  width: 5.5rem;
   height: 2.7rem;
-  line-height: 0.2rem;
+  margin: 0.1rem 0.1rem;
 
   color: rgb(255, 255, 255);
 }
@@ -571,9 +532,9 @@ export default {
 a {
   color: white;
 }
-/* .blank {
+.blank {
   visibility: hidden;
-} */
+}
 span {
   font-size: 0.9rem;
   color: #125b7f;

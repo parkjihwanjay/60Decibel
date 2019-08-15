@@ -6,14 +6,12 @@
         <v-expansion-panel class="q1-1">
           <v-expansion-panel-header class="header animate fadeInDown two">
             Q1.
-            <template v-slot:actions>
-              <v-icon></v-icon>
-            </template>
+            <template v-slot:actions></template>
           </v-expansion-panel-header>
           <v-expansion-panel-content class="content animate fadeInUp one">
             <p class="question">배의 어느 부위가 아픈가요?</p>
             <br />
-            <br />
+
             <div class="answers-box animate fadeInRightBig three">
               <button
                 value="whole abdomen"
@@ -76,6 +74,12 @@
                 @click="button_click_multiple('symtpom_location', 'RLQ')"
                 class="answer-box"
               >오른쪽 아래</button>
+
+              <button
+                value="RLQ"
+                @click="button_click_multiple('symtpom_location', 'RLQ')"
+                class="answer-box blank"
+              >오른쪽 아래</button>
             </div>
             <br />
           </v-expansion-panel-content>
@@ -83,9 +87,7 @@
         <v-expansion-panel class="q1-2">
           <v-expansion-panel-header class="header animate fadeInDown two">
             Q2.
-            <template v-slot:actions>
-              <v-icon></v-icon>
-            </template>
+            <template v-slot:actions></template>
           </v-expansion-panel-header>
           <v-expansion-panel-content class="content animate fadeInUp one">
             <p class="question">아픈 부위가 이동하나요?</p>
@@ -95,7 +97,7 @@
               <button
                 value="True"
                 @click="button_click('location_move', 'True')"
-                class="answer animate fadeInRightBig three"
+                class="answerTF animate fadeInRightBig three"
               >예</button>
 
               <br />
@@ -103,7 +105,7 @@
               <button
                 value="False"
                 @click="button_click('location_move', 'False')"
-                class="answer animate fadeInRightBig three"
+                class="answerTF animate fadeInRightBig three"
               >아니오</button>
             </div>
             <br />
@@ -115,9 +117,7 @@
             v-if="survey_data.location_move==='True'"
           >
             &nbsp;&nbsp;Q2-1.
-            <template v-slot:actions>
-              <v-icon></v-icon>
-            </template>
+            <template v-slot:actions></template>
           </v-expansion-panel-header>
           <v-expansion-panel-content class="content animate fadeInUp one">
             <p class="question">아픈 부위가 어떻게 이동하나요?</p>
@@ -138,9 +138,7 @@
         <v-expansion-panel class="q1-3">
           <v-expansion-panel-header class="header animate fadeInDown two">
             Q3.
-            <template v-slot:actions>
-              <v-icon></v-icon>
-            </template>
+            <template v-slot:actions></template>
           </v-expansion-panel-header>
           <v-expansion-panel-content class="content animate fadeInUp one">
             <p class="question">통증이 퍼지나요?</p>
@@ -150,7 +148,7 @@
               <button
                 value="True"
                 @click="button_click('pain_spread', 'True')"
-                class="answer animate fadeInRightBig three"
+                class="answerTF animate fadeInRightBig three"
               >예</button>
 
               <br />
@@ -158,7 +156,7 @@
               <button
                 value="False"
                 @click="button_click('pain_spread', 'False')"
-                class="answer animate fadeInRightBig three"
+                class="answerTF animate fadeInRightBig three"
               >아니오</button>
             </div>
             <br />
@@ -170,9 +168,7 @@
             v-if="survey_data.pain_spread==='True'"
           >
             &nbsp;&nbsp;Q3-1.
-            <template v-slot:actions>
-              <v-icon></v-icon>
-            </template>
+            <template v-slot:actions></template>
           </v-expansion-panel-header>
           <v-expansion-panel-content class="content animate fadeInUp one">
             <p class="question">통증이 어디로 퍼지나요?</p>
@@ -237,9 +233,9 @@ export default {
 /* question body */
 .v-expansion-panels {
   width: 100%;
-  height: 80%;
-  box-shadow: none;
-  padding: 0.5rem 1.5rem;
+  height: 100%;
+  padding: 0 1rem;
+  padding-top: 1rem;
 }
 .v-expansion-panel-header {
   font-weight: 700;
@@ -247,10 +243,10 @@ export default {
   color: #125b7f;
 }
 .v-expansion-panel-content {
-  height: 40vh;
+  height: 220px;
 }
 .section {
-  height: 92vh;
+  height: 93vh;
 }
 
 /* 1차 수정 01:07 */
@@ -275,11 +271,11 @@ export default {
 }
 .answer-box {
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
   background-color: #2592c9;
   border-radius: 7px;
-  width: 8rem;
+  width: 5.5rem;
   height: 2.7rem;
   margin: 0.1rem;
 
@@ -297,12 +293,24 @@ export default {
 
   color: rgb(255, 255, 255);
 }
+.answerTF {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #2592c9;
+  border-radius: 7px;
+  width: 13rem;
+  height: 2.7rem;
+  line-height: 1rem;
+  color: white;
+}
+.blank {
+  visibility: hidden;
+}
 .answer input::placeholder {
   color: rgba(88, 88, 88, 0.5);
 }
-.ans {
-  margin: 0 1rem;
-}
+
 .ans-txt {
   width: 100%;
   height: 100%;
