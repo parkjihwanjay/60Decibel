@@ -6,34 +6,27 @@
       <div class="profileinfo">
         <div class="profiletitle">최근 건강검진 이력</div>
         <div
-          v-if="`${profile.had_checkup}=='True'&&${profile.had_checkup_true}`"
+          v-if="`${profile.had_checkup}==='True'`"
           class="profiledetail"
         >{{ profile.had_checkup_true }}</div>
-        <div v-else class="profiledetail">YES</div>
       </div>
       <div class="profileinfo">
         <div class="profiletitle">최근 진단받은 병</div>
         <div v-if="profile.had_checkup_true" class="profiledetail">{{ profile.diagnosed_disease }}</div>
-        <div class="profiledetail" v-else>입력해주세요</div>
       </div>
       <!-- 복용약 -->
       <div class="profileinfo">
         <div class="profiletitle">복용약</div>
-        <div v-if="`${profile.taking_medicine}=='True'`" class="profiledetail">{{profile.what_medicine}}</div>
-        <div class="profiledetail" v-else>입력해주세요</div>
+        <div
+          v-if="`${profile.taking_medicine}=='True'`"
+          class="profiledetail"
+        >{{profile.what_medicine}}</div>
       </div>
       <!-- 가족력 -->
       <div class="profileinfo">
         <div class="profiletitle">가족력</div>
-        <div v-if="`${profile.family_history}==='True'`" class="profiledetail">{{profile.family_history}}</div>
-        <div class="profiledetail" v-else>입력해주세요</div>
+        <div v-if="profile.family_history" class="profiledetail">{{profile.family_history}}</div>
       </div>
-    </div>
-    <!-- 프로필 추가 버튼 -->
-    <div class="profileplus">
-      <v-btn class="button" color="#669999" to="/profileupdate">프로필 작성하기</v-btn>
-      <!-- 작성하지 않은 버튼 -->
-      <div class="pluslist"></div>
     </div>
   </div>
 </template>

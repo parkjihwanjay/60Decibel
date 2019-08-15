@@ -298,7 +298,7 @@ span {
 }
 .cardintro {
   width: 100%;
-  margin-top: 40vh;
+  margin-top: 30vh;
   text-align: center;
 }
 </style>

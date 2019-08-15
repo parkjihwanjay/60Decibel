@@ -75,56 +75,56 @@
             />없음
           </label>
           <br />
-          <span class="span2" for="had_long_before">건강검진 시기</span>
-          <br />
-          <input
-            class="select selectline"
-            type="radio"
-            v-model="update.had_checkup_true"
-            value="1년 이내"
-          />1년 이내
-          <input
-            class="select selectline"
-            type="radio"
-            v-model="update.had_checkup_true"
-            value="1-3년"
-          />1~3년
-          <input class="select" type="radio" v-model="update.had_checkup_true" value="3-5년" />3~5년
-          <input class="select" type="radio" v-model="update.had_checkup_true" value="5-10년" />5~10년
-          <!-- <input type="radio" v-model="update.had_checkup_true" value="10년 이상" />10년 이상 -->
-          <br />
-          <span class="span2" for="disease_list">병 진단 이력</span>
-          <br />
-          <input
-            type="checkbox"
-            class="select selectline"
-            v-model="update.diagnosed_disease"
-            value="고혈압"
-          />고혈압
-          <input
-            class="select selectline"
-            type="checkbox"
-            v-model="update.diagnosed_disease"
-            value="간염"
-          />간염
-          <input
-            class="select selectline"
-            type="checkbox"
-            v-model="update.diagnosed_disease"
-            value="결핵"
-          />결핵
-          <input
-            class="select selectline"
-            type="checkbox"
-            v-model="update.diagnosed_disease"
-            value="없음"
-          />없음
-          <input
-            class="select selectline"
-            type="checkbox"
-            v-model="update.diagnosed_disease"
-            value="기타"
-          />기타
+            <span class="span2" for="had_long_before">건강검진 시기</span>
+            <br />
+            <input
+              class="select selectline"
+              type="radio"
+              v-model="update.had_checkup_true"
+              value="1년 이내"
+            />1년 이내
+            <input
+              class="select selectline"
+              type="radio"
+              v-model="update.had_checkup_true"
+              value="1-3년"
+            />1~3년
+            <input class="select" type="radio" v-model="update.had_checkup_true" value="3-5년" />3~5년
+            <input class="select" type="radio" v-model="update.had_checkup_true" value="5-10년" />5~10년
+            <!-- <input type="radio" v-model="update.had_checkup_true" value="10년 이상" />10년 이상 -->
+            <br />
+            <span class="span2" for="disease_list">병 진단 이력</span>
+            <br />
+            <input
+              type="checkbox"
+              class="select selectline"
+              v-model="update.diagnosed_disease"
+              value="고혈압"
+            />고혈압
+            <input
+              class="select selectline"
+              type="checkbox"
+              v-model="update.diagnosed_disease"
+              value="간염"
+            />간염
+            <input
+              class="select selectline"
+              type="checkbox"
+              v-model="update.diagnosed_disease"
+              value="결핵"
+            />결핵
+            <input
+              class="select selectline"
+              type="checkbox"
+              v-model="update.diagnosed_disease"
+              value="없음"
+            />없음
+            <input
+              class="select selectline"
+              type="checkbox"
+              v-model="update.diagnosed_disease"
+              value="기타"
+            />기타
           <br />
           <span class="span2">복용중인 약</span>
           <br />
@@ -193,7 +193,7 @@
             <input type="radio" v-model="update.smoking" name="smoking" id="no" value="False" />아니오
           </label>
           <br />
-          <span class="span3">흡연 기간</span>
+          <span class="span3">흡연 기간(년)</span>
           <input
             type="number"
             v-model="update.how_long_smoking"
@@ -272,7 +272,11 @@ export default {
     ...mapState(["profile"])
   },
   methods: {
-    ...mapActions(["updateProfileInfo"])
+    ...mapActions(["updateProfileInfo"]),
+    diagnosistrue: function() {
+      diagnosis = 'True';
+      console.log(diagnosis);
+    }
   },
   created() {
     this.$store.dispatch("getProfileInfo");

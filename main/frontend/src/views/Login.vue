@@ -19,7 +19,7 @@ export default {
 <style scoped>
 .login {
   width: 100%;
-  height: 100vh;
+  min-height: 850px;
   color: #fff;
   background: linear-gradient(-45deg, #0e2b68, #22499c, #27adab, #71fcf9);
   background-size: 400% 400%;

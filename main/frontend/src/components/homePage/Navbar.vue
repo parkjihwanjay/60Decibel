@@ -20,18 +20,11 @@
     <transition-expand v-if="this.$store.state.isLogin === true">
       <div class="navexpand" v-if="expanded">
         <a class="nav-menu">
-          <router-link to="/profiles/username">{{this.$store.state.userInfo.username}}님 프로필보기</router-link>
+          <router-link to="/profiles">{{this.$store.state.userInfo.username}}님 프로필보기</router-link>
         </a>
         <br />
         <a class="nav-menu">
           <a @click.prevent="onClickLogout">로그아웃</a>
-        </a>
-        <br />
-        <a class="nav-menu">
-          <router-link to="/card">진료카드</router-link>
-        </a>
-        <a class="nav-menu">
-          <router-link to="/survey_test">설문조사 시작</router-link>
         </a>
         <br />
         <a class="nav-menu">
@@ -109,7 +102,7 @@ a:visited {
 }
 .navhead-btns {
   display: flex;
-  justify-content: space-around;
+  justify-content: flex-end;
   align-items: center;
   width: 10rem;
 }

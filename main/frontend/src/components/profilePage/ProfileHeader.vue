@@ -10,13 +10,14 @@
       </div>
       <div class="prof-JobBirth">
         <p class="job1" v-if="`${ profile.job }`">{{ profile.job }}</p>
-        <p class="job2" v-else>메롱</p>&nbsp;&nbsp;|&nbsp;&nbsp;
-        <p class="birth">{{ profile.birth_date }}</p>
+        <p class="job2" v-else>[직업]</p>&nbsp;&nbsp;|&nbsp;&nbsp;
+        <p v-if="`${ profile.birth_date }`" class="birth">{{ profile.birth_date }}</p>
+        <p v-else>생년월일</p>
       </div>
       <div class="prof-intro">
         <p class="intro">
-          Lorem ipsum dolor sit amet
-          <br />consectetur adipisicing elit.
+          60DB와 함께
+          <br />더 나은 진료서비스를 경험하세요!
         </p>
       </div>
     </div>
@@ -34,10 +35,7 @@
           <img src="../../assets/ruler1.png" />
           <p class="box-head">신장</p>
         </div>
-        <p v-if="profile.height" class="box-body">
-          {{ profile.height }}
-          <span>cm</span>
-        </p>
+        <p v-if="profile.height" class="box-body">{{ profile.height }}cm</p>
         <p v-else class="box-body">?</p>
       </div>
       <div class="box">
@@ -45,10 +43,7 @@
           <img src="../../assets/scale1.png" />
           <p class="box-head">체중</p>
         </div>
-        <p v-if="profile.weight" class="box-body">
-          {{ profile.weight }}
-          <span>kg</span>
-        </p>
+        <p v-if="profile.weight" class="box-body">{{ profile.weight }}kg</p>
         <p v-else class="box-body">?</p>
       </div>
     </div>
@@ -69,9 +64,6 @@ export default {
 };
 </script>
 <style scoped>
-span {
-  padding-left: 70px;
-}
 .prof-header {
   color: white;
   display: flex;
@@ -113,12 +105,14 @@ span {
 .prof-intro {
   margin-top: 1rem;
   font-size: 0.9rem;
+  text-align: center;
+  line-height: 140%;
 }
 
 .contents2 {
   display: flex;
   justify-content: space-around;
-  width: 425px;
+  width: 90%;
   height: 20%;
 }
 .box {
@@ -128,6 +122,7 @@ span {
   align-items: center;
   height: 100%;
   margin: 0 1rem;
+  width: 33%;
 }
 .icon {
   display: flex;
@@ -150,5 +145,6 @@ img {
   color: rgb(196, 30, 99);
   font-size: 1.6rem;
   text-align: center;
+  width: 100%;
 }
 </style>

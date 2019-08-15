@@ -61,6 +61,7 @@
         </div>
         <div class="login-btn">
           <input
+            v-if="`${this.$store.state.random_user}`"
             type="submit"
             class="button"
             name="submit"

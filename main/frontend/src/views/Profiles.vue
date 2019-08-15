@@ -61,22 +61,22 @@ export default {
   background-color: white;
   border-bottom: 1px solid rgb(158, 158, 158);
   width: 100%;
-  height: 10rem;
+  min-height: 10rem;
 }
 .body2 {
   background-color: #ebebeb;
   width: 100%;
-  height: 14rem;
+  min-height: 12rem;
 }
 .body3 {
   background: white;
   width: 100%;
-  height: 14rem;
+  min-height: 14rem;
 }
 .footer {
   background-color: darkorange;
   width: 100%;
-  height: 8rem;
+  min-height: 8rem;
 }
 </style>
 

@@ -5,30 +5,24 @@
       <!-- 흡연 -->
       <div class="profileinfo">
         <div class="profiletitle">음주습관</div>
-        <div
-          v-if="`${profile.drinking}=='True'&&${profile.drinking_per_week}`"
-          class="profiledetail"
-        >{{ profile.drinking_per_week}}</div>
-        <div v-else class="profiledetail">YES</div>
+        <div v-if="profile.drinking_per_week" class="profiledetail">{{ profile.drinking_per_week}}병</div>
       </div>
       <!-- 음주 -->
       <div class="profileinfo">
         <div class="profiletitle">흡연습관</div>
         <div
-          v-if="`${profile.smoking}=='True'&&${profile.how_long_smoking}`"
+          v-if="`${profile.how_long_smoking}`"
           class="profiledetail"
-        >{{ profile.how_long_smoking }}</div>
+        >{{ profile.how_long_smoking }}년 동안/</div>
         <div
-          v-if="`${profile.smoking}=='True'&&${profile.how_much_smoking}`"
+          v-if="profile.how_much_smoking"
           class="profiledetail"
-        >{{ profile.how_much_smoking }}</div>
-        <div class="profiledetail" v-else>YES</div>
+        >일주일에 {{ profile.how_much_smoking }}갑</div>
       </div>
       <!-- 직업 -->
       <div class="profileinfo">
         <div class="profiletitle">직업</div>
         <div v-if="profile.job" class="profiledetail">{{profile.job}}</div>
-        <div class="profiledetail" v-else>입력해주세요</div>
       </div>
     </div>
     <!-- 프로필 추가 버튼 -->
@@ -123,7 +117,6 @@ export default {
 }
 .profileplus {
   width: 100%;
-  padding-top: 20px;
-  padding-left: 20px;
+  text-align: center;
 }
 </style>
