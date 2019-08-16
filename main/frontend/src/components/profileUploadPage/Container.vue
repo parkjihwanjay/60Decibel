@@ -14,13 +14,15 @@
           <!-- <button>이미지 변경</button> -->
           <!-- <input type="file" v-model="update.avatar"/> -->
           <span>이름</span>
-          <input type="text" v-model="update.name" v-bind:placeholder="profile.name" />
+          <!-- <input type="text" v-model="update.name" v-bind:placeholder="profile.name" /> -->
+          <input type="text" ref="name" v-on:blur="storeUpdateName()" v-bind:value="profile.name" />
           <br />
           <span>성별</span>
           <label for="male">
             <input
               class="select"
               type="radio"
+              ref="male"
               v-model="update.gender"
               name="gender"
               id="male"
@@ -31,6 +33,7 @@
             <input
               type="radio"
               class="select"
+              ref="female"
               v-model="update.gender"
               name="gender"
               id="female"
@@ -42,10 +45,22 @@
           <input type="date" v-model="update.birth_date" />
           <br />
           <span>신장</span>
-          <input type="number" v-model="update.height" v-bind:placeholder="profile.height" />
+          <!-- <input type="number" v-model="update.height" v-bind:placeholder="profile.height" /> -->
+          <input
+            type="number"
+            ref="height"
+            v-on:blur="storeUpdateHeight()"
+            v-bind:value="profile.height"
+          />
           <br />
           <span>체중</span>
-          <input type="number" v-model="update.weight" v-bind:placeholder="profile.weight" />
+          <!-- <input type="number" v-model="update.weight" v-bind:placeholder="profile.weight" /> -->
+          <input
+            type="number"
+            ref="weight"
+            v-on:blur="storeUpdateWeight()"
+            v-bind:value="profile.weight"
+          />
           <br />
         </div>
       </div>
@@ -150,12 +165,18 @@
           </label>
           <br />
           <span>약 이름</span>
-          <input
+          <!-- <input
             type="text"
             v-model="update.what_medicine"
             v-bind:placeholder="profile.what_medicine"
+          />-->
+          <input
+            type="text"
+            ref="what_medicine"
+            v-on:blur="storeUpdateWhatMedicine()"
+            v-bind:value="profile.what_medicine"
           />
-          <br />
+          
           <span for="family_disease">가족력</span>
           <br />
           <input class="select" type="checkbox" v-model="update.family_history" value="고혈압" />고혈압
@@ -178,11 +199,18 @@
           </label>
           <br />
           <span class="span3 spanlong">음주량(병)(일주일 기준)</span>
-          <input
+          <!-- <input
             class="inputsmall"
             type="number"
             v-model="update.drinking_per_week"
             value="profile.drinking_per_week"
+          />-->
+          <input
+            class="inputsmall"
+            type="number"
+            ref="drinking_per_week"
+            v-on:blur="storeUpdateDrinkingPerWeek()"
+            v-bind:value="profile.drinking_per_week"
           />
           <br />
           <span class="span3">흡연 여부</span>
@@ -194,22 +222,36 @@
           </label>
           <br />
           <span class="span3">흡연 기간(년)</span>
-          <input
+          <!-- <input
             type="number"
             v-model="update.how_long_smoking"
             v-bind:placeholder="profile.how_long_smoking"
+          />-->
+          <input
+            type="number"
+            ref="how_long_smoking"
+            v-on:blur="storeUpdateHowLongSmoking()"
+            v-bind:value="profile.how_long_smoking"
           />
           <br />
           <span class="span3 spanlong">흡연 양(갑)(일주일 기준)</span>
-          <input
+          <!-- <input
             class="inputsmall"
             type="number"
             v-model="update.how_much_smoking"
             v-bind:placeholder="profile.how_much_smoking"
+          />-->
+          <input
+            class="inputsmall"
+            type="number"
+            ref="how_much_smoking"
+            v-on:blur="storeUpdateHowMuchSmoking()"
+            v-bind:value="profile.how_much_smoking"
           />
           <br />
           <span class="span3">직업</span>
-          <input type="text" v-model="update.job" v-bind:placeholder="profile.job" />
+          <!-- <input type="text" v-model="update.job" v-bind:placeholder="profile.job" /> -->
+          <input type="text" ref="job" v-on:blur="storeUpdateJob()" v-bind:value="profile.job" />
           <br />
           <!-- <label for="bad_habits">다음 중 해당되는 사항에 모두 체크해주세요</label>
       <input type="checkbox" v-model="update.relevant_data" value="스트레스를 많이 받는 편" />스트레스를 많이 받는 편
@@ -241,7 +283,7 @@
   </div>
 </template>
 <script>
-import { mapState, mapActions } from "vuex";
+import { mapState } from "vuex";
 export default {
   data() {
     return {
@@ -249,7 +291,7 @@ export default {
         avatar: null,
         gender: "",
         birth_date: "",
-        height: "135",
+        height: "",
         weight: "",
         name: "",
         had_checkup: "",
@@ -272,7 +314,46 @@ export default {
     ...mapState(["profile"])
   },
   methods: {
-    // ...mapActions(["updateProfileInfo"]),
+    storeUpdateName() {
+      console.log(this.$refs.name.value);
+      this.update.name = this.$refs.name.value;
+      this.$store.dispatch("switchName", this.update.name);
+    },
+    storeUpdateHeight() {
+      console.log(this.$refs.height.value);
+      this.update.height = this.$refs.height.value;
+      this.$store.dispatch("switchHeight", this.update.height);
+    },
+    storeUpdateWeight() {
+      console.log(this.$refs.weight.value);
+      this.update.weight = this.$refs.weight.value;
+      this.$store.dispatch("switchWeight", this.update.weight);  
+    },
+    storeUpdateWhatMedicine() {
+      console.log(this.$refs.what_medicine.value);
+      this.update.what_medicine = this.$refs.what_medicine.value;
+      this.$store.dispatch("switchWhatMedicine", this.update.what_medicine);      
+    },
+    storeUpdateDrinkingPerWeek() {
+      console.log(this.$refs.drinking_per_week.value);
+      this.update.drinking_per_week = this.$refs.drinking_per_week.value;
+      this.$store.dispatch("switchDrinkingPerWeek", this.update.drinking_per_week);          
+    },
+    storeUpdateHowLongSmoking() {
+      console.log(this.$refs.how_long_smoking.value);
+      this.update.how_long_smoking = this.$refs.how_long_smoking.value;
+      this.$store.dispatch("switchHowLongSmoking", this.update.how_long_smoking);              
+    },
+    storeUpdateHowMuchSmoking() {
+      console.log(this.$refs.how_much_smoking.value);
+      this.update.how_much_smoking = this.$refs.how_much_smoking.value;
+      this.$store.dispatch("switchHowMuchSmoking", this.update.how_much_smoking);                  
+    },
+    storeUpdateJob() {
+      console.log(this.$refs.job.value);
+      this.update.job = this.$refs.job.value;
+      this.$store.dispatch("switchJob", this.update.job);                  
+    },
     updateProfileInfo(update, profile) {
       console.log(update);
       console.log(profile);
@@ -284,15 +365,6 @@ export default {
       }
       if (!update.birth_date) {
         update.birth_date = profile.birth_date;
-      }
-      if (!update.height) {
-        update.height = profile.height;
-      }
-      if (!update.weight) {
-        update.weight = profile.weight;
-      }
-      if (!update.name) {
-        update.name = profile.name;
       }
       if (!update.had_checkup) {
         update.had_checkup = profile.had_checkup;
@@ -306,29 +378,14 @@ export default {
       if (!update.taking_medicine) {
         update.taking_medicine = profile.taking_medicine;
       }
-      if (!update.what_medicine) {
-        update.what_medicine = profile.what_medicine;
-      }
       if (!update.family_history) {
         update.family_history = profile.family_history;
       }
       if (!update.drinking) {
         update.drinking = profile.drinking;
       }
-      if (!update.drinking_per_week) {
-        update.drinking_per_week = profile.drinking_per_week;
-      }
       if (!update.smoking) {
         update.smoking = profile.smoking;
-      }
-      if (!update.how_long_smoking) {
-        update.how_long_smoking = profile.how_long_smoking;
-      }
-      if (!update.how_much_smoking) {
-        update.how_much_smoking = profile.how_much_smoking;
-      }
-      if (!update.job) {
-        update.job = profile.job;
       }
       if (!update.relevant_data) {
         update.relevant_data = profile.relevant_data;
