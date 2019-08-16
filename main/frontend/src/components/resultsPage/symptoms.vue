@@ -10,21 +10,21 @@
     <br />
     <p>통증이 {{stomach.fast_or_slow}} 발생하였습니다</p>
     <br />
-    <p v-if="`${stomach.symptom_situation}`">처음 통증이 발생하였을 때 {{stomach.created_at}}한 상황이었습니다.</p>
+    <p v-if="`${stomach.symptom_situation}`">처음 통증이 발생하였을 때 {{stomach.symptom_situation}}한 상황이었습니다.</p>
     <br />
     <p>{{stomach.symptom_location}}가 아픕니다.</p>
     <br />
-    <p v-if="`${stomach.location_move}`">아픈 부위가 {{stomach.created_at}}로 이동했습니다.</p>
+    <p v-if="`${stomach.location_move}`">아픈 부위가 {{stomach.location_move}}로 이동했습니다.</p>
     <p v-else>아픈 부위가 이동하지 않았습니다.</p>
     <br />
     <p v-if="`${stomach.pain_spread}`">통증이 {{stomach.pain_spread_where}}로 퍼졌습니다.</p>
     <br />
-    <p>통증이 한 번 발생하면 {{stomach.created_at}}만큼 지속됩니다.</p>
+    <p>통증이 한 번 발생하면 {{stomach.pain_duration}}만큼 지속됩니다.</p>
     <br />
-    <p v-if="`${stomach.pain_repeated}`">통증의 빈도는 하루에 {{stomach.created_at}}입니다.</p>
+    <p v-if="`${stomach.pain_repeated}`">통증의 빈도는 하루에 {{stomach.pain_repeated}}입니다.</p>
     <p v-else>단발성 통증입니다.</p>
     <br />
-    <p>{{stomach.created_at}}통증입니다.</p>
+    <p>{{stomach.pain_character}}통증입니다.</p>
     <br />
     <p>0~10 중 {{stomach.pain_score}}에 해당하는 통증입니다.</p>
     <br />
