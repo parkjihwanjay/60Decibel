@@ -414,8 +414,7 @@ export const store = new Vuex.Store({
             axios
                 .post(
                     "http://54.180.31.52:8000/api/surveys/stomach/", stomachData, config)
-
-            .then(res => {
+                .then(res => {
                     console.log(res);
                     let id = res.data.id;
                     commit("RESET_SURVEY");

@@ -25,7 +25,7 @@
       <router-link :to="{name:'sec5'}">이전</router-link>
     </div>
     <div class="button2">
-      <button @click.native="sec6(survey_data)">제출</button>
+      <button @click="sec6(survey_data)">제출</button>
     </div>
   </div>
 </template>
