@@ -23,9 +23,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = ')m&!8ajalwiq*t-(88$6732j@uj3v+ltwu##gj0wcdx_a!swtf'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["127.0.0.1", "54.180.31.52", "ec2-54-180-31-52.ap-northeast-2.compute.amazonaws.com"]
 
 
 # Application definition
@@ -38,11 +38,12 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sites',
+
+    # 앱 목록
     'users',
     'profiles',
-    # 인우 : profiles앱 추가했습니다
     'survey',
-    # 지환 : survey 앱 추가
+
     'rest_framework',
     'rest_framework.authtoken',
 
@@ -53,7 +54,6 @@ INSTALLED_APPS = [
     'rest_auth',
     'rest_auth.registration',
 
-    'crispy_forms',
     'webpack_loader',
     'corsheaders'
 ]
@@ -76,6 +76,8 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [os.path.join(BASE_DIR, 'templates')],
+        # 인우 : Vue 쓰면서 템플릿을 안 쓰게 됬으니 지워도 될 것 같습니다.
+        # 'DIRS': [] <-이렇게
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -166,15 +168,16 @@ USE_TZ = False
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+# 인우 : 정적 파일을 보관하는 static폴더 자체가 없으니 필요 없는 코드인 것 같습니다.
 
 LOGIN_URL = "accounts/login/"
 LOGIN_REDIRECT_URL = "/"
 LOGOUT_REGIRECT_URL = "/"
+# 인우 : 위 세줄은 장고 로그인 관련 기본 설정인데 rest-auth 및 allauth를 쓰므로 지워도 동작할 것 같습니다.
 
 # setting Custom models
 AUTH_USER_MODEL = "users.CustomUser"
-# 8.인우 : user모델 커스텀해줬으면 반드시 해줘야 하는 설정입니다.
-# users/forms.py로 ㄱㄱ
+
 
 SITE_ID = 1
 
@@ -190,6 +193,7 @@ REST_FRAMEWORK = {
     ),
     # 'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
     # 'PAGE_SIZE': 2
+    # 인우 : browsable api에서만 필요한 기능이니 지워도 무방할 것 같습니다
 }
 
 JWT_AUTH = {
@@ -233,9 +237,10 @@ WEBPACK_LOADER = {
     }
 }
 
-CRISPY_TEMPLATE_PACK = "bootstrap4"
 
 ACCOUNT_EMAIL_VERTIFICATION = "none"
+# 인우 : 회원가입할 때 이메일 정보를 요구한다면 배포 시에는 이메일 인증을 받게끔 바꾸는게 맞는 것 같습니다.
+# ->ACCOUNT_EMAIL_VERTIFICATION = "mandatory"
 ACCOUNT_EMAIL_REQUIRED = (True)
 
 MEDIA_URL = "/media/"
@@ -251,3 +256,8 @@ MEDIA_ROOT = "uploads"
 # Example: "/var/www/example.com/media/"
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+# 인우 : allauth는 이메일을 이용하는 인증체계라 회원들에게 이메일을 보낼 수 있는 SMTP서버가 필요합니다.
+# django의 EMAIL_HOST를 설정해주지 않으면 회원가입 절차에서 오류가 발생하기 때문에,
+# 개발과정중에 임시로 이를 무시하기 위한 코드입니다.
+# 즉, 이메일 인증을 실제로 하려면 이 코드를 지우고 EMAIL_HOST를 설정할 필요가 있습니다.
+# https://stackoverflow.com/questions/21563227/django-allauth-example-errno-61-connection-refused
