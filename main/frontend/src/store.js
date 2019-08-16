@@ -124,6 +124,9 @@ export const store = new Vuex.Store({
         },
         SWITCH_JOB(state, job) {
             state.profile.job = job;
+        },
+        SWITCH_AVATAR(state, avatar) {
+            state.profile.avatar = avatar;
         }
     },
     actions: {
@@ -482,6 +485,9 @@ export const store = new Vuex.Store({
         switchJob({ commit }, job) {
             commit("SWITCH_JOB", job);
         },
+        switchAvatar({ commit }, avatar) {
+            commit("SWITCH_AVATAR", avatar);
+        }
         // checkToken({ commit }, access_token) {
         //     axios
         //         .post("http://54.180.144.241:8000/api/rest-auth/verify_token/", access_token)
