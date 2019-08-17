@@ -7,7 +7,7 @@
         <div class="upload-detail">
           <div class="upload-img">
             <div class="bold">프로필 이미지</div>
-            <img v-if="profile.avatar.length > 0" v-bind:src="`${profile.avatar}`" class="img" />
+            <img v-if="profile.avatar" v-bind:src="`${profile.avatar}`" class="img" />
             <img v-else src="../../assets/60db.png" class="img" />
           </div>
           <div class="file-upload-form">
