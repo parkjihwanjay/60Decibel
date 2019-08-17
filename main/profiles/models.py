@@ -13,20 +13,20 @@ class Profile(models.Model):
         ("10년 이상", "10년 이상"),
     ]
 
-    DISEASE_LIST = [
-        ("고혈압", '고혈압'),
-        ("간염", '간염'),
-        ("결핵", '결핵'),
-        ("없음", '없음'),
-        ("기타", '기타'),
-    ]
+    # DISEASE_LIST = [
+    #     ("고혈압", '고혈압'),
+    #     ("간염", '간염'),
+    #     ("결핵", '결핵'),
+    #     ("없음", '없음'),
+    #     ("기타", '기타'),
+    # ]
 
-    BAD_HABITS = [
-        ("스트레스를 많이 받는 편", "스트레스를 많이 받는 편"),
-        ("식사 불규칙", "식사 불규칙"),
-        ("기름진 음식을 많이 먹음", "기름진 음식을 많이 먹음"),
-        ("수면시간 불규칙", "수면시간 불규칙"),
-    ]
+    # BAD_HABITS = [
+    #     ("스트레스를 많이 받는 편", "스트레스를 많이 받는 편"),
+    #     ("식사 불규칙", "식사 불규칙"),
+    #     ("기름진 음식을 많이 먹음", "기름진 음식을 많이 먹음"),
+    #     ("수면시간 불규칙", "수면시간 불규칙"),
+    # ]
 
     GENDER_CHOICES = [
         ('남성', '남성'), ("여성", "여성")
@@ -59,7 +59,8 @@ class Profile(models.Model):
     # 다만 몇 년 몇개월 같이 쓰기가 어렵긴 하겠네요
 
     # 이전에 진단받은 병이 있나요?
-    diagnosed_disease = models.CharField(max_length=30, choices=DISEASE_LIST, blank=True, null=True)
+    # diagnosed_disease = models.CharField(max_length=30, choices=DISEASE_LIST, blank=True, null=True)
+    diagnosed_disease = models.CharField(max_length=30, blank=True, null=True) 
     # 인우 : 진단받은 병이 복수일 경우?
 
     # 드시고 계시는 약이 있나요?
@@ -71,7 +72,8 @@ class Profile(models.Model):
     # 예시가 있는 게 아니니 choice를 쓰기는 어렵고...
 
     # 가족분들이 진단 받은 병이 있나요?
-    family_history = models.CharField(max_length=30, choices=DISEASE_LIST, blank=True, null=True)
+    # family_history = models.CharField(max_length=30, choices=DISEASE_LIST, blank=True, null=True)
+    family_history = models.CharField(max_length=30, blank=True, null=True)
 
     # 사회력
 
@@ -95,8 +97,9 @@ class Profile(models.Model):
     # 직업을 꼭 말하고 싶지 않을 수도 있죠
 
     # 다음 중 해당사항에 체크해주세요
-    relevant_data = models.CharField(
-        max_length=100, choices=BAD_HABITS, blank=True, null=True)
+    # relevant_data = models.CharField(
+    #     max_length=100, choices=BAD_HABITS, blank=True, null=True)
+    relevant_data = models.CharField(max_length=100, blank=True, null=True)
 
     def __str__(self):
         return self.name

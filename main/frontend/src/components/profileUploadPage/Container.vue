@@ -261,17 +261,17 @@ export default {
         name: "",
         had_checkup: "",
         had_checkup_true: "",
-        // diagnosed_disease: [],
+        diagnosed_disease: [],
         taking_medicine: "",
         what_medicine: "",
-        // family_history: [],
+        family_history: [],
         drinking: "",
         drinking_per_week: "",
         smoking: "",
         how_long_smoking: "",
         how_much_smoking: "",
-        job: ""
-        // relevant_data: []
+        job: "",
+        relevant_data: []
       }
     };
   },
@@ -350,18 +350,18 @@ export default {
         console.log("검진 확장 비었다");
         update.had_checkup_true = profile.had_checkup_true;
       }
-      // if (update.diagnosed_disease == "") {
-      //   console.log("질병 이력 비었다");
-      //   update.diagnosed_disease = profile.diagnosed_disease;
-      // }
+      if (update.diagnosed_disease == "") {
+        console.log("질병 이력 비었다");
+        update.diagnosed_disease = profile.diagnosed_disease;
+      }
       if (!update.taking_medicine) {
         console.log("복용중인 약 비었다");
         update.taking_medicine = profile.taking_medicine;
       }
-      // if (update.family_history == "") {
-      //   console.log("가족력 비었다");
-      //   update.family_history = profile.family_history;
-      // }
+      if (update.family_history == "") {
+        console.log("가족력 비었다");
+        update.family_history = profile.family_history;
+      }
       if (!update.drinking) {
         console.log("음주 여부 비었다");
         update.drinking = profile.drinking;
@@ -370,10 +370,10 @@ export default {
         console.log("흡연 여부 비었다");
         update.smoking = profile.smoking;
       }
-      // if (update.relevant_data == "") {
-      //   console.log("나쁜 습관 비었다");
-      //   update.relevant_data = profile.relevant_data;
-      // }
+      if (update.relevant_data == "") {
+        console.log("나쁜 습관 비었다");
+        update.relevant_data = profile.relevant_data;
+      }
       if (!update.name) {
         console.log("name비었다");
         update.name = profile.name;
