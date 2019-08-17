@@ -55,7 +55,8 @@ INSTALLED_APPS = [
     'rest_auth.registration',
 
     'webpack_loader',
-    'corsheaders'
+    'corsheaders',
+    'drf_extra_fields'
 ]
 
 MIDDLEWARE = [

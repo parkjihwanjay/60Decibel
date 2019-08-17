@@ -1,8 +1,10 @@
 from rest_framework import serializers
 from profiles.models import Profile
+from drf_extra_fields.fields import Base64ImageField
 
 class ProfileDisplaySerializer(serializers.ModelSerializer):
     user = serializers.StringRelatedField(read_only=True)
+    avatar = Base64ImageField(required=False)
 
     class Meta:
         model = Profile
@@ -29,6 +31,7 @@ class ProfileUpdateSerializer(serializers.ModelSerializer):
     diagnosed_disease = serializers.MultipleChoiceField(disease_list)
     family_history = serializers.MultipleChoiceField(disease_list)
     relevant_data = serializers.MultipleChoiceField(bad_habits)
+    avatar = Base64ImageField(required=False)
 
     class Meta:
         model = Profile
@@ -41,6 +44,7 @@ class ProfileUpdateSerializer(serializers.ModelSerializer):
 
 class ProfileRetrieveSerializer(serializers.ModelSerializer):
     user = serializers.StringRelatedField(read_only=True)
+    avatar = Base64ImageField(required=False)
 
     class Meta:
         model = Profile

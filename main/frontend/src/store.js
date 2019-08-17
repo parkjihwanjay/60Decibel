@@ -68,9 +68,6 @@ export const store = new Vuex.Store({
         SET_QUICK_START(state, startObj) {
             state.random_user = startObj;
         },
-        RESET_RANDOM_USER(state) {
-            state.random_user = undefined;
-        },
         SET_SURVEY_DATA1(state, survey_data) {
             state.answer = Object.assign(state.answer, survey_data);
         },
