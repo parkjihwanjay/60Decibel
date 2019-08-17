@@ -29,11 +29,11 @@ class ProfileUpdateSerializer(serializers.ModelSerializer):
     # diagnosed_disease = serializers.MultipleChoiceField(choices=DISEASE_LIST, allow_blank=True)
     # family_history = serializers.MultipleChoiceField(choices=DISEASE_LIST, allow_blank=True)
     # relevant_data = serializers.MultipleChoiceField(choices=BAD_HABITS, allow_blank=True)
-    # avatar = Base64ImageField(required=False)
+    avatar = Base64ImageField(required=False)
 
     class Meta:
         model = Profile
-        fields = ["gender", "birth_date", "height", "weight", "name",
+        fields = ["avatar", "gender", "birth_date", "height", "weight", "name",
                   "had_checkup", "had_checkup_true", "taking_medicine", 
                   "what_medicine", "drinking", "drinking_per_week", 
                   "smoking", "how_long_smoking", "how_much_smoking", "job"]

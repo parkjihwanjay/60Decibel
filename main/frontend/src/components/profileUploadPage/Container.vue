@@ -10,10 +10,10 @@
             <img v-if="profile.avatar" v-bind:src="`${profile.avatar}`" class="img" />
             <img v-else src="../../assets/60db.png" class="img" />
           </div>
-          <!-- <div class="file-upload-form">
+          <div class="file-upload-form">
             Upload an image file:
             <input type="file" @change="previewImage" accept="image/*" />
-          </div>-->
+          </div>
           <span>이름</span>
           <input type="text" ref="name" v-on:blur="storeUpdateName()" v-bind:value="profile.name" />
           <br />
@@ -253,7 +253,7 @@ export default {
   data() {
     return {
       update: {
-        // avatar: "",
+        avatar: "",
         gender: "",
         birth_date: "",
         height: "",
