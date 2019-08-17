@@ -6,7 +6,7 @@
         <div class="underline"></div>
       </div>
     </div>
-    <div data-aos="fade-up" data-aos-duration="1400" data-aos-delay="300">
+    <div data-aos="fade-up" data-aos-duration="1400" data-aos-delay="200">
       <div class="icons">
         <img class="icon1" src="../../assets/medi.png" />
         <img class="icon2" src="../../assets/60db.png" />
