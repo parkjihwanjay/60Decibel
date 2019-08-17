@@ -10,10 +10,10 @@
             <img v-if="profile.avatar" v-bind:src="`${profile.avatar}`" class="img" />
             <img v-else src="../../assets/60db.png" class="img" />
           </div>
-          <div class="file-upload-form">
+          <!-- <div class="file-upload-form">
             Upload an image file:
             <input type="file" @change="previewImage" accept="image/*" />
-          </div>
+          </div>-->
           <span>이름</span>
           <input type="text" ref="name" v-on:blur="storeUpdateName()" v-bind:value="profile.name" />
           <br />
@@ -253,7 +253,7 @@ export default {
   data() {
     return {
       update: {
-        avatar: null,
+        // avatar: "",
         gender: "",
         birth_date: "",
         height: "",
@@ -261,17 +261,17 @@ export default {
         name: "",
         had_checkup: "",
         had_checkup_true: "",
-        diagnosed_disease: [],
+        // diagnosed_disease: [],
         taking_medicine: "",
         what_medicine: "",
-        family_history: [],
+        // family_history: [],
         drinking: "",
         drinking_per_week: "",
         smoking: "",
         how_long_smoking: "",
         how_much_smoking: "",
-        job: "",
-        relevant_data: []
+        job: ""
+        // relevant_data: []
       }
     };
   },
@@ -330,39 +330,81 @@ export default {
     },
     updateProfileInfo(update, profile) {
       console.log(update);
-      console.log(profile);
       if (!update.avatar) {
+        console.log("아바타 비었다");
         update.avatar = profile.avatar;
       }
       if (!update.gender) {
+        console.log("gender비었다");
         update.gender = profile.gender;
       }
       if (!update.birth_date) {
+        console.log("생일비었다");
         update.birth_date = profile.birth_date;
       }
       if (!update.had_checkup) {
+        console.log("검진여부비었다");
         update.had_checkup = profile.had_checkup;
       }
       if (!update.had_checkup_true) {
+        console.log("검진 확장 비었다");
         update.had_checkup_true = profile.had_checkup_true;
       }
-      if (!update.diagnosed_disease) {
-        update.diagnosed_disease = profile.diagnosed_disease;
-      }
+      // if (update.diagnosed_disease == "") {
+      //   console.log("질병 이력 비었다");
+      //   update.diagnosed_disease = profile.diagnosed_disease;
+      // }
       if (!update.taking_medicine) {
+        console.log("복용중인 약 비었다");
         update.taking_medicine = profile.taking_medicine;
       }
-      if (!update.family_history) {
-        update.family_history = profile.family_history;
-      }
+      // if (update.family_history == "") {
+      //   console.log("가족력 비었다");
+      //   update.family_history = profile.family_history;
+      // }
       if (!update.drinking) {
+        console.log("음주 여부 비었다");
         update.drinking = profile.drinking;
       }
       if (!update.smoking) {
+        console.log("흡연 여부 비었다");
         update.smoking = profile.smoking;
       }
-      if (!update.relevant_data) {
-        update.relevant_data = profile.relevant_data;
+      // if (update.relevant_data == "") {
+      //   console.log("나쁜 습관 비었다");
+      //   update.relevant_data = profile.relevant_data;
+      // }
+      if (!update.name) {
+        console.log("name비었다");
+        update.name = profile.name;
+      }
+      if (!update.height) {
+        console.log("height비었다");
+        update.height = profile.height;
+      }
+      if (!update.weight) {
+        console.log("weight비었다");
+        update.weight = profile.weight;
+      }
+      if (!update.what_medicine) {
+        console.log("what_medicine비었다");
+        update.what_medicine = profile.what_medicine;
+      }
+      if (!update.drinking_per_week) {
+        console.log("drinking_per_week비었다");
+        update.drinking_per_week = profile.drinking_per_week;
+      }
+      if (!update.how_long_smoking) {
+        console.log("how_long_smoking비었다");
+        update.how_long_smoking = profile.how_long_smoking;
+      }
+      if (!update.how_much_smoking) {
+        console.log("how_much_smoking비었다");
+        update.how_much_smoking = profile.how_much_smoking;
+      }
+      if (!update.job) {
+        console.log("job 비었다");
+        update.job = profile.job;
       }
       this.$store.dispatch("updateProfileInfo", update);
     },
@@ -379,6 +421,7 @@ export default {
           // Read image as base64 and set to imageData
           this.update.avatar = e.target.result;
           this.$store.dispatch("switchAvatar", this.update.avatar);
+          console.log("이미지 : ", this.update.avatar);
         };
         // Start the reader job - read file as a data url (base64 format)
         reader.readAsDataURL(input.files[0]);
@@ -387,6 +430,7 @@ export default {
   },
   created() {
     this.$store.dispatch("getProfileInfo");
+    console.log("state 값 : ", this.profile);
   }
 };
 </script>
