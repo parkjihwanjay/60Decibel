@@ -85,19 +85,12 @@ ASSOCIATED_SYMPTOM_URINARY = [
 
 ]
 
-# abdomen_hurted = "복부를 다친 적이 있음"
-# abdomen_surgery = "복부 수술을 받은 적이 있음"
-# abdomen_nothing = "해당없음"
-# abdomen_history = (
-#     (abdomen_hurted, "복부를 다친 적이 있음"), (abdomen_surgery,
-#                                        "복부 수술을 받은 적이 있음"), (abdomen_nothing, "해당없음")
-# )
-abdomen_relevant = [
-    ('abdomen_hurted', "복부를 다친 적이 있음"),
-    ('abdomen_surgery', "복부 수술을 받은 적이 있음"),
-    ('abdomen_nothing', "해당없음")
+BAD_HABITS = [
+    ("스트레스를 많이 받는 편", "스트레스를 많이 받는 편"),
+    ("식사 불규칙", "식사 불규칙"),
+    ("기름진 음식을 많이 먹음", "기름진 음식을 많이 먹음"),
+    ("수면시간 불규칙", "수면시간 불규칙"),
 ]
-
 
 class StomachacheSurveyCreateSerializer(serializers.ModelSerializer):
     symtpom_location = serializers.MultipleChoiceField(PAIN_POSITION)
@@ -113,7 +106,7 @@ class StomachacheSurveyCreateSerializer(serializers.ModelSerializer):
     associated_symptom_urinary = serializers.MultipleChoiceField(
         ASSOCIATED_SYMPTOM_URINARY)
     factor = serializers.MultipleChoiceField(FACTOR)
-    abdomen_relevant = serializers.MultipleChoiceField(abdomen_relevant)
+    abdomen_relevant = serializers.MultipleChoiceField(BAD_HABITS)
 
     class Meta:
         model = StomachacheSurvey

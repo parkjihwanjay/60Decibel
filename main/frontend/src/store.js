@@ -365,7 +365,6 @@ export const store = new Vuex.Store({
             });
         },
         updateProfileInfo(dispatch, update) {
-            console.log(update);
             let token = localStorage.getItem("access_token");
             let config = {
                 headers: {

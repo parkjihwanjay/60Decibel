@@ -23,9 +23,11 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = ')m&!8ajalwiq*t-(88$6732j@uj3v+ltwu##gj0wcdx_a!swtf'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+# DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ["127.0.0.1", "54.180.31.52", "ec2-54-180-31-52.ap-northeast-2.compute.amazonaws.com"]
+# ALLOWED_HOSTS = ["127.0.0.1", "54.180.31.52", "ec2-54-180-31-52.ap-northeast-2.compute.amazonaws.com"]
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -251,7 +253,7 @@ MEDIA_URL = "/media/"
 # 보통 아래와 같이 URL로 설정하나 개발 과정에서의 테스트를 위해 로컬로 설정했음.(ursl.py참조)
 # Example: "http://media.example.com/"`
 
-MEDIA_ROOT = "uploads"
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # MEDIA_ROOT의 디폴트 값은 빈 문자열이다.
 # 사용자가 업로드한 파일을 저장?하기 위한 디렉토리를 가리키는 절대경로이다.
 # Example: "/var/www/example.com/media/"
