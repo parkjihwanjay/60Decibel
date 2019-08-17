@@ -332,7 +332,7 @@ export default {
       console.log(update);
       if (!update.avatar) {
         console.log("아바타 비었다");
-        update.avatar = profile.avatar;
+        // 기존 이미지를 그대로 남기는 로직이 필요한데 base64라 어떻게 해야 될지..
       }
       if (!update.gender) {
         console.log("gender비었다");
@@ -424,6 +424,7 @@ export default {
           console.log("이미지 : ", this.update.avatar);
         };
         // Start the reader job - read file as a data url (base64 format)
+        console.log(input.files[0]);
         reader.readAsDataURL(input.files[0]);
       }
     }
