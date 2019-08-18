@@ -4,17 +4,17 @@ from drf_extra_fields.fields import Base64ImageField
 
 class ProfileDisplaySerializer(serializers.ModelSerializer):
     user = serializers.StringRelatedField(read_only=True)
-    avatar = Base64ImageField(required=False)
+    avatar = Base64ImageField(required=False, allow_null=True)
 
     class Meta:
         model = Profile
         fields = "__all__"
 
 class ProfileUpdateSerializer(serializers.ModelSerializer):
-    diagnosed_disease = serializers.ListField(child=serializers.CharField(), min_length=0, max_length=20)
-    family_history = serializers.ListField(child=serializers.CharField(), min_length=0, max_length=20)
-    relevant_data = serializers.ListField(child=serializers.CharField(), min_length=0, max_length=20)
-    avatar = Base64ImageField(required=False)
+    diagnosed_disease = serializers.ListField(child=serializers.CharField(required=False), required=False, min_length=0, max_length=20)
+    family_history = serializers.ListField(child=serializers.CharField(required=False), required=False, min_length=0, max_length=20)
+    relevant_data = serializers.ListField(child=serializers.CharField(required=False), required=False, min_length=0, max_length=20)
+    avatar = Base64ImageField(required=False, allow_null=True)
 
     class Meta:
         model = Profile
@@ -27,7 +27,7 @@ class ProfileUpdateSerializer(serializers.ModelSerializer):
 
 class ProfileRetrieveSerializer(serializers.ModelSerializer):
     user = serializers.StringRelatedField(read_only=True)
-    avatar = Base64ImageField(required=False)
+    avatar = Base64ImageField(required=False, allow_null=True)
 
     class Meta:
         model = Profile

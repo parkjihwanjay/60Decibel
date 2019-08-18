@@ -14,6 +14,14 @@
             Upload an image file:
             <input type="file" @change="previewImage" accept="image/*" />
           </div>
+          <!-- <div>
+            <img src:"previewImage" class="uploading-image" />
+            <input
+              type="file"
+              accept="image/jpeg"
+              @change="uploadImage"
+            />
+          </div>-->
           <span>이름</span>
           <input type="text" ref="name" v-on:blur="storeUpdateName()" v-bind:value="profile.name" />
           <br />
@@ -352,7 +360,10 @@ export default {
       }
       if (update.diagnosed_disease == "") {
         console.log("질병 이력 비었다");
-        update.diagnosed_disease = profile.diagnosed_disease;
+        update.diagnosed_disease = profile.diagnosed_disease
+          .slice(1, -1)
+          .replace(/'/g, "")
+          .split(",");
       }
       if (!update.taking_medicine) {
         console.log("복용중인 약 비었다");
@@ -360,7 +371,10 @@ export default {
       }
       if (update.family_history == "") {
         console.log("가족력 비었다");
-        update.family_history = profile.family_history;
+        update.family_history = profile.family_history
+          .slice(1, -1)
+          .replace(/'/g, "")
+          .split(",");
       }
       if (!update.drinking) {
         console.log("음주 여부 비었다");
@@ -372,7 +386,10 @@ export default {
       }
       if (update.relevant_data == "") {
         console.log("나쁜 습관 비었다");
-        update.relevant_data = profile.relevant_data;
+        update.relevant_data = profile.relevant_data
+          .slice(1, -1)
+          .replace(/'/g, "")
+          .split(",");
       }
       if (!update.name) {
         console.log("name비었다");
@@ -428,6 +445,24 @@ export default {
         reader.readAsDataURL(input.files[0]);
       }
     }
+    //     export default {
+    //     name:'imageUpload',
+    //     data(){
+    //         return{
+    //            previewImage:null
+    //         }
+    //     },
+    //     methods:{
+    //         uploadImage(e){
+    //             const image = e.target.files[0];
+    //             const reader = new FileReader();
+    //             reader.readAsDataURL(image);
+    //             reader.onload = e =>{
+    //                 this.previewImage = e.target.result;
+    //                 console.log(this.previewImage);
+    //             };
+    //         }
+    //     }
   },
   created() {
     this.$store.dispatch("getProfileInfo");
@@ -530,3 +565,5 @@ input {
   margin-bottom: 40px;
 }
 </style>
+
+
