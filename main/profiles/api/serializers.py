@@ -18,7 +18,7 @@ class ProfileUpdateSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Profile
-        fields = ["avatar", "gender", "birth_date", "height", "weight", "name",
+        fields = ["avatar", "avatar_base64", "gender", "birth_date", "height", "weight", "name",
                   "had_checkup", "had_checkup_true", "diagnosed_disease", "taking_medicine", 
                   "what_medicine", "family_history", "drinking", "drinking_per_week", 
                   "smoking", "how_long_smoking", "how_much_smoking", "job", "relevant_data"]
@@ -31,7 +31,7 @@ class ProfileRetrieveSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Profile
-        fields = ["avatar", "gender", "birth_date", "height", "weight", "name",
+        fields = ["avatar", "avatar_base64", "gender", "birth_date", "height", "weight", "name",
                   "had_checkup", "had_checkup_true", "diagnosed_disease", "taking_medicine", 
                   "what_medicine", "family_history", "drinking", "drinking_per_week", 
                   "smoking", "how_long_smoking", "how_much_smoking", "job", "relevant_data",
