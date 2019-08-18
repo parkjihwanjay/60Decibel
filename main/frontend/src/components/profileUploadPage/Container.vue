@@ -254,6 +254,7 @@ export default {
     return {
       update: {
         avatar: "",
+        avatar_base64: "",
         gender: "",
         birth_date: "",
         height: "",
@@ -332,7 +333,8 @@ export default {
       console.log(update);
       if (!update.avatar) {
         console.log("아바타 비었다");
-        // 기존 이미지를 그대로 남기는 로직이 필요한데 base64라 어떻게 해야 될지..
+        update.avatar = profile.avatar_base64;
+        update.avatar_base64 = profile.avatar_base64;
       }
       if (!update.gender) {
         console.log("gender비었다");
@@ -352,7 +354,14 @@ export default {
       }
       if (update.diagnosed_disease == "") {
         console.log("질병 이력 비었다");
-        update.diagnosed_disease = profile.diagnosed_disease;
+        if (profile.diagnosed_disease === "") {
+          console.log("가족력 초기값이 비었다");
+        } else {
+          update.diagnosed_disease = profile.diagnosed_disease
+            .slice(1, -1)
+            .replace(/'/g, "")
+            .split(",");
+        }
       }
       if (!update.taking_medicine) {
         console.log("복용중인 약 비었다");
@@ -360,7 +369,14 @@ export default {
       }
       if (update.family_history == "") {
         console.log("가족력 비었다");
-        update.family_history = profile.family_history;
+        if (profile.family_history === "") {
+          console.log("가족력 초기값이 비었다");
+        } else {
+          update.family_history = profile.family_history
+            .slice(1, -1)
+            .replace(/'/g, "")
+            .split(",");
+        }
       }
       if (!update.drinking) {
         console.log("음주 여부 비었다");
@@ -372,7 +388,14 @@ export default {
       }
       if (update.relevant_data == "") {
         console.log("나쁜 습관 비었다");
-        update.relevant_data = profile.relevant_data;
+        if (profile.relevant_data === "") {
+          console.log("가족력 초기값이 비었다");
+        } else {
+          update.relevant_data = profile.relevant_data
+            .slice(1, -1)
+            .replace(/'/g, "")
+            .split(",");
+        }
       }
       if (!update.name) {
         console.log("name비었다");
@@ -420,6 +443,7 @@ export default {
           // Note: arrow function used here, so that "this.imageData" refers to the imageData of Vue component
           // Read image as base64 and set to imageData
           this.update.avatar = e.target.result;
+          this.update.avatar_base64 = e.target.result;
           this.$store.dispatch("switchAvatar", this.update.avatar);
           console.log("이미지 : ", this.update.avatar);
         };
@@ -530,3 +554,5 @@ input {
   margin-bottom: 40px;
 }
 </style>
+
+
