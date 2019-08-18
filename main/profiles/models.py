@@ -34,72 +34,73 @@ class Profile(models.Model):
 
     user = models.OneToOneField(
         CustomUser, on_delete=models.CASCADE, related_name='profile')
-    avatar = models.ImageField(null=True, blank=True)
+    avatar = models.ImageField(null=True, blank=True, default="")
+    avatar_base64 = models.TextField(null=True, blank=True, default="")
 
     gender  = models.CharField(
-        max_length=20, choices=GENDER_CHOICES, null=True, blank=True)
+        max_length=20, choices=GENDER_CHOICES, null=True, blank=True, default="")
 
-    birth_date = models.CharField(max_length=30, null=True, blank=True)
+    birth_date = models.CharField(max_length=30, null=True, blank=True, default="")
 
-    height = models.CharField(max_length=30, null=True, blank=True)
+    height = models.CharField(max_length=30, null=True, blank=True, default="")
 
-    weight = models.CharField(max_length=30, null=True, blank=True)
+    weight = models.CharField(max_length=30, null=True, blank=True, default="")
 
-    name = models.CharField(max_length=30, null=True, blank=True)
+    name = models.CharField(max_length=30, null=True, blank=True, default="")
 
     # 과거력
 
     # 이전에 건강검진을 받은 적이 있나요?
-    had_checkup = models.CharField(max_length=30, null=True, blank=True)
+    had_checkup = models.CharField(max_length=30, null=True, blank=True, default="")
 
     # 몇 년 전에 받았나요?
     had_checkup_true = models.CharField(
-        max_length=30, choices=HOW_LONG_BEFORE, blank=True, null=True)
+        max_length=30, choices=HOW_LONG_BEFORE, blank=True, null=True, default="")
     # 인우 : Vue와의 상호작용을 고려했을 때 int필드가 더 좋을 것 같습니다
     # 다만 몇 년 몇개월 같이 쓰기가 어렵긴 하겠네요
 
     # 이전에 진단받은 병이 있나요?
     # diagnosed_disease = models.CharField(max_length=30, choices=DISEASE_LIST, blank=True, null=True)
-    diagnosed_disease = models.CharField(max_length=30, blank=True, null=True) 
+    diagnosed_disease = models.CharField(max_length=30, blank=True, null=True, default="") 
     # 인우 : 진단받은 병이 복수일 경우?
 
     # 드시고 계시는 약이 있나요?
-    taking_medicine = models.CharField(max_length=30, null=True, blank=True)
+    taking_medicine = models.CharField(max_length=30, null=True, blank=True, default="")
 
     # 드시고 계신 약물을 알려주세요
-    what_medicine = models.CharField(max_length=20, blank=True, null=True)
+    what_medicine = models.CharField(max_length=20, blank=True, null=True, default="")
     # 인우 : 복용하고 있는 약물이 여러 개라면 어떻게 해야할까요?
     # 예시가 있는 게 아니니 choice를 쓰기는 어렵고...
 
     # 가족분들이 진단 받은 병이 있나요?
     # family_history = models.CharField(max_length=30, choices=DISEASE_LIST, blank=True, null=True)
-    family_history = models.CharField(max_length=30, blank=True, null=True)
+    family_history = models.CharField(max_length=30, blank=True, null=True, default="")
 
     # 사회력
 
     # 술을 드시나요?
-    drinking = models.CharField(max_length=30, null=True, blank=True)
+    drinking = models.CharField(max_length=30, null=True, blank=True, default="")
 
     # 매주 몇 병 드시나요?
-    drinking_per_week = models.CharField(max_length=30, null=True, blank=True)
+    drinking_per_week = models.CharField(max_length=30, null=True, blank=True, default="")
 
     # 흡연하시나요?
-    smoking = models.CharField(max_length=30, null=True, blank=True)
+    smoking = models.CharField(max_length=30, null=True, blank=True, default="")
 
     # 몇년째 피고 계신가요?
-    how_long_smoking = models.CharField(max_length=30, null=True, blank=True)
+    how_long_smoking = models.CharField(max_length=30, null=True, blank=True, default="")
 
     # 몇 갑씩 피시나요
-    how_much_smoking = models.CharField(max_length=30, null=True, blank=True)
+    how_much_smoking = models.CharField(max_length=30, null=True, blank=True, default="")
 
     # 직업이 무엇인가요?
-    job = models.CharField(max_length=30, blank=True, null=True)
+    job = models.CharField(max_length=30, blank=True, null=True, default="")
     # 직업을 꼭 말하고 싶지 않을 수도 있죠
 
     # 다음 중 해당사항에 체크해주세요
     # relevant_data = models.CharField(
     #     max_length=100, choices=BAD_HABITS, blank=True, null=True)
-    relevant_data = models.CharField(max_length=100, blank=True, null=True)
+    relevant_data = models.CharField(max_length=100, blank=True, null=True, default="")
 
     def __str__(self):
         return self.name
