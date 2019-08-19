@@ -11,9 +11,9 @@ class ProfileDisplaySerializer(serializers.ModelSerializer):
         fields = "__all__"
 
 class ProfileUpdateSerializer(serializers.ModelSerializer):
-    diagnosed_disease = serializers.ListField(child=serializers.CharField(required=False), allow_empty=True, min_length=0, max_length=20)
-    family_history = serializers.ListField(child=serializers.CharField(required=False), allow_empty=True, min_length=0, max_length=20)
-    relevant_data = serializers.ListField(child=serializers.CharField(required=False), allow_empty=True, min_length=0, max_length=20)
+    diagnosed_disease = serializers.ListField(child=serializers.CharField(required=False), allow_null=True, min_length=0, max_length=20)
+    family_history = serializers.ListField(child=serializers.CharField(required=False), allow_null=True, min_length=0, max_length=20)
+    relevant_data = serializers.ListField(child=serializers.CharField(required=False), allow_null=True, min_length=0, max_length=20)
     avatar = Base64ImageField(required=False, allow_null=True)
 
     class Meta:
