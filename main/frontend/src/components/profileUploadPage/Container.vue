@@ -354,7 +354,10 @@ export default {
       }
       if (update.diagnosed_disease == "") {
         console.log("질병 이력 비었다");
-        if (profile.diagnosed_disease === "" || profile.diagnosed_disease) {
+        if (
+          profile.diagnosed_disease === "" ||
+          profile.diagnosed_disease === "[]"
+        ) {
           console.log("가족력 초기값이 비었다");
         } else {
           update.diagnosed_disease = profile.diagnosed_disease
@@ -369,7 +372,7 @@ export default {
       }
       if (update.family_history == "") {
         console.log("가족력 비었다");
-        if (profile.family_history === "" || profile.family_history) {
+        if (profile.family_history === "" || profile.family_history === "[]") {
           console.log("가족력 초기값이 비었다");
         } else {
           update.family_history = profile.family_history
