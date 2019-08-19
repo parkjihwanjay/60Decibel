@@ -360,10 +360,7 @@ export default {
         ) {
           console.log("가족력 초기값이 비었다");
         } else {
-          update.diagnosed_disease = profile.diagnosed_disease
-            .slice(1, -1)
-            .replace(/'/g, "")
-            .split(",");
+          update.diagnosed_disease = profile.diagnosed_disease.slice(1, -1).replace(/'/g, "").split(",");
         }
       }
       if (!update.taking_medicine) {

@@ -296,7 +296,6 @@ export const store = new Vuex.Store({
             axios
                 // .get("http://54.180.31.52:8000/api/profiles/", config)
                 .get("http://127.0.0.1:8000/api/profiles/", config)
-                .get()
                 .then(({
                     data
                 }) => {
