@@ -96,7 +96,7 @@
             <div class="answers">
               <button
                 value="True"
-                @click="button_click('location_move', 'True')"
+                @click="button_click('location_move', '예')"
                 class="answerTF animate fadeInRightBig three"
               >예</button>
 
@@ -104,7 +104,7 @@
 
               <button
                 value="False"
-                @click="button_click('location_move', 'False')"
+                @click="button_click('location_move', '아니오')"
                 class="answerTF animate fadeInRightBig three"
               >아니오</button>
             </div>
@@ -114,7 +114,7 @@
         <v-expansion-panel class="q1-3">
           <v-expansion-panel-header
             class="header animate fadeInDown two"
-            v-if="survey_data.location_move==='True'"
+            v-if="survey_data.location_move==='예'"
           >
             &nbsp;&nbsp;Q2-1.
             <template v-slot:actions></template>
@@ -147,7 +147,7 @@
             <div class="answers">
               <button
                 value="True"
-                @click="button_click('pain_spread', 'True')"
+                @click="button_click('pain_spread', '예')"
                 class="answerTF animate fadeInRightBig three"
               >예</button>
 
@@ -155,7 +155,7 @@
 
               <button
                 value="False"
-                @click="button_click('pain_spread', 'False')"
+                @click="button_click('pain_spread', '아니오')"
                 class="answerTF animate fadeInRightBig three"
               >아니오</button>
             </div>
@@ -165,7 +165,7 @@
         <v-expansion-panel class="q1-1">
           <v-expansion-panel-header
             class="header animate animate fadeInDown two"
-            v-if="survey_data.pain_spread==='True'"
+            v-if="survey_data.pain_spread==='예'"
           >
             &nbsp;&nbsp;Q3-1.
             <template v-slot:actions></template>

@@ -92,20 +92,24 @@ ABDOMEN_HISTORY = [
 ]
 
 class StomachacheSurveyCreateSerializer(serializers.ModelSerializer):
-    symtpom_location = serializers.MultipleChoiceField(PAIN_POSITION)
-    pain_character = serializers.MultipleChoiceField(PAIN_CHARACTER)
-    associated_symptom_digestive = serializers.MultipleChoiceField(
-        ASSOCIATED_SYMPTOM_DIGESTIVE)
-    associated_symptom_circulatory = serializers.MultipleChoiceField(
-        ASSOCIATED_SYMPTOM_CIRCULATORY)
-    associated_symptom_gynecology = serializers.MultipleChoiceField(
-        ASSOCIATED_SYMPTOM_GYNECOLOGY)
-    associated_symptom_whole_body = serializers.MultipleChoiceField(
-        ASSOCIATED_SYMPTOM_WHOLE_BODY)
-    associated_symptom_urinary = serializers.MultipleChoiceField(
-        ASSOCIATED_SYMPTOM_URINARY)
-    factor = serializers.MultipleChoiceField(FACTOR)
-    abdomen_relevant = serializers.MultipleChoiceField(ABDOMEN_HISTORY)
+   
+    
+    symtpom_location = serializers.ListField(child=serializers.CharField(required=False), allow_empty=True, min_length=0, max_length=20)
+
+    pain_character = serializers.ListField(child=serializers.CharField(required=False), allow_empty=True, min_length=0, max_length=20)
+
+    associated_symptom_digestive = serializers.ListField(child=serializers.CharField(required=False), allow_empty=True, min_length=0, max_length=20)
+
+    associated_symptom_circulatory = serializers.ListField(child=serializers.CharField(required=False), allow_empty=True, min_length=0, max_length=20)
+
+    associated_symptom_gynecology = serializers.ListField(child=serializers.CharField(required=False), allow_empty=True, min_length=0, max_length=20)
+
+    associated_symptom_whole_body = serializers.ListField(child=serializers.CharField(required=False), allow_empty=True, min_length=0, max_length=20)
+
+    associated_symptom_urinary = serializers.ListField(child=serializers.CharField(required=False), allow_empty=True, min_length=0, max_length=20)
+
+    factor = serializers.ListField(child=serializers.CharField(required=False), allow_empty=True, min_length=0, max_length=20)
+    abdomen_relevant = serializers.ListField(child=serializers.CharField(required=False), allow_empty=True, min_length=0, max_length=20)
 
     class Meta:
         model = StomachacheSurvey

@@ -2,9 +2,7 @@ import Vue from "vue";
 import Router from "vue-router";
 // import Home from "./views/Home.vue";
 import Home from "./views/Home.vue";
-import {
-    store
-} from "./store.js";
+import { store } from "./store.js";
 Vue.use(Router);
 
 const requireAuth = () => (to, from, next) => {

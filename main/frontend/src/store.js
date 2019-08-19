@@ -459,7 +459,7 @@ export const store = new Vuex.Store({
                     });
                 })
                 .catch(error => {
-                    console.log(error);
+                    console.log(error.response.data);
                 });
         },
         resetRandomUser({

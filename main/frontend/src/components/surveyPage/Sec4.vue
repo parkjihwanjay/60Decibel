@@ -14,7 +14,7 @@
             <div class="answers animate fadeInRightBig three">
               <button
                 value="crushing"
-                @click="button_click_multiple('pain_character', 'crushing')"
+                @click="button_click_multiple('pain_character', '쥐어짜는듯 함')"
                 class="answer"
               >쥐어짜는듯 함</button>
 
@@ -22,7 +22,7 @@
 
               <button
                 value="burning"
-                @click="button_click_multiple('pain_character', 'burning')"
+                @click="button_click_multiple('pain_character', '타는듯 함')"
                 class="answer"
               >타는듯 함</button>
 
@@ -30,7 +30,7 @@
 
               <button
                 value="stabbing"
-                @click="button_click_multiple('pain_character', 'stabbing')"
+                @click="button_click_multiple('pain_character', '베이는듯 함')"
                 class="answer"
               >베이는듯 함</button>
 
@@ -38,7 +38,7 @@
 
               <button
                 value="splitting"
-                @click="button_click_multiple('pain_character', 'splitting')"
+                @click="button_click_multiple('pain_character', '찢어지듯 함')"
                 class="answer"
               >찢어지듯 함</button>
             </div>
@@ -78,14 +78,14 @@
             <div class="answers">
               <button
                 value="True"
-                @click="button_click('pain_worse', 'True')"
+                @click="button_click('pain_worse', '예')"
                 class="answer animate fadeInRightBig three"
               >예</button>
               <br />
 
               <button
                 value="False"
-                @click="button_click('pain_worse', 'False')"
+                @click="button_click('pain_worse', '아니오')"
                 class="answer animate fadeInRightBig three"
               >아니오</button>
             </div>
@@ -107,14 +107,14 @@
             <div class="answers">
               <button
                 value="True"
-                @click="button_click('pain_experience', 'True')"
+                @click="button_click('pain_experience', '예')"
                 class="answer animate fadeInRightBig three"
               >예</button>
               <br />
 
               <button
                 value="False"
-                @click="button_click('pain_experience', 'False')"
+                @click="button_click('pain_experience', '아니오')"
                 class="answer animate fadeInRightBig three"
               >아니오</button>
             </div>
