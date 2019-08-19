@@ -290,7 +290,7 @@ export const store = new Vuex.Store({
             let config = {
                 headers: {
                     Authorization: "JWT " + token,
-                    "Content-Type": "application/json"
+                    "Content-Type": "application/json",
                 }
             };
             axios
