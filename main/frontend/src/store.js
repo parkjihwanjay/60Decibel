@@ -144,14 +144,14 @@ export const store = new Vuex.Store({
                     this.dispatch("getMemberInfo");
 
                     localStorage.setItem('isLogin', true);
-                    
+
                     let token = res.data.token;
                     //토큰을 로컬 스토리지에 저장
                     localStorage.setItem("access_token", token);
                     axios.defaults.headers.common["Authorization"] =
                         localStorage.getItem["access_token"];
 
-                
+
                     if (loginObj.from_signup)
                         router.push({
                             name: "profileupdate"
@@ -330,7 +330,7 @@ export const store = new Vuex.Store({
         },
         getSurveyHistory({
             commit
-        }, authorId) {
+        }) {
             let token = localStorage.getItem("access_token");
             let config = {
                 headers: {
@@ -339,8 +339,7 @@ export const store = new Vuex.Store({
                 }
             };
             axios
-                // .get(`http://54.180.31.52:8000/api/surveys/${authorId}/`, config)
-                .get(`http://127.0.0.1:8000/api/surveys/${authorId}/`, config)
+                .get("http://127.0.0.1:8000/api/surveys/", config)
                 .then(({
                     data
                 }) => {
@@ -450,7 +449,7 @@ export const store = new Vuex.Store({
                     // "http://54.180.31.52:8000/api/surveys/stomach/", stomachData, config)
                     "http://127.0.0.1:8000/api/surveys/stomach/", stomachData, config)
 
-            .then(res => {
+                .then(res => {
                     console.log(res);
                     let id = res.data.id;
                     commit("RESET_SURVEY");

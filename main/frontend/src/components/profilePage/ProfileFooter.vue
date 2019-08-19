@@ -1,4 +1,6 @@
-<template></template>
+<template>
+  <router-link :to="{ name: 'survey-history' }">설문 이력 확인하기</router-link>
+</template>
 
 
 <script>

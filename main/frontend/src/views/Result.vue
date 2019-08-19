@@ -1,6 +1,7 @@
 <template>
   <div class="resultresult">
     <div class="box">
+      <Navbar />
       <div class="page" id="pt-main">
         <name />
         <history />
@@ -24,6 +25,7 @@ import name from "../components/resultsPage/name.vue";
 import history from "../components/resultsPage/history.vue";
 import sickness from "../components/resultsPage/sickness.vue";
 import symptoms from "../components/resultsPage/symptoms.vue";
+import Navbar from "../components/homePage/Navbar.vue";
 
 export default {
   name: "result",
@@ -34,7 +36,8 @@ export default {
     name,
     symptoms,
     sickness,
-    history
+    history,
+    Navbar
   }
 };
 </script>
