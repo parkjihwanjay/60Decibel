@@ -73,6 +73,7 @@ export default {
   color: #125b7f;
 }
 .section {
+  width: 100%;
   height: 92vh;
 }
 .ans {

@@ -8,9 +8,7 @@ import "@babel/polyfill";
 // .components/surveyPage/example에 적용. 플러그인으로 사용하기 위해 .plugins에 vue-scrollactive plugin인 생성 후, main.js에서 플러그인 호출
 import "./plugins/vue-scrollactive";
 import router from "./router";
-import {
-    store
-} from "./store.js";
+import { store } from "./store.js";
 import axios from "axios";
 
 // aos
@@ -30,12 +28,14 @@ new Vue({
     // 이거 profile에 대한 store임
     vuetify,
     beforeCreate() {
-        this.$store.dispatch("getMemberInfo");
+        if (localStorage.getItem("access_token")) {
+            this.$store.dispatch("getMemberInfo");
+        }
     },
     watch: {
-        '$route' (to, from) {
-            if (localStorage.getItem('access_token')) {
-                console.log("바뀐다")
+        $route(to, from) {
+            if (localStorage.getItem("access_token")) {
+                console.log("바뀐다");
                 this.$store.dispatch("getMemberInfo");
             }
         }

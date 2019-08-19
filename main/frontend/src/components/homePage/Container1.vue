@@ -2,6 +2,7 @@
   <div class="cont1">
     <v-carousel
       class="v-carousel img"
+      height="67vh"
       :show-arrows="true"
       :hide-delimiters="hideDelimiters"
       :cycle="cycle"
