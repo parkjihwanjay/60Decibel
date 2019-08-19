@@ -1,11 +1,15 @@
 <template>
   <div class="survey-history">
-    헬로
+    <Navbar />헬로
     <ul>
       <router-link :to="`/stomach/${item.id}`" v-for="item in survey_history">
         번호 : {{ item.id }}
+        <br />
         증상 : {{ item.symptom }}
+        <br />
         <small>작성일 : {{ item.created_at}}</small>
+        <br />
+        <br />
       </router-link>
     </ul>
   </div>
@@ -13,13 +17,17 @@
 
 <script>
 import { mapState } from "vuex";
+import Navbar from "../components/homePage/Navbar.vue";
+
 export default {
   computed: {
     ...mapState(["survey_history"])
   },
   created() {
-    const authorId = this.$route.params.author;
-    this.$store.dispatch("getSurveyHistory", authorId);
+    this.$store.dispatch("getSurveyHistory");
+  },
+  components: {
+    Navbar
   }
 };
 </script>
