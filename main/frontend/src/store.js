@@ -30,21 +30,21 @@ export const store = new Vuex.Store({
         random_user: {},
         answer: {}
     },
-    loginError(state) {
-        state.isLogin = false;
-        state.isLoginError = false;
-        state.userInfo = null;
-    },
 
     mutations: {
         loginSuccess(state, payload) {
-            state.isLogin = "true";
-            state.isLoginError = "false";
+            state.isLogin = 'true';
+            state.isLoginError = 'false';
             state.userInfo = payload;
+        },
+        loginNotYet(state) {
+            state.isLogin = "false";
+            state.isLoginError = "false";
+            state.userInfo = null;
         },
         loginError(state) {
             state.isLogin = "false";
-            state.isLoginError = "false";
+            state.isLoginError = "true";
             state.userInfo = null;
         },
         logout(state) {
@@ -67,9 +67,6 @@ export const store = new Vuex.Store({
         //설문조사 빠른 시작하기 변이
         SET_QUICK_START(state, startObj) {
             state.random_user = startObj;
-        },
-        RESET_RANDOM_USER(state) {
-            state.random_user = undefined;
         },
         SET_SURVEY_DATA1(state, survey_data) {
             state.answer = Object.assign(state.answer, survey_data);
@@ -101,6 +98,33 @@ export const store = new Vuex.Store({
                 state.isLoginError = localStorage.getItem("isLoginError");
                 state.userInfo = localStorage.getItem("username");
             }
+        },
+        SWITCH_NAME(state, name) {
+            state.profile.name = name;
+        },
+        SWITCH_HEIGHT(state, height) {
+            state.profile.height = height;
+        },
+        SWITCH_WEIGHT(state, weight) {
+            state.profile.weight = weight;
+        },
+        SWITCH_WHAT_MEDICINE(state, what_medicine) {
+            state.profile.what_medicine = what_medicine;
+        },
+        SWITCH_DRINKING_PER_WEEK(state, drinking_per_week) {
+            state.profile.drinking_per_week = drinking_per_week;
+        },
+        SWITCH_HOW_LONG_SMOKING(state, how_long_smoking) {
+            state.profile.how_long_smoking = how_long_smoking;
+        },
+        SWITCH_HOW_MUCH_SMOKING(state, how_much_smoking) {
+            state.profile.how_much_smoking = how_much_smoking;
+        },
+        SWITCH_JOB(state, job) {
+            state.profile.job = job;
+        },
+        SWITCH_AVATAR(state, avatar) {
+            state.profile.avatar = avatar;
         }
     },
     actions: {
@@ -121,14 +145,6 @@ export const store = new Vuex.Store({
                     localStorage.setItem("access_token", token);
                     axios.defaults.headers.common["Authorization"] =
                         localStorage.getItem["access_token"];
-
-                    let userInfo = res.data.user.username
-
-                    localStorage.setItem('isLogin', true);
-                    localStorage.setItem('isLoginError', false);
-                    localStorage.setItem('username', userInfo);
-
-                    commit("loginSuccess", userInfo);
 
                     this.dispatch("getMemberInfo");
 
@@ -227,24 +243,38 @@ export const store = new Vuex.Store({
             commit
         }) {
             //로컬 스토리지에 저장된 토큰을 저장한다.
-            let token = localStorage.getItem("access_token");
-            let config = {
-                headers: {
-                    Authorization: "JWT " + token,
-                    "Content-Type": "application/json"
-                }
-            };
-            //토큰 -> 멤버 정보 반환
-            //새로고침 --> 토큰만 갖고 멤버 정보 요청가능
-            axios
-                .get("http://127.0.0.1:8000/api/user/", config)
-                .then(response => {
-                    let userInfo = response.data.username;
-                    console.log(userInfo);
-                })
-                .catch(() => {
-                    alert("해당 유저가 존재하지 않습니다.");
-                });
+            if (!localStorage.getItem("access_token")) {
+                commit("loginNotYet")
+            } else {
+                let token = localStorage.getItem("access_token");
+                let config = {
+                    headers: {
+                        Authorization: "JWT " + token,
+                        "Content-Type": "application/json"
+                    }
+                };
+                //토큰 -> 멤버 정보 반환
+                //새로고침 --> 토큰만 갖고 멤버 정보 요청가능
+                axios
+                    .get("http://127.0.0.1:8000/api/user/", config)
+                    .then(response => {
+
+                        localStorage.setItem('isLogin', true);
+                        localStorage.setItem('isLoginError', false);
+                        localStorage.setItem('username', userInfo);
+
+                        let userInfo = response.data.username;
+
+                        commit("loginSuccess", userInfo)
+                    })
+                    .catch(() => {
+                        localStorage.setItem('isLogin', false);
+                        localStorage.setItem('isLoginError', false);
+
+                        commit("loginError")
+                    });
+            }
+
         },
         getProfileInfo({
             commit
@@ -336,7 +366,6 @@ export const store = new Vuex.Store({
             });
         },
         updateProfileInfo(dispatch, update) {
-            console.log(update);
             let token = localStorage.getItem("access_token");
             let config = {
                 headers: {
@@ -353,7 +382,7 @@ export const store = new Vuex.Store({
                     });
                 })
                 .catch(error => {
-                    console.log(error);
+                    console.log(error.response.data);
                 });
         },
         setSurveyData1({
@@ -408,7 +437,6 @@ export const store = new Vuex.Store({
             axios
                 .post(
                     "http://127.0.0.1:8000/api/surveys/stomach/", stomachData, config)
-
                 .then(res => {
                     console.log(res);
                     let id = res.data.id;
@@ -432,6 +460,51 @@ export const store = new Vuex.Store({
             console.log("로그인이 되어있을때")
             commit("ALREADY_LOGIN");
         },
+        switchName({
+            commit
+        }, name) {
+            commit("SWITCH_NAME", name);
+        },
+        switchHeight({
+            commit
+        }, height) {
+            commit("SWITCH_HEIGHT", height);
+        },
+        switchWeight({
+            commit
+        }, weight) {
+            commit("SWITCH_WEIGHT", weight);
+        },
+        switchWhatMedicine({
+            commit
+        }, what_medicine) {
+            commit("SWITCH_WHAT_MEDICINE", what_medicine);
+        },
+        switchDrinkingPerWeek({
+            commit
+        }, drinking_per_week) {
+            commit("SWITCH_DRINKING_PER_WEEK", drinking_per_week);
+        },
+        switchHowLongSmoking({
+            commit
+        }, how_long_smoking) {
+            commit("SWITCH_HOW_LONG_SMOKING", how_long_smoking);
+        },
+        switchHowMuchSmoking({
+            commit
+        }, how_much_smoking) {
+            commit("SWITCH_HOW_MUCH_SMOKING", how_much_smoking);
+        },
+        switchJob({
+            commit
+        }, job) {
+            commit("SWITCH_JOB", job);
+        },
+        switchAvatar({
+            commit
+        }, avatar) {
+            commit("SWITCH_AVATAR", avatar);
+        }
         // checkToken({ commit }, access_token) {
         //     axios
         //         .post("http://54.180.144.241:8000/api/rest-auth/verify_token/", access_token)

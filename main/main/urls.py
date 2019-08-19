@@ -14,13 +14,11 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import include, path, re_path
+from django.urls import include, path
 from django.conf import settings
 from django.conf.urls.static import static
 
-from django_registration.backends.one_step.views import RegistrationView
-
-from rest_framework_jwt.views import obtain_jwt_token, refresh_jwt_token
+from rest_framework_jwt.views import obtain_jwt_token, refresh_jwt_token, verify_jwt_token
 
 #이미지 업로드 경로 지정을 위해 작성
 from django.conf.urls.static import static
@@ -32,29 +30,17 @@ from django.conf import settings
 urlpatterns = [
     path('admin/', admin.site.urls),
 
-    # 1.인우 : RegistrationView가 참조할 수 있는 form은 하나입니다.
-    # 회원가입에 관련된 view이기 때문에 form에서도 당연히 user모델을 상속해야 합니다.
-    # 때문에 회원가입시에 프로필에 들어갈 기본정보를 입력받고자 한다면 해당 기본정보를
-    # profile모델을 만들어 그 모델의 필드로 설정해서는 안 되고, user모델을 커스텀해야 합니다.
-    # ->user/models.py로 ㄱㄱ
-    # 이놈
-    # api 뒤에 있는 url는 브라우저 url로 확인하기 위한 개발자용 url입니다.(박지환)
     path("api/", include("users.api.urls")),
-
     path("api/", include("profiles.api.urls")),
+    path('api/', include('survey.api.urls')),
 
     path("api-auth/", include("rest_framework.urls")),
 
     path("api/rest-auth/", include("rest_auth.urls")),
+    path("api/rest-auth/registration/", include("rest_auth.registration.urls")),
 
     path('api/rest-auth/obtain_token/', obtain_jwt_token, name="obtain-jwt"),
     path('api/rest-auth/refresh_token/', refresh_jwt_token, name="refresh-jwt"),
+    path('api/rest-auth/verify_token/', verify_jwt_token, name="verify-jwt"),
 
-    path("api/rest-auth/registration/", include("rest_auth.registration.urls")),
-
-    # 설문지 관련 url
-    path('api/', include('survey.api.urls')),
-
-    # 위의 url 이외의 pattern이 입력될 경우 index로 보낸다
-    # re_path(r"^.*$", IndexTemplateView.as_view(), name="entry-point"),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

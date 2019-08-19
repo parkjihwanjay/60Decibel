@@ -29,13 +29,14 @@ new Vue({
     store,
     // 이거 profile에 대한 store임
     vuetify,
-    // beforeCreate() {
-    //   this.$store.dispatch("getMemberInfo");
-    // },
+    beforeCreate() {
+        this.$store.dispatch("getMemberInfo");
+    },
     watch: {
-        '$route': function(to, from) {
-            if (localStorage.getItem('isLogin')) {
-                this.$store.dispatch("alreadyLogin");
+        '$route' (to, from) {
+            if (localStorage.getItem('access_token')) {
+                console.log("바뀐다")
+                this.$store.dispatch("getMemberInfo");
             }
         }
     },
