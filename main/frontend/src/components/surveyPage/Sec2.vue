@@ -246,6 +246,7 @@ export default {
   height: 220px;
 }
 .section {
+  width: 100%;
   height: 93vh;
 }
 

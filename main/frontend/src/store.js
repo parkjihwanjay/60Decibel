@@ -98,7 +98,8 @@ export const store = new Vuex.Store({
                 state.isLoginError = localStorage.getItem("isLoginError");
                 state.userInfo = localStorage.getItem("username");
             }
-        }, SWITCH_NAME(state, name) {
+        },
+        SWITCH_NAME(state, name) {
             state.profile.name = name;
         },
         SWITCH_HEIGHT(state, height) {
@@ -467,35 +468,55 @@ export const store = new Vuex.Store({
         }) {
             commit("RESET_RANDOM_USER");
         },
-        alreadyLogin({ commit }) {
+        alreadyLogin({
+            commit
+        }) {
             console.log("로그인이 되어있을때")
             commit("ALREADY_LOGIN");
         },
-        switchName({ commit }, name) {
+        switchName({
+            commit
+        }, name) {
             commit("SWITCH_NAME", name);
         },
-        switchHeight({ commit }, height) {
+        switchHeight({
+            commit
+        }, height) {
             commit("SWITCH_HEIGHT", height);
         },
-        switchWeight({ commit }, weight) {
+        switchWeight({
+            commit
+        }, weight) {
             commit("SWITCH_WEIGHT", weight);
         },
-        switchWhatMedicine({ commit }, what_medicine) {
+        switchWhatMedicine({
+            commit
+        }, what_medicine) {
             commit("SWITCH_WHAT_MEDICINE", what_medicine);
         },
-        switchDrinkingPerWeek({ commit }, drinking_per_week) {
+        switchDrinkingPerWeek({
+            commit
+        }, drinking_per_week) {
             commit("SWITCH_DRINKING_PER_WEEK", drinking_per_week);
         },
-        switchHowLongSmoking({ commit }, how_long_smoking) {
+        switchHowLongSmoking({
+            commit
+        }, how_long_smoking) {
             commit("SWITCH_HOW_LONG_SMOKING", how_long_smoking);
         },
-        switchHowMuchSmoking({ commit }, how_much_smoking) {
+        switchHowMuchSmoking({
+            commit
+        }, how_much_smoking) {
             commit("SWITCH_HOW_MUCH_SMOKING", how_much_smoking);
         },
-        switchJob({ commit }, job) {
+        switchJob({
+            commit
+        }, job) {
             commit("SWITCH_JOB", job);
         },
-        switchAvatar({ commit }, avatar) {
+        switchAvatar({
+            commit
+        }, avatar) {
             commit("SWITCH_AVATAR", avatar);
         }
         // checkToken({ commit }, access_token) {

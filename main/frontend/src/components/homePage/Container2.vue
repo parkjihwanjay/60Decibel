@@ -8,7 +8,7 @@
         </div>
       </div>
     </div>
-    <div data-aos="fade-up" data-aos-duration="800" data-aos-delay="200">
+    <div data-aos="fade-up" data-aos-duration="800" data-aos-delay="200" data-aos-offset="200">
       <div class="cont2-icons">
         <div class="icon-box">
           <img class="icon" src="../../assets/survey.png" />

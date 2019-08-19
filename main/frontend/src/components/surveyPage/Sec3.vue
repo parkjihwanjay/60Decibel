@@ -265,7 +265,8 @@ export default {
 }
 
 .section {
-  height: 93vh;
+  width: 100%;
+  height: 100vh;
 }
 
 /* 1차 수정 01:07 */
