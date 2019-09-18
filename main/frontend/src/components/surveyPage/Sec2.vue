@@ -15,7 +15,7 @@
             <div class="answers-box animate fadeInRightBig three">
               <button
                 value="whole abdomen"
-                @click="button_click_multiple('symtpom_location', 'whole abdomen')"
+                @click="button_click_multiple('symtpom_location', '복부전체')"
                 class="answer-box"
               >복부전체</button>
 
@@ -23,7 +23,7 @@
 
               <button
                 value="sternal"
-                @click="button_click_multiple('symtpom_location', 'sternal')"
+                @click="button_click_multiple('symtpom_location', '명치부위')"
                 class="answer-box"
               >명치부위</button>
 
@@ -31,7 +31,7 @@
 
               <button
                 value="sternal"
-                @click="button_click_multiple('symtpom_location', 'umbilicus')"
+                @click="button_click_multiple('symtpom_location', '배꼽부위')"
                 class="answer-box"
               >배꼽부위</button>
 
@@ -39,7 +39,7 @@
 
               <button
                 value="sternal"
-                @click="button_click_multiple('symtpom_location', 'flank')"
+                @click="button_click_multiple('symtpom_location', '옆구리')"
                 class="answer-box"
               >옆구리</button>
 
@@ -47,7 +47,7 @@
 
               <button
                 value="LUQ"
-                @click="button_click_multiple('symtpom_location', 'LUQ')"
+                @click="button_click_multiple('symtpom_location', '왼쪽 위')"
                 class="answer-box"
               >왼쪽 위</button>
 
@@ -55,7 +55,7 @@
 
               <button
                 value="LLQ"
-                @click="button_click_multiple('symtpom_location', 'LLQ')"
+                @click="button_click_multiple('symtpom_location', '오른쪽 위')"
                 class="answer-box"
               >오른쪽 위</button>
 
@@ -63,7 +63,7 @@
 
               <button
                 value="RUQ"
-                @click="button_click_multiple('symtpom_location', 'RUQ')"
+                @click="button_click_multiple('symtpom_location', '왼쪽 아래')"
                 class="answer-box"
               >왼쪽 아래</button>
 
@@ -71,15 +71,16 @@
 
               <button
                 value="RLQ"
-                @click="button_click_multiple('symtpom_location', 'RLQ')"
+                @click="button_click_multiple('symtpom_location', '오른쪽 아래')"
                 class="answer-box"
               >오른쪽 아래</button>
 
-              <button
+              <!-- 인우 : 뭔지 모르겠습니다.... -->
+              <!-- <button
                 value="RLQ"
-                @click="button_click_multiple('symtpom_location', 'RLQ')"
+                @click="button_click_multiple('symtpom_location', '오른쪽 아래')"
                 class="answer-box blank"
-              >오른쪽 아래</button>
+              >오른쪽 아래</button>-->
             </div>
             <br />
           </v-expansion-panel-content>

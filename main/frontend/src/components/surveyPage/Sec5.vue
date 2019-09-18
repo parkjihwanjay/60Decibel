@@ -162,11 +162,11 @@
                 @click="button_click_multiple('associated_symptom_circulatory', '해당없음')"
                 class="answer animate fadeInRightBig three"
               >해당없음</button>
-              <button
+              <!-- <button
                 value="nothing"
                 @click="button_click_multiple('associated_symptom_circulatory', 'nothing')"
                 class="answer blank animate fadeInRightBig three"
-              >해당없음</button>
+              >해당없음</button>-->
             </div>
           </v-expansion-panel-content>
         </v-expansion-panel>
@@ -220,11 +220,11 @@
                 @click="button_click_multiple('associated_symptom_gynecology', '해당없음')"
                 class="answer animate fadeInRightBig three"
               >해당없음</button>
-              <button
+              <!-- <button
                 value="nothing"
                 @click="button_click_multiple('associated_symptom_circulatory', 'nothing')"
                 class="answer blank animate fadeInRightBig three"
-              >해당없음</button>
+              >해당없음</button>-->
             </div>
           </v-expansion-panel-content>
         </v-expansion-panel>
@@ -301,11 +301,11 @@
                 @click="button_click_multiple('associated_symptom_whole_body', '해당없음')"
                 class="answer animate fadeInRightBig three"
               >해당없음</button>
-              <button
+              <!-- <button
                 value="nothing"
                 @click="button_click_multiple('associated_symptom_circulatory', 'nothing')"
                 class="answer blank animate fadeInRightBig three"
-              >해당없음</button>
+              >해당없음</button>-->
             </div>
           </v-expansion-panel-content>
         </v-expansion-panel>

@@ -14,7 +14,7 @@
             <div class="answers">
               <button
                 value="lest_than_10m"
-                @click="button_click('pain_duration', 'lest_than_10m')"
+                @click="button_click('pain_duration', '10분 미만')"
                 class="answer animate fadeInRightBig three"
               >10분 미만</button>
 
@@ -22,7 +22,7 @@
 
               <button
                 value="from_10m_to_1h"
-                @click="button_click('pain_duration', 'from_10m_to_1h')"
+                @click="button_click('pain_duration', '10분-1시간')"
                 class="answer animate fadeInRightBig three"
               >10분-1시간</button>
 
@@ -30,7 +30,7 @@
 
               <button
                 value="more_than_1h"
-                @click="button_click('pain_duration', 'more_than_1h')"
+                @click="button_click('pain_duration', '1시간 이상')"
                 class="answer animate fadeInRightBig three"
               >1시간이상</button>
 
@@ -38,7 +38,7 @@
 
               <button
                 value="all_day"
-                @click="button_click('pain_duration', 'all_day')"
+                @click="button_click('pain_duration', '하루종일')"
                 class="answer animate fadeInRightBig three"
               >하루종일</button>
             </div>
