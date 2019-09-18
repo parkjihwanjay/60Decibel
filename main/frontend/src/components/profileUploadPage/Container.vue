@@ -11,8 +11,9 @@
             <img v-else src="../../assets/60db.png" class="img" />
           </div>
           <div class="file-upload-form">
-            Upload an image file:
-            <input type="file" @change="previewImage" accept="image/*" />
+            <span class="spanlong">프로필 이미지 업로드</span>
+            <br />
+            <input type="file" @change="previewImage" accept="image/*" class="imgfield" />
           </div>
           <span>이름</span>
           <input type="text" ref="name" v-on:blur="storeUpdateName()" v-bind:value="profile.name" />
@@ -42,7 +43,7 @@
           </label>
           <br />
           <span>생년월일</span>
-          <input type="date" v-model="update.birth_date" />
+          <input type="date" v-model="update.birth_date" class="input-birth" />
           <br />
           <span>신장</span>
           <input
@@ -98,6 +99,7 @@
           />1년 이내
           <input
             class="select selectline"
+            cd
             type="radio"
             v-model="update.had_checkup_true"
             value="1-3년"
@@ -465,12 +467,20 @@ export default {
 </script>
 <style scoped>
 .cont1 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   padding: 20px 0;
   background: white;
   width: 100%;
-  height: 23rem;
+  min-height: 27rem;
 }
 .cont2 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   padding: 20px 0;
   background-color: #ebebeb;
   width: 100%;
@@ -485,21 +495,20 @@ export default {
 .upload-title {
   color: #397979;
   margin-bottom: 10px;
-  font-size: 1.1rem;
+  font-size: 1.3rem;
   font-weight: bolder;
   font-weight: 800;
   width: 100%;
   text-align: center;
 }
 .upload-detail {
-  width: 70%;
-  margin: 0 auto;
+  max-width: 400px;
   font-size: 1rem;
   line-height: 150%;
 }
 .upload-detail2 {
-  width: 90%;
-  margin: 0 auto;
+  max-width: 400px;
+  /* margin: 0 50px; */
 }
 .upload-detail3 {
   width: 80%;
@@ -514,6 +523,9 @@ span {
   margin-bottom: 12px;
   line-height: 120%;
 }
+.span2 {
+  width: 100px;
+}
 .span3 {
   width: 40%;
   line-height: 140%;
@@ -527,14 +539,24 @@ span {
   width: 75px;
   height: 75px;
 }
+.imgfield {
+  width: 260px;
+  height: 30px;
+}
 .upload-img {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
+.file-upload-form {
+  margin-bottom: 12px;
+}
 input {
   border: 1px solid #397979;
+}
+.input-birth {
+  width: 174px;
 }
 .select {
   margin-right: 5px;

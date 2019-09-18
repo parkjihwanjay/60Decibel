@@ -1,20 +1,17 @@
 <template>
   <div class="resultresult">
+    <navbar class="nav" />
     <div class="box">
       <div class="page" id="pt-main">
         <name />
-        <history />
       </div>
       <div class="page" id="pt-page">
         <symptoms />
+        <sickness />
+        <history />
       </div>
       <div class="page">
         <sickness />
-      </div>
-      <div class="btn">
-        <a href="http://www.60decibel.cf">
-          <img class="button" src="../assets/logo.png" />
-        </a>
       </div>
     </div>
   </div>
@@ -24,6 +21,7 @@ import name from "../components/resultsPage/name.vue";
 import history from "../components/resultsPage/history.vue";
 import sickness from "../components/resultsPage/sickness.vue";
 import symptoms from "../components/resultsPage/symptoms.vue";
+import Navbar from "../components/homePage/Navbar.vue";
 
 export default {
   name: "result",
@@ -34,11 +32,42 @@ export default {
     name,
     symptoms,
     sickness,
-    history
+    history,
+    Navbar
   }
 };
 </script>
 <style scoped>
+.nav /deep/ .navhead {
+  padding: 0 1rem;
+  padding-top: 1rem;
+  border-bottom: none;
+}
+.nav /deep/ .navhead-icon:hover {
+  background-color: transparent;
+}
+.nav /deep/ .fa-bars {
+  color: rgb(255, 255, 255);
+}
+.nav /deep/ .navhead-brand-logo {
+  content: url("../assets/home.png");
+  width: 1.5rem;
+  height: 1.5rem;
+  margin-left: 0.6rem;
+}
+.nav /deep/ .navhead-start {
+  display: none;
+}
+.resultresult {
+  background: linear-gradient(-45deg, #ea5455, #feb692);
+}
+.box {
+  width: 90%;
+  margin: 1rem auto;
+  border-radius: 10px;
+  background-color: rgb(255, 255, 255, 0.7);
+}
+/*
 .resultresult {
   display: flex;
   justify-content: center;
@@ -82,7 +111,7 @@ p {
 
 .page:nth-child(3n) {
   background-color: whitesmoke;
-}*/
+}
 
 .page {
   height: 600px;
@@ -147,4 +176,5 @@ p {
 .pt-page-ontop {
   z-index: 999;
 }
+*/
 </style>

@@ -74,7 +74,7 @@ export default {
   min-height: 14rem;
 }
 .footer {
-  background-color: darkorange;
+  background-color: white;
   width: 100%;
   min-height: 8rem;
 }
