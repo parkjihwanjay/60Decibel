@@ -11,8 +11,9 @@
             <img v-else src="../../assets/60db.png" class="img" />
           </div>
           <div class="file-upload-form">
-            Upload an image file:
-            <input type="file" @change="previewImage" accept="image/*" />
+            <span class="spanlong">프로필 이미지 업로드</span>
+            <br />
+            <input type="file" @change="previewImage" accept="image/*" class="imgfield" />
           </div>
           <span>이름</span>
           <input type="text" ref="name" v-on:blur="storeUpdateName()" v-bind:value="profile.name" />
@@ -42,7 +43,7 @@
           </label>
           <br />
           <span>생년월일</span>
-          <input type="date" v-model="update.birth_date" />
+          <input type="date" v-model="update.birth_date" class="input-birth" />
           <br />
           <span>신장</span>
           <input
@@ -98,6 +99,7 @@
           />1년 이내
           <input
             class="select selectline"
+            cd
             type="radio"
             v-model="update.had_checkup_true"
             value="1-3년"
@@ -227,11 +229,17 @@
           <span class="span3">직업</span>
           <input type="text" ref="job" v-on:blur="storeUpdateJob()" v-bind:value="profile.job" />
           <br />
-          <label for="bad_habits">다음 중 해당되는 사항에 모두 체크해주세요</label>
-          <input type="checkbox" v-model="update.relevant_data" value="스트레스를 많이 받는 편" />스트레스를 많이 받는 편
-          <input type="checkbox" v-model="update.relevant_data" value="식사 불규칙" />식사 불규칙
-          <input type="checkbox" v-model="update.relevant_data" value="기름진 음식을 많이 먹음" />기름진 음식을 많이 먹음
-          <input type="checkbox" v-model="update.relevant_data" value="수면시간 불규칙" />수면시간 불규칙
+          <div class="habit-box">
+            <label for="bad_habits" class="habit-head">다음 중 해당되는 사항에 모두 체크해주세요</label>
+
+            <br />
+            <br />
+            <input type="checkbox" v-model="update.relevant_data" value="스트레스를 많이 받는 편" />스트레스를 많이 받음
+            <input type="checkbox" v-model="update.relevant_data" value="식사 불규칙" />식사 불규칙
+            <br />
+            <input type="checkbox" v-model="update.relevant_data" value="기름진 음식을 많이 먹음" />기름진 음식을 많이 먹음
+            <input type="checkbox" v-model="update.relevant_data" value="수면시간 불규칙" />수면시간 불규칙
+          </div>
           <br />
         </div>
       </div>
@@ -462,45 +470,56 @@ export default {
 </script>
 <style scoped>
 .cont1 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   padding: 20px 0;
   background: white;
   width: 100%;
-  height: 23rem;
+  min-height: 27rem;
 }
 .cont2 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   padding: 20px 0;
   background-color: #ebebeb;
   width: 100%;
   height: 25rem;
 }
 .cont3 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   padding: 20px 0;
-  background: white;
+  background-color: #ffffff;
   width: 100%;
-  height: 19rem;
+  height: 25rem;
 }
 .upload-title {
   color: #397979;
   margin-bottom: 10px;
-  font-size: 1.1rem;
+  font-size: 1.3rem;
   font-weight: bolder;
   font-weight: 800;
   width: 100%;
   text-align: center;
 }
 .upload-detail {
-  width: 70%;
-  margin: 0 auto;
+  max-width: 400px;
   font-size: 1rem;
   line-height: 150%;
 }
 .upload-detail2 {
-  width: 90%;
-  margin: 0 auto;
+  max-width: 400px;
+  /* margin: 0 50px; */
 }
 .upload-detail3 {
-  width: 80%;
-  margin: 0 auto;
+  max-width: 400px;
+  font-size: 1rem;
 }
 span {
   color: rgb(48, 48, 48);
@@ -511,8 +530,11 @@ span {
   margin-bottom: 12px;
   line-height: 120%;
 }
+.span2 {
+  width: 100px;
+}
 .span3 {
-  width: 40%;
+  width: 100px;
   line-height: 140%;
 }
 .bold {
@@ -524,14 +546,24 @@ span {
   width: 75px;
   height: 75px;
 }
+.imgfield {
+  width: 260px;
+  height: 30px;
+}
 .upload-img {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
+.file-upload-form {
+  margin-bottom: 12px;
+}
 input {
   border: 1px solid #397979;
+}
+.input-birth {
+  width: 174px;
 }
 .select {
   margin-right: 5px;
@@ -553,6 +585,12 @@ input {
   width: 100%;
   text-align: center;
   margin-bottom: 40px;
+}
+.habit-box {
+  max-width: 300px;
+}
+.habit-head {
+  font-weight: 700;
 }
 </style>
 

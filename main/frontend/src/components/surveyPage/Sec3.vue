@@ -252,7 +252,7 @@ export default {
 .v-expansion-panels {
   width: 100%;
   padding: 0 1rem;
-  padding-top: 1rem;
+  /* padding-top: 1rem; */
 }
 .v-expansion-panel-header {
   font-weight: 700;

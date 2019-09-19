@@ -1,21 +1,15 @@
 <template>
   <div class="resultresult">
+    <navbar class="nav" />
     <div class="box">
       <Navbar />
       <div class="page" id="pt-main">
         <name />
-        <history />
       </div>
       <div class="page" id="pt-page">
         <symptoms />
-      </div>
-      <div class="page">
         <sickness />
-      </div>
-      <div class="btn">
-        <a href="http://www.60decibel.cf">
-          <img class="button" src="../assets/logo.png" />
-        </a>
+        <history />
       </div>
     </div>
   </div>
@@ -42,6 +36,37 @@ export default {
 };
 </script>
 <style scoped>
+.nav /deep/ .navhead {
+  padding: 0 1rem;
+  padding-top: 1rem;
+  border-bottom: none;
+}
+.nav /deep/ .navhead-icon:hover {
+  background-color: transparent;
+}
+.nav /deep/ .fa-bars {
+  color: rgb(255, 255, 255);
+}
+.nav /deep/ .navhead-brand-logo {
+  content: url("../assets/home.png");
+  width: 1.5rem;
+  height: 1.5rem;
+  margin-left: 0.6rem;
+}
+.nav /deep/ .navhead-start {
+  display: none;
+}
+.resultresult {
+  background: linear-gradient(-45deg, #ea5455, #feb692);
+}
+.box {
+  width: 90%;
+  margin: 1rem auto;
+  border-radius: 10px;
+  /* border: 0.5px solid gray; */
+  background-color: rgb(255, 255, 255, 0.9);
+}
+/*
 .resultresult {
   display: flex;
   justify-content: center;
@@ -85,7 +110,7 @@ p {
 
 .page:nth-child(3n) {
   background-color: whitesmoke;
-}*/
+}
 
 .page {
   height: 600px;
@@ -150,4 +175,5 @@ p {
 .pt-page-ontop {
   z-index: 999;
 }
+*/
 </style>
