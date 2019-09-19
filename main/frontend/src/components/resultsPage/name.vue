@@ -4,28 +4,35 @@
     <p class="date">작성일 : {{stomach.created_at}}</p>
     <br />
     <div class="result-table">
-      <div class="row1">
-        <div>
-          <p class="name">성명: {{ profile.name }}</p>
+      <div class="row a">
+        <div class="col1">
+          <p>성명</p>
         </div>
-        <div>
-          <p class="birth">생년월일: {{ profile.birth_date }}</p>
+        <div class="col2">
+          <p>{{ profile.name }}</p>
+        </div>
+        <div class="col1">
+          <p>생년월일</p>
+        </div>
+        <div class="col2">
+          <p>{{ profile.birth_date }}</p>
         </div>
       </div>
-      <div class="row2">
-        <div>
-          <p class="gender-head">성별: {{ profile.gender }}</p>
+      <div class="row b">
+        <div class="col1">
+          <p>성별</p>
         </div>
-        <div>
-          <p class="height-head">신장: {{ profile.height }}</p>
+        <div class="col2">
+          <p>{{ profile.gender }}</p>
         </div>
-        <div>
-          <p class="weight-head">체중: {{ profile.weight }}</p>
+        <div class="col1">
+          <p>신장/체중</p>
+        </div>
+        <div class="col3">
+          <p>{{ profile.height }} / {{ profile.weight }}</p>
         </div>
       </div>
     </div>
-    <br />
-    <br />
   </div>
 </template>
 
@@ -69,16 +76,38 @@ export default {
   width: 100%;
   display: flex;
   flex-direction: column;
-  border: 1px solid rgb(102, 102, 102);
+  align-items: center;
+  border-bottom: 1px solid rgb(102, 102, 102);
 }
-.row1 {
+.row {
+  border-top: 1px solid rgb(102, 102, 102);
+  width: 100%;
   display: flex;
+  height: 40px;
 }
-.row1 p,
-.row2 p {
-  margin-right: 10px;
-}
-.row2 {
+.row div {
   display: flex;
+  justify-content: center;
+  align-items: center;
+  border-right: 1px solid rgb(102, 102, 102);
+}
+.a .col1 {
+  width: 20%;
+  background-color: rgb(231, 231, 231);
+  font-weight: 700;
+}
+.a .col2 {
+  width: 30%;
+}
+.b .col1 {
+  width: 20%;
+  background-color: rgb(231, 231, 231);
+  font-weight: 700;
+}
+.b .col2 {
+  width: 20%;
+}
+.b .col3 {
+  width: 40%;
 }
 </style>

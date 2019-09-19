@@ -10,9 +10,6 @@
         <sickness />
         <history />
       </div>
-      <div class="page">
-        <sickness />
-      </div>
     </div>
   </div>
 </template>
@@ -65,7 +62,8 @@ export default {
   width: 90%;
   margin: 1rem auto;
   border-radius: 10px;
-  background-color: rgb(255, 255, 255, 0.7);
+  /* border: 0.5px solid gray; */
+  background-color: rgb(255, 255, 255, 0.9);
 }
 /*
 .resultresult {

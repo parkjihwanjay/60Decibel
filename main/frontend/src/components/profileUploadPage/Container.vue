@@ -229,11 +229,17 @@
           <span class="span3">직업</span>
           <input type="text" ref="job" v-on:blur="storeUpdateJob()" v-bind:value="profile.job" />
           <br />
-          <label for="bad_habits">다음 중 해당되는 사항에 모두 체크해주세요</label>
-          <input type="checkbox" v-model="update.relevant_data" value="스트레스를 많이 받는 편" />스트레스를 많이 받는 편
-          <input type="checkbox" v-model="update.relevant_data" value="식사 불규칙" />식사 불규칙
-          <input type="checkbox" v-model="update.relevant_data" value="기름진 음식을 많이 먹음" />기름진 음식을 많이 먹음
-          <input type="checkbox" v-model="update.relevant_data" value="수면시간 불규칙" />수면시간 불규칙
+          <div class="habit-box">
+            <label for="bad_habits" class="habit-head">다음 중 해당되는 사항에 모두 체크해주세요</label>
+
+            <br />
+            <br />
+            <input type="checkbox" v-model="update.relevant_data" value="스트레스를 많이 받는 편" />스트레스를 많이 받음
+            <input type="checkbox" v-model="update.relevant_data" value="식사 불규칙" />식사 불규칙
+            <br />
+            <input type="checkbox" v-model="update.relevant_data" value="기름진 음식을 많이 먹음" />기름진 음식을 많이 먹음
+            <input type="checkbox" v-model="update.relevant_data" value="수면시간 불규칙" />수면시간 불규칙
+          </div>
           <br />
         </div>
       </div>
@@ -487,10 +493,14 @@ export default {
   height: 25rem;
 }
 .cont3 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   padding: 20px 0;
-  background: white;
+  background-color: #ffffff;
   width: 100%;
-  height: 19rem;
+  height: 25rem;
 }
 .upload-title {
   color: #397979;
@@ -511,8 +521,8 @@ export default {
   /* margin: 0 50px; */
 }
 .upload-detail3 {
-  width: 80%;
-  margin: 0 auto;
+  max-width: 400px;
+  font-size: 1rem;
 }
 span {
   color: rgb(48, 48, 48);
@@ -527,7 +537,7 @@ span {
   width: 100px;
 }
 .span3 {
-  width: 40%;
+  width: 100px;
   line-height: 140%;
 }
 .bold {
@@ -578,6 +588,12 @@ input {
   width: 100%;
   text-align: center;
   margin-bottom: 40px;
+}
+.habit-box {
+  max-width: 300px;
+}
+.habit-head {
+  font-weight: 700;
 }
 </style>
 
