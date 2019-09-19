@@ -15,7 +15,7 @@
             <div class="answers-box animate fadeInRightBig three">
               <button
                 value="whole abdomen"
-                @click="button_click_multiple('symtpom_location', 'whole abdomen')"
+                @click="button_click_multiple('symtpom_location', '복부전체')"
                 class="answer-box"
               >복부전체</button>
 
@@ -23,7 +23,7 @@
 
               <button
                 value="sternal"
-                @click="button_click_multiple('symtpom_location', 'sternal')"
+                @click="button_click_multiple('symtpom_location', '명치부위')"
                 class="answer-box"
               >명치부위</button>
 
@@ -31,7 +31,7 @@
 
               <button
                 value="sternal"
-                @click="button_click_multiple('symtpom_location', 'umbilicus')"
+                @click="button_click_multiple('symtpom_location', '배꼽부위')"
                 class="answer-box"
               >배꼽부위</button>
 
@@ -39,7 +39,7 @@
 
               <button
                 value="sternal"
-                @click="button_click_multiple('symtpom_location', 'flank')"
+                @click="button_click_multiple('symtpom_location', '옆구리')"
                 class="answer-box"
               >옆구리</button>
 
@@ -47,7 +47,7 @@
 
               <button
                 value="LUQ"
-                @click="button_click_multiple('symtpom_location', 'LUQ')"
+                @click="button_click_multiple('symtpom_location', '왼쪽 위')"
                 class="answer-box"
               >왼쪽 위</button>
 
@@ -55,7 +55,7 @@
 
               <button
                 value="LLQ"
-                @click="button_click_multiple('symtpom_location', 'LLQ')"
+                @click="button_click_multiple('symtpom_location', '오른쪽 위')"
                 class="answer-box"
               >오른쪽 위</button>
 
@@ -63,7 +63,7 @@
 
               <button
                 value="RUQ"
-                @click="button_click_multiple('symtpom_location', 'RUQ')"
+                @click="button_click_multiple('symtpom_location', '왼쪽 아래')"
                 class="answer-box"
               >왼쪽 아래</button>
 
@@ -71,15 +71,16 @@
 
               <button
                 value="RLQ"
-                @click="button_click_multiple('symtpom_location', 'RLQ')"
+                @click="button_click_multiple('symtpom_location', '오른쪽 아래')"
                 class="answer-box"
               >오른쪽 아래</button>
 
-              <button
+              <!-- 인우 : 뭔지 모르겠습니다.... -->
+              <!-- <button
                 value="RLQ"
-                @click="button_click_multiple('symtpom_location', 'RLQ')"
+                @click="button_click_multiple('symtpom_location', '오른쪽 아래')"
                 class="answer-box blank"
-              >오른쪽 아래</button>
+              >오른쪽 아래</button>-->
             </div>
             <br />
           </v-expansion-panel-content>
@@ -96,7 +97,7 @@
             <div class="answers">
               <button
                 value="True"
-                @click="button_click('location_move', 'True')"
+                @click="button_click('location_move', '예')"
                 class="answerTF animate fadeInRightBig three"
               >예</button>
 
@@ -104,7 +105,7 @@
 
               <button
                 value="False"
-                @click="button_click('location_move', 'False')"
+                @click="button_click('location_move', '아니오')"
                 class="answerTF animate fadeInRightBig three"
               >아니오</button>
             </div>
@@ -114,7 +115,7 @@
         <v-expansion-panel class="q1-3">
           <v-expansion-panel-header
             class="header animate fadeInDown two"
-            v-if="survey_data.location_move==='True'"
+            v-if="survey_data.location_move==='예'"
           >
             &nbsp;&nbsp;Q2-1.
             <template v-slot:actions></template>
@@ -147,7 +148,7 @@
             <div class="answers">
               <button
                 value="True"
-                @click="button_click('pain_spread', 'True')"
+                @click="button_click('pain_spread', '예')"
                 class="answerTF animate fadeInRightBig three"
               >예</button>
 
@@ -155,7 +156,7 @@
 
               <button
                 value="False"
-                @click="button_click('pain_spread', 'False')"
+                @click="button_click('pain_spread', '아니오')"
                 class="answerTF animate fadeInRightBig three"
               >아니오</button>
             </div>
@@ -165,7 +166,7 @@
         <v-expansion-panel class="q1-1">
           <v-expansion-panel-header
             class="header animate animate fadeInDown two"
-            v-if="survey_data.pain_spread==='True'"
+            v-if="survey_data.pain_spread==='예'"
           >
             &nbsp;&nbsp;Q3-1.
             <template v-slot:actions></template>

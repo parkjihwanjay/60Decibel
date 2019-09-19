@@ -17,7 +17,7 @@
             <div class="answers-box animate fadeInRightBig three">
               <button
                 value="change of appetite"
-                @click="button_click_multiple('associated_symptom_digestive', 'change of appetite')"
+                @click="button_click_multiple('associated_symptom_digestive', '식욕감소')"
                 class="answer animate fadeInRightBig three"
               >식욕감소</button>
 
@@ -25,7 +25,7 @@
 
               <button
                 value="nausea"
-                @click="button_click_multiple('associated_symptom_digestive', 'nausea')"
+                @click="button_click_multiple('associated_symptom_digestive', '구역질')"
                 class="answer animate fadeInRightBig three"
               >구역질</button>
 
@@ -33,7 +33,7 @@
 
               <button
                 value="vomiting"
-                @click="button_click_multiple('associated_symptom_digestive', 'vomiting')"
+                @click="button_click_multiple('associated_symptom_digestive', '구토')"
                 class="answer animate fadeInRightBig three"
               >구토</button>
 
@@ -41,7 +41,7 @@
 
               <button
                 value="vomiting blood"
-                @click="button_click_multiple('associated_symptom_digestive', 'vomiting blood')"
+                @click="button_click_multiple('associated_symptom_digestive', '토혈')"
                 class="answer animate fadeInRightBig three"
               >토혈</button>
 
@@ -49,7 +49,7 @@
 
               <button
                 value="abdominal inflation"
-                @click="button_click_multiple('associated_symptom_digestive', 'abdominal inflation')"
+                @click="button_click_multiple('associated_symptom_digestive', '복부팽만')"
                 class="answer animate fadeInRightBig three"
               >복부팽만</button>
 
@@ -57,7 +57,7 @@
 
               <button
                 value="lump on abdomen"
-                @click="button_click_multiple('associated_symptom_digestive', 'lump on abdomen')"
+                @click="button_click_multiple('associated_symptom_digestive', '복부종괴')"
                 class="answer animate fadeInRightBig three"
               >복부종괴</button>
 
@@ -65,7 +65,7 @@
 
               <button
                 value="constipation"
-                @click="button_click_multiple('associated_symptom_digestive', 'constipation')"
+                @click="button_click_multiple('associated_symptom_digestive', '변비')"
                 class="answer animate fadeInRightBig three"
               >변비</button>
 
@@ -73,7 +73,7 @@
 
               <button
                 value="diarrhea"
-                @click="button_click_multiple('associated_symptom_digestive', 'diarrhea')"
+                @click="button_click_multiple('associated_symptom_digestive', '설사')"
                 class="answer animate fadeInRightBig three"
               >설사</button>
 
@@ -81,7 +81,7 @@
 
               <button
                 value="rectal_bleeding/melena"
-                @click="button_click_multiple('associated_symptom_digestive', 'rectal_bleeding/melena')"
+                @click="button_click_multiple('associated_symptom_digestive', '혈변/흑변')"
                 class="answer animate fadeInRightBig three"
               >혈변/흑변</button>
 
@@ -89,7 +89,7 @@
 
               <button
                 value="steatorrhea"
-                @click="button_click_multiple('associated_symptom_digestive', 'steatorrhea')"
+                @click="button_click_multiple('associated_symptom_digestive', '지방변')"
                 class="answer animate fadeInRightBig three"
               >지방변</button>
 
@@ -97,7 +97,7 @@
 
               <button
                 value="jaundice"
-                @click="button_click_multiple('associated_symptom_digestive', 'jaundice')"
+                @click="button_click_multiple('associated_symptom_digestive', '황달')"
                 class="answer animate fadeInRightBig three"
               >황달</button>
 
@@ -105,7 +105,7 @@
 
               <button
                 value="nothing"
-                @click="button_click('associated_symptom_digestive', 'nothing')"
+                @click="button_click('associated_symptom_digestive', '해당없음')"
                 class="answer animate fadeInRightBig three"
               >해당없음</button>
             </div>
@@ -127,7 +127,7 @@
             <div class="answers-box animate fadeInRightBig three">
               <button
                 value="chest pain"
-                @click="button_click_multiple('associated_symptom_circulatory', 'chest pain')"
+                @click="button_click_multiple('associated_symptom_circulatory', '가슴통증')"
                 class="answer animate fadeInRightBig three"
               >가슴통증</button>
 
@@ -135,7 +135,7 @@
 
               <button
                 value="shortness of breah"
-                @click="button_click_multiple('associated_symptom_circulatory', 'shortness of breah')"
+                @click="button_click_multiple('associated_symptom_circulatory', '호흡곤란')"
                 class="answer animate fadeInRightBig three"
               >호흡곤란</button>
 
@@ -143,7 +143,7 @@
 
               <button
                 value="cough"
-                @click="button_click_multiple('associated_symptom_circulatory', 'cough')"
+                @click="button_click_multiple('associated_symptom_circulatory', '기침')"
                 class="answer animate fadeInRightBig three"
               >기침</button>
 
@@ -151,7 +151,7 @@
 
               <button
                 value="runny nose"
-                @click="button_click_multiple('associated_symptom_circulatory', 'runny nose')"
+                @click="button_click_multiple('associated_symptom_circulatory', '콧물')"
                 class="answer animate fadeInRightBig three"
               >콧물</button>
 
@@ -159,14 +159,14 @@
 
               <button
                 value="nothing"
-                @click="button_click_multiple('associated_symptom_circulatory', 'nothing')"
+                @click="button_click_multiple('associated_symptom_circulatory', '해당없음')"
                 class="answer animate fadeInRightBig three"
               >해당없음</button>
-              <button
+              <!-- <button
                 value="nothing"
                 @click="button_click_multiple('associated_symptom_circulatory', 'nothing')"
                 class="answer blank animate fadeInRightBig three"
-              >해당없음</button>
+              >해당없음</button>-->
             </div>
           </v-expansion-panel-content>
         </v-expansion-panel>
@@ -185,7 +185,7 @@
             <div class="answers-box animate fadeInRightBig three">
               <button
                 value="colporrhagia"
-                @click="button_click_multiple('associated_symptom_gynecology', 'colporrhagia')"
+                @click="button_click_multiple('associated_symptom_gynecology', '질출혈')"
                 class="answer animate fadeInRightBig three"
               >질출혈</button>
 
@@ -193,7 +193,7 @@
 
               <button
                 value="leukorrhea"
-                @click="button_click_multiple('associated_symptom_gynecology', 'leukorrhea')"
+                @click="button_click_multiple('associated_symptom_gynecology', '질분비물')"
                 class="answer animate fadeInRightBig three"
               >질분비물</button>
 
@@ -201,7 +201,7 @@
 
               <button
                 value="menstrual cycle change"
-                @click="button_click_multiple('associated_symptom_gynecology', 'menstrual cycle change')"
+                @click="button_click_multiple('associated_symptom_gynecology', '생리변화')"
                 class="answer animate fadeInRightBig three"
               >생리변화</button>
 
@@ -209,7 +209,7 @@
 
               <button
                 value="pregnant possibility"
-                @click="button_click_multiple('associated_symptom_gynecology', 'pregnant possibility')"
+                @click="button_click_multiple('associated_symptom_gynecology', '임신가능성')"
                 class="answer animate fadeInRightBig three"
               >임신가능성</button>
 
@@ -217,14 +217,14 @@
 
               <button
                 value="nothing"
-                @click="button_click_multiple('associated_symptom_gynecology', 'nothing')"
+                @click="button_click_multiple('associated_symptom_gynecology', '해당없음')"
                 class="answer animate fadeInRightBig three"
               >해당없음</button>
-              <button
+              <!-- <button
                 value="nothing"
                 @click="button_click_multiple('associated_symptom_circulatory', 'nothing')"
                 class="answer blank animate fadeInRightBig three"
-              >해당없음</button>
+              >해당없음</button>-->
             </div>
           </v-expansion-panel-content>
         </v-expansion-panel>
@@ -242,7 +242,7 @@
             <div class="answers-box animate fadeInRightBig three">
               <button
                 value="fever"
-                @click="button_click_multiple('associated_symptom_whole_body', 'fever')"
+                @click="button_click_multiple('associated_symptom_whole_body', '발열')"
                 class="answer animate fadeInRightBig three"
               >발열</button>
 
@@ -250,7 +250,7 @@
 
               <button
                 value="chilling"
-                @click="button_click_multiple('associated_symptom_whole_body', 'chilling')"
+                @click="button_click_multiple('associated_symptom_whole_body', '오한')"
                 class="answer animate fadeInRightBig three"
               >오한</button>
 
@@ -258,7 +258,7 @@
 
               <button
                 value="fatigue"
-                @click="button_click_multiple('associated_symptom_whole_body', 'fatigue')"
+                @click="button_click_multiple('associated_symptom_whole_body', '피로')"
                 class="answer animate fadeInRightBig three"
               >피로</button>
 
@@ -266,7 +266,7 @@
 
               <button
                 value="weight change"
-                @click="button_click_multiple('associated_symptom_whole_body', 'weight change')"
+                @click="button_click_multiple('associated_symptom_whole_body', '체중변화')"
                 class="answer animate fadeInRightBig three"
               >체중변화</button>
 
@@ -274,7 +274,7 @@
 
               <button
                 value="sweating"
-                @click="button_click_multiple('associated_symptom_whole_body', 'sweating')"
+                @click="button_click_multiple('associated_symptom_whole_body', '식은땀')"
                 class="answer animate fadeInRightBig three"
               >식은땀</button>
 
@@ -282,7 +282,7 @@
 
               <button
                 value="sleep disturbance"
-                @click="button_click_multiple('associated_symptom_whole_body', 'sleep disturbance')"
+                @click="button_click_multiple('associated_symptom_whole_body', '수면곤란')"
                 class="answer animate fadeInRightBig three"
               >수면곤란</button>
 
@@ -290,7 +290,7 @@
 
               <button
                 value="headache"
-                @click="button_click_multiple('associated_symptom_whole_body', 'headache')"
+                @click="button_click_multiple('associated_symptom_whole_body', '두통')"
                 class="answer animate fadeInRightBig three"
               >두통</button>
 
@@ -298,14 +298,14 @@
 
               <button
                 value="nothing"
-                @click="button_click_multiple('associated_symptom_whole_body', 'nothing')"
+                @click="button_click_multiple('associated_symptom_whole_body', '해당없음')"
                 class="answer animate fadeInRightBig three"
               >해당없음</button>
-              <button
+              <!-- <button
                 value="nothing"
                 @click="button_click_multiple('associated_symptom_circulatory', 'nothing')"
                 class="answer blank animate fadeInRightBig three"
-              >해당없음</button>
+              >해당없음</button>-->
             </div>
           </v-expansion-panel-content>
         </v-expansion-panel>
@@ -324,7 +324,7 @@
             <div class="answers-box animate fadeInRightBig three">
               <button
                 value="painful urination"
-                @click="button_click_multiple('associated_symptom_urinary', 'painful urination')"
+                @click="button_click_multiple('associated_symptom_urinary', '배뇨통')"
                 class="answer animate fadeInRightBig three"
               >배뇨통</button>
 
@@ -332,7 +332,7 @@
 
               <button
                 value="chnage the quantity of urine"
-                @click="button_click_multiple('associated_symptom_urinary', 'chnage the quantity of urine')"
+                @click="button_click_multiple('associated_symptom_urinary', '소변량변화')"
                 class="answer animate fadeInRightBig three"
               >소변량변화</button>
 
@@ -340,7 +340,7 @@
 
               <button
                 value="red urine"
-                @click="button_click_multiple('associated_symptom_urinary', 'red urine')"
+                @click="button_click_multiple('associated_symptom_urinary', '혈뇨')"
                 class="answer animate fadeInRightBig three"
               >혈뇨</button>
 
@@ -348,7 +348,7 @@
 
               <button
                 value="foamy urine"
-                @click="button_click_multiple('associated_symptom_urinary', 'foamy urine')"
+                @click="button_click_multiple('associated_symptom_urinary', '거품뇨')"
                 class="answer animate fadeInRightBig three"
               >거품뇨</button>
 
@@ -356,7 +356,7 @@
 
               <button
                 value="frequency"
-                @click="button_click_multiple('associated_symptom_urinary', 'frequency')"
+                @click="button_click_multiple('associated_symptom_urinary', '잦은 소변')"
                 class="answer animate fadeInRightBig three"
               >잦은 소변</button>
 
@@ -364,7 +364,7 @@
 
               <button
                 value="nothing"
-                @click="button_click_multiple('associated_symptom_urinary', 'nothing')"
+                @click="button_click_multiple('associated_symptom_urinary', '해당없음')"
                 class="answer animate fadeInRightBig three"
               >해당없음</button>
             </div>

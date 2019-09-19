@@ -14,7 +14,7 @@
             <div class="answers">
               <button
                 value="lest_than_10m"
-                @click="button_click('pain_duration', 'lest_than_10m')"
+                @click="button_click('pain_duration', '10분 미만')"
                 class="answer animate fadeInRightBig three"
               >10분 미만</button>
 
@@ -22,7 +22,7 @@
 
               <button
                 value="from_10m_to_1h"
-                @click="button_click('pain_duration', 'from_10m_to_1h')"
+                @click="button_click('pain_duration', '10분-1시간')"
                 class="answer animate fadeInRightBig three"
               >10분-1시간</button>
 
@@ -30,7 +30,7 @@
 
               <button
                 value="more_than_1h"
-                @click="button_click('pain_duration', 'more_than_1h')"
+                @click="button_click('pain_duration', '1시간 이상')"
                 class="answer animate fadeInRightBig three"
               >1시간이상</button>
 
@@ -38,7 +38,7 @@
 
               <button
                 value="all_day"
-                @click="button_click('pain_duration', 'all_day')"
+                @click="button_click('pain_duration', '하루종일')"
                 class="answer animate fadeInRightBig three"
               >하루종일</button>
             </div>
@@ -58,13 +58,13 @@
             <div class="answers">
               <button
                 value="True"
-                @click="button_click('pain_repeated', 'True')"
+                @click="button_click('pain_repeated', '반복됩니다')"
                 class="answer animate fadeInRightBig three"
               >반복됩니다.</button>
               <br />
               <button
                 value="False"
-                @click="button_click('pain_repeated', 'False')"
+                @click="button_click('pain_repeated', '단발성입니다')"
                 class="answer animate fadeInRightBig three"
               >단발성입니다.</button>
 
@@ -76,7 +76,7 @@
         <v-expansion-panel class="q1-1">
           <v-expansion-panel-header
             class="header animate fadeInDown two"
-            v-if="survey_data.pain_repeated==='True'"
+            v-if="survey_data.pain_repeated==='반복됩니다'"
           >
             &nbsp;&nbsp;Q2-1.
             <template v-slot:actions></template>
@@ -91,8 +91,8 @@
                 v-model="survey_data.pain_how_often_day"
                 name="job"
               >
-                <option value="one_day">하루에</option>
-                <option value="one_week">일주일</option>
+                <option value="하루에">하루에</option>
+                <option value="일주일">일주일</option>
               </select>
 
               <select
@@ -100,10 +100,10 @@
                 v-model="survey_data.pain_how_often_many"
                 name="job"
               >
-                <option value="0_to_1">0-1회</option>
-                <option value="2_to_3">2-3회</option>
-                <option value="4_to_5">4-5회</option>
-                <option value="more_than_6">6회이상</option>
+                <option value="0-1회">0-1회</option>
+                <option value="2-3회">2-3회</option>
+                <option value="4-5회">4-5회</option>
+                <option value="6회이상">6회이상</option>
               </select>
             </div>
           </v-expansion-panel-content>
@@ -120,7 +120,7 @@
             <div class="answers-box animate fadeInRightBig three">
               <button
                 value="after meal"
-                @click="button_click_multiple('factor', 'after meal')"
+                @click="button_click_multiple('factor', '식사후 심화')"
                 class="answer-box"
               >식사후 심화</button>
 
@@ -128,7 +128,7 @@
 
               <button
                 value="no meal"
-                @click="button_click_multiple('factor', 'no meal')"
+                @click="button_click_multiple('factor', '공복에 심화')"
                 class="answer-box"
               >공복에 심화</button>
 
@@ -136,7 +136,7 @@
 
               <button
                 value="after alchol"
-                @click="button_click_multiple('factor', 'after alchol')"
+                @click="button_click_multiple('factor', '음주후 심화')"
                 class="answer-box"
               >음주후 심화</button>
 
@@ -144,7 +144,7 @@
 
               <button
                 value="posture"
-                @click="button_click_multiple('factor', 'posture')"
+                @click="button_click_multiple('factor', '자세변화시 심화')"
                 class="answer-box"
               >자세변화시 심화</button>
 
@@ -152,7 +152,7 @@
 
               <button
                 value="urination"
-                @click="button_click_multiple('factor', 'urination')"
+                @click="button_click_multiple('factor', '배뇨시 심화')"
                 class="answer-box"
               >배뇨시 심화</button>
 
@@ -160,7 +160,7 @@
 
               <button
                 value="defecation"
-                @click="button_click_multiple('factor', 'defecation')"
+                @click="button_click_multiple('factor', '배변시 심화')"
                 class="answer-box"
               >배변시 심화</button>
 
@@ -168,7 +168,7 @@
 
               <button
                 value="better"
-                @click="button_click_multiple('factor', 'better')"
+                @click="button_click_multiple('factor', '완화되는 중')"
                 class="answer-box"
               >완화되는 중</button>
 
@@ -176,7 +176,7 @@
 
               <button
                 value="nothing"
-                @click="button_click_multiple('factor', 'nothing')"
+                @click="button_click_multiple('factor', '해당사항 없음')"
                 class="answer-box"
               >해당사항 없음</button>
             </div>

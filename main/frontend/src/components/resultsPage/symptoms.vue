@@ -26,9 +26,6 @@
 import { mapState, mapActions } from "vuex";
 import { store } from "../../store.js";
 export default {
-  // method: {
-  //   ...mapActions["getStomachInfo"]
-  // },
   computed: {
     ...mapState(["stomach"])
   },
