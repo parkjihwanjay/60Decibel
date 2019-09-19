@@ -3,20 +3,23 @@
     <div class="head">주요 증상</div>
     <div class="main">
       <br />
-      <p
-        v-if="`${stomach.symptom_start} === 'less_than_month'`"
-      >복통이 {{stomach.symptom_start_less_than_month }}에 처음 발생하였고,</p>
-      <p v-else>복통이 발생한지 {{stomach.symptom_start}}이 되었고,</p>
+      <p>복통이 발생한 지 {{stomach.symptom_start }}입니다.</p>
       <p>통증은 {{stomach.fast_or_slow}} 발생하였습니다.</p>
-      <p v-if="`${stomach.symptom_situation}`">통증 발생 상황 : {{stomach.symptom_situation}}</p>
-      <p>주로 {{stomach.symptom_location}}가 아프고</p>
-      <p v-if="`${stomach.location_move}`">아픈 부위가 {{stomach.location_move}} 이동했습니다.</p>
-      <p v-else>아픈 부위가 이동하지는 않았습니다.</p>
+
+      <p>통증 발생 상황 : {{ stomach.symptom_situation }}</p>
+
+      <p>주로 {{ stomach.symptom_location }}가 아픕니다.</p>
+
+      <p>통증 부위의 이동 여부 : {{stomach.location_move}}</p>
       <p v-if="`${stomach.pain_spread}`">통증이 {{stomach.pain_spread_where}} 퍼졌습니다.</p>
       <p>통증이 한 번 발생하면 {{stomach.pain_duration}}만큼 지속됩니다.</p>
-      <p v-if="`${stomach.pain_repeated}`">통증의 빈도 {{stomach.pain_repeated}}입니다.</p>
+
+      <p v-if="`${stomach.pain_repeated}`">통증의 빈도 : {{stomach.pain_repeated}}</p>
+      <!-- 인우 : p태그 안에 들어가는 변수는 stomach.pain_how_often_day나 stomach.pain_how_often_many여야 하는 것 
+      같은데, 일단 설문지에서 선택지가 없음-->
+
       <p v-else>단발성 통증입니다.</p>
-      <p>{{stomach.pain_character}}통증입니다.</p>
+      <p>통증의 양상 : {{stomach.pain_character}}</p>
       <p>0~10 중 {{stomach.pain_score}}에 해당하는 통증입니다.</p>
     </div>
   </div>

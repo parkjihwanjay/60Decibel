@@ -98,7 +98,7 @@
               <div class="answer animate fadeInRightBig three">
                 <input
                   type="text"
-                  v-model="survey_data.symtpom_situation"
+                  v-model="survey_data.symptom_situation"
                   class="ans-txt"
                   placeholder="예)회식에서.."
                 />
@@ -153,7 +153,7 @@ export default {
     return {
       expand: 0,
       survey_data: {
-        symtpom_location: [],
+        symptom_location: [],
         abdomen_relevant: [],
         symptom_start: ""
       }

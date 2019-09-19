@@ -9,7 +9,7 @@
 
       <p>부인과와 관련하여 {{stomach.associated_symptom_gynecology}}</p>
 
-      <p>전신과 관련하여 {{stomach.associated_symptom_body}}와 같은 동반증상이 있습니다.</p>
+      <p>전신과 관련하여 {{stomach.associated_symptom_whole_body}}와 같은 동반증상이 있습니다.</p>
 
       <p>비뇨기와 관련하여 {{stomach.associated_symptom_urinary}}와 같은 동반증상이 있습니다.</p>
 

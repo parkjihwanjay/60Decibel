@@ -94,7 +94,7 @@ ABDOMEN_HISTORY = [
 class StomachacheSurveyCreateSerializer(serializers.ModelSerializer):
    
     
-    symtpom_location = serializers.ListField(child=serializers.CharField(required=False), allow_empty=True, min_length=0, max_length=20)
+    symptom_location = serializers.ListField(child=serializers.CharField(required=False), allow_empty=True, min_length=0, max_length=20)
 
     pain_character = serializers.ListField(child=serializers.CharField(required=False), allow_empty=True, min_length=0, max_length=20)
 

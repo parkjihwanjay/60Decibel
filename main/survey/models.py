@@ -69,10 +69,10 @@ class StomachacheSurvey(SurveyMeta):
     symptom_start_less_than_month = models.CharField(
         max_length=30, default="", blank=True, null=True)
     fast_or_slow = models.CharField(max_length=30, default="", blank=True, null=True)
-    symtpom_situation = models.CharField(max_length=50, default="", blank=True, null=True)
+    symptom_situation = models.CharField(max_length=50, default="", blank=True, null=True)
 
     # location
-    symtpom_location = models.CharField(max_length=30, default="", blank=True, null=True)
+    symptom_location = models.CharField(max_length=30, default="", blank=True, null=True)
 
     location_move = models.CharField(max_length=30, default="", blank=True, null=True)
     

@@ -30,11 +30,10 @@ import { mapState, mapActions } from "vuex";
 import { store } from "../../store.js";
 export default {
   computed: {
-    ...mapState(["stomach"])
+    ...mapState(["profile"])
   },
   created() {
-    const stomachId = this.$route.params.id;
-    this.$store.dispatch("getStomachInfo", stomachId);
+    this.$store.dispatch("getProfileInfo");
   }
 };
 </script>
