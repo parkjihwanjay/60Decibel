@@ -2,6 +2,7 @@
   <div class="resultresult">
     <navbar class="nav" />
     <div class="box">
+      <Navbar />
       <div class="page" id="pt-main">
         <name />
       </div>
