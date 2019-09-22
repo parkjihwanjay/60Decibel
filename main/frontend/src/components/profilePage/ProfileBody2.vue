@@ -12,7 +12,7 @@
       </div>
       <div class="profileinfo">
         <div class="profiletitle">최근 진단받은 병</div>
-        <div v-if="profile.had_checkup_true" class="profiledetail">{{ profile.diagnosed_disease }}</div>
+        <div v-if="profile.had_checkup_true" class="profiledetail">{{ diagnosed_disease }}</div>
       </div>
       <!-- 복용약 -->
       <div class="profileinfo">
@@ -25,7 +25,7 @@
       <!-- 가족력 -->
       <div class="profileinfo">
         <div class="profiletitle">가족력</div>
-        <div v-if="profile.family_history" class="profiledetail">{{profile.family_history}}</div>
+        <div v-if="profile.family_history" class="profiledetail">{{family_history}}</div>
       </div>
     </div>
   </div>
@@ -37,7 +37,13 @@ import { mapState } from "vuex";
 
 export default {
   computed: {
-    ...mapState(["profile"])
+    ...mapState(["profile"]),
+    diagnosed_disease: function() {
+      return this.$store.state.profile.diagnosed_disease.slice(1, -1);
+    },
+    family_history: function() {
+      return this.$store.state.profile.family_history.slice(1, -1);
+    }
   },
   created() {
     this.$store.dispatch("getProfileInfo");
