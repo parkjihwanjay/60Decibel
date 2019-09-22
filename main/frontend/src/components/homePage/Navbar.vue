@@ -72,7 +72,9 @@ export default {
     ...mapActions(["getMemberInfo", "logout"]),
     onClickLogout() {
       // logout 변이 실행 후 리다이렉트
-      store.dispatch("logout").then(() => this.$router.push("/"));
+      store.dispatch("logout")
+      // .then(() => this.$router.push("/"));
+;
     }
   }
 };
