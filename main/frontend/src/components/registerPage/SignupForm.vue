@@ -50,6 +50,7 @@
             type="password"
             v-model="password2"
             name="userpassword2"
+            @keyup.enter="signup({username, email, password1, password2})"
             placeholder="6~12자리 비밀번호 입력"
           />
           <br />
