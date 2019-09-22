@@ -8,7 +8,7 @@
 
       <p>통증 발생 상황 : {{ stomach.symptom_situation }}</p>
 
-      <p>주로 {{ stomach.symptom_location }}가 아픕니다.</p>
+      <p>주로 {{ symptom_location }}가 아픕니다.</p>
 
       <p>통증 부위의 이동 여부 : {{stomach.location_move}}</p>
       <p v-if="`${stomach.pain_spread}`">통증이 {{stomach.pain_spread_where}} 퍼졌습니다.</p>
@@ -19,7 +19,7 @@
       같은데, 일단 설문지에서 선택지가 없음-->
 
       <p v-else>단발성 통증입니다.</p>
-      <p>통증의 양상 : {{stomach.pain_character}}</p>
+      <p>통증의 양상 : {{ pain_character }}</p>
       <p>0~10 중 {{stomach.pain_score}}에 해당하는 통증입니다.</p>
     </div>
   </div>
@@ -30,7 +30,15 @@ import { mapState, mapActions } from "vuex";
 import { store } from "../../store.js";
 export default {
   computed: {
-    ...mapState(["stomach"])
+    ...mapState(["stomach"]),
+    symptom_location: function() {
+      return this.$store.state.stomach.symptom_location.slice(1, -1);
+      // .replace(/'/g, "")
+      // .split(",");
+    },
+    pain_character: function() {
+      return this.$store.state.stomach.pain_character.slice(1, -1);
+    }
   },
   created() {
     const stomachId = this.$route.params.id;
@@ -41,7 +49,7 @@ export default {
 
 <style scoped>
 p {
-  display: inline;
+  margin-bottom: 10px;
 }
 .cont {
   padding: 0 1.5rem;
