@@ -84,22 +84,21 @@
           <v-expansion-panel-content class="content animate fadeInUp one">
             <p class="question">반복되는 통증의 빈도는 어느정도 인가요?</p>
             <br />
-            <br />통증의 빈도는
-            <div class="pain-frequency">
+            <br />
+            <div class="pain-frequency animate fadeInRightBig three">
+              &nbsp;&nbsp;통증의 빈도는
               <select
-                class="ans animate fadeInRightBig three"
+                class="select"
                 v-model="survey_data.pain_how_often_day"
                 name="job"
               >
+                <option value selected disabled hidden>선택</option>
                 <option value="하루에">하루에</option>
-                <option value="일주일">일주일</option>
+                <option value="일주일">일주일에</option>
               </select>
 
-              <select
-                class="ans animate fadeInRightBig three"
-                v-model="survey_data.pain_how_often_many"
-                name="job"
-              >
+              <select class="select" v-model="survey_data.pain_how_often_many" name="job">
+                <option value selected disabled hidden>선택</option>
                 <option value="0-1회">0-1회</option>
                 <option value="2-3회">2-3회</option>
                 <option value="4-5회">4-5회</option>
@@ -222,7 +221,9 @@ export default {
       expand: 0,
       survey_data: {
         factor: [],
-        pain_repeated: ""
+        pain_repeated: "",
+        pain_how_often_day: "",
+        pain_how_often_many: ""
       }
     };
   },
@@ -469,5 +470,11 @@ a {
     -webkit-transform: none;
     transform: none;
   }
+}
+.select {
+  width: 70px;
+  height: 25px;
+  border: 1px solid #125b7f;
+  margin-right: 0.5rem;
 }
 </style>

@@ -171,10 +171,11 @@ export const store = new Vuex.Store({
         }) {
             axios.post("http://localhost:8000/api/rest-auth/logout/", this.state.userInfo)
                 .then(res => {
-                    alert('회원가입이 성공적으로 이루어졌습니다.');
+                    alert('로그아웃이 성공적으로 이루어졌습니다.');
                     commit("logout", "RESET_RANDOM_USER");
                     axios.defaults.headers.common["Authorization"] = undefined;
                     localStorage.clear();
+                    // location.href = "/"
                     router.push({
                         name: "home"
                     });

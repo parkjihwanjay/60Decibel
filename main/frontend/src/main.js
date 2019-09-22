@@ -35,7 +35,6 @@ new Vue({
     watch: {
         $route(to, from) {
             if (localStorage.getItem("access_token")) {
-                console.log("바뀐다");
                 this.$store.dispatch("getMemberInfo");
             }
         }

@@ -5,7 +5,7 @@
     </div>
     <form class="login-box">
       <p>아이디</p>
-      <input type="text" v-model="username" name="username" label="ID를 입력하세요" />
+      <input type="text" @keyup.enter="login({username, password})" v-model="username" name="username" label="ID를 입력하세요" />
       <p>비밀번호</p>
       <input
         type="password"

@@ -17,7 +17,14 @@
             name="username"
             v-bind:value="random_user.username"
           />
-          <input v-else type="text" v-model="username" name="username" placeholder="아이디 입력" />
+          <input
+            v-else
+            type="text"
+            @keyup.enter="signup({username, email, password1, password2})"
+            v-model="username"
+            name="username"
+            placeholder="아이디 입력"
+          />
 
           <p>이메일</p>
           <input v-if="random_user.email" type="text" name="email" v-bind:value="random_user.email" />
@@ -42,15 +49,16 @@
           <input
             v-if="random_user.password2"
             type="password"
+            @keyup.enter="signup({username, email, password1, password2})"
             name="userpassword2"
             v-bind:value="random_user.password2"
           />
           <input
             v-else
             type="password"
+            @keyup.enter="signup({username, email, password1, password2})"
             v-model="password2"
             name="userpassword2"
-            @keyup.enter="signup({username, email, password1, password2})"
             placeholder="6~12자리 비밀번호 입력"
           />
           <br />
