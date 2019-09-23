@@ -134,7 +134,7 @@ export const store = new Vuex.Store({
         }, loginObj) {
             // login --> 토큰 반환
             axios
-            // .post("http://54.180.31.52:8000/api/rest-auth/login/", loginObj)
+                // .post("http://54.180.31.52:8000/api/rest-auth/login/", loginObj)
                 .post("http://13.125.155.180:8000/api/rest-auth/login/", loginObj)
                 // loginObj = {email,password}
                 .then(res => {
@@ -209,7 +209,7 @@ export const store = new Vuex.Store({
                 axios
                     .post(
                         // "http://54.180.31.52:8000/api/rest-auth/registration/",
-                        "http://13.125.155.180:8000/api/rest-auth/registration/", 
+                        "http://13.125.155.180:8000/api/rest-auth/registration/",
                         quickLogin
                     )
                     .then(res => {
@@ -225,7 +225,7 @@ export const store = new Vuex.Store({
                 axios
                     .post(
                         // "http://54.180.31.52:8000/api/rest-auth/registration/",
-                        "http://13.125.155.180:8000/api/rest-auth/registration/", 
+                        "http://13.125.155.180:8000/api/rest-auth/registration/",
                         signupObj
                     )
                     // loginObj = {email,password}
@@ -272,7 +272,7 @@ export const store = new Vuex.Store({
                 //토큰 -> 멤버 정보 반환
                 //새로고침 --> 토큰만 갖고 멤버 정보 요청가능
                 axios
-                // .get("http://54.180.31.52:8000/api/user/", config)
+                    // .get("http://54.180.31.52:8000/api/user/", config)
                     .get("http://13.125.155.180:8000/api/user/", config)
                     .then(response => {
 
@@ -304,7 +304,7 @@ export const store = new Vuex.Store({
                 }
             };
             axios
-            // .get("http://54.180.31.52:8000/api/profiles/", config)
+                // .get("http://54.180.31.52:8000/api/profiles/", config)
                 .get("http://13.125.155.180:8000/api/profiles/", config)
 
                 .then(({
@@ -327,8 +327,8 @@ export const store = new Vuex.Store({
                 }
             };
             axios
-            // .get(`http://54.180.31.52:8000/api/stomach/${stomachId}/`, config)
-                .get("http://13.125.155.180:8000/api/stomach/${stomachId}/", config)
+                // .get(`http://54.180.31.52:8000/api/stomach/${stomachId}/`, config)
+                .get(`http://13.125.155.180:8000/api/stomach/${stomachId}/`, config)
 
                 .then(({
                     data
@@ -397,7 +397,7 @@ export const store = new Vuex.Store({
                 }
             };
             axios
-            // .put("http://54.180.31.52:8000/api/profileupdate/", update, config)
+                // .put("http://54.180.31.52:8000/api/profileupdate/", update, config)
                 .put("http://13.125.155.180:8000/api/profileupdate/", update, config)
 
                 .then(res => {
@@ -465,9 +465,9 @@ export const store = new Vuex.Store({
                 //     "http://127.0.0.1:8000/api/surveys/stomach/", stomachData, config)
                 .post("http://13.125.155.180:8000/api/surveys/stomach/", stomachData, config)
 
-                    
 
-            .then(res => {
+
+                .then(res => {
                     console.log(res);
                     let id = res.data.id;
                     commit("RESET_SURVEY");
