@@ -3,7 +3,7 @@
     <div class="contents">
       <div class="prof-img">
         <img v-if="profile.avatar" v-bind:src="profile.avatar" class="img" />
-        <img v-else src="../../assets/60db.png" class="img" />
+        <img v-else src="../../assets/user.png" class="img" />
       </div>
       <div class="prof-name">
         <p class="name">{{ profile.name }}</p>
@@ -28,7 +28,7 @@
           <p class="box-head">성별</p>
         </div>
         <p v-if="profile.gender" class="box-body">{{ profile.gender }}</p>
-        <p v-else class="box-body">?</p>
+        <p v-else class="box-body">' '</p>
       </div>
       <div class="box">
         <div class="icon">
@@ -36,7 +36,7 @@
           <p class="box-head">신장</p>
         </div>
         <p v-if="profile.height" class="box-body">{{ profile.height }}cm</p>
-        <p v-else class="box-body">?</p>
+        <p v-else class="box-body">' '</p>
       </div>
       <div class="box">
         <div class="icon">
@@ -44,7 +44,7 @@
           <p class="box-head">체중</p>
         </div>
         <p v-if="profile.weight" class="box-body">{{ profile.weight }}kg</p>
-        <p v-else class="box-body">?</p>
+        <p v-else class="box-body">' '</p>
       </div>
     </div>
   </div>
