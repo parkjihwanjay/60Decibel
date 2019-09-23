@@ -244,6 +244,7 @@ export default {
   background-color: white;
   padding-left: 1rem;
   color: rgb(56, 56, 56);
+  line-height: 0;
 }
 /* question footer */
 .buttons {

@@ -9,13 +9,16 @@
           60데시벨과 함께
           더 나은 진료 서비스를 경험해보세요.
         </p>
-        <p>대표 : 김아무개</p>
-        <p>SNS : instagram / facebook</p>
-        <p>주소 : 성북구 안암로 7가 고려대학교</p>
+        <div class="company-main">
+          <p>대표 : 김아무개</p>
+          <p>SNS : instagram / facebook</p>
+          <p>주소 : 성북구 안암로 7가 고려대학교</p>
+        </div>
       </div>
-      <div class="navAndLegal">
-        <div class="navigation">
-          <p class="header">사이트맵</p>
+
+      <div class="navigation">
+        <p class="header">사이트맵</p>
+        <div class="main">
           <router-link :to="{  name:'login' }">LOGIN</router-link>
           <router-link :to="{  name:'signup' }">SIGNUP</router-link>
 
@@ -25,13 +28,14 @@
 
           <router-link :to="{ name:'profiles' }">PROFILE</router-link>
         </div>
-        <div class="legal">
-          <p class="header">약관</p>
-          <a href="#">이용약관</a>
-
-          <a href="#">회원정보처리방침</a>
-        </div>
       </div>
+      <div class="legal">
+        <p class="header">약관</p>
+        <a href="#">이용약관</a>
+
+        <a href="#">회원정보처리방침</a>
+      </div>
+
       <div class="contect">
         <p class="header">문의</p>
         <p>전화번호 : 010-1234-5678</p>
@@ -51,11 +55,10 @@ export default {};
 .footer {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
-
   background-color: #fafafa;
-  min-height: 400px;
+  max-height: 650px;
 }
 .sections {
   display: flex;
@@ -63,7 +66,6 @@ export default {};
   align-items: flex-start;
   min-width: 900px;
   margin-bottom: 2rem;
-
   font-size: 0.85rem;
 }
 .header {
@@ -101,7 +103,6 @@ export default {};
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-
   width: 180px;
   line-height: 1.4rem;
 }
@@ -125,7 +126,6 @@ export default {};
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-
   width: 180px;
   line-height: 1.4rem;
 }
@@ -137,18 +137,21 @@ export default {};
 }
 @media (max-width: 768px) {
   .footer {
-    min-width: 100%;
-    min-height: 630px;
+    width: 100%;
+    max-height: 650px;
   }
   .sections {
+    height: 580px;
+    max-height: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    min-width: 90%;
+    justify-content: space-around;
+    align-items: flex-start;
+    min-width: 70%;
+    margin: 0 auto;
   }
   .header {
-    margin: 0 auto;
+    margin-bottom: 0.5rem;
   }
   /* company */
   .company {
@@ -163,15 +166,15 @@ export default {};
   }
 
   /* nav and legal */
-  .navAndLegal {
-    min-width: 320px;
-    justify-items: center;
-  }
+
   .navigation {
-    width: 150px;
+    display: inline;
   }
-  .legal {
-    width: 150px;
+  .navigation a {
+    margin-right: 0.8rem;
+  }
+  .copy {
+    margin-bottom: 1rem;
   }
 }
 </style>

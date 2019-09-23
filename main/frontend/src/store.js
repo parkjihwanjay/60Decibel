@@ -135,7 +135,7 @@ export const store = new Vuex.Store({
             // login --> 토큰 반환
             axios
             // .post("http://54.180.31.52:8000/api/rest-auth/login/", loginObj)
-                .post("http://127.0.0.1:8000/api/rest-auth/login/", loginObj)
+                .post("http://13.125.155.180:8000/api/rest-auth/login/", loginObj)
                 // loginObj = {email,password}
                 .then(res => {
                     // console.log(res.data.user.username)
@@ -169,7 +169,8 @@ export const store = new Vuex.Store({
         logout({
             commit
         }) {
-            axios.post("http://localhost:8000/api/rest-auth/logout/", this.state.userInfo)
+            // axios.post("http://localhost:8000/api/rest-auth/logout/", this.state.userInfo)
+            axios.post("http://13.125.155.180:8000/api/rest-auth/logout/", this.state.userInfo)
                 .then(res => {
                     alert('로그아웃이 성공적으로 이루어졌습니다.');
                     commit("logout", "RESET_RANDOM_USER");
@@ -208,7 +209,7 @@ export const store = new Vuex.Store({
                 axios
                     .post(
                         // "http://54.180.31.52:8000/api/rest-auth/registration/",
-                        "http://127.0.0.1:8000/api/rest-auth/registration/",
+                        "http://13.125.155.180:8000/api/rest-auth/registration/", 
                         quickLogin
                     )
                     .then(res => {
@@ -224,7 +225,7 @@ export const store = new Vuex.Store({
                 axios
                     .post(
                         // "http://54.180.31.52:8000/api/rest-auth/registration/",
-                        "http://127.0.0.1:8000/api/rest-auth/registration/",
+                        "http://13.125.155.180:8000/api/rest-auth/registration/", 
                         signupObj
                     )
                     // loginObj = {email,password}
@@ -272,7 +273,7 @@ export const store = new Vuex.Store({
                 //새로고침 --> 토큰만 갖고 멤버 정보 요청가능
                 axios
                 // .get("http://54.180.31.52:8000/api/user/", config)
-                    .get("http://127.0.0.1:8000/api/user/", config)
+                    .get("http://13.125.155.180:8000/api/user/", config)
                     .then(response => {
 
                         localStorage.setItem('isLogin', true);
@@ -304,7 +305,8 @@ export const store = new Vuex.Store({
             };
             axios
             // .get("http://54.180.31.52:8000/api/profiles/", config)
-                .get("http://127.0.0.1:8000/api/profiles/", config)
+                .get("http://13.125.155.180:8000/api/profiles/", config)
+
                 .then(({
                     data
                 }) => {
@@ -326,7 +328,8 @@ export const store = new Vuex.Store({
             };
             axios
             // .get(`http://54.180.31.52:8000/api/stomach/${stomachId}/`, config)
-                .get(`http://127.0.0.1:8000/api/stomach/${stomachId}/`, config)
+                .get("http://13.125.155.180:8000/api/stomach/${stomachId}/", config)
+
                 .then(({
                     data
                 }) => {
@@ -348,7 +351,9 @@ export const store = new Vuex.Store({
                 }
             };
             axios
-                .get("http://127.0.0.1:8000/api/surveys/", config)
+                // .get("http://127.0.0.1:8000/api/surveys/", config)
+                .get("http://13.125.155.180:8000/api/surveys/", config)
+
                 .then(({
                     data
                 }) => {
@@ -393,7 +398,8 @@ export const store = new Vuex.Store({
             };
             axios
             // .put("http://54.180.31.52:8000/api/profileupdate/", update, config)
-                .put("http://127.0.0.1:8000/api/profileupdate/", update, config)
+                .put("http://13.125.155.180:8000/api/profileupdate/", update, config)
+
                 .then(res => {
                     console.log(res);
                     router.push({
@@ -454,9 +460,12 @@ export const store = new Vuex.Store({
             };
             let stomachData = this.state.answer;
             axios
-                .post(
-                    // "http://54.180.31.52:8000/api/surveys/stomach/", stomachData, config)
-                    "http://127.0.0.1:8000/api/surveys/stomach/", stomachData, config)
+                // .post(
+                //     // "http://54.180.31.52:8000/api/surveys/stomach/", stomachData, config)
+                //     "http://127.0.0.1:8000/api/surveys/stomach/", stomachData, config)
+                .post("http://13.125.155.180:8000/api/surveys/stomach/", stomachData, config)
+
+                    
 
             .then(res => {
                     console.log(res);
