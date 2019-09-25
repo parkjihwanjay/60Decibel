@@ -201,7 +201,7 @@ export default {
 }
 .section {
   width: 100%;
-  height: 93vh;
+  height: 100vh;
 }
 
 /* 1차 수정 01:07 */
@@ -261,6 +261,10 @@ export default {
 }
 a {
   color: white;
+}
+button:focus {
+  background-color: #055075;
+  outline: none;
 }
 
 /* transition time set */

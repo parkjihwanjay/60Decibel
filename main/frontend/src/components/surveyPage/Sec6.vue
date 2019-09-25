@@ -74,7 +74,7 @@ export default {
 }
 .section {
   width: 100%;
-  height: 92vh;
+  height: 100vh;
 }
 .ans {
   width: 90%;

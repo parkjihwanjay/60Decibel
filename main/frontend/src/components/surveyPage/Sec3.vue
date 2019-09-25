@@ -14,16 +14,18 @@
             <div class="answers">
               <button
                 value="lest_than_10m"
-                @click="button_click('pain_duration', '10분 미만')"
+                @click="button_click('pain_duration', '10분 미만');single_button_toggle()"
                 class="answer animate fadeInRightBig three"
+                :class="{on : on}"
               >10분 미만</button>
 
               <br />
 
               <button
                 value="from_10m_to_1h"
-                @click="button_click('pain_duration', '10분-1시간')"
+                @click="button_click('pain_duration', '10분-1시간');single_button_toggle()"
                 class="answer animate fadeInRightBig three"
+                :class="{on : on}"
               >10분-1시간</button>
 
               <br />
@@ -218,6 +220,8 @@
 export default {
   data() {
     return {
+      on: false,
+      off: true,
       expand: 0,
       survey_data: {
         factor: [],
@@ -239,6 +243,10 @@ export default {
     },
     sec3(survey_data) {
       this.$store.dispatch("setSurveyData3", survey_data);
+    },
+    single_button_toggle() {
+      this.on = !this.on;
+      this.off = !this.off;
     }
   }
 };
@@ -348,6 +356,10 @@ export default {
 }
 a {
   color: white;
+}
+button:focus {
+  background-color: #055075;
+  outline: none;
 }
 .animate {
   -webkit-animation-duration: 0.8s;
@@ -477,5 +489,8 @@ a {
   height: 25px;
   border: 1px solid #125b7f;
   margin-right: 0.5rem;
+}
+.on {
+  border: 3px solid seagreen;
 }
 </style>

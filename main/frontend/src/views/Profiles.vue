@@ -55,28 +55,24 @@ export default {
 .header {
   background-color: transparent;
   width: 100%;
-  height: 37rem;
 }
 .body1 {
   background-color: white;
   border-bottom: 1px solid rgb(158, 158, 158);
   width: 100%;
-  min-height: 10rem;
 }
 .body2 {
   background-color: #ffffff;
   width: 100%;
-  min-height: 12rem;
 }
 .body3 {
   background: white;
   width: 100%;
-  min-height: 14rem;
+  padding: 1rem auto;
 }
 .footer {
-  background-color: white;
-  width: 100%;
-  min-height: 8rem;
+  background: white;
+  padding: 1.5rem;
 }
 </style>
 

@@ -17,7 +17,7 @@
             <div class="answers-box animate fadeInRightBig three">
               <button
                 value="change of appetite"
-                @click="button_click_multiple('associated_symptom_digestive', '식욕감소')"
+                @click="button_click_multiple('associated_symptom_digestive', '식욕감소');"
                 class="answer animate fadeInRightBig three"
               >식욕감소</button>
 
@@ -404,6 +404,28 @@
 export default {
   data() {
     return {
+      multipleChoice: [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
       expand: 0,
       survey_data: {
         associated_symptom_digestive: [],
@@ -417,15 +439,20 @@ export default {
   methods: {
     button_click(model, value) {
       this.survey_data[model] = value;
-      console.log(this.survey_data);
+      // console.log(this.survey_data);
     },
     button_click_multiple(model, value) {
       this.survey_data[model].push(value);
       this.survey_data[model] = Array.from(new Set(this.survey_data[model]));
-      console.log(this.survey_data);
+
+      // console.log(this.survey_data);
     },
     sec5(survey_data) {
       this.$store.dispatch("setSurveyData5", survey_data);
+    },
+    buttonClick(index) {
+      console.log(this.multipleChoice[index]);
+      this.multipleChoice[index] = !this.multipleChoice[index];
     }
   }
 };
@@ -539,6 +566,10 @@ a {
 span {
   font-size: 0.9rem;
   color: #125b7f;
+}
+button:focus {
+  background-color: #055075;
+  outline: none;
 }
 .animate {
   -webkit-animation-duration: 0.8s;
@@ -694,5 +725,9 @@ span {
     -webkit-transform: none;
     transform: none;
   }
+}
+.clicked {
+  background-color: #055075;
+  outline: none;
 }
 </style>

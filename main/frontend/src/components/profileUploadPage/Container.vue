@@ -7,8 +7,9 @@
         <div class="upload-detail">
           <div class="upload-img">
             <div class="bold">프로필 이미지</div>
+            <br />
             <img v-if="profile.avatar" v-bind:src="`${profile.avatar}`" class="img" />
-            <img v-else src="../../assets/60db.png" class="img" />
+            <img v-else src="../../assets/user.png" class="img" />
           </div>
           <div class="file-upload-form">
             <span class="spanlong">프로필 이미지 업로드</span>
@@ -192,7 +193,7 @@
             <input type="radio" v-model="update.drinking" name="drinking" id="no" value="False" />아니오
           </label>
           <br />
-          <span class="span3 spanlong">음주량(병)(일주일 기준)</span>
+          <span class="span3 spanlong">음주량(병)(일주일)</span>
           <input
             class="inputsmall"
             type="number"
@@ -211,13 +212,14 @@
           <br />
           <span class="span3">흡연 기간(년)</span>
           <input
+            class="inputsmall"
             type="number"
             ref="how_long_smoking"
             v-on:blur="storeUpdateHowLongSmoking()"
             v-bind:value="profile.how_long_smoking"
           />
           <br />
-          <span class="span3 spanlong">흡연 양(갑)(일주일 기준)</span>
+          <span class="span3 spanlong">흡연 양(갑)(일주일)</span>
           <input
             class="inputsmall"
             type="number"
@@ -227,12 +229,16 @@
           />
           <br />
           <span class="span3">직업</span>
-          <input type="text" ref="job" v-on:blur="storeUpdateJob()" v-bind:value="profile.job" />
+          <input
+            type="text"
+            ref="job"
+            v-on:blur="storeUpdateJob()"
+            v-bind:value="profile.job"
+            class="inputsmall"
+          />
           <br />
           <div class="habit-box">
             <label for="bad_habits" class="habit-head">다음 중 해당되는 사항에 모두 체크해주세요</label>
-
-            <br />
             <br />
             <input type="checkbox" v-model="update.relevant_data" value="스트레스를 많이 받는 편" />스트레스를 많이 받음
             <input type="checkbox" v-model="update.relevant_data" value="식사 불규칙" />식사 불규칙
@@ -368,7 +374,10 @@ export default {
         ) {
           console.log("가족력 초기값이 비었다");
         } else {
-          update.diagnosed_disease = profile.diagnosed_disease.slice(1, -1).replace(/'/g, "").split(",");
+          update.diagnosed_disease = profile.diagnosed_disease
+            .slice(1, -1)
+            .replace(/'/g, "")
+            .split(",");
         }
       }
       if (!update.taking_medicine) {
@@ -534,7 +543,7 @@ span {
   width: 100px;
 }
 .span3 {
-  width: 100px;
+  width: 55%;
   line-height: 140%;
 }
 .bold {
@@ -555,6 +564,7 @@ span {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-bottom: 2rem;
 }
 .file-upload-form {
   margin-bottom: 12px;
@@ -573,10 +583,11 @@ input {
   margin-bottom: 15px;
 }
 .inputsmall {
-  width: 50px;
+  width: 35%;
+  height: 26px;
 }
 .spanlong {
-  width: 60%;
+  width: 55%;
 }
 .button {
   color: white;
@@ -588,6 +599,7 @@ input {
 }
 .habit-box {
   max-width: 300px;
+  line-height: 150%;
 }
 .habit-head {
   font-weight: 700;

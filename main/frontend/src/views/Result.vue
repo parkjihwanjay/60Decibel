@@ -1,14 +1,16 @@
 <template>
   <div class="resultresult">
     <navbar class="nav" />
-    <div class="box">
-      <div class="page" id="pt-main">
-        <name />
-      </div>
-      <div class="page" id="pt-page">
-        <symptoms />
-        <sickness />
-        <history />
+    <div class="main">
+      <div class="box">
+        <div class="page" id="pt-main">
+          <name />
+        </div>
+        <div class="page" id="pt-page">
+          <symptoms />
+          <sickness />
+          <history />
+        </div>
       </div>
     </div>
   </div>
@@ -56,15 +58,23 @@ export default {
   display: none;
 }
 .resultresult {
-  background: linear-gradient(-45deg, #ea5455, #feb692);
+  height: 1400px;
+  background-image: linear-gradient(to top, #cfd9df 0%, #e2ebf0 100%);
+}
+.main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .box {
   width: 90%;
   margin: 1rem auto;
+  padding-bottom: 1rem;
   border-radius: 10px;
   /* border: 0.5px solid gray; */
   background-color: rgb(255, 255, 255, 0.9);
 }
+
 /*
 .resultresult {
   display: flex;

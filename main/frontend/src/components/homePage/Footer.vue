@@ -166,7 +166,6 @@ export default {};
   }
 
   /* nav and legal */
-
   .navigation {
     display: inline;
   }

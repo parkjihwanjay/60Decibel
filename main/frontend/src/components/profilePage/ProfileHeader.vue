@@ -70,7 +70,7 @@ export default {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  min-height: 600px;
+  min-height: 500px;
 }
 
 .contents {
@@ -104,7 +104,7 @@ export default {
   margin-top: 0.5rem;
 }
 .prof-intro {
-  margin-top: 1rem;
+  margin: 1rem auto;
   font-size: 0.9rem;
   text-align: center;
   line-height: 140%;

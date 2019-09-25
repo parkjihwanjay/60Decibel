@@ -4,14 +4,14 @@
       <div class="txt-head">과거력</div>
       <!-- 건강검진 이력 -->
       <div class="profileinfo">
-        <div class="profiletitle">최근 건강검진 이력</div>
+        <div class="profiletitle">최근 건강 검진</div>
         <div
           v-if="`${profile.had_checkup}==='True'`"
           class="profiledetail"
-        >{{ profile.had_checkup_true }}</div>
+        >{{ profile.had_checkup_true }} 전</div>
       </div>
       <div class="profileinfo">
-        <div class="profiletitle">최근 진단받은 병</div>
+        <div class="profiletitle">최근 진단 병명</div>
         <div v-if="profile.had_checkup_true" class="profiledetail">{{ diagnosed_disease }}</div>
       </div>
       <!-- 복용약 -->
@@ -53,27 +53,27 @@ export default {
 
 <style scoped>
 .content3 {
-  padding-top: 20px;
-  padding-left: 20px;
+  padding: 1.5rem;
 }
 .profileinfo {
   font-size: 1.05rem;
   display: flex;
-  line-height: 140%;
+  line-height: 150%;
+  padding-left: 2rem;
 }
 .profiletitle {
-  color: rgb(48, 48, 48);
-  font-weight: bolder;
+  color: rgb(80, 80, 80);
   font-weight: 800;
-  width: 45%;
+  width: 40%;
+  border-right: 2px solid rgba(197, 197, 197, 0.507);
 }
 .profiledetail {
+  padding-left: 3rem;
 }
 .txt-head {
   color: #397979;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
   font-size: 1.5rem;
-  font-weight: bolder;
   font-weight: 800;
 }
 .button {
