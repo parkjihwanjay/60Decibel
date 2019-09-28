@@ -3,29 +3,44 @@
     <div class="head">동반증상</div>
     <div class="main">
       <br />
-      <p>소화기와 관련하여 {{associated_symptom_digestive}}와 같은 동반증상이 있습니다.</p>
+      <p>
+        소화기와 관련하여 {{ associated_symptom_digestive }}와 같은 동반증상이
+        있습니다.
+      </p>
 
-      <p>(순환기/호흡기)와 관련하여 {{associated_symptom_circulatory}}와 같은 동반증상이 있습니다.</p>
+      <p>
+        (순환기/호흡기)와 관련하여 {{ associated_symptom_circulatory }}와 같은
+        동반증상이 있습니다.
+      </p>
 
-      <p>부인과와 관련하여 {{associated_symptom_gynecology}}</p>
+      <p>부인과와 관련하여 {{ associated_symptom_gynecology }}</p>
 
-      <p>전신과 관련하여 {{associated_symptom_whole_body}}와 같은 동반증상이 있습니다.</p>
+      <p>
+        전신과 관련하여 {{ associated_symptom_whole_body }}와 같은 동반증상이
+        있습니다.
+      </p>
 
-      <p>비뇨기와 관련하여 {{associated_symptom_urinary}}와 같은 동반증상이 있습니다.</p>
+      <p>
+        비뇨기와 관련하여 {{ associated_symptom_urinary }}와 같은 동반증상이
+        있습니다.
+      </p>
 
-      <p>그 외 {{associated_symptom_others}}와 같은 동반증상이 있습니다.</p>
+      <p>그 외 {{ associated_symptom_others }}와 같은 동반증상이 있습니다.</p>
 
-      <p>통증이 {{factor}}와 같은 상황에 심해지거나 완화됩니다.</p>
+      <p>통증이 {{ factor }}와 같은 상황에 심해지거나 완화됩니다.</p>
 
-      <p>그 외 {{stomach.other_factor}}와 같은 상황에도 통증이 심해지거나 완화됩니다.</p>
+      <p>
+        그 외 {{ stomach.other_factor }}와 같은 상황에도 통증이 심해지거나
+        완화됩니다.
+      </p>
 
-      <p>복부에 관한 과거이력 : {{abdomen_relevant}}</p>
+      <p>복부에 관한 과거이력 : {{ abdomen_relevant }}</p>
     </div>
   </div>
-</template> 
+</template>
 <script>
 import { mapState, mapActions } from "vuex";
-import { store } from "../../store.js";
+// import { store } from "../../store/store.js";
 export default {
   computed: {
     ...mapState(["stomach"]),
@@ -95,4 +110,3 @@ p {
   display: inline;
 }
 </style>
-    
