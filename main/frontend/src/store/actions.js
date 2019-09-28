@@ -45,7 +45,7 @@ export default {
   // 로그아웃 function
   logout({ commit }) {
     // axios.post("http://localhost:8000/api/rest-auth/logout/", this.state.userInfo)
-    Logout(this.stat.userInfo)
+    Logout(this.state.userInfo)
       .then(res => {
         alert("로그아웃이 성공적으로 이루어졌습니다.");
         commit("logout", "RESET_RANDOM_USER");
