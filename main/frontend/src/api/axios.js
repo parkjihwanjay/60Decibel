@@ -12,10 +12,10 @@ const releaseApi = {
   registration: `${releaseIP}api/rest-auth/registration/`,
   user: `${releaseIP}api/user/`,
   profile: `${releaseIP}api/profiles/`,
-  // stomachGet: `${releaseIP}api/stomach/${stomachId}/`,
-  surverys: `${releaseIP}api/surveys/`,
+  stomachGet: `${releaseIP}api/stomach/`,
+  surveys: `${releaseIP}api/surveys/`,
   profileupdat: `${releaseIP}api/profileupdate/`,
-  stomach: `${releaseIP}api/stomach/`
+  stomach: `${releaseIP}api/surveys/stomach/`
 };
 
 function Login(loginObj) {
@@ -34,17 +34,17 @@ function getProfileInfo(config) {
   return axios.get(releaseApi.profiles, config);
 }
 function getStomachInfo(stomachId, config) {
-  const getStomachUrl = `${releaseApi.stomach}${stomachId}`;
+  const getStomachUrl = `${releaseApi.stomachGet}${stomachId}`;
   return axios.get(getStomachUrl, config);
 }
 function getSurveyHistory(config) {
-  return axios.get(releaseApi.surverys, config);
+  return axios.get(releaseApi.surveys, config);
 }
 function updateProfileInfo(update) {
   return axios.put(releaseApi.profileupdate, update);
 }
 function shootSurveyData(stomachData, config) {
-  return axios.post(releaseApi.stomachPost, stomachData, config);
+  return axios.post(releaseApi.stomach, stomachData, config);
 }
 
 export {
