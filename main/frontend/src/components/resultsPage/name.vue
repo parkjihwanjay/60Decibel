@@ -1,7 +1,7 @@
 <template>
   <div class="info">
     <p class="head">{{ profile.name }}님의 설문 결과</p>
-    <p class="date">작성일 : {{stomach.created_at}}</p>
+    <p class="date">작성일 : {{ stomach.created_at }}</p>
     <br />
     <div class="result-table">
       <div class="row a">
@@ -38,7 +38,7 @@
 
 <script>
 import { mapState, mapActions } from "vuex";
-import { store } from "../../store.js";
+import { store } from "../../store/store.js";
 export default {
   computed: {
     ...mapState(["profile"]),
@@ -46,7 +46,7 @@ export default {
   },
   created() {
     const stomachId = this.$route.params.id;
-    
+
     this.$store.dispatch("getProfileInfo");
     this.$store.dispatch("getStomachInfo", stomachId);
   }

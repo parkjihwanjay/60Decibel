@@ -17,7 +17,7 @@ import Container3 from "../components/homePage/Container3.vue";
 import Container4 from "../components/homePage/Container4.vue";
 import Navbar from "../components/homePage/Navbar.vue";
 import Footer from "../components/homePage/Footer.vue";
-import { store } from "../store.js";
+import { store } from "../store/store.js";
 import { mapState, mapActions } from "vuex";
 export default {
   name: "home",
@@ -53,4 +53,3 @@ export default {
   bottom: 0;
 } */
 </style>
-
