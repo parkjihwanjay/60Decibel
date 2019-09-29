@@ -230,15 +230,16 @@ export default {
         "Content-Type": "application/json"
       }
     };
-    updateProfileInfo()
+    updateProfileInfo(update)
       .then(res => {
         console.log(res);
+        debugger;
         router.push({
           name: "profiles"
         });
       })
       .catch(error => {
-        console.log(error.response.data);
+        console.log(error);
       });
   },
   setSurveyData({ commit }, survey_data) {

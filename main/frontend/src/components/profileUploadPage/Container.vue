@@ -9,8 +9,8 @@
             <div class="bold">프로필 이미지</div>
             <br />
             <img
-              v-if="profile.avatar"
-              v-bind:src="`${profile.avatar}`"
+              v-if="update.avatar"
+              v-bind:src="`${update.avatar}`"
               class="img"
             />
             <img v-else src="../../assets/user.png" class="img" />
@@ -61,7 +61,7 @@
           <input type="number" ref="height" v-model="update.height" />
           <br />
           <span>체중</span>
-          <input type="number" ref="weight" v-model="profile.weight" />
+          <input type="number" ref="weight" v-model="update.weight" />
           <br />
         </div>
       </div>
@@ -325,7 +325,7 @@
     </form>
     <div class="updatecomplete">
       <v-btn
-        @click.native="updateProfileInfo(update, profile)"
+        @click.native="updateProfileInfo()"
         class="button"
         color="#669999"
         to="/profiles"
@@ -365,165 +365,17 @@ export default {
     };
   },
   computed: {
-    ...mapState(["profile"]),
+    // ...mapState(["profile"]),
     update: function() {
-      return this.profile;
+      return this.$store.state.profile;
     }
   },
+  created() {
+    this.$store.dispatch("getProfileInfo");
+  },
   methods: {
-    storeUpdateName() {
-      console.log(this.$refs.name.value);
-      this.update.name = this.$refs.name.value;
-      this.$store.dispatch("switchName", this.update.name);
-    },
-    storeUpdateHeight() {
-      console.log(this.$refs.height.value);
-      this.update.height = this.$refs.height.value;
-      this.$store.dispatch("switchHeight", this.update.height);
-    },
-    storeUpdateWeight() {
-      console.log(this.$refs.weight.value);
-      this.update.weight = this.$refs.weight.value;
-      this.$store.dispatch("switchWeight", this.update.weight);
-    },
-    storeUpdateWhatMedicine() {
-      console.log(this.$refs.what_medicine.value);
-      this.update.what_medicine = this.$refs.what_medicine.value;
-      this.$store.dispatch("switchWhatMedicine", this.update.what_medicine);
-    },
-    storeUpdateDrinkingPerWeek() {
-      console.log(this.$refs.drinking_per_week.value);
-      this.update.drinking_per_week = this.$refs.drinking_per_week.value;
-      this.$store.dispatch(
-        "switchDrinkingPerWeek",
-        this.update.drinking_per_week
-      );
-    },
-    storeUpdateHowLongSmoking() {
-      console.log(this.$refs.how_long_smoking.value);
-      this.update.how_long_smoking = this.$refs.how_long_smoking.value;
-      this.$store.dispatch(
-        "switchHowLongSmoking",
-        this.update.how_long_smoking
-      );
-    },
-    storeUpdateHowMuchSmoking() {
-      console.log(this.$refs.how_much_smoking.value);
-      this.update.how_much_smoking = this.$refs.how_much_smoking.value;
-      this.$store.dispatch(
-        "switchHowMuchSmoking",
-        this.update.how_much_smoking
-      );
-    },
-    storeUpdateJob() {
-      console.log(this.$refs.job.value);
-      this.update.job = this.$refs.job.value;
-      this.$store.dispatch("switchJob", this.update.job);
-    },
-    updateProfileInfo(update, profile) {
-      console.log(update);
-      if (!update.avatar) {
-        console.log("아바타 비었다");
-        update.avatar = profile.avatar_base64;
-        update.avatar_base64 = profile.avatar_base64;
-      }
-      if (!update.gender) {
-        console.log("gender비었다");
-        update.gender = profile.gender;
-      }
-      if (!update.birth_date) {
-        console.log("생일비었다");
-        update.birth_date = profile.birth_date;
-      }
-      if (!update.had_checkup) {
-        console.log("검진여부비었다");
-        update.had_checkup = profile.had_checkup;
-      }
-      if (!update.had_checkup_true) {
-        console.log("검진 확장 비었다");
-        update.had_checkup_true = profile.had_checkup_true;
-      }
-      if (update.diagnosed_disease == "") {
-        console.log("질병 이력 비었다");
-        if (
-          profile.diagnosed_disease === "" ||
-          profile.diagnosed_disease === "[]"
-        ) {
-          console.log("가족력 초기값이 비었다");
-        } else {
-          update.diagnosed_disease = profile.diagnosed_disease
-            .slice(1, -1)
-            .replace(/'/g, "")
-            .split(",");
-        }
-      }
-      if (!update.taking_medicine) {
-        console.log("복용중인 약 비었다");
-        update.taking_medicine = profile.taking_medicine;
-      }
-      if (update.family_history == "") {
-        console.log("가족력 비었다");
-        if (profile.family_history === "" || profile.family_history === "[]") {
-          console.log("가족력 초기값이 비었다");
-        } else {
-          update.family_history = profile.family_history
-            .slice(1, -1)
-            .replace(/'/g, "")
-            .split(",");
-        }
-      }
-      if (!update.drinking) {
-        console.log("음주 여부 비었다");
-        update.drinking = profile.drinking;
-      }
-      if (!update.smoking) {
-        console.log("흡연 여부 비었다");
-        update.smoking = profile.smoking;
-      }
-      if (update.relevant_data == "") {
-        console.log("나쁜 습관 비었다");
-        if (profile.relevant_data === "" || profile.relevant_data === "[]") {
-          console.log("가족력 초기값이 비었다");
-        } else {
-          update.relevant_data = profile.relevant_data
-            .slice(1, -1)
-            .replace(/'/g, "")
-            .split(",");
-        }
-      }
-      if (!update.name) {
-        console.log("name비었다");
-        update.name = profile.name;
-      }
-      if (!update.height) {
-        console.log("height비었다");
-        update.height = profile.height;
-      }
-      if (!update.weight) {
-        console.log("weight비었다");
-        update.weight = profile.weight;
-      }
-      if (!update.what_medicine) {
-        console.log("what_medicine비었다");
-        update.what_medicine = profile.what_medicine;
-      }
-      if (!update.drinking_per_week) {
-        console.log("drinking_per_week비었다");
-        update.drinking_per_week = profile.drinking_per_week;
-      }
-      if (!update.how_long_smoking) {
-        console.log("how_long_smoking비었다");
-        update.how_long_smoking = profile.how_long_smoking;
-      }
-      if (!update.how_much_smoking) {
-        console.log("how_much_smoking비었다");
-        update.how_much_smoking = profile.how_much_smoking;
-      }
-      if (!update.job) {
-        console.log("job 비었다");
-        update.job = profile.job;
-      }
-      this.$store.dispatch("updateProfileInfo", update);
+    updateProfileInfo() {
+      this.$store.dispatch("updateProfileInfo", this.update);
     },
     previewImage: function(event) {
       // Reference to the DOM input element
@@ -546,11 +398,161 @@ export default {
         reader.readAsDataURL(input.files[0]);
       }
     }
-  },
-  created() {
-    this.$store.dispatch("getProfileInfo");
-    console.log("state 값 : ", this.profile);
-    console.log(this.profile.family_history);
+    // storeUpdateName() {
+    //   console.log(this.$refs.name.value);
+    //   this.update.name = this.$refs.name.value;
+    //   this.$store.dispatch("switchName", this.update.name);
+    // },
+    // storeUpdateHeight() {
+    //   console.log(this.$refs.height.value);
+    //   this.update.height = this.$refs.height.value;
+    //   this.$store.dispatch("switchHeight", this.update.height);
+    // },
+    // storeUpdateWeight() {
+    //   console.log(this.$refs.weight.value);
+    //   this.update.weight = this.$refs.weight.value;
+    //   this.$store.dispatch("switchWeight", this.update.weight);
+    // },
+    // storeUpdateWhatMedicine() {
+    //   console.log(this.$refs.what_medicine.value);
+    //   this.update.what_medicine = this.$refs.what_medicine.value;
+    //   this.$store.dispatch("switchWhatMedicine", this.update.what_medicine);
+    // },
+    // storeUpdateDrinkingPerWeek() {
+    //   console.log(this.$refs.drinking_per_week.value);
+    //   this.update.drinking_per_week = this.$refs.drinking_per_week.value;
+    //   this.$store.dispatch(
+    //     "switchDrinkingPerWeek",
+    //     this.update.drinking_per_week
+    //   );
+    // },
+    // storeUpdateHowLongSmoking() {
+    //   console.log(this.$refs.how_long_smoking.value);
+    //   this.update.how_long_smoking = this.$refs.how_long_smoking.value;
+    //   this.$store.dispatch(
+    //     "switchHowLongSmoking",
+    //     this.update.how_long_smoking
+    //   );
+    // },
+    // storeUpdateHowMuchSmoking() {
+    //   console.log(this.$refs.how_much_smoking.value);
+    //   this.update.how_much_smoking = this.$refs.how_much_smoking.value;
+    //   this.$store.dispatch(
+    //     "switchHowMuchSmoking",
+    //     this.update.how_much_smoking
+    //   );
+    // },
+    // storeUpdateJob() {
+    //   console.log(this.$refs.job.value);
+    //   this.update.job = this.$refs.job.value;
+
+    //   this.$store.dispatch("switchJob", this.update.job);
+    // },
+    // updateProfileInfo(update, profile) {
+    //   console.log(update);
+    //   if (!update.avatar) {
+    //     console.log("아바타 비었다");
+    //     update.avatar = profile.avatar_base64;
+    //     update.avatar_base64 = profile.avatar_base64;
+    //   }
+    //   if (!update.gender) {
+    //     console.log("gender비었다");
+    //     update.gender = profile.gender;
+    //   }
+    //   if (!update.birth_date) {
+    //     console.log("생일비었다");
+    //     update.birth_date = profile.birth_date;
+    //   }
+    //   if (!update.had_checkup) {
+    //     console.log("검진여부비었다");
+    //     update.had_checkup = profile.had_checkup;
+    //   }
+    //   if (!update.had_checkup_true) {
+    //     console.log("검진 확장 비었다");
+    //     update.had_checkup_true = profile.had_checkup_true;
+    //   }
+    //   if (update.diagnosed_disease == "") {
+    //     console.log("질병 이력 비었다");
+    //     if (
+    //       profile.diagnosed_disease === "" ||
+    //       profile.diagnosed_disease === "[]"
+    //     ) {
+    //       console.log("가족력 초기값이 비었다");
+    //     } else {
+    //       update.diagnosed_disease = profile.diagnosed_disease
+    //         .slice(1, -1)
+    //         .replace(/'/g, "")
+    //         .split(",");
+    //     }
+    //   }
+    //   if (!update.taking_medicine) {
+    //     console.log("복용중인 약 비었다");
+    //     update.taking_medicine = profile.taking_medicine;
+    //   }
+    //   if (update.family_history == "") {
+    //     console.log("가족력 비었다");
+    //     if (profile.family_history === "" || profile.family_history === "[]") {
+    //       console.log("가족력 초기값이 비었다");
+    //     } else {
+    //       update.family_history = profile.family_history
+    //         .slice(1, -1)
+    //         .replace(/'/g, "")
+    //         .split(",");
+    //     }
+    //   }
+    //   if (!update.drinking) {
+    //     console.log("음주 여부 비었다");
+    //     update.drinking = profile.drinking;
+    //   }
+    //   if (!update.smoking) {
+    //     console.log("흡연 여부 비었다");
+    //     update.smoking = profile.smoking;
+    //   }
+    //   if (update.relevant_data == "") {
+    //     console.log("나쁜 습관 비었다");
+    //     if (profile.relevant_data === "" || profile.relevant_data === "[]") {
+    //       console.log("가족력 초기값이 비었다");
+    //     } else {
+    //       update.relevant_data = profile.relevant_data
+    //         .slice(1, -1)
+    //         .replace(/'/g, "")
+    //         .split(",");
+    //     }
+    //   }
+    //   if (!update.name) {
+    //     console.log("name비었다");
+    //     update.name = profile.name;
+    //   }
+    //   if (!update.height) {
+    //     console.log("height비었다");
+    //     update.height = profile.height;
+    //   }
+    //   if (!update.weight) {
+    //     console.log("weight비었다");
+    //     update.weight = profile.weight;
+    //   }
+    //   if (!update.what_medicine) {
+    //     console.log("what_medicine비었다");
+    //     update.what_medicine = profile.what_medicine;
+    //   }
+    //   if (!update.drinking_per_week) {
+    //     console.log("drinking_per_week비었다");
+    //     update.drinking_per_week = profile.drinking_per_week;
+    //   }
+    //   if (!update.how_long_smoking) {
+    //     console.log("how_long_smoking비었다");
+    //     update.how_long_smoking = profile.how_long_smoking;
+    //   }
+    //   if (!update.how_much_smoking) {
+    //     console.log("how_much_smoking비었다");
+    //     update.how_much_smoking = profile.how_much_smoking;
+    //   }
+    //   if (!update.job) {
+    //     console.log("job 비었다");
+    //     update.job = profile.job;
+    //   }
+    //   this.$store.dispatch("updateProfileInfo", update);
+    // },
   }
 };
 </script>
