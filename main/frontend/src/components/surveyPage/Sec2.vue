@@ -17,7 +17,9 @@
                 value="whole abdomen"
                 @click="button_click_multiple('symptom_location', '복부전체')"
                 class="answer-box"
-              >복부전체</button>
+              >
+                복부전체
+              </button>
 
               <br />
 
@@ -25,7 +27,9 @@
                 value="sternal"
                 @click="button_click_multiple('symptom_location', '명치부위')"
                 class="answer-box"
-              >명치부위</button>
+              >
+                명치부위
+              </button>
 
               <br />
 
@@ -33,7 +37,9 @@
                 value="sternal"
                 @click="button_click_multiple('symptom_location', '배꼽부위')"
                 class="answer-box"
-              >배꼽부위</button>
+              >
+                배꼽부위
+              </button>
 
               <br />
 
@@ -41,7 +47,9 @@
                 value="sternal"
                 @click="button_click_multiple('symptom_location', '옆구리')"
                 class="answer-box"
-              >옆구리</button>
+              >
+                옆구리
+              </button>
 
               <br />
 
@@ -49,7 +57,9 @@
                 value="LUQ"
                 @click="button_click_multiple('symptom_location', '왼쪽 위')"
                 class="answer-box"
-              >왼쪽 위</button>
+              >
+                왼쪽 위
+              </button>
 
               <br />
 
@@ -57,7 +67,9 @@
                 value="LLQ"
                 @click="button_click_multiple('symptom_location', '오른쪽 위')"
                 class="answer-box"
-              >오른쪽 위</button>
+              >
+                오른쪽 위
+              </button>
 
               <br />
 
@@ -65,15 +77,21 @@
                 value="RUQ"
                 @click="button_click_multiple('symptom_location', '왼쪽 아래')"
                 class="answer-box"
-              >왼쪽 아래</button>
+              >
+                왼쪽 아래
+              </button>
 
               <br />
 
               <button
                 value="RLQ"
-                @click="button_click_multiple('symptom_location', '오른쪽 아래')"
+                @click="
+                  button_click_multiple('symptom_location', '오른쪽 아래')
+                "
                 class="answer-box"
-              >오른쪽 아래</button>
+              >
+                오른쪽 아래
+              </button>
 
               <!-- 인우 : 뭔지 모르겠습니다.... -->
               <!-- <button
@@ -99,7 +117,9 @@
                 value="True"
                 @click="button_click('location_move', '예')"
                 class="answerTF animate fadeInRightBig three"
-              >예</button>
+              >
+                예
+              </button>
 
               <br />
 
@@ -107,7 +127,9 @@
                 value="False"
                 @click="button_click('location_move', '아니오')"
                 class="answerTF animate fadeInRightBig three"
-              >아니오</button>
+              >
+                아니오
+              </button>
             </div>
             <br />
           </v-expansion-panel-content>
@@ -115,7 +137,7 @@
         <v-expansion-panel class="q1-3">
           <v-expansion-panel-header
             class="header animate fadeInDown two"
-            v-if="survey_data.location_move==='예'"
+            v-if="survey_data.location_move === '예'"
           >
             &nbsp;&nbsp;Q2-1.
             <template v-slot:actions></template>
@@ -150,7 +172,9 @@
                 value="True"
                 @click="button_click('pain_spread', '예')"
                 class="answerTF animate fadeInRightBig three"
-              >예</button>
+              >
+                예
+              </button>
 
               <br />
 
@@ -158,7 +182,9 @@
                 value="False"
                 @click="button_click('pain_spread', '아니오')"
                 class="answerTF animate fadeInRightBig three"
-              >아니오</button>
+              >
+                아니오
+              </button>
             </div>
             <br />
           </v-expansion-panel-content>
@@ -166,7 +192,7 @@
         <v-expansion-panel class="q1-1">
           <v-expansion-panel-header
             class="header animate animate fadeInDown two"
-            v-if="survey_data.pain_spread==='예'"
+            v-if="survey_data.pain_spread === '예'"
           >
             &nbsp;&nbsp;Q3-1.
             <template v-slot:actions></template>
@@ -190,8 +216,10 @@
       </v-expansion-panels>
     </div>
     <div class="buttons">
-      <router-link :to="{name:'sec1'}">이전</router-link>
-      <router-link :to="{name:'sec3'}" @click.native="sec2(survey_data)">다음</router-link>
+      <router-link :to="{ name: 'sec1' }">이전</router-link>
+      <router-link :to="{ name: 'sec3' }" @click.native="sec2(survey_data)"
+        >다음</router-link
+      >
     </div>
   </div>
 </template>
@@ -219,7 +247,7 @@ export default {
       console.log(this.survey_data);
     },
     sec2(survey_data) {
-      this.$store.dispatch("setSurveyData2", survey_data);
+      this.$store.dispatch("setSurveyData", survey_data);
     }
   }
 };

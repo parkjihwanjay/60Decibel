@@ -14,9 +14,13 @@
             <div class="answers animate fadeInRightBig three">
               <button
                 value="crushing"
-                @click="button_click_multiple('pain_character', '쥐어짜는듯 함')"
+                @click="
+                  button_click_multiple('pain_character', '쥐어짜는듯 함')
+                "
                 class="answer"
-              >쥐어짜는듯 함</button>
+              >
+                쥐어짜는듯 함
+              </button>
 
               <br />
 
@@ -24,7 +28,9 @@
                 value="burning"
                 @click="button_click_multiple('pain_character', '타는듯 함')"
                 class="answer"
-              >타는듯 함</button>
+              >
+                타는듯 함
+              </button>
 
               <br />
 
@@ -32,7 +38,9 @@
                 value="stabbing"
                 @click="button_click_multiple('pain_character', '베이는듯 함')"
                 class="answer"
-              >베이는듯 함</button>
+              >
+                베이는듯 함
+              </button>
 
               <br />
 
@@ -40,7 +48,9 @@
                 value="splitting"
                 @click="button_click_multiple('pain_character', '찢어지듯 함')"
                 class="answer"
-              >찢어지듯 함</button>
+              >
+                찢어지듯 함
+              </button>
             </div>
             <br />
           </v-expansion-panel-content>
@@ -80,14 +90,18 @@
                 value="True"
                 @click="button_click('pain_worse', '예')"
                 class="answer animate fadeInRightBig three"
-              >예</button>
+              >
+                예
+              </button>
               <br />
 
               <button
                 value="False"
                 @click="button_click('pain_worse', '아니오')"
                 class="answer animate fadeInRightBig three"
-              >아니오</button>
+              >
+                아니오
+              </button>
             </div>
             <br />
           </v-expansion-panel-content>
@@ -109,14 +123,18 @@
                 value="True"
                 @click="button_click('pain_experience', '예')"
                 class="answer animate fadeInRightBig three"
-              >예</button>
+              >
+                예
+              </button>
               <br />
 
               <button
                 value="False"
                 @click="button_click('pain_experience', '아니오')"
                 class="answer animate fadeInRightBig three"
-              >아니오</button>
+              >
+                아니오
+              </button>
             </div>
             <br />
           </v-expansion-panel-content>
@@ -124,8 +142,10 @@
       </v-expansion-panels>
     </div>
     <div class="buttons">
-      <router-link :to="{name:'sec3'}">이전</router-link>
-      <router-link :to="{name:'sec5'}" @click.native="sec4(survey_data)">다음</router-link>
+      <router-link :to="{ name: 'sec3' }">이전</router-link>
+      <router-link :to="{ name: 'sec5' }" @click.native="sec4(survey_data)"
+        >다음</router-link
+      >
     </div>
   </div>
 </template>
@@ -151,7 +171,7 @@ export default {
       console.log(this.survey_data);
     },
     sec4(survey_data) {
-      this.$store.dispatch("setSurveyData4", survey_data);
+      this.$store.dispatch("setSurveyData", survey_data);
     }
   }
 };

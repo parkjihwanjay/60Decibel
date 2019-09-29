@@ -14,19 +14,29 @@
             <div class="answers">
               <button
                 value="lest_than_10m"
-                @click="button_click('pain_duration', '10분 미만');single_button_toggle()"
+                @click="
+                  button_click('pain_duration', '10분 미만');
+                  single_button_toggle();
+                "
                 class="answer animate fadeInRightBig three"
-                :class="{on : on}"
-              >10분 미만</button>
+                :class="{ on: on }"
+              >
+                10분 미만
+              </button>
 
               <br />
 
               <button
                 value="from_10m_to_1h"
-                @click="button_click('pain_duration', '10분-1시간');single_button_toggle()"
+                @click="
+                  button_click('pain_duration', '10분-1시간');
+                  single_button_toggle();
+                "
                 class="answer animate fadeInRightBig three"
-                :class="{on : on}"
-              >10분-1시간</button>
+                :class="{ on: on }"
+              >
+                10분-1시간
+              </button>
 
               <br />
 
@@ -34,7 +44,9 @@
                 value="more_than_1h"
                 @click="button_click('pain_duration', '1시간 이상')"
                 class="answer animate fadeInRightBig three"
-              >1시간이상</button>
+              >
+                1시간이상
+              </button>
 
               <br />
 
@@ -42,7 +54,9 @@
                 value="all_day"
                 @click="button_click('pain_duration', '하루종일')"
                 class="answer animate fadeInRightBig three"
-              >하루종일</button>
+              >
+                하루종일
+              </button>
             </div>
             <br />
           </v-expansion-panel-content>
@@ -62,13 +76,17 @@
                 value="True"
                 @click="button_click('pain_repeated', '반복됩니다')"
                 class="answer animate fadeInRightBig three"
-              >반복됩니다.</button>
+              >
+                반복됩니다.
+              </button>
               <br />
               <button
                 value="False"
                 @click="button_click('pain_repeated', '단발성입니다')"
                 class="answer animate fadeInRightBig three"
-              >단발성입니다.</button>
+              >
+                단발성입니다.
+              </button>
 
               <br />
             </div>
@@ -78,7 +96,7 @@
         <v-expansion-panel class="q1-1">
           <v-expansion-panel-header
             class="header animate fadeInDown two"
-            v-if="survey_data.pain_repeated==='반복됩니다'"
+            v-if="survey_data.pain_repeated === '반복됩니다'"
           >
             &nbsp;&nbsp;Q2-1.
             <template v-slot:actions></template>
@@ -99,7 +117,11 @@
                 <option value="일주일">일주일에</option>
               </select>
 
-              <select class="select" v-model="survey_data.pain_how_often_many" name="job">
+              <select
+                class="select"
+                v-model="survey_data.pain_how_often_many"
+                name="job"
+              >
                 <option value selected disabled hidden>선택</option>
                 <option value="0-1회">0-1회</option>
                 <option value="2-3회">2-3회</option>
@@ -123,7 +145,9 @@
                 value="after meal"
                 @click="button_click_multiple('factor', '식사후 심화')"
                 class="answer-box"
-              >식사후 심화</button>
+              >
+                식사후 심화
+              </button>
 
               <br />
 
@@ -131,7 +155,9 @@
                 value="no meal"
                 @click="button_click_multiple('factor', '공복에 심화')"
                 class="answer-box"
-              >공복에 심화</button>
+              >
+                공복에 심화
+              </button>
 
               <br />
 
@@ -139,7 +165,9 @@
                 value="after alchol"
                 @click="button_click_multiple('factor', '음주후 심화')"
                 class="answer-box"
-              >음주후 심화</button>
+              >
+                음주후 심화
+              </button>
 
               <br />
 
@@ -147,7 +175,9 @@
                 value="posture"
                 @click="button_click_multiple('factor', '자세변화시 심화')"
                 class="answer-box"
-              >자세변화시 심화</button>
+              >
+                자세변화시 심화
+              </button>
 
               <br />
 
@@ -155,7 +185,9 @@
                 value="urination"
                 @click="button_click_multiple('factor', '배뇨시 심화')"
                 class="answer-box"
-              >배뇨시 심화</button>
+              >
+                배뇨시 심화
+              </button>
 
               <br />
 
@@ -163,7 +195,9 @@
                 value="defecation"
                 @click="button_click_multiple('factor', '배변시 심화')"
                 class="answer-box"
-              >배변시 심화</button>
+              >
+                배변시 심화
+              </button>
 
               <br />
 
@@ -171,7 +205,9 @@
                 value="better"
                 @click="button_click_multiple('factor', '완화되는 중')"
                 class="answer-box"
-              >완화되는 중</button>
+              >
+                완화되는 중
+              </button>
 
               <br />
 
@@ -179,7 +215,9 @@
                 value="nothing"
                 @click="button_click_multiple('factor', '해당사항 없음')"
                 class="answer-box"
-              >해당사항 없음</button>
+              >
+                해당사항 없음
+              </button>
             </div>
           </v-expansion-panel-content>
         </v-expansion-panel>
@@ -210,8 +248,10 @@
     </div>
 
     <div class="buttons">
-      <router-link :to="{name:'sec2'}">이전</router-link>
-      <router-link :to="{name:'sec4'}" @click.native="sec3(survey_data)">다음</router-link>
+      <router-link :to="{ name: 'sec2' }">이전</router-link>
+      <router-link :to="{ name: 'sec4' }" @click.native="sec3(survey_data)"
+        >다음</router-link
+      >
     </div>
   </div>
 </template>
@@ -242,7 +282,7 @@ export default {
       console.log(this.survey_data);
     },
     sec3(survey_data) {
-      this.$store.dispatch("setSurveyData3", survey_data);
+      this.$store.dispatch("setSurveyData", survey_data);
     },
     single_button_toggle() {
       this.on = !this.on;

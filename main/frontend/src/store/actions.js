@@ -230,7 +230,7 @@ export default {
         "Content-Type": "application/json"
       }
     };
-    updateProfileInfo()
+    updateProfileInfo(config, update)
       .then(res => {
         console.log(res);
         router.push({
@@ -238,34 +238,13 @@ export default {
         });
       })
       .catch(error => {
-        console.log(error.response.data);
+        console.log(error);
       });
   },
-  setSurveyData1({ commit }, survey_data) {
-    commit("SET_SURVEY_DATA1", survey_data);
+  setSurveyData({ commit }, survey_data) {
+    commit("SET_SURVEY_DATA", survey_data);
     console.log(survey_data);
     console.log(this.state.answer);
-  },
-  setSurveyData2({ commit }, survey_data) {
-    commit("SET_SURVEY_DATA2", survey_data);
-    console.log(this.state.answer);
-  },
-  setSurveyData3({ commit }, survey_data) {
-    commit("SET_SURVEY_DATA3", survey_data);
-    console.log(this.state.answer);
-  },
-  setSurveyData4({ commit }, survey_data) {
-    commit("SET_SURVEY_DATA4", survey_data);
-    console.log(this.state.answer);
-  },
-  setSurveyData5({ commit }, survey_data) {
-    commit("SET_SURVEY_DATA5", survey_data);
-    console.log(this.state.answer);
-  },
-  setSurveyData6({ commit }, survey_data) {
-    commit("SET_SURVEY_DATA6", survey_data);
-    console.log(this.state.answer);
-    this.dispatch("shootSurveyData");
   },
   shootSurveyData({ commit }) {
     let token = localStorage.getItem("access_token");
