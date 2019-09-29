@@ -8,59 +8,60 @@
           <div class="upload-img">
             <div class="bold">프로필 이미지</div>
             <br />
-            <img v-if="profile.avatar" v-bind:src="`${profile.avatar}`" class="img" />
+            <img
+              v-if="profile.avatar"
+              v-bind:src="`${profile.avatar}`"
+              class="img"
+            />
             <img v-else src="../../assets/user.png" class="img" />
           </div>
           <div class="file-upload-form">
             <span class="spanlong">프로필 이미지 업로드</span>
             <br />
-            <input type="file" @change="previewImage" accept="image/*" class="imgfield" />
+            <input
+              type="file"
+              @change="previewImage"
+              accept="image/*"
+              class="imgfield"
+            />
           </div>
           <span>이름</span>
-          <input type="text" ref="name" v-on:blur="storeUpdateName()" v-bind:value="profile.name" />
+          <input type="text" ref="name" v-model="update.name" />
           <br />
           <span>성별</span>
-          <label for="male">
-            <input
-              class="select"
-              type="radio"
-              ref="male"
-              v-model="update.gender"
-              name="gender"
-              id="male"
-              value="남성"
-            />남자
-          </label>
-          <label for="female">
-            <input
-              type="radio"
-              class="select"
-              ref="female"
-              v-model="update.gender"
-              name="gender"
-              id="female"
-              value="여성"
-            />여자
-          </label>
+          <form>
+            <label for="male">
+              <input
+                class="select"
+                type="radio"
+                ref="male"
+                v-model="update.gender"
+                name="gender"
+                id="male"
+                value="남성"
+              />남자
+            </label>
+            <label for="female">
+              <input
+                type="radio"
+                class="select"
+                ref="female"
+                v-model="update.gender"
+                name="gender"
+                id="female"
+                value="여성"
+              />여자
+            </label>
+          </form>
           <br />
           <span>생년월일</span>
           <input type="date" v-model="update.birth_date" class="input-birth" />
           <br />
           <span>신장</span>
-          <input
-            type="number"
-            ref="height"
-            v-on:blur="storeUpdateHeight()"
-            v-bind:value="profile.height"
-          />
+          <input type="number" ref="height" v-model="update.height" />
           <br />
           <span>체중</span>
-          <input
-            type="number"
-            ref="weight"
-            v-on:blur="storeUpdateWeight()"
-            v-bind:value="profile.weight"
-          />
+          <input type="number" ref="weight" v-model="profile.weight" />
           <br />
         </div>
       </div>
@@ -105,8 +106,18 @@
             v-model="update.had_checkup_true"
             value="1-3년"
           />1~3년
-          <input class="select" type="radio" v-model="update.had_checkup_true" value="3-5년" />3~5년
-          <input class="select" type="radio" v-model="update.had_checkup_true" value="5-10년" />5~10년
+          <input
+            class="select"
+            type="radio"
+            v-model="update.had_checkup_true"
+            value="3-5년"
+          />3~5년
+          <input
+            class="select"
+            type="radio"
+            v-model="update.had_checkup_true"
+            value="5-10년"
+          />5~10년
           <br />
           <span class="span2" for="disease_list">병 진단 이력</span>
           <br />
@@ -168,17 +179,41 @@
           <input
             type="text"
             ref="what_medicine"
-            v-on:blur="storeUpdateWhatMedicine()"
-            v-bind:value="profile.what_medicine"
+            v-model="update.what_medicine"
           />
 
           <span for="family_disease">가족력</span>
           <br />
-          <input class="select" type="checkbox" v-model="update.family_history" value="고혈압" />고혈압
-          <input class="select" type="checkbox" v-model="update.family_history" value="간염" />간염
-          <input class="select" type="checkbox" v-model="update.family_history" value="결핵" />결핵
-          <input class="select" type="checkbox" v-model="update.family_history" value="없음" />없음
-          <input class="select" type="checkbox" v-model="update.family_history" value="기타" />기타
+          <input
+            class="select"
+            type="checkbox"
+            v-model="update.family_history"
+            value="고혈압"
+          />고혈압
+          <input
+            class="select"
+            type="checkbox"
+            v-model="update.family_history"
+            value="간염"
+          />간염
+          <input
+            class="select"
+            type="checkbox"
+            v-model="update.family_history"
+            value="결핵"
+          />결핵
+          <input
+            class="select"
+            type="checkbox"
+            v-model="update.family_history"
+            value="없음"
+          />없음
+          <input
+            class="select"
+            type="checkbox"
+            v-model="update.family_history"
+            value="기타"
+          />기타
         </div>
       </div>
       <!-------- 사회력 -------->
@@ -187,10 +222,22 @@
         <div class="upload-detail3">
           <span class="span3">음주 여부</span>
           <label for="yes">
-            <input type="radio" v-model="update.drinking" name="drinking" id="yes" value="True" />네
+            <input
+              type="radio"
+              v-model="update.drinking"
+              name="drinking"
+              id="yes"
+              value="True"
+            />네
           </label>
           <label for="no">
-            <input type="radio" v-model="update.drinking" name="drinking" id="no" value="False" />아니오
+            <input
+              type="radio"
+              v-model="update.drinking"
+              name="drinking"
+              id="no"
+              value="False"
+            />아니오
           </label>
           <br />
           <span class="span3 spanlong">음주량(병)(일주일)</span>
@@ -198,16 +245,27 @@
             class="inputsmall"
             type="number"
             ref="drinking_per_week"
-            v-on:blur="storeUpdateDrinkingPerWeek()"
-            v-bind:value="profile.drinking_per_week"
+            v-model="update.drinking_per_week"
           />
           <br />
           <span class="span3">흡연 여부</span>
           <label for="yes">
-            <input type="radio" v-model="update.smoking" name="smoking" id="yes" value="True" />네
+            <input
+              type="radio"
+              v-model="update.smoking"
+              name="smoking"
+              id="yes"
+              value="True"
+            />네
           </label>
           <label for="no">
-            <input type="radio" v-model="update.smoking" name="smoking" id="no" value="False" />아니오
+            <input
+              type="radio"
+              v-model="update.smoking"
+              name="smoking"
+              id="no"
+              value="False"
+            />아니오
           </label>
           <br />
           <span class="span3">흡연 기간(년)</span>
@@ -215,8 +273,7 @@
             class="inputsmall"
             type="number"
             ref="how_long_smoking"
-            v-on:blur="storeUpdateHowLongSmoking()"
-            v-bind:value="profile.how_long_smoking"
+            v-model="update.how_long_smoking"
           />
           <br />
           <span class="span3 spanlong">흡연 양(갑)(일주일)</span>
@@ -224,27 +281,43 @@
             class="inputsmall"
             type="number"
             ref="how_much_smoking"
-            v-on:blur="storeUpdateHowMuchSmoking()"
-            v-bind:value="profile.how_much_smoking"
+            v-model="update.how_much_smoking"
           />
           <br />
           <span class="span3">직업</span>
           <input
             type="text"
             ref="job"
-            v-on:blur="storeUpdateJob()"
-            v-bind:value="profile.job"
+            v-model="update.job"
             class="inputsmall"
           />
           <br />
           <div class="habit-box">
-            <label for="bad_habits" class="habit-head">다음 중 해당되는 사항에 모두 체크해주세요</label>
+            <label for="bad_habits" class="habit-head"
+              >다음 중 해당되는 사항에 모두 체크해주세요</label
+            >
             <br />
-            <input type="checkbox" v-model="update.relevant_data" value="스트레스를 많이 받는 편" />스트레스를 많이 받음
-            <input type="checkbox" v-model="update.relevant_data" value="식사 불규칙" />식사 불규칙
+            <input
+              type="checkbox"
+              v-model="update.relevant_data"
+              value="스트레스를 많이 받는 편"
+            />스트레스를 많이 받음
+            <input
+              type="checkbox"
+              v-model="update.relevant_data"
+              value="식사 불규칙"
+            />식사 불규칙
             <br />
-            <input type="checkbox" v-model="update.relevant_data" value="기름진 음식을 많이 먹음" />기름진 음식을 많이 먹음
-            <input type="checkbox" v-model="update.relevant_data" value="수면시간 불규칙" />수면시간 불규칙
+            <input
+              type="checkbox"
+              v-model="update.relevant_data"
+              value="기름진 음식을 많이 먹음"
+            />기름진 음식을 많이 먹음
+            <input
+              type="checkbox"
+              v-model="update.relevant_data"
+              value="수면시간 불규칙"
+            />수면시간 불규칙
           </div>
           <br />
         </div>
@@ -256,7 +329,8 @@
         class="button"
         color="#669999"
         to="/profiles"
-      >프로필 업데이트</v-btn>
+        >프로필 업데이트</v-btn
+      >
       <div class="pluslist"></div>
     </div>
   </div>
@@ -266,32 +340,35 @@ import { mapState } from "vuex";
 export default {
   data() {
     return {
-      update: {
-        avatar: "",
-        avatar_base64: "",
-        gender: "",
-        birth_date: "",
-        height: "",
-        weight: "",
-        name: "",
-        had_checkup: "",
-        had_checkup_true: "",
-        diagnosed_disease: [],
-        taking_medicine: "",
-        what_medicine: "",
-        family_history: [],
-        drinking: "",
-        drinking_per_week: "",
-        smoking: "",
-        how_long_smoking: "",
-        how_much_smoking: "",
-        job: "",
-        relevant_data: []
-      }
+      // update: {
+      // avatar: "",
+      // avatar_base64: "",
+      // gender: "",
+      // birth_date: "",
+      // height: "",
+      // weight: "",
+      // name: "",
+      // had_checkup: "",
+      // had_checkup_true: "",
+      // diagnosed_disease: [],
+      // taking_medicine: "",
+      // what_medicine: "",
+      // family_history: [],
+      // drinking: "",
+      // drinking_per_week: "",
+      // smoking: "",
+      // how_long_smoking: "",
+      // how_much_smoking: "",
+      // job: "",
+      // relevant_data: []
+      // }
     };
   },
   computed: {
-    ...mapState(["profile"])
+    ...mapState(["profile"]),
+    update: function() {
+      return this.profile;
+    }
   },
   methods: {
     storeUpdateName() {
@@ -605,5 +682,3 @@ input {
   font-weight: 700;
 }
 </style>
-
-
