@@ -17,13 +17,17 @@
                 value="less_than_month"
                 @click="button_click('symptom_start', '한 달 미만')"
                 class="answer animate fadeInRightBig three"
-              >한 달이 안됐습니다.</button>
+              >
+                한 달이 안됐습니다.
+              </button>
               <br />
               <button
                 value="more_than_month"
                 @click="button_click('symptom_start', '한 달 이상')"
                 class="answer animate fadeInRightBig three"
-              >한 달이 넘었습니다.</button>
+              >
+                한 달이 넘었습니다.
+              </button>
               <br />
             </div>
           </v-expansion-panel-content>
@@ -32,7 +36,7 @@
         <v-expansion-panel class="q2-1">
           <v-expansion-panel-header
             class="header animate fadeInDown two"
-            v-if="survey_data.symptom_start === '한 달이 안됐습니다' "
+            v-if="survey_data.symptom_start === '한 달이 안됐습니다'"
           >
             &nbsp;&nbsp; Q1-1.
             <template v-slot:actions></template>
@@ -70,14 +74,18 @@
                 value="fast"
                 @click="button_click('fast_or_slow', '갑자기')"
                 class="answer animate fadeInRightBig three"
-              >갑자기</button>
+              >
+                갑자기
+              </button>
               <br />
 
               <button
                 value="slow"
                 @click="button_click('fast_or_slow', '서서히')"
                 class="answer animate fadeInRightBig three"
-              >서서히</button>
+              >
+                서서히
+              </button>
             </div>
             <br />
           </v-expansion-panel-content>
@@ -117,17 +125,31 @@
             <div class="answers">
               <button
                 value="abdomen_hurted"
-                @click="button_click_multiple('abdomen_relevant', '복부를 다친 적이 있음')"
+                @click="
+                  button_click_multiple(
+                    'abdomen_relevant',
+                    '복부를 다친 적이 있음'
+                  )
+                "
                 class="answer"
-              >복부를 다친 적이 있음</button>
+              >
+                복부를 다친 적이 있음
+              </button>
 
               <br />
 
               <button
                 value="abdomen_surgery"
-                @click="button_click_multiple('abdomen_relevant', '복부 수술을 받은 적이 있음')"
+                @click="
+                  button_click_multiple(
+                    'abdomen_relevant',
+                    '복부 수술을 받은 적이 있음'
+                  )
+                "
                 class="answer"
-              >복부 수술을 받은 적이 있음</button>
+              >
+                복부 수술을 받은 적이 있음
+              </button>
 
               <br />
 
@@ -135,14 +157,18 @@
                 value="abdomen_nothing"
                 @click="button_click_multiple('abdomen_relevant', '해당없음')"
                 class="answer"
-              >해당없음</button>
+              >
+                해당없음
+              </button>
             </div>
           </v-expansion-panel-content>
         </v-expansion-panel>
       </v-expansion-panels>
     </div>
     <div class="buttons">
-      <router-link :to="{name:'sec2'}" @click.native="sec1(survey_data)">다음</router-link>
+      <router-link :to="{ name: 'sec2' }" @click.native="sec1(survey_data)"
+        >다음</router-link
+      >
     </div>
   </div>
 </template>
@@ -172,7 +198,7 @@ export default {
       console.log(this.survey_data);
     },
     sec1(survey_data) {
-      this.$store.dispatch("setSurveyData1", survey_data);
+      this.$store.dispatch("setSurveyData", survey_data);
     }
   }
 };

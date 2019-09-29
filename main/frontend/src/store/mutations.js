@@ -35,24 +35,24 @@ export default {
   SET_QUICK_START(state, startObj) {
     state.random_user = startObj;
   },
-  SET_SURVEY_DATA1(state, survey_data) {
+  SET_SURVEY_DATA(state, survey_data) {
     state.answer = Object.assign(state.answer, survey_data);
   },
-  SET_SURVEY_DATA2(state, survey_data) {
-    state.answer = Object.assign(state.answer, survey_data);
-  },
-  SET_SURVEY_DATA3(state, survey_data) {
-    state.answer = Object.assign(state.answer, survey_data);
-  },
-  SET_SURVEY_DATA4(state, survey_data) {
-    state.answer = Object.assign(state.answer, survey_data);
-  },
-  SET_SURVEY_DATA5(state, survey_data) {
-    state.answer = Object.assign(state.answer, survey_data);
-  },
-  SET_SURVEY_DATA6(state, survey_data) {
-    state.answer = Object.assign(state.answer, survey_data);
-  },
+  // SET_SURVEY_DATA2(state, survey_data) {
+  //   state.answer = Object.assign(state.answer, survey_data);
+  // },
+  // SET_SURVEY_DATA3(state, survey_data) {
+  //   state.answer = Object.assign(state.answer, survey_data);
+  // },
+  // SET_SURVEY_DATA4(state, survey_data) {
+  //   state.answer = Object.assign(state.answer, survey_data);
+  // },
+  // SET_SURVEY_DATA5(state, survey_data) {
+  //   state.answer = Object.assign(state.answer, survey_data);
+  // },
+  // SET_SURVEY_DATA6(state, survey_data) {
+  //   state.answer = Object.assign(state.answer, survey_data);
+  // },
   RESET_SURVEY(state) {
     state.answer = {};
   },

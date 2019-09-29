@@ -22,7 +22,7 @@
       </v-expansion-panel>
     </v-expansion-panels>
     <div class="buttons">
-      <router-link :to="{name:'sec5'}">이전</router-link>
+      <router-link :to="{ name: 'sec5' }">이전</router-link>
     </div>
     <div class="button2">
       <button @click="sec6(survey_data)">제출</button>
@@ -50,7 +50,8 @@ export default {
       console.log(this.survey_data);
     },
     sec6(survey_data) {
-      this.$store.dispatch("setSurveyData6", survey_data);
+      this.$store.dispatch("setSurveyData", survey_data);
+      this.$store.dispatch("shootSurveyData");
     }
   }
 };
