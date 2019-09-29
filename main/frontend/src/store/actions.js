@@ -230,10 +230,9 @@ export default {
         "Content-Type": "application/json"
       }
     };
-    updateProfileInfo(update)
+    updateProfileInfo(config, update)
       .then(res => {
         console.log(res);
-        debugger;
         router.push({
           name: "profiles"
         });

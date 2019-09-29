@@ -14,7 +14,7 @@ const releaseApi = {
   profile: `${releaseIP}api/profiles/`,
   stomachGet: `${releaseIP}api/stomach/`,
   surveys: `${releaseIP}api/surveys/`,
-  profileupdat: `${releaseIP}api/profileupdate/`,
+  profileupdate: `${releaseIP}api/profileupdate/`,
   stomach: `${releaseIP}api/surveys/stomach/`
 };
 
@@ -31,7 +31,7 @@ function getMemberInfo(config) {
   return axios.get(releaseApi.user, config);
 }
 function getProfileInfo(config) {
-  return axios.get(releaseApi.profiles, config);
+  return axios.get(releaseApi.profile, config);
 }
 function getStomachInfo(stomachId, config) {
   const getStomachUrl = `${releaseApi.stomachGet}${stomachId}`;
@@ -40,8 +40,8 @@ function getStomachInfo(stomachId, config) {
 function getSurveyHistory(config) {
   return axios.get(releaseApi.surveys, config);
 }
-function updateProfileInfo(update) {
-  return axios.put(releaseApi.profileupdate, update);
+function updateProfileInfo(config, update) {
+  return axios.put(releaseApi.profileupdate, update, config);
 }
 function shootSurveyData(stomachData, config) {
   return axios.post(releaseApi.stomach, stomachData, config);
