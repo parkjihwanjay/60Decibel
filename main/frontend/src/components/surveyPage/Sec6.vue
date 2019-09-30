@@ -25,34 +25,25 @@
       <router-link :to="{ name: 'sec5' }">이전</router-link>
     </div>
     <div class="button2">
-      <button @click="sec6(survey_data)">제출</button>
+      <button @click="sendFinish(survey_data)">제출</button>
     </div>
   </div>
 </template>
 
 <script>
-import { mapState, mapActions } from "vuex";
+import surveyMixin from "../../mixin/surveyMixin.js";
 export default {
+  mixins: [surveyMixin],
+  methods: {
+    sendFinish(survey_data) {
+      this.$emit("sendFinish", survey_data);
+    }
+  },
   data() {
     return {
       expand: 0,
       survey_data: {}
     };
-  },
-  methods: {
-    button_click(model, value) {
-      this.survey_data[model] = value;
-      console.log(this.survey_data);
-    },
-    button_click_multiple(model, value) {
-      this.survey_data[model].push(value);
-      this.survey_data[model] = Array.from(new Set(this.survey_data[model]));
-      console.log(this.survey_data);
-    },
-    sec6(survey_data) {
-      this.$store.dispatch("setSurveyData", survey_data);
-      this.$store.dispatch("shootSurveyData");
-    }
   }
 };
 </script>

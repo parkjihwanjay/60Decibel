@@ -249,7 +249,7 @@
 
     <div class="buttons">
       <router-link :to="{ name: 'sec2' }">이전</router-link>
-      <router-link :to="{ name: 'sec4' }" @click.native="sec3(survey_data)"
+      <router-link :to="{ name: 'sec4' }" @click.native="send(survey_data)"
         >다음</router-link
       >
     </div>
@@ -257,7 +257,10 @@
 </template>
 
 <script>
+import surveyMixin from "../../mixin/surveyMixin.js";
+
 export default {
+  mixins: [surveyMixin],
   data() {
     return {
       on: false,
@@ -270,24 +273,6 @@ export default {
         pain_how_often_many: ""
       }
     };
-  },
-  methods: {
-    button_click(model, value) {
-      this.survey_data[model] = value;
-      console.log(this.survey_data);
-    },
-    button_click_multiple(model, value) {
-      this.survey_data[model].push(value);
-      this.survey_data[model] = Array.from(new Set(this.survey_data[model]));
-      console.log(this.survey_data);
-    },
-    sec3(survey_data) {
-      this.$store.dispatch("setSurveyData", survey_data);
-    },
-    single_button_toggle() {
-      this.on = !this.on;
-      this.off = !this.off;
-    }
   }
 };
 </script>
