@@ -2,7 +2,7 @@ import Vue from "vue";
 import Router from "vue-router";
 // import Home from "./views/Home.vue";
 import Home from "./views/Home.vue";
-import { store } from "./store/store.js";
+import store from "./store/store.js";
 Vue.use(Router);
 
 const requireAuth = () => (to, from, next) => {
@@ -43,7 +43,7 @@ export default new Router({
       path: "/survey",
       redirect: "/sec1",
       name: "survey",
-      beforeEnter: requireAuth(),
+      // beforeEnter: requireAuth(),
       component: () => import("./views/Survey.vue"),
       children: [
         {
@@ -109,19 +109,31 @@ export default new Router({
     {
       path: "/profileupdate",
       name: "profileupdate",
-      beforeEnter: requireAuth(),
+      // beforeEnter: requireAuth(),
+      beforeEnter: (to, from, next) => {
+        store.dispatch("getProfileInfo");
+        next();
+      },
       component: () => import("./views/ProfileUpdate.vue")
     },
     {
       path: "/profiles",
       name: "profiles",
-      beforeEnter: requireAuth(),
+      beforeEnter: (to, from, next) => {
+        store.dispatch("getProfileInfo");
+        next();
+      },
+      // beforeEnter: requireAuth(),
       component: () => import("./views/Profiles.vue")
     },
     {
       path: "/stomach/:id",
       name: "stomach-retrieve",
-      beforeEnter: requireAuth(),
+      beforeEnter: (to, from, next) => {
+        store.dispatch("getProfileInfo");
+        store.dispatch("getStomachInfo", to.params.id);
+        next();
+      },
       component: () => import("./views/Result.vue")
     },
     {
