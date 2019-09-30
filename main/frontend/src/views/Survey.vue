@@ -2,8 +2,12 @@
   <div class="whole-survey">
     <NavBar class="nav" />
     <main>
-      <transition :name="sectionSlider" v-on:before-enter="debug" v-on:before-leave="debug">
-        <router-view />
+      <transition
+        :name="sectionSlider"
+        v-on:before-enter="debug"
+        v-on:before-leave="debug"
+      >
+        <router-view @send="receive" @sendFinish="receiveFinish" />
       </transition>
     </main>
   </div>
@@ -15,7 +19,8 @@ export default {
   name: "wholeSurvey",
   data() {
     return {
-      sectionSlider: ""
+      sectionSlider: "",
+      survey_data: {}
     };
   },
   watch: {
@@ -26,6 +31,15 @@ export default {
   methods: {
     debug() {
       //debugger
+    },
+    receive(survey_sec) {
+      this.survey_data = Object.assign(this.survey_data, survey_sec);
+    },
+    receiveFinish(survey_sec) {
+      this.receive(survey_sec);
+      this.$store.dispatch("shootSurveyData", {
+        survey_data: this.survey_data
+      });
     }
   },
   components: {
