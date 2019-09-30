@@ -611,7 +611,7 @@
     </div>
     <div class="buttons">
       <router-link :to="{ name: 'sec4' }">이전</router-link>
-      <router-link :to="{ name: 'sec6' }" @click.native="sec5(survey_data)"
+      <router-link :to="{ name: 'sec6' }" @click.native="send(survey_data)"
         >다음</router-link
       >
     </div>
@@ -619,7 +619,10 @@
 </template>
 
 <script>
+import surveyMixin from "../../mixin/surveyMixin.js";
+
 export default {
+  mixins: [surveyMixin],
   data() {
     return {
       multipleChoice: [
@@ -653,25 +656,6 @@ export default {
         associated_symptom_whole_body: []
       }
     };
-  },
-  methods: {
-    button_click(model, value) {
-      this.survey_data[model] = value;
-      // console.log(this.survey_data);
-    },
-    button_click_multiple(model, value) {
-      this.survey_data[model].push(value);
-      this.survey_data[model] = Array.from(new Set(this.survey_data[model]));
-
-      // console.log(this.survey_data);
-    },
-    sec5(survey_data) {
-      this.$store.dispatch("setSurveyData", survey_data);
-    },
-    buttonClick(index) {
-      console.log(this.multipleChoice[index]);
-      this.multipleChoice[index] = !this.multipleChoice[index];
-    }
   }
 };
 </script>

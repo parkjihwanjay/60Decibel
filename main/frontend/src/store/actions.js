@@ -241,12 +241,12 @@ export default {
         console.log(error);
       });
   },
-  setSurveyData({ commit }, survey_data) {
-    commit("SET_SURVEY_DATA", survey_data);
-    console.log(survey_data);
-    console.log(this.state.answer);
-  },
-  shootSurveyData({ commit }) {
+  // setSurveyData({ commit }, survey_data) {
+  //   commit("SET_SURVEY_DATA", survey_data);
+  //   console.log(survey_data);
+  //   console.log(this.state.answer);
+  // },
+  shootSurveyData({ commit }, survey_data) {
     let token = localStorage.getItem("access_token");
     let config = {
       headers: {
@@ -254,9 +254,9 @@ export default {
         "Content-Type": "application/json"
       }
     };
-    let stomachData = this.state.answer;
+    // let stomachData = this.state.answer;
 
-    shootSurveyData(stomachData, config)
+    shootSurveyData(survey_data, config)
       .then(res => {
         console.log(res);
         let id = res.data.id;
