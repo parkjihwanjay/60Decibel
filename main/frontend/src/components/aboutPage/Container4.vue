@@ -6,47 +6,58 @@
       </p>
     </div>
     <div class="carousel">
-      <v-btn v-on:click="left" icon="true">
+      <v-btn v-on:click="left" :icon="true">
         <i class="fas fa-chevron-left"></i>
       </v-btn>
       <div class="carousel-center">
-        <div v-if="member===1" class="member-intro">
+        <div v-if="member === 1" class="member-intro">
           <p class="txt-head">고려대 의과대학</p>
           <p class="txt-bold">컨텐츠 개발</p>
           <img class="icon" src="../../assets/kumc.png" />
           <p class="txt-main">
             정형화된 진료 대화를 정리하고,
-            <br />의대 교수님들의 검증을 거쳐
-            <br />양질의 컨텐츠를 개발합니다.
+            <br />의대 교수님들의 검증을 거쳐 <br />양질의 컨텐츠를 개발합니다.
           </p>
         </div>
-        <div v-if="member===2" class="member-intro">
+        <div v-if="member === 2" class="member-intro">
           <p class="txt-head">고려대 장애인권위원회</p>
           <p class="txt-bold">마케팅</p>
           <img class="icon" src="../../assets/about_kuda.png" />
           <p class="txt-main">
             제작된 컨텐츠와 어플리케이션이
-            <br />실용성이 있는지를 알아보고,
-            <br />지속적으로 피드백을 제공합니다.
+            <br />실용성이 있는지를 알아보고, <br />지속적으로 피드백을
+            제공합니다.
           </p>
         </div>
-        <div v-if="member===3" class="member-intro">
+        <div v-if="member === 3" class="member-intro">
           <p class="txt-head">고려대 멋쟁이사자처럼</p>
           <p class="txt-bold">어플리케이션 개발</p>
           <img class="icon" src="../../assets/about_kulion.png" />
           <p class="txt-main">
             대화 컨텐츠를 사용하기 편리하도록
-            <br />스마트폰 어플로 제작할 예정입니다.
-            <br />현재는 웹앱 제작중입니다.
+            <br />스마트폰 어플로 제작할 예정입니다. <br />현재는 웹앱
+            제작중입니다.
           </p>
         </div>
         <div class="carousel-btn-box">
-          <div @click="click1" class="carousel-btn" :class="{selected:member===1}"></div>
-          <div @click="click2" class="carousel-btn" :class="{selected:member===2}"></div>
-          <div @click="click3" class="carousel-btn" :class="{selected:member===3}"></div>
+          <div
+            @click="click1"
+            class="carousel-btn"
+            :class="{ selected: member === 1 }"
+          ></div>
+          <div
+            @click="click2"
+            class="carousel-btn"
+            :class="{ selected: member === 2 }"
+          ></div>
+          <div
+            @click="click3"
+            class="carousel-btn"
+            :class="{ selected: member === 3 }"
+          ></div>
         </div>
       </div>
-      <v-btn v-on:click="right" icon="true">
+      <v-btn v-on:click="right" :icon="true">
         <i class="fas fa-chevron-right"></i>
       </v-btn>
     </div>
@@ -87,7 +98,6 @@ export default {
   }
 };
 </script>
-
 
 <style scoped>
 .container4 {
