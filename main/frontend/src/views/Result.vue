@@ -1,78 +1,92 @@
 <template>
-  <div class="resultresult">
-    <navbar class="nav" />
-    <div class="main">
-      <div class="box">
-        <div class="page" id="pt-main">
-          <name />
-        </div>
-        <div class="page" id="pt-page">
-          <symptoms />
-          <sickness />
-          <history />
-        </div>
-      </div>
-    </div>
-  </div>
+	<div class="resultresult">
+		<navbar class="nav" />
+		<div class="main">
+			<div class="box">
+				<div class="page" id="pt-main">
+					<name @successMount="successMount" />
+				</div>
+				<div class="page" id="pt-page">
+					<symptoms @successMount="successMount" />
+					<sickness @successMount="successMount" />
+					<history @successMount="successMount" />
+				</div>
+			</div>
+		</div>
+	</div>
 </template>
 <script>
-import name from "../components/resultsPage/name.vue";
-import history from "../components/resultsPage/history.vue";
-import sickness from "../components/resultsPage/sickness.vue";
-import symptoms from "../components/resultsPage/symptoms.vue";
-import Navbar from "../components/homePage/Navbar.vue";
+import name from '../components/resultsPage/name.vue';
+import history from '../components/resultsPage/history.vue';
+import sickness from '../components/resultsPage/sickness.vue';
+import symptoms from '../components/resultsPage/symptoms.vue';
+import Navbar from '../components/homePage/Navbar.vue';
+
+import bus from '../utils/bus.js';
 
 export default {
-  name: "result",
-  data() {
-    return {};
-  },
-  components: {
-    name,
-    symptoms,
-    sickness,
-    history,
-    Navbar
-  }
+	name: 'result',
+	data() {
+		return {
+			check: 0,
+		};
+	},
+	methods: {
+		successMount() {
+			this.check++;
+		},
+	},
+	watch: {
+		check: function(check) {
+			if (check >= 4) bus.$emit('off:progress');
+		},
+	},
+	components: {
+		name,
+		symptoms,
+		sickness,
+		history,
+		Navbar,
+	},
 };
 </script>
 <style scoped>
 .nav /deep/ .navhead {
-  padding: 0 1rem;
-  padding-top: 1rem;
-  border-bottom: none;
+	padding: 0 1rem;
+	padding-top: 1rem;
+	border-bottom: none;
 }
 .nav /deep/ .navhead-icon:hover {
-  background-color: transparent;
+	background-color: transparent;
 }
 .nav /deep/ .fa-bars {
-  color: rgb(255, 255, 255);
+	color: rgb(255, 255, 255);
 }
 .nav /deep/ .navhead-brand-logo {
-  content: url("../assets/home.png");
-  width: 1.5rem;
-  height: 1.5rem;
-  margin-left: 0.6rem;
+	content: url('../assets/home.png');
+	width: 1.5rem;
+	height: 1.5rem;
+	margin-left: 0.6rem;
 }
 .nav /deep/ .navhead-start {
-  display: none;
+	display: none;
 }
 .resultresult {
-  height: 1400px;
-  background-image: linear-gradient(to top, #cfd9df 0%, #e2ebf0 100%);
+	height: 1400px;
+	background-image: linear-gradient(to top, #cfd9df 0%, #e2ebf0 100%);
 }
 .main {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 .box {
-  width: 90%;
-  margin: 1rem auto;
-  padding-bottom: 1rem;
-  border-radius: 10px;
-  /* border: 0.5px solid gray; */
-  background-color: rgb(255, 255, 255, 0.9);
+	width: 90%;
+	margin: 1rem auto;
+	padding-bottom: 1rem;
+	border-radius: 10px;
+	/* border: 0.5px solid gray; */
+	background-color: rgb(255, 255, 255, 0.9);
 }
 
 /*

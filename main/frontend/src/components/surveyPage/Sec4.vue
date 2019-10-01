@@ -1,500 +1,496 @@
 <template>
-  <div class="section">
-    <p class="question-header">증상의 정도</p>
-    <div class="question-body">
-      <v-expansion-panels v-model="expand" accordion class="expansion">
-        <v-expansion-panel class="q1-1">
-          <v-expansion-panel-header class="header animate fadeInDown two">
-            Q1.
-            <template v-slot:actions></template>
-          </v-expansion-panel-header>
-          <v-expansion-panel-content class="content animate fadeInUp one">
-            <p class="question">통증의 양상</p>
-            <br />
-            <div class="answers animate fadeInRightBig three">
-              <button
-                value="crushing"
-                @click="
-                  button_click_multiple('pain_character', '쥐어짜는듯 함')
-                "
-                class="answer"
-              >
-                쥐어짜는듯 함
-              </button>
+	<div class="section">
+		<p class="question-header">증상의 정도</p>
+		<div class="question-body">
+			<v-expansion-panels v-model="expand" accordion class="expansion">
+				<v-expansion-panel class="q1-1">
+					<v-expansion-panel-header class="header animate fadeInDown two">
+						Q1.
+						<template v-slot:actions></template>
+					</v-expansion-panel-header>
+					<v-expansion-panel-content class="content animate fadeInUp one">
+						<p class="question">통증의 양상</p>
+						<br />
+						<div class="answers animate fadeInRightBig three">
+							<button
+								value="crushing"
+								@click="button_click_multiple('pain_character', '쥐어짜는듯 함')"
+								class="answer"
+							>
+								쥐어짜는듯 함
+							</button>
 
-              <br />
+							<br />
 
-              <button
-                value="burning"
-                @click="button_click_multiple('pain_character', '타는듯 함')"
-                class="answer"
-              >
-                타는듯 함
-              </button>
+							<button
+								value="burning"
+								@click="button_click_multiple('pain_character', '타는듯 함')"
+								class="answer"
+							>
+								타는듯 함
+							</button>
 
-              <br />
+							<br />
 
-              <button
-                value="stabbing"
-                @click="button_click_multiple('pain_character', '베이는듯 함')"
-                class="answer"
-              >
-                베이는듯 함
-              </button>
+							<button
+								value="stabbing"
+								@click="button_click_multiple('pain_character', '베이는듯 함')"
+								class="answer"
+							>
+								베이는듯 함
+							</button>
 
-              <br />
+							<br />
 
-              <button
-                value="splitting"
-                @click="button_click_multiple('pain_character', '찢어지듯 함')"
-                class="answer"
-              >
-                찢어지듯 함
-              </button>
-            </div>
-            <br />
-          </v-expansion-panel-content>
-        </v-expansion-panel>
-        <v-expansion-panel class="q1-2">
-          <v-expansion-panel-header class="header animate fadeInDown two">
-            Q2.
-            <template v-slot:actions></template>
-          </v-expansion-panel-header>
-          <v-expansion-panel-content class="content animate fadeInUp one">
-            <p class="question">통증점수</p>
-            <br />
-            <br />
-            <br />
-            <input
-              type="range"
-              class="range animate fadeInRightBig three"
-              min="0"
-              max="10"
-              v-model="survey_data.pain_score"
-              placeholder="여기를 수정해보세요"
-            />
-          </v-expansion-panel-content>
-        </v-expansion-panel>
-        <v-expansion-panel class="q1-2">
-          <v-expansion-panel-header class="header animate fadeInDown two">
-            Q3.
-            <template v-slot:actions></template>
-          </v-expansion-panel-header>
-          <v-expansion-panel-content class="content animate fadeInUp one">
-            <p class="question">통증이 점점 심해지나요?</p>
-            <br />
-            <br />
-            <br />
-            <div class="answers">
-              <button
-                value="True"
-                @click="button_click('pain_worse', '예')"
-                class="answer animate fadeInRightBig three"
-              >
-                예
-              </button>
-              <br />
+							<button
+								value="splitting"
+								@click="button_click_multiple('pain_character', '찢어지듯 함')"
+								class="answer"
+							>
+								찢어지듯 함
+							</button>
+						</div>
+						<br />
+					</v-expansion-panel-content>
+				</v-expansion-panel>
+				<v-expansion-panel class="q1-2">
+					<v-expansion-panel-header class="header animate fadeInDown two">
+						Q2.
+						<template v-slot:actions></template>
+					</v-expansion-panel-header>
+					<v-expansion-panel-content class="content animate fadeInUp one">
+						<p class="question">통증점수</p>
+						<br />
+						<br />
+						<br />
+						<input
+							type="range"
+							class="range animate fadeInRightBig three"
+							min="0"
+							max="10"
+							v-model="survey_data.pain_score"
+							placeholder="여기를 수정해보세요"
+						/>
+					</v-expansion-panel-content>
+				</v-expansion-panel>
+				<v-expansion-panel class="q1-2">
+					<v-expansion-panel-header class="header animate fadeInDown two">
+						Q3.
+						<template v-slot:actions></template>
+					</v-expansion-panel-header>
+					<v-expansion-panel-content class="content animate fadeInUp one">
+						<p class="question">통증이 점점 심해지나요?</p>
+						<br />
+						<br />
+						<br />
+						<div class="answers">
+							<button
+								value="True"
+								@click="button_click('pain_worse', '예')"
+								class="answer animate fadeInRightBig three"
+							>
+								예
+							</button>
+							<br />
 
-              <button
-                value="False"
-                @click="button_click('pain_worse', '아니오')"
-                class="answer animate fadeInRightBig three"
-              >
-                아니오
-              </button>
-            </div>
-            <br />
-          </v-expansion-panel-content>
-        </v-expansion-panel>
-        <v-expansion-panel class="q1-3">
-          <v-expansion-panel-header class="header animate fadeInDown two">
-            Q4.
-            <template v-slot:actions></template>
-          </v-expansion-panel-header>
-          <v-expansion-panel-content class="content animate fadeInUp one">
-            <p class="question">
-              이전에도 비슷한 통증이 있던적이
-              <br />있나요?
-            </p>
-            <br />
-            <br />
-            <div class="answers">
-              <button
-                value="True"
-                @click="button_click('pain_experience', '예')"
-                class="answer animate fadeInRightBig three"
-              >
-                예
-              </button>
-              <br />
+							<button
+								value="False"
+								@click="button_click('pain_worse', '아니오')"
+								class="answer animate fadeInRightBig three"
+							>
+								아니오
+							</button>
+						</div>
+						<br />
+					</v-expansion-panel-content>
+				</v-expansion-panel>
+				<v-expansion-panel class="q1-3">
+					<v-expansion-panel-header class="header animate fadeInDown two">
+						Q4.
+						<template v-slot:actions></template>
+					</v-expansion-panel-header>
+					<v-expansion-panel-content class="content animate fadeInUp one">
+						<p class="question">
+							이전에도 비슷한 통증이 있던적이
+							<br />있나요?
+						</p>
+						<br />
+						<br />
+						<div class="answers">
+							<button
+								value="True"
+								@click="button_click('pain_experience', '예')"
+								class="answer animate fadeInRightBig three"
+							>
+								예
+							</button>
+							<br />
 
-              <button
-                value="False"
-                @click="button_click('pain_experience', '아니오')"
-                class="answer animate fadeInRightBig three"
-              >
-                아니오
-              </button>
-            </div>
-            <br />
-          </v-expansion-panel-content>
-        </v-expansion-panel>
-      </v-expansion-panels>
-    </div>
-    <div class="buttons">
-      <router-link :to="{ name: 'sec3' }">이전</router-link>
-      <router-link :to="{ name: 'sec5' }" @click.native="send(survey_data)"
-        >다음</router-link
-      >
-    </div>
-  </div>
+							<button
+								value="False"
+								@click="button_click('pain_experience', '아니오')"
+								class="answer animate fadeInRightBig three"
+							>
+								아니오
+							</button>
+						</div>
+						<br />
+					</v-expansion-panel-content>
+				</v-expansion-panel>
+			</v-expansion-panels>
+		</div>
+		<div class="buttons">
+			<router-link :to="{ name: 'sec3' }">이전</router-link>
+			<router-link :to="{ name: 'sec5' }" @click.native="send(survey_data)">다음</router-link>
+		</div>
+	</div>
 </template>
 
 <script>
-import surveyMixin from "../../mixin/surveyMixin.js";
+import surveyMixin from '../../mixin/surveyMixin.js';
 
 export default {
-  mixins: [surveyMixin],
-  data() {
-    return {
-      expand: 0,
-      survey_data: {
-        pain_character: []
-      }
-    };
-  }
+	mixins: [surveyMixin],
+	data() {
+		return {
+			expand: 0,
+			survey_data: {
+				pain_character: [],
+			},
+		};
+	},
 };
 </script>
 <style scoped>
 .question-header {
-  margin-top: 2rem;
-  padding-left: 2.5rem;
-  font-size: 1.7rem;
+	margin-top: 2rem;
+	padding-left: 2.5rem;
+	font-size: 1.7rem;
 }
 /* question body */
 .v-expansion-panels {
-  width: 100%;
-  height: 80%;
-  padding: 0 1rem;
-  padding-top: 1rem;
+	width: 100%;
+	height: 80%;
+	padding: 0 1rem;
+	padding-top: 1rem;
 }
 .v-expansion-panel-header {
-  font-weight: 700;
-  font-size: 1.1rem;
-  color: #125b7f;
+	font-weight: 700;
+	font-size: 1.1rem;
+	color: #125b7f;
 }
 .v-expansion-panel-content {
-  height: 260px;
+	height: 260px;
 }
 .section {
-  width: 100%;
-  height: 100vh;
+	width: 100%;
+	height: 100vh;
 }
 
 /* 1차 수정 01:07 */
 
 .question {
-  font-size: 1.2rem;
-  line-height: 1.5rem;
+	font-size: 1.2rem;
+	line-height: 1.5rem;
 }
 .answers-box {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  line-height: 0.5em;
-  width: 100%;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	line-height: 0.5em;
+	width: 100%;
 }
 .answers {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  line-height: 0.3em;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	line-height: 0.3em;
 }
 .answer-box {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #2592c9;
-  border-radius: 7px;
-  width: 7rem;
-  height: 2.7rem;
-  margin: 0.1rem;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: #2592c9;
+	border-radius: 7px;
+	width: 7rem;
+	height: 2.7rem;
+	margin: 0.1rem;
 
-  color: rgb(255, 255, 255);
+	color: rgb(255, 255, 255);
 }
 .answer-box-none {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  background-color: #2592c9;
-  border-radius: 7px;
-  width: 9rem;
-  height: 2.7rem;
-  margin-right: 9.2rem;
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	background-color: #2592c9;
+	border-radius: 7px;
+	width: 9rem;
+	height: 2.7rem;
+	margin-right: 9.2rem;
 
-  color: rgb(255, 255, 255);
+	color: rgb(255, 255, 255);
 }
 .answer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #2592c9;
-  border-radius: 7px;
-  width: 13rem;
-  height: 2.7rem;
-  line-height: 0.2rem;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: #2592c9;
+	border-radius: 7px;
+	width: 13rem;
+	height: 2.7rem;
+	line-height: 0.2rem;
 
-  color: rgb(255, 255, 255);
+	color: rgb(255, 255, 255);
 }
 .answer input::placeholder {
-  color: rgba(88, 88, 88, 0.5);
+	color: rgba(88, 88, 88, 0.5);
 }
 .ans {
-  margin: 0 1rem;
+	margin: 0 1rem;
 }
 /* range */
-input[type="range"] {
-  height: 33px;
-  -webkit-appearance: none;
-  margin: 10px 0;
-  width: 100%;
+input[type='range'] {
+	height: 33px;
+	-webkit-appearance: none;
+	margin: 10px 0;
+	width: 100%;
 }
-input[type="range"]:focus {
-  outline: none;
+input[type='range']:focus {
+	outline: none;
 }
-input[type="range"]::-webkit-slider-runnable-track {
-  width: 100%;
-  height: 8px;
-  cursor: pointer;
-  animate: 0.2s;
-  box-shadow: 1px 1px 1px #50555c;
-  background: #50555c;
-  border-radius: 14px;
-  border: 0px solid #000000;
+input[type='range']::-webkit-slider-runnable-track {
+	width: 100%;
+	height: 8px;
+	cursor: pointer;
+	animate: 0.2s;
+	box-shadow: 1px 1px 1px #50555c;
+	background: #50555c;
+	border-radius: 14px;
+	border: 0px solid #000000;
 }
-input[type="range"]::-webkit-slider-thumb {
-  box-shadow: 0px 0px 0px #000000;
-  border: 0px solid #000000;
-  height: 24px;
-  width: 24px;
-  border-radius: 12px;
-  background: #529de1;
-  cursor: pointer;
-  -webkit-appearance: none;
-  margin-top: -6.5px;
+input[type='range']::-webkit-slider-thumb {
+	box-shadow: 0px 0px 0px #000000;
+	border: 0px solid #000000;
+	height: 24px;
+	width: 24px;
+	border-radius: 12px;
+	background: #529de1;
+	cursor: pointer;
+	-webkit-appearance: none;
+	margin-top: -6.5px;
 }
-input[type="range"]:focus::-webkit-slider-runnable-track {
-  background: #50555c;
+input[type='range']:focus::-webkit-slider-runnable-track {
+	background: #50555c;
 }
-input[type="range"]::-moz-range-track {
-  width: 100%;
-  height: 14px;
-  cursor: pointer;
-  animate: 0.2s;
-  box-shadow: 1px 1px 1px #50555c;
-  background: #50555c;
-  border-radius: 14px;
-  border: 0px solid #000000;
+input[type='range']::-moz-range-track {
+	width: 100%;
+	height: 14px;
+	cursor: pointer;
+	animate: 0.2s;
+	box-shadow: 1px 1px 1px #50555c;
+	background: #50555c;
+	border-radius: 14px;
+	border: 0px solid #000000;
 }
-input[type="range"]::-moz-range-thumb {
-  box-shadow: 0px 0px 0px #000000;
-  border: 0px solid #000000;
-  height: 27px;
-  width: 27px;
-  border-radius: 12px;
-  background: #529de1;
-  cursor: pointer;
+input[type='range']::-moz-range-thumb {
+	box-shadow: 0px 0px 0px #000000;
+	border: 0px solid #000000;
+	height: 27px;
+	width: 27px;
+	border-radius: 12px;
+	background: #529de1;
+	cursor: pointer;
 }
-input[type="range"]::-ms-track {
-  width: 100%;
-  height: 14px;
-  cursor: pointer;
-  animate: 0.2s;
-  background: transparent;
-  border-color: transparent;
-  color: transparent;
+input[type='range']::-ms-track {
+	width: 100%;
+	height: 14px;
+	cursor: pointer;
+	animate: 0.2s;
+	background: transparent;
+	border-color: transparent;
+	color: transparent;
 }
-input[type="range"]::-ms-fill-lower {
-  background: #50555c;
-  border: 0px solid #000000;
-  border-radius: 28px;
-  box-shadow: 1px 1px 1px #50555c;
+input[type='range']::-ms-fill-lower {
+	background: #50555c;
+	border: 0px solid #000000;
+	border-radius: 28px;
+	box-shadow: 1px 1px 1px #50555c;
 }
-input[type="range"]::-ms-fill-upper {
-  background: #50555c;
-  border: 0px solid #000000;
-  border-radius: 28px;
-  box-shadow: 1px 1px 1px #50555c;
+input[type='range']::-ms-fill-upper {
+	background: #50555c;
+	border: 0px solid #000000;
+	border-radius: 28px;
+	box-shadow: 1px 1px 1px #50555c;
 }
-input[type="range"]::-ms-thumb {
-  margin-top: 1px;
-  box-shadow: 0px 0px 0px #000000;
-  border: 0px solid #000000;
-  height: 27px;
-  width: 27px;
-  border-radius: 12px;
-  background: #529de1;
-  cursor: pointer;
+input[type='range']::-ms-thumb {
+	margin-top: 1px;
+	box-shadow: 0px 0px 0px #000000;
+	border: 0px solid #000000;
+	height: 27px;
+	width: 27px;
+	border-radius: 12px;
+	background: #529de1;
+	cursor: pointer;
 }
-input[type="range"]:focus::-ms-fill-lower {
-  background: #50555c;
+input[type='range']:focus::-ms-fill-lower {
+	background: #50555c;
 }
-input[type="range"]:focus::-ms-fill-upper {
-  background: #50555c;
+input[type='range']:focus::-ms-fill-upper {
+	background: #50555c;
 }
 
 .ans-txt {
-  width: 100%;
-  height: 100%;
-  border: #1985bb solid 1px;
-  border-radius: 7px;
-  outline: none;
-  background-color: white;
-  padding-left: 1rem;
-  color: rgb(56, 56, 56);
+	width: 100%;
+	height: 100%;
+	border: #1985bb solid 1px;
+	border-radius: 7px;
+	outline: none;
+	background-color: white;
+	padding-left: 1rem;
+	color: rgb(56, 56, 56);
 }
 /* question footer */
 .buttons {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  position: absolute;
-  bottom: 0;
-  box-shadow: 1px 0.8px 3px -0.5px rgb(128, 128, 128);
-  background-color: #125b7f;
-  width: 100%;
-  height: 2.8rem;
-  padding: 0 2.05rem;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	position: absolute;
+	bottom: 0;
+	box-shadow: 1px 0.8px 3px -0.5px rgb(128, 128, 128);
+	background-color: #125b7f;
+	width: 100%;
+	height: 2.8rem;
+	padding: 0 2.05rem;
 }
 a {
-  color: white;
+	color: white;
 }
 button:focus {
-  background-color: #055075;
-  outline: none;
+	background-color: #055075;
+	outline: none;
 }
 .animate {
-  -webkit-animation-duration: 0.8s;
-  animation-duration: 0.8s;
-  -webkit-animation-fill-mode: both;
-  animation-fill-mode: both;
+	-webkit-animation-duration: 0.8s;
+	animation-duration: 0.8s;
+	-webkit-animation-fill-mode: both;
+	animation-fill-mode: both;
 }
 .one {
-  -webkit-animation-delay: 0.2s;
-  -moz-animation-delay: 0.2s;
-  animation-delay: 0.2s;
+	-webkit-animation-delay: 0.2s;
+	-moz-animation-delay: 0.2s;
+	animation-delay: 0.2s;
 }
 .two {
-  -webkit-animation-delay: 0.3s;
-  -moz-animation-delay: 0.3s;
-  animation-delay: 0.3s;
+	-webkit-animation-delay: 0.3s;
+	-moz-animation-delay: 0.3s;
+	animation-delay: 0.3s;
 }
 .three {
-  -webkit-animation-delay: 0.35s;
-  -moz-animation-delay: 0.35s;
-  animation-delay: 0.35s;
+	-webkit-animation-delay: 0.35s;
+	-moz-animation-delay: 0.35s;
+	animation-delay: 0.35s;
 }
 .four {
-  -webkit-animation-delay: 0.4s;
-  -moz-animation-delay: 0.4s;
-  animation-delay: 0.4s;
+	-webkit-animation-delay: 0.4s;
+	-moz-animation-delay: 0.4s;
+	animation-delay: 0.4s;
 }
 .five {
-  -webkit-animation-delay: 0.45s;
-  -moz-animation-delay: 0.45s;
-  animation-delay: 0.45s;
+	-webkit-animation-delay: 0.45s;
+	-moz-animation-delay: 0.45s;
+	animation-delay: 0.45s;
 }
 .six {
-  -webkit-animation-delay: 0.5s;
-  -moz-animation-delay: 0.5s;
-  animation-delay: 0.5s;
+	-webkit-animation-delay: 0.5s;
+	-moz-animation-delay: 0.5s;
+	animation-delay: 0.5s;
 }
 
 @-webkit-keyframes fadeInUp {
-  from {
-    opacity: 0;
-    -webkit-transform: translate3d(0, 100%, 0);
-    transform: translate3d(0, 100%, 0);
-  }
+	from {
+		opacity: 0;
+		-webkit-transform: translate3d(0, 100%, 0);
+		transform: translate3d(0, 100%, 0);
+	}
 
-  to {
-    opacity: 1;
-    -webkit-transform: none;
-    transform: none;
-  }
+	to {
+		opacity: 1;
+		-webkit-transform: none;
+		transform: none;
+	}
 }
 @keyframes fadeInUp {
-  from {
-    opacity: 0;
-    -webkit-transform: translate3d(0, 100%, 0);
-    transform: translate3d(0, 100%, 0);
-  }
+	from {
+		opacity: 0;
+		-webkit-transform: translate3d(0, 100%, 0);
+		transform: translate3d(0, 100%, 0);
+	}
 
-  to {
-    opacity: 1;
-    -webkit-transform: none;
-    transform: none;
-  }
+	to {
+		opacity: 1;
+		-webkit-transform: none;
+		transform: none;
+	}
 }
 .fadeInUp {
-  -webkit-animation-name: fadeInUp;
-  animation-name: fadeInUp;
+	-webkit-animation-name: fadeInUp;
+	animation-name: fadeInUp;
 }
 .fadeInDown {
-  -webkit-animation-name: fadeInDown;
-  animation-name: fadeInDown;
+	-webkit-animation-name: fadeInDown;
+	animation-name: fadeInDown;
 }
 @-webkit-keyframes fadeInDown {
-  0% {
-    opacity: 0;
-    -webkit-transform: translate3d(0, -100%, 0);
-    transform: translate3d(0, -100%, 0);
-  }
-  100% {
-    opacity: 1;
-    -webkit-transform: none;
-    transform: none;
-  }
+	0% {
+		opacity: 0;
+		-webkit-transform: translate3d(0, -100%, 0);
+		transform: translate3d(0, -100%, 0);
+	}
+	100% {
+		opacity: 1;
+		-webkit-transform: none;
+		transform: none;
+	}
 }
 @keyframes fadeInDown {
-  0% {
-    opacity: 0;
-    -webkit-transform: translate3d(0, -100%, 0);
-    transform: translate3d(0, -100%, 0);
-  }
-  100% {
-    opacity: 1;
-    -webkit-transform: none;
-    transform: none;
-  }
+	0% {
+		opacity: 0;
+		-webkit-transform: translate3d(0, -100%, 0);
+		transform: translate3d(0, -100%, 0);
+	}
+	100% {
+		opacity: 1;
+		-webkit-transform: none;
+		transform: none;
+	}
 }
 .fadeInRightBig {
-  -webkit-animation-name: fadeInRightBig;
-  animation-name: fadeInRightBig;
+	-webkit-animation-name: fadeInRightBig;
+	animation-name: fadeInRightBig;
 }
 @-webkit-keyframes fadeInRightBig {
-  0% {
-    opacity: 0;
-    -webkit-transform: translate3d(2000px, 0, 0);
-    transform: translate3d(2000px, 0, 0);
-  }
-  100% {
-    opacity: 1;
-    -webkit-transform: none;
-    transform: none;
-  }
+	0% {
+		opacity: 0;
+		-webkit-transform: translate3d(2000px, 0, 0);
+		transform: translate3d(2000px, 0, 0);
+	}
+	100% {
+		opacity: 1;
+		-webkit-transform: none;
+		transform: none;
+	}
 }
 @keyframes fadeInRightBig {
-  0% {
-    opacity: 0;
-    -webkit-transform: translate3d(2000px, 0, 0);
-    transform: translate3d(2000px, 0, 0);
-  }
-  100% {
-    opacity: 1;
-    -webkit-transform: none;
-    transform: none;
-  }
+	0% {
+		opacity: 0;
+		-webkit-transform: translate3d(2000px, 0, 0);
+		transform: translate3d(2000px, 0, 0);
+	}
+	100% {
+		opacity: 1;
+		-webkit-transform: none;
+		transform: none;
+	}
 }
 </style>

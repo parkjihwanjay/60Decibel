@@ -3,6 +3,8 @@ import Router from "vue-router";
 // import Home from "./views/Home.vue";
 import Home from "./views/Home.vue";
 import store from "./store/store.js";
+
+import bus from './utils/bus.js';
 Vue.use(Router);
 
 const requireAuth = () => (to, from, next) => {
@@ -111,8 +113,9 @@ export default new Router({
       name: "profileupdate",
       // beforeEnter: requireAuth(),
       beforeEnter: (to, from, next) => {
-        store.dispatch("getProfileInfo");
-        next();
+        bus.$emit('on:progress');
+        store.dispatch("getProfileInfo")
+        .then(next())
       },
       component: () => import("./views/ProfileUpdate.vue")
     },
@@ -120,18 +123,19 @@ export default new Router({
       path: "/profiles",
       name: "profiles",
       beforeEnter: (to, from, next) => {
-        store.dispatch("getProfileInfo");
-        next();
+        bus.$emit('on:progress');
+        store.dispatch("getProfileInfo")
+        .then(next())
       },
-      // beforeEnter: requireAuth(),
       component: () => import("./views/Profiles.vue")
     },
     {
       path: "/stomach/:id",
       name: "stomach-retrieve",
       beforeEnter: (to, from, next) => {
-        store.dispatch("getProfileInfo");
-        store.dispatch("getStomachInfo", to.params.id);
+        bus.$emit('on:progress');
+        store.dispatch("getProfileInfo")
+        store.dispatch("getStomachInfo", to.params.id)
         next();
       },
       component: () => import("./views/Result.vue")
@@ -139,7 +143,11 @@ export default new Router({
     {
       path: "/surveys",
       name: "survey-history",
-      beforeEnter: requireAuth(),
+      beforeEnter: (to, from, next) => {
+        bus.$emit('on:progress');
+        store.dispatch('getSurveyHistory')
+        .then(next())
+      },
       component: () => import("./views/SurveyList.vue")
     }
   ]

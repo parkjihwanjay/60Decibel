@@ -3,7 +3,7 @@
 		<NavBar class="nav" />
 		<main>
 			<transition :name="sectionSlider" v-on:before-enter="debug" v-on:before-leave="debug">
-				<router-view @send="receive" @sendFinish="receiveFinish" />
+				<router-view />
 			</transition>
 		</main>
 	</div>
