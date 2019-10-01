@@ -117,6 +117,13 @@ export default {
 				});
 		}
 	},
+	setSurveyData({ commit }, survey_data) {
+		commit('SET_SURVEY_DATA', survey_data);
+	},
+	setSurveyData6({ dispatch, commit }, survey_data) {
+		commit('SET_SURVEY_DATA', survey_data);
+		dispatch('shootSurveyData', this.state.answer);
+	},
 	getMemberInfo({ commit }) {
 		//로컬 스토리지에 저장된 토큰을 저장한다.
 		if (!localStorage.getItem('access_token')) {

@@ -22,10 +22,37 @@ export default {
 	// 프로필 상태 변이
 	SET_PROFILE(state, profile) {
 		state.profile = profile;
+		state.profile.diagnosed_disease = state.profile.diagnosed_disease.slice(1, -1);
+		state.profile.relevant_data = state.profile.relevant_data.slice(1, -1);
+		state.profile.family_history = state.profile.family_history.slice(1, -1);
 	},
 	// 복통 상태 변이
 	SET_STOMACH(state, stomach) {
 		state.stomach = stomach;
+		state.stomach.symptom_location = state.stomach.symptom_location.slice(1, -1);
+		state.stomach.associated_symptom_digestive = state.stomach.associated_symptom_digestive.slice(
+			1,
+			-1,
+		);
+		state.stomach.associated_symptom_circulatory = state.stomach.associated_symptom_circulatory.slice(
+			1,
+			-1,
+		);
+		state.stomach.associated_symptom_gynecology = state.stomach.associated_symptom_gynecology.slice(
+			1,
+			-1,
+		);
+		state.stomach.associated_symptom_whole_body = state.stomach.associated_symptom_whole_body.slice(
+			1,
+			-1,
+		);
+		state.stomach.associated_symptom_urinary = state.stomach.associated_symptom_urinary.slice(
+			1,
+			-1,
+		);
+		state.stomach.associated_symptom_others = state.stomach.associated_symptom_others.slice(1, -1);
+		state.stomach.factor = state.stomach.factor.slice(1, -1);
+		state.stomach.abdomen_relevant = state.stomach.abdomen_relevant.slice(1, -1);
 	},
 	// 설문조사 이력 변이
 	SET_SURVEY_HISTORY(state, survey_history) {

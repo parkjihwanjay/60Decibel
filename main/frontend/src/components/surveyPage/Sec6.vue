@@ -25,7 +25,7 @@
 			<router-link :to="{ name: 'sec5' }">이전</router-link>
 		</div>
 		<div class="button2">
-			<button @click="sendFinish(survey_data)">제출</button>
+			<button @click="shoot(survey_data)">제출</button>
 		</div>
 	</div>
 </template>
@@ -34,16 +34,16 @@
 import surveyMixin from '../../mixin/surveyMixin.js';
 export default {
 	mixins: [surveyMixin],
-	methods: {
-		sendFinish(survey_data) {
-			this.$emit('sendFinish', survey_data);
-		},
-	},
 	data() {
 		return {
 			expand: 0,
 			survey_data: {},
 		};
+	},
+	methods: {
+		shoot(survey_data) {
+			this.$store.dispatch('setSurveyData6', survey_data);
+		},
 	},
 };
 </script>

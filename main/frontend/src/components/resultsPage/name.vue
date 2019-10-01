@@ -37,12 +37,15 @@
 </template>
 
 <script>
-import { mapState, mapActions } from 'vuex';
-import { store } from '../../store/store.js';
+import { mapState } from 'vuex';
+
 export default {
 	computed: {
 		...mapState(['profile']),
 		...mapState(['stomach']),
+	},
+	updated() {
+		this.$emit('successMount');
 	},
 };
 </script>
