@@ -13,90 +13,16 @@
 						<br />
 
 						<div class="answers-box animate fadeInRightBig three">
-							<button
-								value="whole abdomen"
-								@click="button_click_multiple('symptom_location', '복부전체')"
-								class="answer-box"
-							>
-								복부전체
-							</button>
-
-							<br />
-
-							<button
-								value="sternal"
-								@click="button_click_multiple('symptom_location', '명치부위')"
-								class="answer-box"
-							>
-								명치부위
-							</button>
-
-							<br />
-
-							<button
-								value="sternal"
-								@click="button_click_multiple('symptom_location', '배꼽부위')"
-								class="answer-box"
-							>
-								배꼽부위
-							</button>
-
-							<br />
-
-							<button
-								value="sternal"
-								@click="button_click_multiple('symptom_location', '옆구리')"
-								class="answer-box"
-							>
-								옆구리
-							</button>
-
-							<br />
-
-							<button
-								value="LUQ"
-								@click="button_click_multiple('symptom_location', '왼쪽 위')"
-								class="answer-box"
-							>
-								왼쪽 위
-							</button>
-
-							<br />
-
-							<button
-								value="LLQ"
-								@click="button_click_multiple('symptom_location', '오른쪽 위')"
-								class="answer-box"
-							>
-								오른쪽 위
-							</button>
-
-							<br />
-
-							<button
-								value="RUQ"
-								@click="button_click_multiple('symptom_location', '왼쪽 아래')"
-								class="answer-box"
-							>
-								왼쪽 아래
-							</button>
-
-							<br />
-
-							<button
-								value="RLQ"
-								@click="button_click_multiple('symptom_location', '오른쪽 아래')"
-								class="answer-box"
-							>
-								오른쪽 아래
-							</button>
-
-							<!-- 인우 : 뭔지 모르겠습니다.... -->
-							<!-- <button
-                value="RLQ"
-                @click="button_click_multiple('symptom_location', '오른쪽 아래')"
-                class="answer-box blank"
-              >오른쪽 아래</button>-->
+							<div v-for="item in where" :key="item.id">
+								<button
+									value="whole abdomen"
+									@click="button_click_multiple('symptom_location', item)"
+									class="answer-box"
+								>
+									{{item}}
+								</button>
+								<br />
+							</div>
 						</div>
 						<br />
 					</v-expansion-panel-content>
@@ -111,23 +37,16 @@
 						<br />
 						<br />
 						<div class="answers">
-							<button
-								value="True"
-								@click="button_click('location_move', '예')"
-								class="answerTF animate fadeInRightBig three"
-							>
-								예
-							</button>
-
-							<br />
-
-							<button
-								value="False"
-								@click="button_click('location_move', '아니오')"
-								class="answerTF animate fadeInRightBig three"
-							>
-								아니오
-							</button>
+							<div v-for="item in move" :key="item.id">
+								<button
+									value=item[1]
+									@click="button_click('location_move', item[0])"
+									class="answerTF animate fadeInRightBig three"
+								>
+									{{item[0]}}
+								</button>
+								<br />
+							</div>
 						</div>
 						<br />
 					</v-expansion-panel-content>
@@ -166,23 +85,16 @@
 						<br />
 						<br />
 						<div class="answers">
-							<button
-								value="True"
-								@click="button_click('pain_spread', '예')"
-								class="answerTF animate fadeInRightBig three"
-							>
-								예
-							</button>
-
-							<br />
-
-							<button
-								value="False"
-								@click="button_click('pain_spread', '아니오')"
-								class="answerTF animate fadeInRightBig three"
-							>
-								아니오
-							</button>
+							<div v-for="item in spread" :key="item.id">
+								<button
+									value=item[1]
+									@click="button_click('pain_spread', item[0])"
+									class="answerTF animate fadeInRightBig three"
+								>
+								{{item[0]}}
+								</button>
+								<br />
+							</div>
 						</div>
 						<br />
 					</v-expansion-panel-content>
@@ -226,6 +138,9 @@ export default {
 	mixins: [surveyMixin],
 	data() {
 		return {
+			where:['복부전체', '명치부위', '배꼽부위', '옆구리', '왼쪽 위', '오른쪽 위', '왼쪽 아래', '오른쪽 아래'],
+			move:[['예',"True"], ['아니오',"False"]],
+			spread:[['예',"True"], ['아니오',"False"]],
 			expand: 0,
 			survey_data: {
 				symptom_location: [],
