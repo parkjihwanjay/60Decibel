@@ -14,7 +14,7 @@ import ProfBody2 from '../components/profilePage/ProfileBody2.vue';
 import ProfBody3 from '../components/profilePage/ProfileBody3.vue';
 import ProfFooter from '../components/profilePage/ProfileFooter.vue';
 
-import bus from '../utils/bus.js';
+// import bus from '../utils/bus.js';
 export default {
 	components: {
 		Navbar,

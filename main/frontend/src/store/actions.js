@@ -167,6 +167,7 @@ export default {
 
 		getProfileInfo(config)
 			.then(({ data }) => {
+				console.log(data);
 				commit('SET_PROFILE', data);
 			})
 			.catch(error => {

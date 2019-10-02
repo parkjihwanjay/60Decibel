@@ -269,7 +269,11 @@ export default {
 	computed: {
 		// ...mapState(["profile"]),
 		update: function() {
-			return this.$store.state.profile;
+			let update = this.$store.state.profile;
+			update.family_history = [];
+			update.diagnosed_disease = [];
+			update.relevant_data = [];
+			return update;
 		},
 	},
 	// created() {
@@ -277,6 +281,8 @@ export default {
 	// },
 	methods: {
 		updateProfileInfo() {
+			// this.update.family_history = `${this.update.family_history}`;
+			// console.log(this.update);
 			this.$store.dispatch('updateProfileInfo', this.update);
 		},
 		previewImage: function(event) {
