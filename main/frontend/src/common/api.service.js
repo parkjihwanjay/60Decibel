@@ -8,7 +8,6 @@ function handleResponse(response) {
   } else {
     return response.json();
   }
-  
 }
 
 function apiService(endpoint, method, data) {
