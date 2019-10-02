@@ -65,7 +65,7 @@ export default {};
   justify-content: space-between;
   align-items: flex-start;
   min-width: 900px;
-  margin-bottom: 2rem;
+  margin: 2rem 0;
   font-size: 0.85rem;
 }
 .header {
@@ -106,6 +106,10 @@ export default {};
   width: 180px;
   line-height: 1.4rem;
 }
+.navigation .main {
+  display: flex;
+  flex-direction: column;
+}
 /* legal */
 .legal {
   display: flex;
@@ -116,10 +120,7 @@ export default {};
   width: 180px;
   line-height: 1.4rem;
 }
-.navAndLegal {
-  display: flex;
-  align-items: flex-start;
-}
+
 /* contect */
 .contect {
   display: flex;
