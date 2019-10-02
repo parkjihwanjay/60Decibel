@@ -12,43 +12,17 @@
 						<p class="question">통증의 양상</p>
 						<br />
 						<div class="answers animate fadeInRightBig three">
-							<button
-								value="crushing"
-								@click="button_click_multiple('pain_character', '쥐어짜는듯 함')"
-								class="answer"
-							>
-								쥐어짜는듯 함
-							</button>
-
-							<br />
-
-							<button
-								value="burning"
-								@click="button_click_multiple('pain_character', '타는듯 함')"
-								class="answer"
-							>
-								타는듯 함
-							</button>
-
-							<br />
-
-							<button
-								value="stabbing"
-								@click="button_click_multiple('pain_character', '베이는듯 함')"
-								class="answer"
-							>
-								베이는듯 함
-							</button>
-
-							<br />
-
-							<button
-								value="splitting"
-								@click="button_click_multiple('pain_character', '찢어지듯 함')"
-								class="answer"
-							>
-								찢어지듯 함
-							</button>
+							<div v-for="item in character" :key="item.id">
+								<button
+									value="crushing"
+									@click="button_click_multiple('pain_character', item)"
+									class="answer"
+								>
+									{{item}}
+								</button>
+								<br />
+							</div>
+							
 						</div>
 						<br />
 					</v-expansion-panel-content>
@@ -153,6 +127,7 @@ export default {
 	mixins: [surveyMixin],
 	data() {
 		return {
+			character:['쥐어짜는듯 함', '타는듯 함', '베이는듯 함', '찢어지는듯 함'],
 			expand: 0,
 			survey_data: {
 				pain_character: [],
