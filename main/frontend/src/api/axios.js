@@ -26,7 +26,6 @@ const releaseApi = {
 	registration: 'rest-auth/registration/',
 	user: 'user/',
 	profile: 'profiles/',
-	stomachGet: 'stomach/',
 	surveys: 'surveys/',
 	profileupdate: 'profileupdate/',
 	stomach: 'surveys/stomach/',
@@ -48,7 +47,7 @@ function getProfileInfo(config) {
 	return axios.get(releaseApi.profile, config);
 }
 function getStomachInfo(stomachId, config) {
-	const getStomachUrl = `${releaseApi.stomachGet}${stomachId}`;
+	const getStomachUrl = `${releaseApi.stomach}${stomachId}`;
 	return axios.get(getStomachUrl, config);
 }
 function getSurveyHistory(config) {
