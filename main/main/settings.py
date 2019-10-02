@@ -23,11 +23,10 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = ')m&!8ajalwiq*t-(88$6732j@uj3v+ltwu##gj0wcdx_a!swtf'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-# DEBUG = False
-DEBUG = True
+DEBUG = False
 
 # ALLOWED_HOSTS = ["127.0.0.1", "54.180.31.52", "ec2-54-180-31-52.ap-northeast-2.compute.amazonaws.com"]
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["127.0.0.1", "13.125.155.180", "ec2-13-125-155-180.ap-northeast-2.compute.amazonaws.com"]
 
 
 # Application definition
@@ -173,6 +172,11 @@ USE_TZ = False
 
 STATIC_URL = '/static/'
 # 인우 : 정적 파일을 보관하는 static폴더 자체가 없으니 필요 없는 코드인 것 같습니다.
+
+STATICFILES_DIRS = (os.path.join(BASE_DIR,'static'),)
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
 
 LOGIN_URL = "accounts/login/"
 LOGIN_REDIRECT_URL = "/"
