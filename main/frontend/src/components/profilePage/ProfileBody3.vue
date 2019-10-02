@@ -25,10 +25,6 @@
 				<div v-if="profile.job" class="profiledetail">{{ profile.job }}</div>
 			</div>
 		</div>
-		<!-- 프로필 추가 버튼 -->
-		<!-- <div class="profileplus">
-      <v-btn class="button" color="#669999" to="/profileupdate">프로필 작성하기</v-btn>
-    <!-- 작성하지 않은 버튼-->
 	</div>
 </template>
 
