@@ -22,9 +22,9 @@ export default {
 	// 프로필 상태 변이
 	SET_PROFILE(state, profile) {
 		state.profile = profile;
-		// state.profile.diagnosed_disease = state.profile.diagnosed_disease.slice(1, -1);
-		// state.profile.relevant_data = state.profile.relevant_data.slice(1, -1);
-		// state.profile.family_history = state.profile.family_history.slice(1, -1);
+		state.profile.diagnosed_disease = state.profile.diagnosed_disease.slice(1, -1);
+		state.profile.relevant_data = state.profile.relevant_data.slice(1, -1);
+		state.profile.family_history = state.profile.family_history.slice(1, -1);
 	},
 	// 복통 상태 변이
 	SET_STOMACH(state, stomach) {
