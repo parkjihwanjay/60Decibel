@@ -30,7 +30,7 @@ export default {
 	},
 	watch: {
 		check: function(check) {
-			if (check >= 3) bus.$emit('off:progress');
+			if (check >= 3) this.$store.commit('SET_LOADING', false);
 		},
 	},
 	methods: {

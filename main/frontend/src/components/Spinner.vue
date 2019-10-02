@@ -7,24 +7,30 @@
 </template>
 
 <script>
+// import { mapState } from 'vuex';
 export default {
-	props: {
-		loading: {
-			type: Boolean,
-			required: true,
+	computed: {
+		loading() {
+			return this.$store.state.isloading;
 		},
 	},
+	// props: {
+	// 	loading: {
+	// 		type: Boolean,
+	// 		required: true,
+	// 	},
+	// },
 };
 </script>
 
 <style>
 .lds-facebook {
 	display: inline-block;
-	position: absolute;
+	position: fixed;
 	width: 64px;
 	height: 64px;
-	top: 47%;
-	left: 47%;
+	top: 50%;
+	left: 50%;
 }
 .lds-facebook div {
 	display: inline-block;

@@ -7,7 +7,7 @@
 <script>
 import Navbar from '../components/homePage/Navbar.vue';
 import ProfUpload from '../components/profileUploadPage/Container.vue';
-import bus from '../utils/bus.js';
+// import bus from '../utils/bus.js';
 
 export default {
 	components: {
@@ -15,7 +15,8 @@ export default {
 		ProfUpload,
 	},
 	mounted() {
-		bus.$emit('off:progress');
+		this.$store.commit('SET_LOADING', false);
+		// bus.$emit('off:progress');
 	},
 };
 </script>

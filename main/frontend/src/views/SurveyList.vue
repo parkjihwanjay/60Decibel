@@ -17,7 +17,7 @@
 
 <script>
 import { mapState } from 'vuex';
-import bus from '../utils/bus.js';
+// import bus from '../utils/bus.js';
 import Navbar from '../components/homePage/Navbar.vue';
 
 export default {
@@ -25,7 +25,8 @@ export default {
 		...mapState(['survey_history']),
 	},
 	mounted() {
-		bus.$emit('off:progress');
+		this.$store.commit('SET_LOADING', false);
+		// bus.$emit('off:progress');
 	},
 	components: {
 		Navbar,
