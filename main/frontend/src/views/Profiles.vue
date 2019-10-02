@@ -1,10 +1,12 @@
 <template>
 	<div class="profile">
 		<navbar class="nav" />
-		<prof-header class="header" @header="childMounted" />
-		<prof-body2 class="body2" @body2="childMounted" />
-		<prof-body3 class="body3" @body3="childMounted" />
-		<prof-footer class="footer" @footer="childMounted" />
+		<div class="wrap">
+			<prof-header class="header" @header="childMounted" />
+			<prof-body2 class="body2" @body2="childMounted" />
+			<prof-body3 class="body3" @body3="childMounted" />
+			<prof-footer class="footer" @footer="childMounted" />
+		</div>
 	</div>
 </template>
 <script>
@@ -60,14 +62,12 @@ export default {
 	height: 1.5rem;
 	margin-left: 0.6rem;
 }
-.nav /deep/ .navhead-start {
-	display: none;
-}
 
 /* layout */
 .profile {
 	background: linear-gradient(-45deg, #ea5455, #feb692);
 }
+
 .header {
 	background-color: transparent;
 	width: 100%;

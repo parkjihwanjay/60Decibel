@@ -68,9 +68,7 @@ export default {
 	height: 1.5rem;
 	margin-left: 0.6rem;
 }
-.nav /deep/ .navhead-start {
-	display: none;
-}
+
 .resultresult {
 	height: 1400px;
 	background-image: linear-gradient(to top, #cfd9df 0%, #e2ebf0 100%);
