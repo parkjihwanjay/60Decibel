@@ -2,8 +2,7 @@
 	<div class="prof-header">
 		<div class="contents">
 			<div class="prof-img">
-				<img v-if="profile.avatar" v-bind:src="profile.avatar" class="img" />
-				<img v-else src="../../assets/user.png" class="img" />
+				<img src="../../assets/user.png" class="img" />
 			</div>
 			<div class="prof-name">
 				<p class="name">{{ profile.name }}</p>

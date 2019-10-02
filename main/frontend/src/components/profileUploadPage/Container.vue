@@ -8,13 +8,7 @@
 					<div class="upload-img">
 						<div class="bold">프로필 이미지</div>
 						<br />
-						<img v-if="update.avatar" v-bind:src="`${update.avatar}`" class="img" />
-						<img v-else src="../../assets/user.png" class="img" />
-					</div>
-					<div class="file-upload-form">
-						<span class="spanlong">프로필 이미지 업로드</span>
-						<br />
-						<input type="file" @change="previewImage" accept="image/*" class="imgfield" />
+						<img src="../../assets/user.png" alt="사용자 기본 프로필" class="img" />
 					</div>
 					<span>이름</span>
 					<input type="text" ref="name" v-model="update.name" />
