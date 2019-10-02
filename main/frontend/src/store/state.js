@@ -7,4 +7,5 @@ export default {
 	survey_history: [],
 	random_user: {},
 	answer: {},
+	isloading: false,
 };

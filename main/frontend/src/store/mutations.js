@@ -78,4 +78,7 @@ export default {
 			state.userInfo = localStorage.getItem('username');
 		}
 	},
+	SET_LOADING(state, isloading) {
+		state.isloading = isloading;
+	},
 };

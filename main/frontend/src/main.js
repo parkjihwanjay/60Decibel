@@ -11,6 +11,9 @@ import router from './router';
 import store from './store/store.js';
 import axios from 'axios';
 
+// IE에서는 promise를 지원하지 않기 때문에 추가
+import ES6Promise from 'es6-promise';
+ES6Promise.polyfill();
 // aos
 import AOS from 'aos';
 import 'aos/dist/aos.css';
