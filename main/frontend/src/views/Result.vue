@@ -38,7 +38,7 @@ export default {
 	},
 	watch: {
 		check: function(check) {
-			if (check >= 4) bus.$emit('off:progress');
+			if (check >= 4) this.$store.commit('SET_LOADING', false);
 		},
 	},
 	components: {

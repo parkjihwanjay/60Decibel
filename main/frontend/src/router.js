@@ -113,7 +113,8 @@ export default new Router({
       name: "profileupdate",
       // beforeEnter: requireAuth(),
       beforeEnter: (to, from, next) => {
-        bus.$emit('on:progress');
+        store.commit('SET_LOADING', true);
+        // bus.$emit('on:progress');
         store.dispatch("getProfileInfo")
         .then(next())
       },
@@ -123,7 +124,8 @@ export default new Router({
       path: "/profiles",
       name: "profiles",
       beforeEnter: (to, from, next) => {
-        bus.$emit('on:progress');
+        store.commit('SET_LOADING', true);
+        // bus.$emit('on:progress');
         store.dispatch("getProfileInfo")
         .then(next())
       },
@@ -133,7 +135,8 @@ export default new Router({
       path: "/stomach/:id",
       name: "stomach-retrieve",
       beforeEnter: (to, from, next) => {
-        bus.$emit('on:progress');
+        store.commit('SET_LOADING', true);
+        // bus.$emit('on:progress');
         store.dispatch("getProfileInfo")
         store.dispatch("getStomachInfo", to.params.id)
         next();
@@ -144,7 +147,8 @@ export default new Router({
       path: "/surveys",
       name: "survey-history",
       beforeEnter: (to, from, next) => {
-        bus.$emit('on:progress');
+        store.commit('SET_LOADING', true);
+        // bus.$emit('on:progress');
         store.dispatch('getSurveyHistory')
         .then(next())
       },

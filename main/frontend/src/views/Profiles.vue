@@ -18,6 +18,7 @@ import ProfFooter from "../components/profilePage/ProfileFooter.vue";
 
 import bus from "../utils/bus.js";
 export default {
+<<<<<<< HEAD
   components: {
     Navbar,
     ProfHeader,
@@ -40,6 +41,30 @@ export default {
       this.check++;
     }
   }
+=======
+	components: {
+		Navbar,
+		ProfHeader,
+		ProfBody2,
+		ProfBody3,
+		ProfFooter,
+	},
+	data() {
+		return {
+			check: 0,
+		};
+	},
+	watch: {
+		check: function(check) {
+			if (check >= 3) this.$store.commit('SET_LOADING', false);
+		},
+	},
+	methods: {
+		childMounted() {
+			this.check++;
+		},
+	},
+>>>>>>> debab7bcf834ee716141c893ad3ad7e5691bc6eb
 };
 </script>
 <style scoped>
