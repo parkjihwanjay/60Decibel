@@ -7,8 +7,6 @@ class Profile(models.Model):
 
     user = models.OneToOneField(
         CustomUser, on_delete=models.CASCADE, related_name='profile')
-    avatar = models.ImageField(null=True, blank=True, default="")
-    avatar_base64 = models.TextField(null=True, blank=True, default="")
 
     gender  = models.CharField(
         max_length=20, null=True, blank=True, default="")

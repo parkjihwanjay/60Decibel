@@ -264,10 +264,8 @@
 	</div>
 </template>
 <script>
-// import { mapState } from "vuex";
 export default {
 	computed: {
-		// ...mapState(["profile"]),
 		update: function() {
 			let update = this.$store.state.profile;
 			update.family_history = [];
@@ -276,35 +274,11 @@ export default {
 			return update;
 		},
 	},
-	// created() {
-	//   this.$store.dispatch("getProfileInfo");
-	// },
 	methods: {
 		updateProfileInfo() {
 			// this.update.family_history = `${this.update.family_history}`;
 			// console.log(this.update);
 			this.$store.dispatch('updateProfileInfo', this.update);
-		},
-		previewImage: function(event) {
-			// Reference to the DOM input element
-			var input = event.target;
-			// Ensure that you have a file before attempting to read it
-			if (input.files && input.files[0]) {
-				// create a new FileReader to read this image and convert to base64 format
-				var reader = new FileReader();
-				// Define a callback function to run, when FileReader finishes its job
-				reader.onload = e => {
-					// Note: arrow function used here, so that "this.imageData" refers to the imageData of Vue component
-					// Read image as base64 and set to imageData
-					this.update.avatar = e.target.result;
-					this.update.avatar_base64 = e.target.result;
-					this.$store.dispatch('switchAvatar', this.update.avatar);
-					console.log('이미지 : ', this.update.avatar);
-				};
-				// Start the reader job - read file as a data url (base64 format)
-				console.log(input.files[0]);
-				reader.readAsDataURL(input.files[0]);
-			}
 		},
 	},
 };
