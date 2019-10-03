@@ -124,10 +124,11 @@ export default new Router({
       path: "/profiles",
       name: "profiles",
       beforeEnter: (to, from, next) => {
+        // console.log('등장');
         store.commit('SET_LOADING', true);
         // bus.$emit('on:progress');
         store.dispatch("getProfileInfo")
-        .then(next())
+        .then(next());
       },
       component: () => import("./views/Profiles.vue")
     },

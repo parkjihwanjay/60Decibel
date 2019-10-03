@@ -167,7 +167,6 @@ export default {
 
 		getProfileInfo(config)
 			.then(({ data }) => {
-				console.log(data);
 				commit('SET_PROFILE', data);
 			})
 			.catch(error => {
@@ -237,8 +236,7 @@ export default {
 			},
 		};
 		updateProfileInfo(config, update)
-			.then(res => {
-				console.log(res);
+			.then(() => {
 				router.push({
 					name: 'profiles',
 				});
