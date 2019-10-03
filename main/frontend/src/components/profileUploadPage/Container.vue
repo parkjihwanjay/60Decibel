@@ -131,9 +131,11 @@
 						class="select selectline"
 						type="checkbox"
 						v-model="update.diagnosed_disease"
+						@click="diseaseRest"
 						value="기타"
 					/>기타
 					<br />
+					<input type="text" v-show="diagnosed_disease_rest" v-model="diagnosed_disease_restText" />
 					<span class="span2">복용중인 약</span>
 					<br />
 					<label for="yes">
@@ -171,7 +173,14 @@
 					<input class="select" type="checkbox" v-model="update.family_history" value="간염" />간염
 					<input class="select" type="checkbox" v-model="update.family_history" value="결핵" />결핵
 					<input class="select" type="checkbox" v-model="update.family_history" value="없음" />없음
-					<input class="select" type="checkbox" v-model="update.family_history" value="기타" />기타
+					<input
+						class="select"
+						type="checkbox"
+						v-model="update.family_history"
+						value="기타"
+						@click="familyRest"
+					/>기타
+					<input type="text" v-model="family_history_restText" v-show="family_history_rest" />
 				</div>
 			</div>
 			<!-------- 사회력 -------->
@@ -258,7 +267,7 @@
 			</div>
 		</form>
 		<div class="updatecomplete">
-			<v-btn @click.native="updateProfileInfo()" class="button" color="#669999" to="/profiles"
+			<v-btn @click.native="updateProfileInfo()" class="button" color="#669999"
 				>프로필 업데이트</v-btn
 			>
 			<div class="pluslist"></div>
@@ -291,11 +300,25 @@ export default {
 			return update;
 		},
 	},
+	data() {
+		return {
+			diagnosed_disease_rest: false,
+			family_history_rest: false,
+			diagnosed_disease_restText: '',
+			family_history_restText: '',
+		};
+	},
 	methods: {
 		updateProfileInfo() {
 			// this.update.family_history = `${this.update.family_history}`;
 			// console.log(this.update);
 			this.$store.dispatch('updateProfileInfo', this.update);
+		},
+		diseaseRest() {
+			this.diagnosed_disease_rest = !this.diagnosed_disease_rest;
+		},
+		familyRest() {
+			this.family_history_rest = !this.family_history_rest;
 		},
 	},
 };
