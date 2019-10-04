@@ -3,7 +3,7 @@
 		<div class="head">주요 증상</div>
 		<div class="main">
 			<br />
-			<p>복통이 발생한 지 {{ stomach.symptom_start }}입니다.</p>
+			<p>복통이 발생한 지 {{ stomach.symptom_start }}</p>
 			<p>통증은 {{ stomach.fast_or_slow }} 발생하였습니다.</p>
 
 			<p>통증 발생 상황 : {{ stomach.symptom_situation }}</p>

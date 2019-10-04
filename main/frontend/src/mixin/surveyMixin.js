@@ -8,6 +8,7 @@ export default {
 		button_click_multiple(model, value) {
 			this.survey_data[model].push(value);
 			this.survey_data[model] = Array.from(new Set(this.survey_data[model]));
+			// console.log(model,value)
 		},
 		send(survey_data) {
 			// this.$emit('send', survey_data);
