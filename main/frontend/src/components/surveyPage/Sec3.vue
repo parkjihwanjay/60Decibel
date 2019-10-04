@@ -12,53 +12,23 @@
 						<p class="question">통증이 얼마나 지속되나요?</p>
 						<br />
 						<div class="answers">
-							<button
-								value="lest_than_10m"
-								@click="
-									button_click('pain_duration', '10분 미만');
-									single_button_toggle();
-								"
-								class="answer animate fadeInRightBig three"
-								:class="{ on: on }"
-							>
-								10분 미만
-							</button>
-
-							<br />
-
-							<button
-								value="from_10m_to_1h"
-								@click="
-									button_click('pain_duration', '10분-1시간');
-									single_button_toggle();
-								"
-								class="answer animate fadeInRightBig three"
-								:class="{ on: on }"
-							>
-								10분-1시간
-							</button>
-
-							<br />
-
-							<button
-								value="more_than_1h"
-								@click="button_click('pain_duration', '1시간 이상')"
-								class="answer animate fadeInRightBig three"
-							>
-								1시간이상
-							</button>
-
-							<br />
-
-							<button
-								value="all_day"
-								@click="button_click('pain_duration', '하루종일')"
-								class="answer animate fadeInRightBig three"
-							>
-								하루종일
-							</button>
+							<div v-for="item in duration" :key="item.id">
+								<button
+									value="lest_than_10m"
+									@click="
+										button_click('pain_duration', item);
+										single_button_toggle();
+									"
+									class="answer animate fadeInRightBig three"
+									:class="{ on: on }"
+								>
+									{{item}}
+								</button>
+								<br/>
+							</div>
+							
 						</div>
-						<br />
+						
 					</v-expansion-panel-content>
 				</v-expansion-panel>
 				<v-expansion-panel class="q1-3">
@@ -72,23 +42,16 @@
 						<br />
 						<br />
 						<div class="answers">
-							<button
-								value="True"
-								@click="button_click('pain_repeated', '반복됩니다')"
-								class="answer animate fadeInRightBig three"
-							>
-								반복됩니다.
-							</button>
-							<br />
-							<button
-								value="False"
-								@click="button_click('pain_repeated', '단발성입니다')"
-								class="answer animate fadeInRightBig three"
-							>
-								단발성입니다.
-							</button>
-
-							<br />
+							<div v-for="item in repeated" :key="item.id">
+								<button
+									value=item[1]
+									@click="button_click('pain_repeated', item[0])"
+									class="answer animate fadeInRightBig three"
+								>
+									{{item[0]}}
+								</button>
+								<br />
+							</div>
 						</div>
 						<br />
 					</v-expansion-panel-content>
@@ -109,16 +72,19 @@
 							&nbsp;&nbsp;통증의 빈도는
 							<select class="select" v-model="survey_data.pain_how_often_day" name="job">
 								<option value selected disabled hidden>선택</option>
-								<option value="하루에">하루에</option>
-								<option value="일주일">일주일에</option>
+									<option value="하루에">{{"하루에"}}</option>
+									<option value="일주일에">{{"일주일에"}}</option>
 							</select>
 
 							<select class="select" v-model="survey_data.pain_how_often_many" name="job">
 								<option value selected disabled hidden>선택</option>
-								<option value="0-1회">0-1회</option>
-								<option value="2-3회">2-3회</option>
-								<option value="4-5회">4-5회</option>
-								<option value="6회이상">6회이상</option>
+	
+									<option value="0-1회">{{"0-1회"}}</option>
+									<option value="2-3회">{{"2-3회"}}</option>
+									<option value="4-5회">{{"4-5회"}}</option>
+									<option value="6회이상">{{"6회이상"}}</option>
+			
+
 							</select>
 						</div>
 					</v-expansion-panel-content>
@@ -133,83 +99,16 @@
 						<br />
 
 						<div class="answers-box animate fadeInRightBig three">
-							<button
-								value="after meal"
-								@click="button_click_multiple('factor', '식사후 심화')"
-								class="answer-box"
-							>
-								식사후 심화
-							</button>
-
-							<br />
-
-							<button
-								value="no meal"
-								@click="button_click_multiple('factor', '공복에 심화')"
-								class="answer-box"
-							>
-								공복에 심화
-							</button>
-
-							<br />
-
-							<button
-								value="after alchol"
-								@click="button_click_multiple('factor', '음주후 심화')"
-								class="answer-box"
-							>
-								음주후 심화
-							</button>
-
-							<br />
-
-							<button
-								value="posture"
-								@click="button_click_multiple('factor', '자세변화시 심화')"
-								class="answer-box"
-							>
-								자세변화시 심화
-							</button>
-
-							<br />
-
-							<button
-								value="urination"
-								@click="button_click_multiple('factor', '배뇨시 심화')"
-								class="answer-box"
-							>
-								배뇨시 심화
-							</button>
-
-							<br />
-
-							<button
-								value="defecation"
-								@click="button_click_multiple('factor', '배변시 심화')"
-								class="answer-box"
-							>
-								배변시 심화
-							</button>
-
-							<br />
-
-							<button
-								value="better"
-								@click="button_click_multiple('factor', '완화되는 중')"
-								class="answer-box"
-							>
-								완화되는 중
-							</button>
-
-							<br />
-
-							<button
-								value="nothing"
-								@click="button_click_multiple('factor', '해당사항 없음')"
-								class="answer-box"
-							>
-								해당사항 없음
-							</button>
+							<div v-for="item in worse" :key="item.id">
+								<button
+									value="after meal"
+									@click="button_click_multiple('factor', item)"
+									class="answer-box"
+								>
+									{{item}}
+								</button>
+								<br />
+							</div>
 						</div>
 					</v-expansion-panel-content>
 				</v-expansion-panel>
@@ -253,6 +152,9 @@ export default {
 	mixins: [surveyMixin],
 	data() {
 		return {
+			repeated:[["반복됩니다","True"],["단발성입니다","False"]],
+			duration:['10분 미만', '10분-1시간', '1시간이상', '하루종일'],
+			worse:['식사후 심화', '공복에 심화', '음주후 심화', '자세변화시 심화', '배뇨시 심화', '배변시 심화', '완화되는 중', '해당사항 없음'],
 			on: false,
 			off: true,
 			expand: 0,
