@@ -16,7 +16,7 @@
 						<br />
 						<span>성별</span>
 						<form>
-							<label for="male">
+								<label for="male">
 								<input
 									class="select"
 									type="radio"
@@ -25,19 +25,20 @@
 									name="gender"
 									id="male"
 									value="남성"
-								/>남자
-							</label>
-							<label for="female">
+								/>남성
+							    </label>
+								<label for="female">
 								<input
-									type="radio"
 									class="select"
-									ref="female"
+									type="radio"
+									ref=female
 									v-model="update.gender"
 									name="gender"
-									id="female"
+									id=female
 									value="여성"
-								/>여자
-							</label>
+								/>여성
+							    </label>
+								
 						</form>
 						<br />
 						<span>생년월일</span>
@@ -305,7 +306,7 @@ export default {
 			diagnosed_disease_rest: false,
 			family_history_rest: false,
 			diagnosed_disease_restText: '',
-			family_history_restText: '',
+			family_history_restText: ''
 		};
 	},
 	methods: {

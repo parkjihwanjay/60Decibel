@@ -20,9 +20,9 @@
 
 			<p>그 외 {{ stomach.associated_symptom_others }}와 같은 동반증상이 있습니다.</p>
 
-			<p>통증이 {{ stomach.factor }}와 같은 상황에 심해지거나 완화됩니다.</p>
+			<p>통증이 심해지는 상황 : {{ stomach.factor }}</p>
 
-			<p>그 외 {{ stomach.other_factor }}와 같은 상황에도 통증이 심해지거나 완화됩니다.</p>
+			<p>통증이 심해지는 기타요인 : {{ stomach.other_factor }}</p>
 
 			<p>복부에 관한 과거이력 : {{ stomach.abdomen_relevant }}</p>
 		</div>
