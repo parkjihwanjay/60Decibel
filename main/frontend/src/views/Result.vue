@@ -4,12 +4,12 @@
 		<div class="main">
 			<div class="box">
 				<div class="page" id="pt-main">
-					<name @successMount="successMount" />
+					<name />
 				</div>
 				<div class="page" id="pt-page">
-					<symptoms @successMount="successMount" />
-					<sickness @successMount="successMount" />
-					<history @successMount="successMount" />
+					<symptoms />
+					<sickness />
+					<history />
 				</div>
 			</div>
 		</div>
@@ -22,8 +22,6 @@ import sickness from '../components/resultsPage/sickness.vue';
 import symptoms from '../components/resultsPage/symptoms.vue';
 import Navbar from '../components/homePage/Navbar.vue';
 
-import bus from '../utils/bus.js';
-
 export default {
 	name: 'result',
 	data() {
@@ -31,16 +29,19 @@ export default {
 			check: 0,
 		};
 	},
-	methods: {
-		successMount() {
-			this.check++;
-		},
+	mounted() {
+		this.$store.commit('SET_LOADING', false);
 	},
-	watch: {
-		check: function(check) {
-			if (check >= 4) this.$store.commit('SET_LOADING', false);
-		},
-	},
+	// methods: {
+	// 	successMount() {
+	// 		this.check++;
+	// 	},
+	// },
+	// watch: {
+	// 	check: function(check) {
+	// 		if (check >= 4) this.$store.commit('SET_LOADING', false);
+	// 	},
+	// },
 	components: {
 		name,
 		symptoms,

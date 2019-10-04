@@ -139,8 +139,8 @@ export default new Router({
         store.commit('SET_LOADING', true);
         // bus.$emit('on:progress');
         store.dispatch("getProfileInfo")
-        store.dispatch("getStomachInfo", to.params.id)
-        next();
+        .then(store.dispatch("getStomachInfo", to.params.id))
+        .then(next());
       },
       component: () => import("./views/Result.vue")
     },
