@@ -5,9 +5,9 @@
 		<br />
 		<div class="main">
 			<p v-if="`${profile.had_checkup}=false`">
-				{{ profile.had_checkup_true }}년 전에 건강검진을 받았습니다.
+				{{ profile.had_checkup_true }} 전에 건강검진을 받았습니다.
 			</p>
-			<p>이전에{{ profile.diagnosed_disease }}을 진단받았습니다.</p>
+			<p>이전에 {{ profile.diagnosed_disease }} 을 진단받았습니다.</p>
 			<p v-if="`${profile.taking_medicine}`">{{ profile.what_medicine }}을 복용중입니다.</p>
 			<p>
 				<span class="s">{{ profile.family_history }}</span
