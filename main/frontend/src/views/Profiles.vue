@@ -2,10 +2,10 @@
 	<div class="profile">
 		<navbar class="nav" />
 		<div class="wrap">
-			<prof-header class="header" @header="childMounted" />
-			<prof-body2 class="body2" @body2="childMounted" />
-			<prof-body3 class="body3" @body3="childMounted" />
-			<prof-footer class="footer" @footer="childMounted" />
+			<prof-header class="header" />
+			<prof-body2 class="body2" />
+			<prof-body3 class="body3" />
+			<prof-footer class="footer" />
 		</div>
 	</div>
 </template>
@@ -30,16 +30,19 @@ export default {
 			check: 0,
 		};
 	},
-	watch: {
-		check: function(check) {
-			if (check >= 3) this.$store.commit('SET_LOADING', false);
-		},
+	mounted() {
+		this.$store.commit('SET_LOADING', false);
 	},
-	methods: {
-		childMounted() {
-			this.check++;
-		},
-	},
+	// watch: {
+	// 	check: function(check) {
+	// 		if (check >= 3) this.$store.commit('SET_LOADING', false);
+	// 	},
+	// },
+	// methods: {
+	// 	childMounted() {
+	// 		this.check++;
+	// 	},
+	// },
 };
 </script>
 <style scoped>

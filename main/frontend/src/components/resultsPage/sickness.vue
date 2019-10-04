@@ -35,9 +35,9 @@ export default {
 	computed: {
 		...mapState(['stomach']),
 	},
-	updated() {
-		this.$emit('successMount');
-	},
+	// updated() {
+	// 	this.$emit('successMount');
+	// },
 };
 </script>
 <style scoped>
