@@ -7,17 +7,33 @@ import store from "./store/store.js";
 import bus from './utils/bus.js';
 Vue.use(Router);
 
-function requireAuth(to, from, next) {
+// function requireAuth(to, from, next) {
   // console.log('동작중');
-  console.log(localStorage.getItem("isLogin"))
-  if (localStorage.getItem("isLogin") !== "true") {
-    alert("로그인을 먼저 하세요");
-    next('/login');
-  }
+  // console.log(localStorage.getItem("isLogin"))
+  // if (localStorage.getItem("isLogin") !== "true") {
+    // alert("로그인을 먼저 하세요");
+    // next('/login');
+  // }
   // else{
   //   next();
   // }
-};
+// };
+
+const requireAuth = () => {
+  if(!store.state.isLogin){
+    if(store.state.isLoginError){
+      alert('세션이 만료 되었습니다.');
+      return 'session-expired'
+    }
+    else{
+      alert('로그인을 먼저 해주세요');
+      return 'not-login'
+    }
+  }
+  else{
+    return 'login'
+  }
+}
 
 const router =  new Router({
   hashbang: false,
@@ -46,8 +62,13 @@ const router =  new Router({
     {
       path: "/survey",
       beforeEnter: ((to, from, next) => {
-        requireAuth();
-        next();
+        if(requireAuth() === 'login')
+        {
+          next();
+        }
+        else{
+          next('/');
+        }
       }) ,
       redirect: "/sec1",
       name: "survey",
@@ -118,11 +139,17 @@ const router =  new Router({
       name: "profileupdate",
       // beforeEnter: requireAuth(),
       beforeEnter: async (to, from, next) => {
-        requireAuth(),
-        store.commit('SET_LOADING', true);
-        // bus.$emit('on:progress');
-        await store.dispatch("getProfileInfo")
-        next();
+        // let Auth = requireAuth();
+        if(requireAuth() === 'login')
+        {
+          store.commit('SET_LOADING', true);
+          // bus.$emit('on:progress');
+          await store.dispatch("getProfileInfo")
+          next();
+        }
+        else{
+          next('/');
+        }
       },
       component: () => import("./views/ProfileUpdate.vue")
     },
@@ -131,24 +158,33 @@ const router =  new Router({
       name: "profiles",
       beforeEnter: (to, from, next) => {
         // console.log('등장');
-        requireAuth();
-        store.commit('SET_LOADING', true);
-        // bus.$emit('on:progress');
-        store.dispatch("getProfileInfo")
-        .then(next());
+        if(requireAuth() === 'login'){
+          store.commit('SET_LOADING', true);
+          // bus.$emit('on:progress');
+          store.dispatch("getProfileInfo")
+          .then(next());
+        }
+        else{
+          next('/');
+        }
       },
       component: () => import("./views/Profiles.vue")
     },
     {
       path: "/stomach/:id",
       name: "stomach-retrieve",
-      beforeEnter: (to, from, next) => {
-        requireAuth();
-        store.commit('SET_LOADING', true);
-        // bus.$emit('on:progress');
-        store.dispatch("getProfileInfo")
-        .then(store.dispatch("getStomachInfo", to.params.id))
-        .then(next());
+      beforeEnter: async (to, from, next) => {
+        
+        if(requireAuth() === 'login'){
+          store.commit('SET_LOADING', true);
+          //a bus.$emit('on:progress');
+          await store.dispatch("getProfileInfo")
+          await store.dispatch("getStomachInfo", to.params.id)
+          next();
+        }
+        else{
+          next('/');
+        }
       },
       component: () => import("./views/Result.vue"),
     },
@@ -156,11 +192,16 @@ const router =  new Router({
       path: "/surveys",
       name: "survey-history",
       beforeEnter: (to, from, next) => {
-        requireAuth();
-        store.commit('SET_LOADING', true);
-        // bus.$emit('on:progress');
-        store.dispatch('getSurveyHistory')
-        .then(next())
+        if(requireAuth() === 'login')
+        {
+          store.commit('SET_LOADING', true);
+          // bus.$emit('on:progress');
+          store.dispatch('getSurveyHistory')
+          .then(next())
+        }
+        else{
+          next('/');
+        }
       },
       component: () => import("./views/SurveyList.vue")
     },
@@ -175,16 +216,8 @@ const router =  new Router({
 });
 
 router.beforeEach((to, from, next) => {
-	if (localStorage.getItem('access_token')) {
-		store
-			.dispatch('getMemberInfo')
-			.then(next())
-			.catch(error => {
-				alert('세션이 만료되었습니다.');
-			});
-	} else {
-		next();
-	}
+  store.dispatch('getMemberInfo');
+  next();
 });
 
 export default router;

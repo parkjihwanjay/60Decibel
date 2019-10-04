@@ -19,15 +19,13 @@ export default {
 		// login --> 토큰 반환
 		Login(loginObj)
 			// loginObj = {email,password}
-			.then(res => {
-				this.dispatch('getMemberInfo');
-
-				localStorage.setItem('isLogin', true);
-
-				let token = res.data.token;
+			.then(async res => {
 				//토큰을 로컬 스토리지에 저장
-				localStorage.setItem('access_token', token);
+				localStorage.setItem('access_token', res.data.token);
+
 				axios.defaults.headers.common['Authorization'] = localStorage.getItem['access_token'];
+
+				await this.dispatch('getMemberInfo');
 
 				if (loginObj.from_signup)
 					router.push({
@@ -44,14 +42,12 @@ export default {
 	},
 	// 로그아웃 function
 	logout({ commit }) {
-		// axios.post("http://localhost:8000/api/rest-auth/logout/", this.state.userInfo)
 		Logout(this.state.userInfo)
 			.then(res => {
 				alert('로그아웃이 성공적으로 이루어졌습니다.');
 				commit('logout', 'RESET_RANDOM_USER');
 				axios.defaults.headers.common['Authorization'] = undefined;
 				localStorage.clear();
-				// location.href = "/"
 				router.push({
 					name: 'home',
 				});
@@ -59,6 +55,49 @@ export default {
 			.catch(err => {
 				console.log(err);
 			});
+	},
+	getMemberInfo({ commit }) {
+		//로컬 스토리지에 저장된 토큰을 저장한다.
+		if (!localStorage.getItem('access_token')) {
+			// localStorage.setItem('isLogin', false);
+			// localStorage.setItem('isLoginError', false);
+			commit('loginNotYet');
+			// return new Promise((resolve, reject) => {
+			// 	reject('로그인을 하지 않았습니다.');
+			// });
+		} else {
+			let token = localStorage.getItem('access_token');
+			let config = {
+				headers: {
+					Authorization: 'JWT ' + token,
+					'Content-Type': 'application/json',
+				},
+			};
+			//토큰 -> 멤버 정보 반환
+			//새로고침 --> 토큰만 갖고 멤버 정보 요청가능
+			getMemberInfo(config)
+				.then(response => {
+					let userInfo = response.data.username;
+
+					// localStorage.setItem('isLogin', true);
+					// localStorage.setItem('isLoginError', false);
+
+					commit('loginSuccess', userInfo);
+
+					// return new Promise((resolve, reject) => {
+					// 	resolve();
+					// });
+				})
+				.catch(() => {
+					// localStorage.setItem('isLogin', false);
+					// localStorage.setItem('isLoginError', true);
+					// alert('세션이 만료 되었습니다');
+					commit('loginError');
+					// return new Promise((resolve, reject) => {
+					// 	reject();
+					// });
+				});
+		}
 	},
 	signup(dispatch, signupObj) {
 		// login --> 토큰 반환
@@ -124,49 +163,7 @@ export default {
 		commit('SET_SURVEY_DATA', survey_data);
 		dispatch('shootSurveyData', this.state.answer);
 	},
-	getMemberInfo({ commit }) {
-		//로컬 스토리지에 저장된 토큰을 저장한다.
-		if (!localStorage.getItem('access_token')) {
-			commit('loginNotYet');
-			return new Promise((resolve, reject) => {
-				reject('로그인을 하지 않았습니다.');
-			});
-		} else {
-			let token = localStorage.getItem('access_token');
-			let config = {
-				headers: {
-					Authorization: 'JWT ' + token,
-					'Content-Type': 'application/json',
-				},
-			};
-			//토큰 -> 멤버 정보 반환
-			//새로고침 --> 토큰만 갖고 멤버 정보 요청가능
-			getMemberInfo(config)
-				.then(response => {
-					let userInfo = response.data.username;
 
-					localStorage.setItem('isLogin', true);
-					localStorage.setItem('isLoginError', false);
-					localStorage.setItem('username', userInfo);
-
-					commit('loginSuccess', userInfo);
-
-					return new Promise((resolve, reject) => {
-						resolve();
-					});
-				})
-				.catch(() => {
-					localStorage.setItem('isLogin', false);
-					localStorage.setItem('isLoginError', false);
-
-					commit('loginError');
-
-					return new Promise((resolve, reject) => {
-						reject();
-					});
-				});
-		}
-	},
 	getProfileInfo({ commit }) {
 		let token = localStorage.getItem('access_token');
 		let config = {

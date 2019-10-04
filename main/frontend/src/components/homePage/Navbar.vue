@@ -7,7 +7,7 @@
 				</router-link>
 			</div>
 			<div class="navhead-btns">
-				<div class="navhead-start" v-if="this.$store.state.isLogin === 'true'">
+				<div class="navhead-start" v-if="this.$store.state.isLogin">
 					<router-link to="/survey">
 						<div class="start-btn">시작하기</div>
 					</router-link>
@@ -17,7 +17,7 @@
 				</div>
 			</div>
 		</div>
-		<transition-expand v-if="this.$store.state.isLogin === 'true'">
+		<transition-expand v-if="this.$store.state.isLogin">
 			<div class="navexpand" v-if="expanded">
 				<a class="nav-menu">
 					<router-link to="/profiles">{{ this.$store.state.userInfo }}님 프로필보기</router-link>
