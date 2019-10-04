@@ -128,6 +128,9 @@ export default {
 		//로컬 스토리지에 저장된 토큰을 저장한다.
 		if (!localStorage.getItem('access_token')) {
 			commit('loginNotYet');
+			return new Promise((resolve, reject) => {
+				reject('로그인을 하지 않았습니다.');
+			});
 		} else {
 			let token = localStorage.getItem('access_token');
 			let config = {
@@ -140,11 +143,11 @@ export default {
 			//새로고침 --> 토큰만 갖고 멤버 정보 요청가능
 			getMemberInfo(config)
 				.then(response => {
+					let userInfo = response.data.username;
+
 					localStorage.setItem('isLogin', true);
 					localStorage.setItem('isLoginError', false);
 					localStorage.setItem('username', userInfo);
-
-					let userInfo = response.data.username;
 
 					commit('loginSuccess', userInfo);
 				})
@@ -167,8 +170,10 @@ export default {
 
 		getProfileInfo(config)
 			.then(({ data }) => {
-				console.log(data);
 				commit('SET_PROFILE', data);
+				return new Promise((resolve, reject) => {
+					resolve();
+				});
 			})
 			.catch(error => {
 				console.log(error);
@@ -187,6 +192,9 @@ export default {
 			.then(({ data }) => {
 				console.log(data);
 				commit('SET_STOMACH', data);
+				return new Promise((resolve, rejcet) => {
+					resolve();
+				});
 			})
 			.catch(error => {
 				console.log(error);
@@ -203,6 +211,9 @@ export default {
 		getSurveyHistory(config)
 			.then(({ data }) => {
 				commit('SET_SURVEY_HISTORY', data);
+				return new Promise((resolve, reject) => {
+					resolve();
+				});
 			})
 			.catch(error => {
 				console.log(error);
@@ -237,8 +248,7 @@ export default {
 			},
 		};
 		updateProfileInfo(config, update)
-			.then(res => {
-				console.log(res);
+			.then(() => {
 				router.push({
 					name: 'profiles',
 				});
