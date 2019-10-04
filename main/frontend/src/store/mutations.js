@@ -1,22 +1,22 @@
 export default {
 	loginSuccess(state, payload) {
-		state.isLogin = 'true';
-		state.isLoginError = 'false';
+		state.isLogin = true;
+		state.isLoginError = false;
 		state.userInfo = payload;
 	},
 	loginNotYet(state) {
-		state.isLogin = 'false';
-		state.isLoginError = 'false';
+		state.isLogin = false;
+		state.isLoginError = false;
 		state.userInfo = null;
 	},
 	loginError(state) {
-		state.isLogin = 'false';
-		state.isLoginError = 'true';
+		state.isLogin = false;
+		state.isLoginError = true;
 		state.userInfo = null;
 	},
 	logout(state) {
-		state.isLogin = 'false';
-		state.isLoginError = 'false';
+		state.isLogin = false;
+		state.isLoginError = false;
 		state.userInfo = null;
 	},
 	// 프로필 상태 변이

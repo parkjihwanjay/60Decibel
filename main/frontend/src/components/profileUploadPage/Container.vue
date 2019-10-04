@@ -279,7 +279,7 @@
 export default {
 	computed: {
 		update: function() {
-			let update = this.$store.state.profile;
+			let update = { ...this.$store.state.profile };
 			// update.family_history = `[${update.family_history}]`;
 			// update.diagnosed_disease = `[${update.diagnosed_disease}]`;
 
