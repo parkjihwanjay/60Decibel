@@ -9,8 +9,6 @@
 <script>
 // import Navbar from "./components/homePage/Navbar.vue";
 import Spinner from './components/Spinner.vue';
-import bus from './utils/bus.js';
-
 export default {
 	name: 'App',
 	components: {
@@ -31,10 +29,6 @@ export default {
 			console.log('종료');
 			this.loading = false;
 		},
-	},
-	created() {
-		bus.$on('on:progress', this.onProgress);
-		bus.$on('off:progress', this.offProgress);
 	},
 };
 </script>

@@ -7,17 +7,19 @@ import store from "./store/store.js";
 import bus from './utils/bus.js';
 Vue.use(Router);
 
-const requireAuth = () => (to, from, next) => {
-  if (localStorage.getItem("isLogin") === "true") {
-    next();
-  } else {
-    console.log(localStorage.getItem("isLogin"));
+function requireAuth(to, from, next) {
+  // console.log('동작중');
+  console.log(localStorage.getItem("isLogin"))
+  if (localStorage.getItem("isLogin") !== "true") {
     alert("로그인을 먼저 하세요");
-    next("/login");
+    next('/login');
   }
+  // else{
+  //   next();
+  // }
 };
 
-export default new Router({
+const router =  new Router({
   hashbang: false,
   mode: "history",
   routes: [
@@ -43,9 +45,12 @@ export default new Router({
     },
     {
       path: "/survey",
+      beforeEnter: ((to, from, next) => {
+        requireAuth();
+        next();
+      }) ,
       redirect: "/sec1",
       name: "survey",
-      // beforeEnter: requireAuth(),
       component: () => import("./views/Survey.vue"),
       children: [
         {
@@ -112,11 +117,12 @@ export default new Router({
       path: "/profileupdate",
       name: "profileupdate",
       // beforeEnter: requireAuth(),
-      beforeEnter: (to, from, next) => {
+      beforeEnter: async (to, from, next) => {
+        requireAuth(),
         store.commit('SET_LOADING', true);
         // bus.$emit('on:progress');
-        store.dispatch("getProfileInfo")
-        .then(next())
+        await store.dispatch("getProfileInfo")
+        next();
       },
       component: () => import("./views/ProfileUpdate.vue")
     },
@@ -125,6 +131,7 @@ export default new Router({
       name: "profiles",
       beforeEnter: (to, from, next) => {
         // console.log('등장');
+        requireAuth();
         store.commit('SET_LOADING', true);
         // bus.$emit('on:progress');
         store.dispatch("getProfileInfo")
@@ -136,24 +143,50 @@ export default new Router({
       path: "/stomach/:id",
       name: "stomach-retrieve",
       beforeEnter: (to, from, next) => {
+        requireAuth();
         store.commit('SET_LOADING', true);
         // bus.$emit('on:progress');
         store.dispatch("getProfileInfo")
         .then(store.dispatch("getStomachInfo", to.params.id))
         .then(next());
       },
-      component: () => import("./views/Result.vue")
+      component: () => import("./views/Result.vue"),
     },
     {
       path: "/surveys",
       name: "survey-history",
       beforeEnter: (to, from, next) => {
+        requireAuth();
         store.commit('SET_LOADING', true);
         // bus.$emit('on:progress');
         store.dispatch('getSurveyHistory')
         .then(next())
       },
       component: () => import("./views/SurveyList.vue")
-    }
+    },
+    {
+      path : '*',
+      beforeEnter : (to, from, next) => {
+        alert("요청하시는 주소는 없는 주소입니다.");
+        next('/');
+      }
+    },
   ]
 });
+
+router.beforeEach((to, from, next) => {
+	if (localStorage.getItem('access_token')) {
+		store
+			.dispatch('getMemberInfo')
+			.then(next())
+			.catch(error => {
+				alert('세션이 만료되었습니다.');
+			});
+	} else {
+		next();
+	}
+});
+
+export default router;
+
+

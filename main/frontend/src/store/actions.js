@@ -150,12 +150,20 @@ export default {
 					localStorage.setItem('username', userInfo);
 
 					commit('loginSuccess', userInfo);
+
+					return new Promise((resolve, reject) => {
+						resolve();
+					});
 				})
 				.catch(() => {
 					localStorage.setItem('isLogin', false);
 					localStorage.setItem('isLoginError', false);
 
 					commit('loginError');
+
+					return new Promise((resolve, reject) => {
+						reject();
+					});
 				});
 		}
 	},
