@@ -23,23 +23,16 @@ export default {
 				//토큰을 로컬 스토리지에 저장
 				localStorage.setItem('access_token', res.data.token);
 
-				axios.defaults.headers.common['Authorization'] = localStorage.getItem['access_token'];
+				axios.defaults.headers.common['Authorization'] = res.data.token;
 
-				await this.dispatch('getMemberInfo');
-
-				commit('SET_LOADING', true);
-
-				setTimeout(function() {
-					commit('SET_LOADING', false);
-					if (loginObj.from_signup) {
-						router.push({
-							name: 'profileupdate',
-						});
-					} else
-						router.push({
-							name: 'home',
-						});
-				}, 500);
+				if (loginObj.from_signup) {
+					router.push({
+						name: 'profileupdate',
+					});
+				} else
+					router.push({
+						name: 'home',
+					});
 			})
 			.catch(() => {
 				alert('이메일과 비밀번호를 확인하세요.');
@@ -67,9 +60,9 @@ export default {
 			// localStorage.setItem('isLogin', false);
 			// localStorage.setItem('isLoginError', false);
 			commit('loginNotYet');
-			return new Promise((resolve, reject) => {
-				resolve();
-			});
+			// return new Promise((resolve, reject) => {
+			// 	resolve();
+			// });
 		} else {
 			let token = localStorage.getItem('access_token');
 			let config = {
@@ -88,21 +81,23 @@ export default {
 					// localStorage.setItem('isLoginError', false);
 
 					commit('loginSuccess', userInfo);
-
-					return new Promise((resolve, reject) => {
-						resolve();
-					});
+					// return new Promise((resolve, reject) => {
+					// 	resolve();
+					// });
 				})
 				.catch(() => {
 					// localStorage.setItem('isLogin', false);
 					// localStorage.setItem('isLoginError', true);
-					// alert('세션이 만료 되었습니다');
 					commit('loginError');
-					return new Promise((resolve, reject) => {
-						resolve();
-					});
+					// return new Promise((resolve, reject) => {
+					// 	resolve();
+					// });
+					// alert('세션이 만료 되었습니다');
 				});
 		}
+		// return new Promise((resolve, reject) => {
+		// 	resolve();
+		// });
 	},
 	signup(dispatch, signupObj) {
 		// login --> 토큰 반환

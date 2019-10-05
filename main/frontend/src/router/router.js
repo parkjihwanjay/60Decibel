@@ -200,8 +200,16 @@ const router =  new Router({
 });
 
 router.beforeEach(async (to, from, next) => {
-  await store.dispatch('getMemberInfo');
-  next();
+  store.commit('SET_LOADING', true);
+  store.dispatch('getMemberInfo')
+  // .then(() => {
+  //   store.commit('SET_LOADING', false);
+  //   next();
+  // })
+  setTimeout(function(){
+    store.commit('SET_LOADING', false);
+    next();
+  }, 500)
 });
 
 export default router;
