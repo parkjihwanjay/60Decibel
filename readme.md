@@ -128,7 +128,7 @@
 
 |                          60 Decibel                          |                     멋쟁이 사자처럼 7기                      |                     고려대학교 의과대학                      |
 | :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: |
-| <img src="https://miro.medium.com/max/6500/0*8ZoDIczhINwo3S_C.png" alt="img" style="zoom:25%;" /> | <img src="https://miro.medium.com/max/1505/0*hGXvYP1axwfYC2Uz.png" alt="img" style="zoom:200%;" /> | <img src="https://miro.medium.com/max/2250/0*NWcf3ziwIZRCCShH.png" alt="img" style="zoom:200%;" /> |
+| <img src="https://miro.medium.com/max/6500/0*8ZoDIczhINwo3S_C.png" alt="img" style="zoom:25%;" width="100%" height="100%" /> | <img src="https://miro.medium.com/max/1505/0*hGXvYP1axwfYC2Uz.png" alt="img" style="zoom:200%;" /> | <img src="https://miro.medium.com/max/2250/0*NWcf3ziwIZRCCShH.png" alt="img" style="zoom:200%;" /> |
 
 - **60DB** : 고려대학교 멋쟁이 사자처럼 7기 출신으로 `전원 컴퓨터공학 비전공자 출신 개발자`다. 실질적인 60Decibel 개발을 맡아 진행하고 있다. 
 - **멋쟁이 사자처럼** : 컴퓨터공학 비전공자들도 프로그래밍 기초 지식을 배워 자신만의 웹서비스를 만들 수 있도록 돕는 대학생 중심 프로그래밍 동아리로써 개발에 관한 전반적인 사항에 대해 조언을 얻었다.
