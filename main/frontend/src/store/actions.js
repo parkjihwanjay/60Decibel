@@ -1,5 +1,5 @@
 import axios from 'axios';
-import router from '../router';
+import router from '../router/router';
 
 import {
 	Login,
@@ -27,14 +27,19 @@ export default {
 
 				await this.dispatch('getMemberInfo');
 
-				if (loginObj.from_signup)
-					router.push({
-						name: 'profileupdate',
-					});
-				else
-					router.push({
-						name: 'home',
-					});
+				commit('SET_LOADING', true);
+
+				setTimeout(function() {
+					commit('SET_LOADING', false);
+					if (loginObj.from_signup) {
+						router.push({
+							name: 'profileupdate',
+						});
+					} else
+						router.push({
+							name: 'home',
+						});
+				}, 500);
 			})
 			.catch(() => {
 				alert('이메일과 비밀번호를 확인하세요.');
@@ -62,9 +67,9 @@ export default {
 			// localStorage.setItem('isLogin', false);
 			// localStorage.setItem('isLoginError', false);
 			commit('loginNotYet');
-			// return new Promise((resolve, reject) => {
-			// 	reject('로그인을 하지 않았습니다.');
-			// });
+			return new Promise((resolve, reject) => {
+				resolve();
+			});
 		} else {
 			let token = localStorage.getItem('access_token');
 			let config = {
@@ -84,18 +89,18 @@ export default {
 
 					commit('loginSuccess', userInfo);
 
-					// return new Promise((resolve, reject) => {
-					// 	resolve();
-					// });
+					return new Promise((resolve, reject) => {
+						resolve();
+					});
 				})
 				.catch(() => {
 					// localStorage.setItem('isLogin', false);
 					// localStorage.setItem('isLoginError', true);
 					// alert('세션이 만료 되었습니다');
 					commit('loginError');
-					// return new Promise((resolve, reject) => {
-					// 	reject();
-					// });
+					return new Promise((resolve, reject) => {
+						resolve();
+					});
 				});
 		}
 	},
@@ -121,11 +126,11 @@ export default {
 			login_info['from_signup'] = true;
 
 			Signup(quickLogin)
-				.then(res => {
+				.then(async res => {
+					await this.dispatch('resetRandomUser');
 					alert('회원가입이 성공적으로 이뤄졌습니다.');
-					console.log(res);
 					this.dispatch('login', login_info);
-					this.dispatch('resetRandomUser');
+					console.log(res);
 				})
 				.catch(() => {
 					alert('이메일과 비밀번호를 확인하세요.');
@@ -135,12 +140,14 @@ export default {
 				// loginObj = {email,password}
 				.then(res => {
 					console.log(signupObj);
-					alert('회원가입이 성공적으로 이뤄졌습니다.');
 					let login_info = {};
 
 					login_info['username'] = signupObj.username;
 					login_info['password'] = signupObj.password1;
 					login_info['from_signup'] = true;
+
+					alert('회원가입이 성공적으로 이뤄졌습니다.');
+
 					this.dispatch('login', login_info);
 				})
 				.catch(err => {
@@ -176,12 +183,15 @@ export default {
 		getProfileInfo(config)
 			.then(({ data }) => {
 				commit('SET_PROFILE', data);
-				return new Promise((resolve, reject) => {
-					resolve();
+				return new Promise(function(resolve, reject) {
+					resolve(10);
 				});
 			})
 			.catch(error => {
 				console.log(error);
+				return new Promise((resolve, reject) => {
+					reject();
+				});
 			});
 	},
 	getStomachInfo({ commit }, stomachId) {

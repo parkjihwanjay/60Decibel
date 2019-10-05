@@ -16,16 +16,15 @@
 						<br />
 						<div class="answers-box animate fadeInRightBig three">
 							<div v-for="item in digestive" :key="item.id">
-								<button 
+								<button
 									value="change of appetite"
 									@click="button_click_multiple('associated_symptom_digestive', item)"
 									class="answer animate fadeInRightBig three"
 								>
-									{{item}}
+									{{ item }}
 								</button>
-								<br/>
+								<br />
 							</div>
-							
 						</div>
 						<br />
 					</v-expansion-panel-content>
@@ -49,9 +48,9 @@
 									@click="button_click_multiple('associated_symptom_circulatory', item)"
 									class="answer animate fadeInRightBig three"
 								>
-									{{item}}
+									{{ item }}
 								</button>
-								<br/>
+								<br />
 							</div>
 						</div>
 					</v-expansion-panel-content>
@@ -75,9 +74,9 @@
 									@click="button_click_multiple('associated_symptom_gynecology', item)"
 									class="answer animate fadeInRightBig three"
 								>
-									{{item}}
+									{{ item }}
 								</button>
-								<br/>
+								<br />
 							</div>
 						</div>
 					</v-expansion-panel-content>
@@ -100,7 +99,7 @@
 									@click="button_click_multiple('associated_symptom_whole_body', item)"
 									class="answer animate fadeInRightBig three"
 								>
-									{{item}}
+									{{ item }}
 								</button>
 								<br />
 							</div>
@@ -126,7 +125,7 @@
 									@click="button_click_multiple('associated_symptom_urinary', item)"
 									class="answer animate fadeInRightBig three"
 								>
-									{{item}}
+									{{ item }}
 								</button>
 								<br />
 							</div>
@@ -170,11 +169,24 @@ export default {
 	mixins: [surveyMixin],
 	data() {
 		return {
-			digestive:['식욕감소', '구역질', '구토', '토혈', '복부팽만', '복부종괴', '변비', '설사', '혈변/흑변', '지방변', '황달', '해당없음'],
-			res_cir:['가슴통증', '호흡곤란', '기침', '콧물', '해당없음'],
-			gynecology:['질출혈', '질분비물', '생리변화', '임신가능성', '해당없음'],
-			whole_body:['발열', '오한', '피로', '체중변화', '식은땀', '수면곤란', '두통', '해당없음'],
-			urology:['배뇨통', '소변량변화', '혈뇨', '거품뇨', '잦은 소변', '해당없음'],
+			digestive: [
+				'식욕감소',
+				'구역질',
+				'구토',
+				'토혈',
+				'복부팽만',
+				'복부종괴',
+				'변비',
+				'설사',
+				'혈변/흑변',
+				'지방변',
+				'황달',
+				'해당없음',
+			],
+			res_cir: ['가슴통증', '호흡곤란', '기침', '콧물', '해당없음'],
+			gynecology: ['질출혈', '질분비물', '생리변화', '임신가능성', '해당없음'],
+			whole_body: ['발열', '오한', '피로', '체중변화', '식은땀', '수면곤란', '두통', '해당없음'],
+			urology: ['배뇨통', '소변량변화', '혈뇨', '거품뇨', '잦은 소변', '해당없음'],
 			multipleChoice: [
 				false,
 				false,

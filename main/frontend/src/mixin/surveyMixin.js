@@ -11,7 +11,6 @@ export default {
 			// console.log(model,value)
 		},
 		send(survey_data) {
-			// this.$emit('send', survey_data);
 			this.$store.dispatch('setSurveyData', survey_data);
 		},
 	},

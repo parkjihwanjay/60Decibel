@@ -16,7 +16,7 @@
 						<br />
 						<span>성별</span>
 						<form>
-								<label for="male">
+							<label for="male">
 								<input
 									class="select"
 									type="radio"
@@ -26,19 +26,18 @@
 									id="male"
 									value="남성"
 								/>남성
-							    </label>
-								<label for="female">
+							</label>
+							<label for="female">
 								<input
 									class="select"
 									type="radio"
-									ref=female
+									ref="female"
 									v-model="update.gender"
 									name="gender"
-									id=female
+									id="female"
 									value="여성"
 								/>여성
-							    </label>
-								
+							</label>
 						</form>
 						<br />
 						<span>생년월일</span>
@@ -306,13 +305,19 @@ export default {
 			diagnosed_disease_rest: false,
 			family_history_rest: false,
 			diagnosed_disease_restText: '',
-			family_history_restText: ''
+			family_history_restText: '',
 		};
 	},
 	methods: {
 		updateProfileInfo() {
 			// this.update.family_history = `${this.update.family_history}`;
 			// console.log(this.update);
+			for (let ans in this.update) {
+				if (!this.update[ans]) {
+					alert(`${ans}를 입력해주세요.`);
+					return;
+				}
+			}
 			this.$store.dispatch('updateProfileInfo', this.update);
 		},
 		diseaseRest() {
