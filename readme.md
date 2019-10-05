@@ -18,13 +18,15 @@
 
 #####  5. Design Patterns
 
-#####  6. 시사점
+##### **6. 아키텍처**
 
-#####  7. 맺음말
+#####  7. 시사점
+
+#####  8. 맺음말
 
 
 
-#### 1. 가이드라인
+### 1. 가이드라인
 
 ---
 
@@ -79,7 +81,7 @@
 
 - 컴포넌트 구성
 
-  ![1569763331817](C:\Users\Equus\AppData\Roaming\Typora\typora-user-images\1569763331817.png)
+  ![1569763331817](C:\Users\Equus\Downloads\60db image.png)
 
   
 
@@ -96,7 +98,7 @@
 
 
 
-#### 2. 개발동기
+### 2. 개발동기
 
 ---
 
@@ -104,7 +106,7 @@
 
 
 
-- 병원을 찾는 *`대한민국 환자들의 병원 평균 진료시간은 3분`*이다. 환자도, 의사도 이 짧은 시간 안에 병원 진료를 하는 것에 익숙해져 있으나 사실 **`OECD 평균 환자의 진료시간은 15분`**이다.
+- 병원을 찾는 `대한민국 환자들의 병원 평균 진료시간은 3분`이다. 환자도, 의사도 이 짧은 시간 안에 병원 진료를 하는 것에 익숙해져 있으나 사실 `OECD 평균 환자의 진료시간은 15분`이다.
 - 여기서 당연하다고 한 것은 3분으로는 진료가 그것도 3차병원을 방문해야할 정도의 중증 환자의 진료조차 제대로 이루어질 수 없다는 뜻이고, 대학병원의 진료예약 명단을 보면 15분 단위로 5-6명씩 적혀있는 모습을 쉽게 볼 수 있다.
 - **의사가 환자를 꼼꼼하게 진찰한다거나 환자의 궁금증에 대하여 알아들을 수 있게 답변한다는 것은 불가능**하다.
 - 일반 환자들도차 꼼꼼한 진료를 받기 어려운데 장애인들은 더욱 어려운 상황에 직면할 것이다. 
@@ -115,7 +117,7 @@
 
 
 
-#### 3. 개발 팀 구성
+### 3. 개발 팀 구성
 
 ---
 
@@ -135,10 +137,52 @@
 
 |                             팀원                             | 역할                                                         |
 | :----------------------------------------------------------: | :----------------------------------------------------------- |
-| ![1570227427680](C:\Users\Equus\AppData\Roaming\Typora\typora-user-images\1570227427680.png) | **김승태**<br />고려대학교 영어영문학과 <br />- Vue.js / Django Rest Framework<br />- 오픈 소스 문서화 작업, 배포(AWS) 담당 |
-| ![1570227450750](C:\Users\Equus\AppData\Roaming\Typora\typora-user-images\1570227450750.png) | **이인우**<br />고려대학교 중어중문학과<br /> - Vue.js / Django Rest Framework<br /> - 디버깅 테스트 & 코드 리팩토링, 배포(AWS) 담당 |
-| ![1570227456770](C:\Users\Equus\AppData\Roaming\Typora\typora-user-images\1570227456770.png) | **박지환** <br />고려대학교 심리학과<br />- Vue.js / Django Rest Framework <br />- 프론트 코드 리팩토링 총괄<br /> |
-| ![1570227471958](C:\Users\Equus\AppData\Roaming\Typora\typora-user-images\1570227471958.png) | **최상하**<br />고려대학교 심리학과<br />- Vue.js / CSS<br />- 프론트 UX/UI 총괄 |
-| ![1570227494082](C:\Users\Equus\AppData\Roaming\Typora\typora-user-images\1570227494082.png) | **박선영**<br />고려대학교 보건환경과학융합부<br />- Vue.js / Django Rest Framework<br />- Backend Serializer & Frontend About us 페이지 제작 |
-| ![1570227488719](C:\Users\Equus\AppData\Roaming\Typora\typora-user-images\1570227488719.png) | **이채연** <br />고려대학교 독어독문학과<br />- Vue.js<br />-  모바일 간편 진찰 카드 기능 구성 |
+| ![1570227427680](C:\Users\Equus\Downloads\1570227427680.png) | **김승태**<br />고려대학교 영어영문학과 <br />- Vue.js / Django Rest Framework<br />- 오픈 소스 문서화 작업, 배포(AWS) 담당 |
+|     ![1570227450750](C:\Users\Equus\Downloads\inwoo.png)     | **이인우**<br />고려대학교 중어중문학과<br /> - Vue.js / Django Rest Framework<br /> - 디버깅 테스트 & 코드 리팩토링, 배포(AWS) 담당 |
+|    ![1570227456770](C:\Users\Equus\Downloads\jihwan.png)     | **박지환** <br />고려대학교 심리학과<br />- Vue.js / Django Rest Framework <br />- 프론트 코드 리팩토링 총괄<br /> |
+|    ![1570227471958](C:\Users\Equus\Downloads\sangha.png)     | **최상하**<br />고려대학교 심리학과<br />- Vue.js / CSS<br />- 프론트 UX/UI 총괄 |
+|     ![1570227494082](C:\Users\Equus\Downloads\sonia.png)     | **박선영**<br />고려대학교 보건환경과학융합부<br />- Vue.js / Django Rest Framework<br />- Backend Serializer & Frontend About us 페이지 제작 |
+|     ![1570227488719](C:\Users\Equus\Downloads\chae.png)      | **이채연** <br />고려대학교 독어독문학과<br />- Vue.js<br />-  모바일 간편 진찰 카드 기능 구성 |
+
+
+
+### 4. 오픈소스로써의 가치
+
+---
+
+
+
+### 5. Design Patterns
+
+----
+
+![vuex design patterns](C:\Users\Equus\Downloads\vuex design patterns.png)
+
+
+
+### 6. 아키텍처
+
+---
+
+- 유연성(Flexibility): 컴포넌트 전역에 걸쳐서 공유해야하는 상태 값들(예: 사용자 인증)을 컴포넌트에 독립적이지 않게 적용할 수 있다. 
+
+- 확장성(Scalability): MVC(Model–View-Controller) 모델과 다르게 대규모 사용자에 대한 상태 값들을 처리할 수 있다.
+
+- 유지보수성(Maintainability): 직관적이고 가독성 높은 코드를 작성하여 오픈소스 커뮤니티에 참여하는 개발자가 이해하기 쉽게 제작했다.
+
+- 재사용성(Reusability): Components, Actions, Mutations, State를 각각 분리하여 각 단위별로 재사용 가능하게 구성했다.
+
+
+
+### 7. 시사점
+
+---
+
+
+
+
+
+### 8. 맺음말
+
+---
 
