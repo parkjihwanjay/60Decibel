@@ -64,7 +64,7 @@
 							v-model="update.had_checkup"
 							name="had_checkup"
 							id="yes"
-							value="True"
+							value="true"
 						/>있음
 					</label>
 					<label for="no">
@@ -74,7 +74,7 @@
 							v-model="update.had_checkup"
 							name="had_checkup"
 							id="no"
-							value="False"
+							value="false"
 						/>없음
 					</label>
 					<br />
@@ -145,7 +145,7 @@
 							v-model="update.taking_medicine"
 							name="taking_medicine"
 							id="yes"
-							value="True"
+							value="true"
 						/>있음
 					</label>
 					<label for="no">
@@ -155,7 +155,7 @@
 							v-model="update.taking_medicine"
 							name="taking_medicine"
 							id="no"
-							value="False"
+							value="false"
 						/>없음
 					</label>
 					<br />

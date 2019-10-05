@@ -8,10 +8,10 @@
 				<p class="name">{{ profile.name }}</p>
 			</div>
 			<div class="prof-JobBirth">
-				<p class="job1" v-if="`${profile.job}`">{{ profile.job }}</p>
+				<p class="job1" v-if="profile.job">{{ profile.job }}</p>
 				<p class="job2" v-else>[직업]</p>
 				&nbsp;&nbsp;|&nbsp;&nbsp;
-				<p v-if="`${profile.birth_date}`" class="birth">{{ profile.birth_date }}</p>
+				<p v-if="profile.birth_date" class="birth">{{ profile.birth_date }}</p>
 				<p v-else>생년월일</p>
 			</div>
 			<div class="prof-intro">
