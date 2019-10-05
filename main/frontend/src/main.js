@@ -25,6 +25,22 @@ AOS.init({
 Vue.prototype.$axios = axios;
 Vue.config.productionTip = false;
 
+// router.beforeEach((to, from, next) => {
+// 	if (localStorage.getItem('access_token')) {
+// 		store
+// 			.dispatch('getMemberInfo')
+// 			.then(() => {
+// 				console.log('로그인 요청');
+// 				next();
+// 			})
+// 			.catch(error => {
+// 				alert(error);
+// 			});
+// 	} else {
+// 		next();
+// 	}
+// });
+
 new Vue({
 	router,
 	store,
@@ -35,13 +51,13 @@ new Vue({
 			this.$store.dispatch('getMemberInfo');
 		}
 	},
-	watch: {
-		$route(to, from) {
-			if (localStorage.getItem('access_token')) {
-				this.$store.dispatch('getMemberInfo');
-			}
-		},
-	},
+	// watch: {
+	// 	$route(to, from) {
+	// 		if (localStorage.getItem('access_token')) {
+	// 			this.$store.dispatch('getMemberInfo');
+	// 		}
+	// 	},
+	// },
 	component: {
 		App,
 	},

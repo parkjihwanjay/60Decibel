@@ -15,123 +15,17 @@
 						</p>
 						<br />
 						<div class="answers-box animate fadeInRightBig three">
-							<button
-								value="change of appetite"
-								@click="button_click_multiple('associated_symptom_digestive', '식욕감소')"
-								class="answer animate fadeInRightBig three"
-							>
-								식욕감소
-							</button>
-
-							<br />
-
-							<button
-								value="nausea"
-								@click="button_click_multiple('associated_symptom_digestive', '구역질')"
-								class="answer animate fadeInRightBig three"
-							>
-								구역질
-							</button>
-
-							<br />
-
-							<button
-								value="vomiting"
-								@click="button_click_multiple('associated_symptom_digestive', '구토')"
-								class="answer animate fadeInRightBig three"
-							>
-								구토
-							</button>
-
-							<br />
-
-							<button
-								value="vomiting blood"
-								@click="button_click_multiple('associated_symptom_digestive', '토혈')"
-								class="answer animate fadeInRightBig three"
-							>
-								토혈
-							</button>
-
-							<br />
-
-							<button
-								value="abdominal inflation"
-								@click="button_click_multiple('associated_symptom_digestive', '복부팽만')"
-								class="answer animate fadeInRightBig three"
-							>
-								복부팽만
-							</button>
-
-							<br />
-
-							<button
-								value="lump on abdomen"
-								@click="button_click_multiple('associated_symptom_digestive', '복부종괴')"
-								class="answer animate fadeInRightBig three"
-							>
-								복부종괴
-							</button>
-
-							<br />
-
-							<button
-								value="constipation"
-								@click="button_click_multiple('associated_symptom_digestive', '변비')"
-								class="answer animate fadeInRightBig three"
-							>
-								변비
-							</button>
-
-							<br />
-
-							<button
-								value="diarrhea"
-								@click="button_click_multiple('associated_symptom_digestive', '설사')"
-								class="answer animate fadeInRightBig three"
-							>
-								설사
-							</button>
-
-							<br />
-
-							<button
-								value="rectal_bleeding/melena"
-								@click="button_click_multiple('associated_symptom_digestive', '혈변/흑변')"
-								class="answer animate fadeInRightBig three"
-							>
-								혈변/흑변
-							</button>
-
-							<br />
-
-							<button
-								value="steatorrhea"
-								@click="button_click_multiple('associated_symptom_digestive', '지방변')"
-								class="answer animate fadeInRightBig three"
-							>
-								지방변
-							</button>
-
-							<br />
-
-							<button
-								value="jaundice"
-								@click="button_click_multiple('associated_symptom_digestive', '황달')"
-								class="answer animate fadeInRightBig three"
-							>
-								황달
-							</button>
-
-							<br />
-
-							<button
-								value="nothing"
-								@click="button_click('associated_symptom_digestive', '해당없음')"
-								class="answer animate fadeInRightBig three"
-							>
-								해당없음
-							</button>
+							<div v-for="item in digestive" :key="item.id">
+								<button 
+									value="change of appetite"
+									@click="button_click_multiple('associated_symptom_digestive', item)"
+									class="answer animate fadeInRightBig three"
+								>
+									{{item}}
+								</button>
+								<br/>
+							</div>
+							
 						</div>
 						<br />
 					</v-expansion-panel-content>
@@ -149,58 +43,16 @@
 						<br />
 						<br />
 						<div class="answers-box animate fadeInRightBig three">
-							<button
-								value="chest pain"
-								@click="button_click_multiple('associated_symptom_circulatory', '가슴통증')"
-								class="answer animate fadeInRightBig three"
-							>
-								가슴통증
-							</button>
-
-							<br />
-
-							<button
-								value="shortness of breah"
-								@click="button_click_multiple('associated_symptom_circulatory', '호흡곤란')"
-								class="answer animate fadeInRightBig three"
-							>
-								호흡곤란
-							</button>
-
-							<br />
-
-							<button
-								value="cough"
-								@click="button_click_multiple('associated_symptom_circulatory', '기침')"
-								class="answer animate fadeInRightBig three"
-							>
-								기침
-							</button>
-
-							<br />
-
-							<button
-								value="runny nose"
-								@click="button_click_multiple('associated_symptom_circulatory', '콧물')"
-								class="answer animate fadeInRightBig three"
-							>
-								콧물
-							</button>
-
-							<br />
-
-							<button
-								value="nothing"
-								@click="button_click_multiple('associated_symptom_circulatory', '해당없음')"
-								class="answer animate fadeInRightBig three"
-							>
-								해당없음
-							</button>
-							<!-- <button
-                value="nothing"
-                @click="button_click_multiple('associated_symptom_circulatory', 'nothing')"
-                class="answer blank animate fadeInRightBig three"
-              >해당없음</button>-->
+							<div v-for="item in res_cir" :key="item.id">
+								<button
+									value="chest pain"
+									@click="button_click_multiple('associated_symptom_circulatory', item)"
+									class="answer animate fadeInRightBig three"
+								>
+									{{item}}
+								</button>
+								<br/>
+							</div>
 						</div>
 					</v-expansion-panel-content>
 				</v-expansion-panel>
@@ -217,58 +69,16 @@
 						<br />
 						<br />
 						<div class="answers-box animate fadeInRightBig three">
-							<button
-								value="colporrhagia"
-								@click="button_click_multiple('associated_symptom_gynecology', '질출혈')"
-								class="answer animate fadeInRightBig three"
-							>
-								질출혈
-							</button>
-
-							<br />
-
-							<button
-								value="leukorrhea"
-								@click="button_click_multiple('associated_symptom_gynecology', '질분비물')"
-								class="answer animate fadeInRightBig three"
-							>
-								질분비물
-							</button>
-
-							<br />
-
-							<button
-								value="menstrual cycle change"
-								@click="button_click_multiple('associated_symptom_gynecology', '생리변화')"
-								class="answer animate fadeInRightBig three"
-							>
-								생리변화
-							</button>
-
-							<br />
-
-							<button
-								value="pregnant possibility"
-								@click="button_click_multiple('associated_symptom_gynecology', '임신가능성')"
-								class="answer animate fadeInRightBig three"
-							>
-								임신가능성
-							</button>
-
-							<br />
-
-							<button
-								value="nothing"
-								@click="button_click_multiple('associated_symptom_gynecology', '해당없음')"
-								class="answer animate fadeInRightBig three"
-							>
-								해당없음
-							</button>
-							<!-- <button
-                value="nothing"
-                @click="button_click_multiple('associated_symptom_circulatory', 'nothing')"
-                class="answer blank animate fadeInRightBig three"
-              >해당없음</button>-->
+							<div v-for="item in gynecology" :key="item.id">
+								<button
+									value="colporrhagia"
+									@click="button_click_multiple('associated_symptom_gynecology', item)"
+									class="answer animate fadeInRightBig three"
+								>
+									{{item}}
+								</button>
+								<br/>
+							</div>
 						</div>
 					</v-expansion-panel-content>
 				</v-expansion-panel>
@@ -284,88 +94,16 @@
 						</p>
 						<br />
 						<div class="answers-box animate fadeInRightBig three">
-							<button
-								value="fever"
-								@click="button_click_multiple('associated_symptom_whole_body', '발열')"
-								class="answer animate fadeInRightBig three"
-							>
-								발열
-							</button>
-
-							<br />
-
-							<button
-								value="chilling"
-								@click="button_click_multiple('associated_symptom_whole_body', '오한')"
-								class="answer animate fadeInRightBig three"
-							>
-								오한
-							</button>
-
-							<br />
-
-							<button
-								value="fatigue"
-								@click="button_click_multiple('associated_symptom_whole_body', '피로')"
-								class="answer animate fadeInRightBig three"
-							>
-								피로
-							</button>
-
-							<br />
-
-							<button
-								value="weight change"
-								@click="button_click_multiple('associated_symptom_whole_body', '체중변화')"
-								class="answer animate fadeInRightBig three"
-							>
-								체중변화
-							</button>
-
-							<br />
-
-							<button
-								value="sweating"
-								@click="button_click_multiple('associated_symptom_whole_body', '식은땀')"
-								class="answer animate fadeInRightBig three"
-							>
-								식은땀
-							</button>
-
-							<br />
-
-							<button
-								value="sleep disturbance"
-								@click="button_click_multiple('associated_symptom_whole_body', '수면곤란')"
-								class="answer animate fadeInRightBig three"
-							>
-								수면곤란
-							</button>
-
-							<br />
-
-							<button
-								value="headache"
-								@click="button_click_multiple('associated_symptom_whole_body', '두통')"
-								class="answer animate fadeInRightBig three"
-							>
-								두통
-							</button>
-
-							<br />
-
-							<button
-								value="nothing"
-								@click="button_click_multiple('associated_symptom_whole_body', '해당없음')"
-								class="answer animate fadeInRightBig three"
-							>
-								해당없음
-							</button>
-							<!-- <button
-                value="nothing"
-                @click="button_click_multiple('associated_symptom_circulatory', 'nothing')"
-                class="answer blank animate fadeInRightBig three"
-              >해당없음</button>-->
+							<div v-for="item in whole_body" :key="item.id">
+								<button
+									value="fever"
+									@click="button_click_multiple('associated_symptom_whole_body', item)"
+									class="answer animate fadeInRightBig three"
+								>
+									{{item}}
+								</button>
+								<br />
+							</div>
 						</div>
 					</v-expansion-panel-content>
 				</v-expansion-panel>
@@ -382,63 +120,16 @@
 						<br />
 						<br />
 						<div class="answers-box animate fadeInRightBig three">
-							<button
-								value="painful urination"
-								@click="button_click_multiple('associated_symptom_urinary', '배뇨통')"
-								class="answer animate fadeInRightBig three"
-							>
-								배뇨통
-							</button>
-
-							<br />
-
-							<button
-								value="chnage the quantity of urine"
-								@click="button_click_multiple('associated_symptom_urinary', '소변량변화')"
-								class="answer animate fadeInRightBig three"
-							>
-								소변량변화
-							</button>
-
-							<br />
-
-							<button
-								value="red urine"
-								@click="button_click_multiple('associated_symptom_urinary', '혈뇨')"
-								class="answer animate fadeInRightBig three"
-							>
-								혈뇨
-							</button>
-
-							<br />
-
-							<button
-								value="foamy urine"
-								@click="button_click_multiple('associated_symptom_urinary', '거품뇨')"
-								class="answer animate fadeInRightBig three"
-							>
-								거품뇨
-							</button>
-
-							<br />
-
-							<button
-								value="frequency"
-								@click="button_click_multiple('associated_symptom_urinary', '잦은 소변')"
-								class="answer animate fadeInRightBig three"
-							>
-								잦은 소변
-							</button>
-
-							<br />
-
-							<button
-								value="nothing"
-								@click="button_click_multiple('associated_symptom_urinary', '해당없음')"
-								class="answer animate fadeInRightBig three"
-							>
-								해당없음
-							</button>
+							<div v-for="item in urology" :key="item.id">
+								<button
+									value="painful urination"
+									@click="button_click_multiple('associated_symptom_urinary', item)"
+									class="answer animate fadeInRightBig three"
+								>
+									{{item}}
+								</button>
+								<br />
+							</div>
 						</div>
 					</v-expansion-panel-content>
 				</v-expansion-panel>
@@ -479,6 +170,11 @@ export default {
 	mixins: [surveyMixin],
 	data() {
 		return {
+			digestive:['식욕감소', '구역질', '구토', '토혈', '복부팽만', '복부종괴', '변비', '설사', '혈변/흑변', '지방변', '황달', '해당없음'],
+			res_cir:['가슴통증', '호흡곤란', '기침', '콧물', '해당없음'],
+			gynecology:['질출혈', '질분비물', '생리변화', '임신가능성', '해당없음'],
+			whole_body:['발열', '오한', '피로', '체중변화', '식은땀', '수면곤란', '두통', '해당없음'],
+			urology:['배뇨통', '소변량변화', '혈뇨', '거품뇨', '잦은 소변', '해당없음'],
 			multipleChoice: [
 				false,
 				false,

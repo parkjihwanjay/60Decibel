@@ -13,22 +13,16 @@
 						<br />
 						<br />
 						<div class="answers">
-							<button
-								value="less_than_month"
-								@click="button_click('symptom_start', '한 달 미만')"
-								class="answer animate fadeInRightBig three"
-							>
-								한 달이 안됐습니다.
-							</button>
-							<br />
-							<button
-								value="more_than_month"
-								@click="button_click('symptom_start', '한 달 이상')"
-								class="answer animate fadeInRightBig three"
-							>
-								한 달이 넘었습니다.
-							</button>
-							<br />
+							<div v-for="item in from_when" :key="item.id">
+								<button
+									value="item[1]"
+									@click="button_click('symptom_start', item[0])"
+									class="answer animate fadeInRightBig three"
+								>
+									{{item[0]}}
+								</button>
+								<br />
+							</div>
 						</div>
 					</v-expansion-panel-content>
 				</v-expansion-panel>
@@ -70,22 +64,16 @@
 						<br />
 						<br />
 						<div class="answers">
-							<button
-								value="fast"
-								@click="button_click('fast_or_slow', '갑자기')"
-								class="answer animate fadeInRightBig three"
-							>
-								갑자기
-							</button>
-							<br />
-
-							<button
-								value="slow"
-								@click="button_click('fast_or_slow', '서서히')"
-								class="answer animate fadeInRightBig three"
-							>
-								서서히
-							</button>
+							<div v-for="item in speed" :key="item.id">
+								<button
+									value=item[1]
+									@click="button_click('fast_or_slow', item[0])"
+									class="answer animate fadeInRightBig three"
+								>
+									{{item[0]}}
+								</button>
+								<br />
+							</div>
 						</div>
 						<br />
 					</v-expansion-panel-content>
@@ -123,33 +111,16 @@
 						<p class="question">과거 복부 진료 경험이 있나요?</p>
 						<br />
 						<div class="answers">
-							<button
-								value="abdomen_hurted"
-								@click="button_click_multiple('abdomen_relevant', '복부를 다친 적이 있음')"
-								class="answer"
-							>
-								복부를 다친 적이 있음
-							</button>
-
-							<br />
-
-							<button
-								value="abdomen_surgery"
-								@click="button_click_multiple('abdomen_relevant', '복부 수술을 받은 적이 있음')"
-								class="answer"
-							>
-								복부 수술을 받은 적이 있음
-							</button>
-
-							<br />
-
-							<button
-								value="abdomen_nothing"
-								@click="button_click_multiple('abdomen_relevant', '해당없음')"
-								class="answer"
-							>
-								해당없음
-							</button>
+							<div v-for="item in experience" :key="item.id">
+								<button
+									value=item[1]
+									@click="button_click_multiple('abdomen_relevant', item[0])"
+									class="answer"
+								>
+									{{item[0]}}
+								</button>
+								<br />
+							</div>
 						</div>
 					</v-expansion-panel-content>
 				</v-expansion-panel>
@@ -167,6 +138,9 @@ export default {
 	mixins: [surveyMixin],
 	data() {
 		return {
+			experience:[['복부를 다친 적이 있음',"abdomen_hurted"],["복부 수술을 받은 적이 있음","abdomen_surgery"], ["해당없음","abdomen_nothing"]],
+			from_when:[["한 달이 안됐습니다","less_than_month"],["한 달이 넘었습니다","more_than_month"]],
+			speed:[["갑자기","fast"],["서서히","slow"]],
 			expand: 0,
 			survey_data: {
 				symptom_location: [],

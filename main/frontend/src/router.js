@@ -7,17 +7,35 @@ import store from "./store/store.js";
 import bus from './utils/bus.js';
 Vue.use(Router);
 
-const requireAuth = () => (to, from, next) => {
-  if (localStorage.getItem("isLogin") === "true") {
-    next();
-  } else {
-    console.log(localStorage.getItem("isLogin"));
-    alert("로그인을 먼저 하세요");
-    next("/login");
-  }
-};
+// function requireAuth(to, from, next) {
+  // console.log('동작중');
+  // console.log(localStorage.getItem("isLogin"))
+  // if (localStorage.getItem("isLogin") !== "true") {
+    // alert("로그인을 먼저 하세요");
+    // next('/login');
+  // }
+  // else{
+  //   next();
+  // }
+// };
 
-export default new Router({
+const requireAuth = () => {
+  if(!store.state.isLogin){
+    if(store.state.isLoginError){
+      alert('세션이 만료 되었습니다.');
+      return 'session-expired'
+    }
+    else{
+      alert('로그인을 먼저 해주세요');
+      return 'not-login'
+    }
+  }
+  else{
+    return 'login'
+  }
+}
+
+const router =  new Router({
   hashbang: false,
   mode: "history",
   routes: [
@@ -43,9 +61,17 @@ export default new Router({
     },
     {
       path: "/survey",
+      beforeEnter: ((to, from, next) => {
+        if(requireAuth() === 'login')
+        {
+          next();
+        }
+        else{
+          next('/');
+        }
+      }) ,
       redirect: "/sec1",
       name: "survey",
-      // beforeEnter: requireAuth(),
       component: () => import("./views/Survey.vue"),
       children: [
         {
@@ -112,11 +138,18 @@ export default new Router({
       path: "/profileupdate",
       name: "profileupdate",
       // beforeEnter: requireAuth(),
-      beforeEnter: (to, from, next) => {
-        store.commit('SET_LOADING', true);
-        // bus.$emit('on:progress');
-        store.dispatch("getProfileInfo")
-        .then(next())
+      beforeEnter: async (to, from, next) => {
+        // let Auth = requireAuth();
+        if(requireAuth() === 'login')
+        {
+          store.commit('SET_LOADING', true);
+          // bus.$emit('on:progress');
+          await store.dispatch("getProfileInfo")
+          next();
+        }
+        else{
+          next('/');
+        }
       },
       component: () => import("./views/ProfileUpdate.vue")
     },
@@ -125,35 +158,68 @@ export default new Router({
       name: "profiles",
       beforeEnter: (to, from, next) => {
         // console.log('등장');
-        store.commit('SET_LOADING', true);
-        // bus.$emit('on:progress');
-        store.dispatch("getProfileInfo")
-        .then(next());
+        if(requireAuth() === 'login'){
+          store.commit('SET_LOADING', true);
+          // bus.$emit('on:progress');
+          store.dispatch("getProfileInfo")
+          .then(next());
+        }
+        else{
+          next('/');
+        }
       },
       component: () => import("./views/Profiles.vue")
     },
     {
       path: "/stomach/:id",
       name: "stomach-retrieve",
-      beforeEnter: (to, from, next) => {
-        store.commit('SET_LOADING', true);
-        // bus.$emit('on:progress');
-        store.dispatch("getProfileInfo")
-        .then(store.dispatch("getStomachInfo", to.params.id))
-        .then(next());
+      beforeEnter: async (to, from, next) => {
+        
+        if(requireAuth() === 'login'){
+          store.commit('SET_LOADING', true);
+          //a bus.$emit('on:progress');
+          await store.dispatch("getProfileInfo")
+          await store.dispatch("getStomachInfo", to.params.id)
+          next();
+        }
+        else{
+          next('/');
+        }
       },
-      component: () => import("./views/Result.vue")
+      component: () => import("./views/Result.vue"),
     },
     {
       path: "/surveys",
       name: "survey-history",
       beforeEnter: (to, from, next) => {
-        store.commit('SET_LOADING', true);
-        // bus.$emit('on:progress');
-        store.dispatch('getSurveyHistory')
-        .then(next())
+        if(requireAuth() === 'login')
+        {
+          store.commit('SET_LOADING', true);
+          // bus.$emit('on:progress');
+          store.dispatch('getSurveyHistory')
+          .then(next())
+        }
+        else{
+          next('/');
+        }
       },
       component: () => import("./views/SurveyList.vue")
-    }
+    },
+    {
+      path : '*',
+      beforeEnter : (to, from, next) => {
+        alert("요청하시는 주소는 없는 주소입니다.");
+        next('/');
+      }
+    },
   ]
 });
+
+router.beforeEach((to, from, next) => {
+  store.dispatch('getMemberInfo');
+  next();
+});
+
+export default router;
+
+
