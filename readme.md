@@ -81,7 +81,7 @@
 
 - 컴포넌트 구성
 
-  ![60db image](C:\Users\Equus\Downloads\60db image.png)
+  ![img](https://miro.medium.com/max/778/1*SdUU_2mRkudGsk6OkQU1pw.png)
 
   
 
@@ -126,9 +126,9 @@
 
 ##### 3.1) 협력 팀 소개
 
-|                          60 Decibel                          |                    멋쟁이 사자처럼 7기                    |                  고려대학교 의과대학                  |
-| :----------------------------------------------------------: | :-------------------------------------------------------: | :---------------------------------------------------: |
-| <img src="http://www.60decibel.cf/img/60db.bff013d3.png" alt="img" style="zoom: 25%;" /> | ![img](http://www.60decibel.cf/img/likelion.488a6dad.png) | ![img](http://www.60decibel.cf/img/medi.92ed0d1b.png) |
+|                          60 Decibel                          |                     멋쟁이 사자처럼 7기                      |                     고려대학교 의과대학                      |
+| :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: |
+| <img src="https://miro.medium.com/max/6500/0*8ZoDIczhINwo3S_C.png" alt="img" style="zoom:25%;" /> | <img src="https://miro.medium.com/max/1505/0*hGXvYP1axwfYC2Uz.png" alt="img" style="zoom:200%;" /> | <img src="https://miro.medium.com/max/2250/0*NWcf3ziwIZRCCShH.png" alt="img" style="zoom:200%;" /> |
 
 - **60DB** : 고려대학교 멋쟁이 사자처럼 7기 출신으로 `전원 컴퓨터공학 비전공자 출신 개발자`다. 실질적인 60Decibel 개발을 맡아 진행하고 있다. 
 - **멋쟁이 사자처럼** : 컴퓨터공학 비전공자들도 프로그래밍 기초 지식을 배워 자신만의 웹서비스를 만들 수 있도록 돕는 대학생 중심 프로그래밍 동아리로써 개발에 관한 전반적인 사항에 대해 조언을 얻었다.
@@ -138,12 +138,12 @@
 
 |                             팀원                             | 역할                                                         |
 | :----------------------------------------------------------: | :----------------------------------------------------------- |
-| ![1570227427680](C:\Users\Equus\Downloads\1570227427680.png) | **김승태**<br />고려대학교 영어영문학과 <br />- Vue.js / Django Rest Framework<br />- 오픈 소스 문서화 작업, 배포(AWS) 담당 |
-|         ![inwoo](C:\Users\Equus\Downloads\inwoo.png)         | **이인우**<br />고려대학교 중어중문학과<br /> - Vue.js / Django Rest Framework<br /> - 디버깅 테스트 & 코드 리팩토링, 배포(AWS) 담당 |
-|        ![jihwan](C:\Users\Equus\Downloads\jihwan.png)        | **박지환** <br />고려대학교 심리학과<br />- Vue.js / Django Rest Framework <br />- 프론트 코드 리팩토링 총괄<br /> |
-|        ![sangha](C:\Users\Equus\Downloads\sangha.png)        | **최상하**<br />고려대학교 심리학과<br />- Vue.js / CSS<br />- 프론트 UX/UI 총괄 |
-|         ![sonia](C:\Users\Equus\Downloads\sonia.png)         | **박선영**<br />고려대학교 보건환경과학융합부<br />- Vue.js / Django Rest Framework<br />- Backend Serializer & Frontend About us 페이지 제작 |
-|          ![chae](C:\Users\Equus\Downloads\chae.png)          | **이채연** <br />고려대학교 독어독문학과<br />- Vue.js<br />-  모바일 간편 진찰 카드 기능 구성 |
+| ![img](https://miro.medium.com/max/355/1*CGVdsQGdvMs0pDrwHriJUg.png) | **김승태**<br />고려대학교 영어영문학과 <br />- Vue.js / Django Rest Framework<br />- 오픈 소스 문서화 작업, 배포(AWS) 담당 |
+| ![img](https://miro.medium.com/max/355/1*6TZJWeNd-rqke74FRXUFbQ.png) | **이인우**<br />고려대학교 중어중문학과<br /> - Vue.js / Django Rest Framework<br /> - 디버깅 테스트 & 코드 리팩토링, 배포(AWS) 담당 |
+| ![img](https://miro.medium.com/max/355/1*VjEk7aBft9CFh_vkLEgkWw.png) | **박지환** <br />고려대학교 심리학과<br />- Vue.js / Django Rest Framework <br />- 프론트 코드 리팩토링 총괄<br /> |
+| ![img](https://miro.medium.com/max/363/1*jEoNQiaQXaL29g67k8EUtw.png) | **최상하**<br />고려대학교 심리학과<br />- Vue.js / CSS<br />- 프론트 UX/UI 총괄 |
+| ![img](https://miro.medium.com/max/355/1*G6wWgxKWRbIJJYdfNWag_w.png) | **박선영**<br />고려대학교 보건환경과학융합부<br />- Vue.js / Django Rest Framework<br />- Backend Serializer & Frontend About us 페이지 제작 |
+| ![img](https://miro.medium.com/max/355/1*QrBPyzQjHzXDBFSZt4UK8Q.png) | **이채연** <br />고려대학교 독어독문학과<br />- Vue.js<br />-  모바일 간편 진찰 카드 기능 구성 |
 
 
 
@@ -170,7 +170,7 @@
 
  **5.1) Vuex Based on Flux**
 
-![vuex design patterns](C:\Users\Equus\Downloads\vuex design patterns.png)
+![img](https://miro.medium.com/max/3200/1*5zOwxATnE8alOXUKnB3HOg.png)
 
 - 접속하는 다수의 사용자 상태 변경 관리를 목적으로 Flux Design Pattern을기반으로한 Vuex를 채택했다.
 
@@ -182,7 +182,7 @@
 
  **5.2) 시스템 구성**
 
-![시스템 구성도](C:\Users\Equus\Downloads\시스템 구성도.png)
+![img](https://miro.medium.com/max/3200/1*jw3YdTOarDsLg-iWs1sJ5w.png)
 
 - `Client`의 주된 접속 경로는 웹 브라우저 및 모바일 애플리케이션이 될 것이다.
 
