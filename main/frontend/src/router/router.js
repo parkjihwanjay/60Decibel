@@ -1,39 +1,11 @@
 import Vue from "vue";
 import Router from "vue-router";
 // import Home from "./views/Home.vue";
-import Home from "./views/Home.vue";
-import store from "./store/store.js";
+import Home from "../views/Home.vue";
+import store from "../store/store.js";
 
-import bus from './utils/bus.js';
+import {requireAuth, checkProfile} from './functions.js';
 Vue.use(Router);
-
-// function requireAuth(to, from, next) {
-  // console.log('동작중');
-  // console.log(localStorage.getItem("isLogin"))
-  // if (localStorage.getItem("isLogin") !== "true") {
-    // alert("로그인을 먼저 하세요");
-    // next('/login');
-  // }
-  // else{
-  //   next();
-  // }
-// };
-
-const requireAuth = () => {
-  if(!store.state.isLogin){
-    if(store.state.isLoginError){
-      alert('세션이 만료 되었습니다.');
-      return 'session-expired'
-    }
-    else{
-      alert('로그인을 먼저 해주세요');
-      return 'not-login'
-    }
-  }
-  else{
-    return 'login'
-  }
-}
 
 const router =  new Router({
   hashbang: false,
@@ -48,7 +20,7 @@ const router =  new Router({
       path: "/card",
       name: "card",
       component: () =>
-        import(/* webpackChunkName: "about" */ "./views/Card.vue")
+        import(/* webpackChunkName: "about" */ "../views/Card.vue")
     },
     {
       path: "/about",
@@ -57,14 +29,27 @@ const router =  new Router({
       // this generates a separate chunk (about.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
       component: () =>
-        import(/* webpackChunkName: "about" */ "./views/About.vue")
+        import(/* webpackChunkName: "about" */ "../views/About.vue")
     },
     {
       path: "/survey",
       beforeEnter: ((to, from, next) => {
         if(requireAuth() === 'login')
         {
-          next();
+          store.dispatch('getProfileInfo')
+          .then(data => {
+
+            let check = checkProfile();
+
+            if(!check)
+            {
+              alert('프로필을 다 입력해주세요.');
+              next('/profileupdate');
+            }
+            else{
+              next();
+            }
+          })
         }
         else{
           next('/');
@@ -72,7 +57,7 @@ const router =  new Router({
       }) ,
       redirect: "/sec1",
       name: "survey",
-      component: () => import("./views/Survey.vue"),
+      component: () => import("../views/Survey.vue"),
       children: [
         {
           path: "/sec1",
@@ -80,7 +65,7 @@ const router =  new Router({
           meta: {
             page: 1
           },
-          component: () => import("./components/surveyPage/Sec1.vue")
+          component: () => import("../components/surveyPage/Sec1.vue")
         },
         {
           path: "/sec2",
@@ -88,7 +73,7 @@ const router =  new Router({
           meta: {
             page: 2
           },
-          component: () => import("./components/surveyPage/Sec2.vue")
+          component: () => import("../components/surveyPage/Sec2.vue")
         },
         {
           path: "/sec3",
@@ -96,7 +81,7 @@ const router =  new Router({
           meta: {
             page: 3
           },
-          component: () => import("./components/surveyPage/Sec3.vue")
+          component: () => import("../components/surveyPage/Sec3.vue")
         },
         {
           path: "/sec4",
@@ -104,7 +89,7 @@ const router =  new Router({
           meta: {
             page: 4
           },
-          component: () => import("./components/surveyPage/Sec4.vue")
+          component: () => import("../components/surveyPage/Sec4.vue")
         },
         {
           path: "/sec5",
@@ -112,7 +97,7 @@ const router =  new Router({
           meta: {
             page: 5
           },
-          component: () => import("./components/surveyPage/Sec5.vue")
+          component: () => import("../components/surveyPage/Sec5.vue")
         },
         {
           path: "/sec6",
@@ -120,26 +105,25 @@ const router =  new Router({
           meta: {
             page: 6
           },
-          component: () => import("./components/surveyPage/Sec6.vue")
+          component: () => import("../components/surveyPage/Sec6.vue")
         }
       ]
     },
     {
       path: "/login",
       name: "login",
-      component: () => import("./views/Login.vue")
+      component: () => import("../views/Login.vue")
     },
     {
       path: "/signup",
       name: "signup",
-      component: () => import("./views/Signup.vue")
+      component: () => import("../views/Signup.vue")
     },
     {
       path: "/profileupdate",
       name: "profileupdate",
       // beforeEnter: requireAuth(),
       beforeEnter: async (to, from, next) => {
-        // let Auth = requireAuth();
         if(requireAuth() === 'login')
         {
           store.commit('SET_LOADING', true);
@@ -151,7 +135,7 @@ const router =  new Router({
           next('/');
         }
       },
-      component: () => import("./views/ProfileUpdate.vue")
+      component: () => import("../views/ProfileUpdate.vue")
     },
     {
       path: "/profiles",
@@ -168,7 +152,7 @@ const router =  new Router({
           next('/');
         }
       },
-      component: () => import("./views/Profiles.vue")
+      component: () => import("../views/Profiles.vue")
     },
     {
       path: "/stomach/:id",
@@ -186,7 +170,7 @@ const router =  new Router({
           next('/');
         }
       },
-      component: () => import("./views/Result.vue"),
+      component: () => import("../views/Result.vue"),
     },
     {
       path: "/surveys",
@@ -203,7 +187,7 @@ const router =  new Router({
           next('/');
         }
       },
-      component: () => import("./views/SurveyList.vue")
+      component: () => import("../views/SurveyList.vue")
     },
     {
       path : '*',
@@ -215,8 +199,8 @@ const router =  new Router({
   ]
 });
 
-router.beforeEach((to, from, next) => {
-  store.dispatch('getMemberInfo');
+router.beforeEach(async (to, from, next) => {
+  await store.dispatch('getMemberInfo');
   next();
 });
 
