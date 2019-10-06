@@ -1,36 +1,36 @@
 <template>
-  <div class="about">
-    <Navbar />
-    <Container1 />
-    <Container2 />
-    <Container3 />
-    <Container4 />
-  </div>
+	<div class="about">
+		<Navbar />
+		<Container1 />
+		<Container2 />
+		<Container3 />
+		<Container4 />
+	</div>
 </template>
 <script>
-import Navbar from "../components/homePage/Navbar.vue";
-import Container1 from "../components/aboutPage/Container1.vue";
-import Container2 from "../components/aboutPage/Container2.vue";
-import Container3 from "../components/aboutPage/Container3.vue";
-import Container4 from "../components/aboutPage/Container4.vue";
+import Navbar from '../components/homePage/Navbar.vue';
+import Container1 from '../components/aboutPage/Container1.vue';
+import Container2 from '../components/aboutPage/Container2.vue';
+import Container3 from '../components/aboutPage/Container3.vue';
+import Container4 from '../components/aboutPage/Container4.vue';
 
 export default {
-  name: "about",
+	name: 'about',
 
-  components: {
-    Navbar,
-    Container1,
-    Container2,
-    Container3,
-    Container4
-  }
+	components: {
+		Navbar,
+		Container1,
+		Container2,
+		Container3,
+		Container4,
+	},
 };
 </script>
 <style scoped>
 .about {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-content: center;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-content: center;
 }
 </style>

@@ -38,9 +38,6 @@ export default {
 	computed: {
 		...mapState(['profile']),
 	},
-	// updated() {
-	// 	this.$emit('body2');
-	// },
 };
 </script>
 

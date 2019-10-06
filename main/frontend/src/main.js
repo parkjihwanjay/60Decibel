@@ -25,39 +25,15 @@ AOS.init({
 Vue.prototype.$axios = axios;
 Vue.config.productionTip = false;
 
-// router.beforeEach((to, from, next) => {
-// 	if (localStorage.getItem('access_token')) {
-// 		store
-// 			.dispatch('getMemberInfo')
-// 			.then(() => {
-// 				console.log('로그인 요청');
-// 				next();
-// 			})
-// 			.catch(error => {
-// 				alert(error);
-// 			});
-// 	} else {
-// 		next();
-// 	}
-// });
-
 new Vue({
 	router,
 	store,
-	// 이거 profile에 대한 store임
 	vuetify,
 	beforeCreate() {
 		if (localStorage.getItem('access_token')) {
 			this.$store.dispatch('getMemberInfo');
 		}
 	},
-	// watch: {
-	// 	$route(to, from) {
-	// 		if (localStorage.getItem('access_token')) {
-	// 			this.$store.dispatch('getMemberInfo');
-	// 		}
-	// 	},
-	// },
 	component: {
 		App,
 	},

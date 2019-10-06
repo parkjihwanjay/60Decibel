@@ -7,19 +7,12 @@
 </template>
 
 <script>
-// import { mapState } from 'vuex';
 export default {
 	computed: {
 		loading() {
 			return this.$store.state.isloading;
 		},
 	},
-	// props: {
-	// 	loading: {
-	// 		type: Boolean,
-	// 		required: true,
-	// 	},
-	// },
 };
 </script>
 

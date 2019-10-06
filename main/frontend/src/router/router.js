@@ -1,6 +1,5 @@
 import Vue from "vue";
 import Router from "vue-router";
-// import Home from "./views/Home.vue";
 import Home from "../views/Home.vue";
 import store from "../store/store.js";
 
@@ -20,16 +19,13 @@ const router =  new Router({
       path: "/card",
       name: "card",
       component: () =>
-        import(/* webpackChunkName: "about" */ "../views/Card.vue")
+        import("../views/Card.vue")
     },
     {
       path: "/about",
       name: "about",
-      // route level code-splitting
-      // this generates a separate chunk (about.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
       component: () =>
-        import(/* webpackChunkName: "about" */ "../views/About.vue")
+        import("../views/About.vue")
     },
     {
       path: "/survey",
@@ -122,12 +118,10 @@ const router =  new Router({
     {
       path: "/profileupdate",
       name: "profileupdate",
-      // beforeEnter: requireAuth(),
       beforeEnter: async (to, from, next) => {
         if(requireAuth() === 'login')
         {
           store.commit('SET_LOADING', true);
-          // bus.$emit('on:progress');
           await store.dispatch("getProfileInfo")
           next();
         }
@@ -141,10 +135,8 @@ const router =  new Router({
       path: "/profiles",
       name: "profiles",
       beforeEnter: (to, from, next) => {
-        // console.log('등장');
         if(requireAuth() === 'login'){
           store.commit('SET_LOADING', true);
-          // bus.$emit('on:progress');
           store.dispatch("getProfileInfo")
           .then(next());
         }
@@ -161,7 +153,6 @@ const router =  new Router({
         
         if(requireAuth() === 'login'){
           store.commit('SET_LOADING', true);
-          //a bus.$emit('on:progress');
           await store.dispatch("getProfileInfo")
           await store.dispatch("getStomachInfo", to.params.id)
           next();
@@ -179,7 +170,6 @@ const router =  new Router({
         if(requireAuth() === 'login')
         {
           store.commit('SET_LOADING', true);
-          // bus.$emit('on:progress');
           store.dispatch('getSurveyHistory')
           .then(next())
         }
@@ -202,14 +192,10 @@ const router =  new Router({
 router.beforeEach(async (to, from, next) => {
   store.commit('SET_LOADING', true);
   store.dispatch('getMemberInfo')
-  // .then(() => {
-  //   store.commit('SET_LOADING', false);
-  //   next();
-  // })
   setTimeout(function(){
     store.commit('SET_LOADING', false);
     next();
-  }, 500)
+  }, 300)
 });
 
 export default router;

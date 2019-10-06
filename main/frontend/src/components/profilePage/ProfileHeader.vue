@@ -57,9 +57,6 @@ export default {
 	computed: {
 		...mapState(['profile']),
 	},
-	// updated() {
-	// 	this.$emit('header');
-	// },
 };
 </script>
 <style scoped>

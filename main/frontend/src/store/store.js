@@ -10,13 +10,3 @@ export default new Vuex.Store({
 	mutations,
 	actions,
 });
-
-// const enhanceAccessToeken = () => {
-//   const { access_token } = localStorage;
-//   if (!access_token) return;
-//   axios.defaults.headers.common["Authorization"] =
-//     localStorage.getItem["access_token"];
-// };
-// enhanceAccessToeken();
-
-// export default new Vuex.Store({

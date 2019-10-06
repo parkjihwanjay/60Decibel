@@ -1,6 +1,5 @@
 <template>
 	<div class="root">
-		<!-- <Navbar /> -->
 		<spinner :loading="loading" margin="200px"></spinner>
 		<router-view />
 	</div>
@@ -12,7 +11,6 @@ import Spinner from './components/Spinner.vue';
 export default {
 	name: 'App',
 	components: {
-		// Navbar
 		Spinner,
 	},
 	data() {

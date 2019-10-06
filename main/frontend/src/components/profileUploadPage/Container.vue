@@ -279,21 +279,6 @@ export default {
 	computed: {
 		update: function() {
 			let update = { ...this.$store.state.profile };
-			// update.family_history = `[${update.family_history}]`;
-			// update.diagnosed_disease = `[${update.diagnosed_disease}]`;
-
-			// update.relevant_data = `[${update.relevant_data}]`;
-
-			// update.family_history = [update.family_history];
-			// update.diagnosed_disease = [update.diagnosed_disease];
-
-			// update.relevant_data = [update.relevant_data];
-			// update.diagnosed_disease = update.diagnosed_disease.slice(1, -1);
-			// update.relevant_data = update.relevant_data.slice(1, -1);
-			// update.family_history = update.family_history.slice(1, -1);
-			// if (!update.family_history) update.family_history = [];
-			// if (!update.diagnosed_disease) update.diagnosed_disease = [];
-			// if (!update.relevant_data) update.relevant_data = [];
 			update.family_history = [];
 			update.diagnosed_disease = [];
 			update.relevant_data = [];
@@ -310,8 +295,6 @@ export default {
 	},
 	methods: {
 		updateProfileInfo() {
-			// this.update.family_history = `${this.update.family_history}`;
-			// console.log(this.update);
 			for (let ans in this.update) {
 				if (!this.update[ans]) {
 					alert(`${ans}를 입력해주세요.`);

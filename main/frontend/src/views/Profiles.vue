@@ -33,16 +33,6 @@ export default {
 	mounted() {
 		this.$store.commit('SET_LOADING', false);
 	},
-	// watch: {
-	// 	check: function(check) {
-	// 		if (check >= 3) this.$store.commit('SET_LOADING', false);
-	// 	},
-	// },
-	// methods: {
-	// 	childMounted() {
-	// 		this.check++;
-	// 	},
-	// },
 };
 </script>
 <style scoped>

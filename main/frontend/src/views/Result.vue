@@ -32,16 +32,6 @@ export default {
 	mounted() {
 		this.$store.commit('SET_LOADING', false);
 	},
-	// methods: {
-	// 	successMount() {
-	// 		this.check++;
-	// 	},
-	// },
-	// watch: {
-	// 	check: function(check) {
-	// 		if (check >= 4) this.$store.commit('SET_LOADING', false);
-	// 	},
-	// },
 	components: {
 		name,
 		symptoms,

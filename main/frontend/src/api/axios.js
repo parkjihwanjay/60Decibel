@@ -5,21 +5,6 @@ axios.defaults.xsrfHeaderName = 'X-CSRFToken';
 
 axios.defaults.baseURL = 'http://13.125.155.180:8000/api/';
 
-// const releaseIP = 'http://13.125.155.180:8000/';
-// const localIP = 'http://localhost:8000/';
-
-// const releaseApi = {
-// 	login: `${releaseIP}api/rest-auth/login/`,
-// 	logout: `${releaseIP}api/rest-auth/logout/`,
-// 	registration: `${releaseIP}api/rest-auth/registration/`,
-// 	user: `${releaseIP}api/user/`,
-// 	profile: `${releaseIP}api/profiles/`,
-// 	stomachGet: `${releaseIP}api/stomach/`,
-// 	surveys: `${releaseIP}api/surveys/`,
-// 	profileupdate: `${releaseIP}api/profileupdate/`,
-// 	stomach: `${releaseIP}api/surveys/stomach/`,
-// };
-
 const releaseApi = {
 	login: 'rest-auth/login/',
 	logout: 'rest-auth/logout/',
