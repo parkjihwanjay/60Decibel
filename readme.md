@@ -130,7 +130,7 @@
 
 |                          60 Decibel                          |                     멋쟁이 사자처럼 7기                      |                     고려대학교 의과대학                      |
 | :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: |
-| <img src="https://miro.medium.com/max/6500/0*8ZoDIczhINwo3S_C.png" alt="img" style="zoom:25%;" width="10%" height="10%" /> | <img src="https://miro.medium.com/max/1505/0*hGXvYP1axwfYC2Uz.png" alt="img" style="zoom:200%;" /> | <img src="https://miro.medium.com/max/2250/0*NWcf3ziwIZRCCShH.png" alt="img" style="zoom:200%;" /> |
+| <img src="https://miro.medium.com/max/6500/0*8ZoDIczhINwo3S_C.png" alt="img" width="10%" height="10%" /> | <img src="https://miro.medium.com/max/1505/0*hGXvYP1axwfYC2Uz.png" alt="img" style="zoom:200%;" /> | <img src="https://miro.medium.com/max/2250/0*NWcf3ziwIZRCCShH.png" alt="img" style="zoom:200%;" /> |
 
 - **60DB** : 고려대학교 멋쟁이 사자처럼 7기 출신으로 `전원 컴퓨터공학 비전공자 출신 개발자`다. 실질적인 60Decibel 개발을 맡아 진행하고 있다. 
 - **멋쟁이 사자처럼** : 컴퓨터공학 비전공자들도 프로그래밍 기초 지식을 배워 자신만의 웹서비스를 만들 수 있도록 돕는 대학생 중심 프로그래밍 동아리로써 개발에 관한 전반적인 사항에 대해 조언을 얻었다.
@@ -230,4 +230,3 @@
 
 
 - **오픈 소스 개발의 가장 큰 장점은 다수의 개발자에 의해 검증가능하고 안정적인 코드를 작성하는 것**에 의의가 있다고 본다. **제작 과정에서 도움을 준 공개개발자 SW센터 멘토님들과 고려대학교를 졸업하고 현업에서 종사 중인 선배님들**께 큰 감사의 인사를 드리며, 향후 업데이트를 통해 복통 이외의 설문 조사 내용을 차차 추가해 나갈 예정이다.
-
