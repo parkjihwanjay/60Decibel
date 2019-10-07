@@ -1,10 +1,50 @@
 import Vue from "vue";
 import Router from "vue-router";
-import Home from "../views/Home.vue";
+// import Home from "../views/Home.vue";
 import store from "../store/store.js";
 
 import {requireAuth, checkProfile} from './functions.js';
 Vue.use(Router);
+
+
+const Card = () => 
+  import(/* webpackChunkName: "common" */"../views/Card.vue");
+
+
+const Home = () => 
+   import(/* webpackChunkName: "common" */"../views/Home.vue");
+
+const About = () => 
+  import(/* webpackChunkName: "common" */"../views/About.vue");
+
+
+const Survey = () => 
+  import(/* webpackChunkName: "common" */"../views/Survey.vue");
+
+
+const Login = () => 
+  import(/* webpackChunkName: "common" */"../views/Login.vue");
+
+
+const Signup = () => 
+  import(/* webpackChunkName: "common" */"../views/Signup.vue");
+
+
+const ProfileUpdate = () => 
+  import(/* webpackChunkName: "common" */"../views/ProfileUpdate.vue");
+
+
+const Profiles = () => 
+  import(/* webpackChunkName: "common" */"../views/Profiles.vue");
+
+
+const SurveyList = () => 
+  import(/* webpackChunkName: "common" */"../views/SurveyList.vue");
+
+
+const Result = () => 
+  import(/* webpackChunkName: "common" */"../views/Result.vue");
+
 
 const router =  new Router({
   hashbang: false,
@@ -18,14 +58,12 @@ const router =  new Router({
     {
       path: "/card",
       name: "card",
-      component: () =>
-        import("../views/Card.vue")
+      component: Card
     },
     {
       path: "/about",
       name: "about",
-      component: () =>
-        import("../views/About.vue")
+      component: About
     },
     {
       path: "/survey",
@@ -53,7 +91,7 @@ const router =  new Router({
       }) ,
       redirect: "/sec1",
       name: "survey",
-      component: () => import("../views/Survey.vue"),
+      component: Survey,
       children: [
         {
           path: "/sec1",
@@ -108,12 +146,12 @@ const router =  new Router({
     {
       path: "/login",
       name: "login",
-      component: () => import("../views/Login.vue")
+      component: Login
     },
     {
       path: "/signup",
       name: "signup",
-      component: () => import("../views/Signup.vue")
+      component: Signup
     },
     {
       path: "/profileupdate",
@@ -129,7 +167,7 @@ const router =  new Router({
           next('/');
         }
       },
-      component: () => import("../views/ProfileUpdate.vue")
+      component: ProfileUpdate
     },
     {
       path: "/profiles",
@@ -144,7 +182,7 @@ const router =  new Router({
           next('/');
         }
       },
-      component: () => import("../views/Profiles.vue")
+      component: Profiles
     },
     {
       path: "/stomach/:id",
@@ -161,7 +199,7 @@ const router =  new Router({
           next('/');
         }
       },
-      component: () => import("../views/Result.vue"),
+      component: Result
     },
     {
       path: "/surveys",
@@ -177,7 +215,7 @@ const router =  new Router({
           next('/');
         }
       },
-      component: () => import("../views/SurveyList.vue")
+      component: SurveyList
     },
     {
       path : '*',
