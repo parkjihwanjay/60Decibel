@@ -12,12 +12,14 @@ const router = new VueRouter({
 });
 
 router.beforeEach(async (to, from, next) => {
-	store.commit('SET_LOADING', true);
-	store.dispatch('getMemberInfo');
-	setTimeout(function() {
+	try {
+		store.commit('SET_LOADING', true);
+		await store.dispatch('getMemberInfo');
 		store.commit('SET_LOADING', false);
 		next();
-	}, 300);
+	} catch (error) {
+		alert(error);
+	}
 });
 
 export default router;

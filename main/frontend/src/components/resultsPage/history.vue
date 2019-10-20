@@ -4,21 +4,21 @@
 		<div class="underline"></div>
 		<br />
 		<div class="main">
-			<p v-if="`${profile.had_checkup}=false`">
+			<p v-show="!profile.had_checkup">
 				{{ profile.had_checkup_true }} 전에 건강검진을 받았습니다.
 			</p>
 			<p>이전에 {{ profile.diagnosed_disease }} 을 진단받았습니다.</p>
-			<p v-if="`${profile.taking_medicine}`">{{ profile.what_medicine }}을 복용중입니다.</p>
+			<p v-show="profile.taking_medicine">{{ profile.what_medicine }}을 복용중입니다.</p>
 			<p>
 				<span class="s">{{ profile.family_history }}</span
 				>와(과) 같은 가족력이 있습니다.
 			</p>
-			<p v-if="`${profile.drinking}`">매주 {{ profile.drinking_per_week }}병의 술을 마십니다.</p>
-			<p v-if="`${profile.smoking}`">
+			<p v-show="profile.drinking">매주 {{ profile.drinking_per_week }}병의 술을 마십니다.</p>
+			<p v-show="profile.smoking">
 				담배를 {{ profile.how_long_smoking }}년 동안 {{ profile.how_long_smoking }}갑씩 피우고
 				있습니다.
 			</p>
-			<p v-if="`${profile.relevant_data}`">기타 특이사항 : {{ profile.relevant_data }}</p>
+			<p v-show="profile.relevant_data">기타 특이사항 : {{ profile.relevant_data }}</p>
 		</div>
 	</div>
 </template>
@@ -30,9 +30,6 @@ export default {
 	computed: {
 		...mapState(['profile']),
 	},
-	// updated() {
-	// 	this.$emit('successMount');
-	// },
 };
 </script>
 <style scoped>

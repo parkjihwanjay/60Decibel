@@ -40,15 +40,7 @@
 	</div>
 </template>
 <script>
-import Container1 from './Container1';
-export default {
-	data() {
-		return {};
-	},
-	components: {
-		Container1,
-	},
-};
+export default {};
 </script>
 <style scoped>
 span {

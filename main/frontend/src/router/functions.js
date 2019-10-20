@@ -15,15 +15,13 @@ const requireAuth = () => {
 };
 
 const checkProfile = () => {
-	let check = true;
-
 	for (let ans in store.state.profile) {
 		if (!store.state.profile[ans]) {
-			check = false;
-			break;
+			return false;
 		}
 	}
-	return check;
+
+	return true;
 };
 
 export { requireAuth, checkProfile };

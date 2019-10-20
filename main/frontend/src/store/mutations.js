@@ -29,6 +29,27 @@ export default {
 	// 복통 상태 변이
 	SET_STOMACH(state, stomach) {
 		state.stomach = stomach;
+
+		// let {
+		// 	symptom_location,
+		// 	associated_symptom_digestive,
+		// 	associated_symptom_gynecology,
+		// 	associated_symptom_whole_body,
+		// 	associated_symptom_urinary,
+		// 	associated_symptom_others,
+		// 	factor,
+		// 	abdomen_relevant,
+		// } = stomach;
+
+		// symptom_location = symptom_location.slice(1, -1);
+		// associated_symptom_digestive = associated_symptom_digestive.slice(1, -1);
+		// associated_symptom_gynecology = associated_symptom_gynecology.slice(1, -1);
+		// associated_symptom_whole_body = associated_symptom_whole_body.slice(1, -1);
+		// associated_symptom_urinary = associated_symptom_urinary.slice(1, -1);
+		// associated_symptom_others = associated_symptom_others.slice(1, -1);
+		// factor = factor.slice(1, -1);
+		// abdomen_relevant = abdomen_relevant.slice(1, -1);
+
 		state.stomach.symptom_location = state.stomach.symptom_location.slice(1, -1);
 		state.stomach.associated_symptom_digestive = state.stomach.associated_symptom_digestive.slice(
 			1,

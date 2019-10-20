@@ -16,34 +16,27 @@ const releaseApi = {
 	stomach: 'surveys/stomach/',
 };
 
-function Login(loginObj) {
-	return axios.post(releaseApi.login, loginObj);
-}
-function Logout(userInfo) {
-	return axios.post(releaseApi.logout, userInfo);
-}
-function Signup(signupObj) {
-	return axios.post(releaseApi.registration, signupObj);
-}
-function getMemberInfo(config) {
-	return axios.get(releaseApi.user, config);
-}
-function getProfileInfo(config) {
-	return axios.get(releaseApi.profile, config);
-}
-function getStomachInfo(stomachId, config) {
+const Login = loginObj => axios.post(releaseApi.login, loginObj);
+
+const Logout = userInfo => axios.post(releaseApi.logout, userInfo);
+
+const Signup = signupObj => axios.post(releaseApi.registration, signupObj);
+
+const getMemberInfo = config => axios.get(releaseApi.user, config);
+
+const getProfileInfo = config => axios.get(releaseApi.profile, config);
+
+const getStomachInfo = (stomachId, config) => {
 	const getStomachUrl = `${releaseApi.stomach}${stomachId}`;
 	return axios.get(getStomachUrl, config);
-}
-function getSurveyHistory(config) {
-	return axios.get(releaseApi.surveys, config);
-}
-function updateProfileInfo(config, update) {
-	return axios.put(releaseApi.profileupdate, update, config);
-}
-function shootSurveyData(stomachData, config) {
-	return axios.post(releaseApi.stomach, stomachData, config);
-}
+};
+
+const getSurveyHistory = config => axios.get(releaseApi.surveys, config);
+
+const updateProfileInfo = (config, update) => axios.put(releaseApi.profileupdate, update, config);
+
+const shootSurveyData = (stomachData, config) =>
+	axios.post(releaseApi.stomach, stomachData, config);
 
 export {
 	Login,

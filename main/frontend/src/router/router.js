@@ -49,22 +49,19 @@ const routes = [
   },
   {
     path: "/survey",
-    beforeEnter: ((to, from, next) => {
+    beforeEnter: (async (to, from, next) => {
       if(requireAuth() === 'login')
       {
         store.dispatch('getProfileInfo')
-        .then(data => {
+        .then(() => {
 
-          let check = checkProfile();
-
-          if(!check)
+          if(!checkProfile())
           {
             alert('프로필을 다 입력해주세요.');
             next('/profileupdate');
           }
-          else{
-            next();
-          }
+          
+          next();
         })
       }
       else{
@@ -154,11 +151,17 @@ const routes = [
   {
     path: "/profiles",
     name: "profiles",
-    beforeEnter: (to, from, next) => {
+    beforeEnter: async(to, from, next) => {
       if(requireAuth() === 'login'){
         store.commit('SET_LOADING', true);
-        store.dispatch("getProfileInfo")
-        .then(next());
+        
+        try{
+          await store.dispatch("getProfileInfo")
+          next();
+        }
+        catch(e){
+          console.log(e);
+        }
       }
       else{
         next('/');
@@ -186,12 +189,12 @@ const routes = [
   {
     path: "/surveys",
     name: "survey-history",
-    beforeEnter: (to, from, next) => {
+    beforeEnter: async(to, from, next) => {
       if(requireAuth() === 'login')
       {
         store.commit('SET_LOADING', true);
-        store.dispatch('getSurveyHistory')
-        .then(next())
+        await store.dispatch('getSurveyHistory');
+        next();
       }
       else{
         next('/');
