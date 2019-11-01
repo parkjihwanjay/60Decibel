@@ -7,7 +7,7 @@
 				</router-link>
 			</div>
 			<div class="navhead-btns">
-				<div class="navhead-start" v-if="this.$store.state.isLogin">
+				<div class="navhead-start" v-if="isLogin">
 					<router-link to="/survey">
 						<div class="start-btn">시작하기</div>
 					</router-link>
@@ -17,10 +17,10 @@
 				</div>
 			</div>
 		</div>
-		<transition-expand v-if="this.$store.state.isLogin">
+		<transition-expand v-if="isLogin">
 			<div class="navexpand" v-if="expanded">
 				<a class="nav-menu">
-					<router-link to="/profiles">{{ this.$store.state.userInfo }}님 프로필보기</router-link>
+					<router-link to="/profiles">{{ username }}님 프로필보기</router-link>
 				</a>
 				<br />
 				<a class="nav-menu">
@@ -54,7 +54,6 @@
 <script>
 import { mapState, mapActions } from 'vuex';
 import TransitionExpand from './NavEffect.vue';
-import { store } from '../../store/store.js';
 export default {
 	name: `Nav`,
 	components: {
@@ -66,14 +65,19 @@ export default {
 		};
 	},
 	computed: {
-		...mapState(['isLogin', 'isLoginError']),
+		isLogin() {
+			return localStorage.getItem('isLogin');
+		},
+		username() {
+			return localStorage.getItem('username');
+		},
+		// ...mapState(['isLogin', 'isLoginError', 'userInfo']),
 	},
 	methods: {
 		...mapActions(['getMemberInfo', 'logout']),
 		onClickLogout() {
 			// logout 변이 실행 후 리다이렉트
 			this.$store.dispatch('logout');
-			// .then(() => this.$router.push("/"));
 		},
 	},
 };

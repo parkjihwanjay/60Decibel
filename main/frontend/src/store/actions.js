@@ -1,5 +1,5 @@
 import axios from 'axios';
-import router from '../router/router';
+import router from '../router/index.js';
 
 import {
 	Login,
@@ -13,13 +13,20 @@ import {
 	shootSurveyData,
 } from '../api/axios.js';
 
+import { SessionExpired, LoginSuccess } from './actions-fun.js';
 export default {
 	login({ commit }, loginObj) {
+		commit('SET_LOADING', true);
 		Login(loginObj)
-			.then(async res => {
-				localStorage.setItem('access_token', res.data.token);
+			.then(res => {
+				LoginSuccess(res);
+				// console.log(res.status);
+				// commit('SET_TOKEN');
 
-				axios.defaults.headers.common['Authorization'] = res.data.token;
+				// axios.defaults.headers.common['Authorization'] = `Bearer ${res.data.token}`;
+				// axios.defaults.headers.common['Content-Type'] = 'application/json';
+
+				commit('SET_LOADING', false);
 
 				if (loginObj.from_signup) {
 					router.push({
@@ -30,101 +37,135 @@ export default {
 						name: 'home',
 					});
 			})
-			.catch(() => {
-				alert('이메일과 비밀번호를 확인하세요.');
+			.catch(e => {
+				// console.log(e.response.status);
+				if (e.response.status === 400) alert('이메일과 비밀번호를 확인하세요.');
+				else alert('알 수 없는 오류');
+				commit('SET_LOADING', false);
 			});
 	},
 	// 로그아웃 function
 	logout({ commit }) {
-		Logout(this.state.userInfo)
+		commit('SET_LOADING', true);
+		return Logout({})
 			.then(res => {
 				alert('로그아웃이 성공적으로 이루어졌습니다.');
-				commit('logout', 'RESET_RANDOM_USER');
-				axios.defaults.headers.common['Authorization'] = undefined;
+				commit('RESET_RANDOM_USER');
+				// axios.defaults.headers.common['Authorization'] = undefined;
+				// axios.defaults.headers.common['Content-Type'] = '';
+				// this.state.isLoading = false;
+
+				commit('SET_LOADING', false);
+				location.reload(true);
 				localStorage.clear();
-				router.push({
-					name: 'home',
-				});
+				// router.push({
+				// 	name: 'home',
+				// });
 			})
 			.catch(err => {
-				console.log(err);
+				// console.log(err.response.status);
+				// debugger;
+				if (err.response.status === 401) SessionExpired();
+				else {
+					alert('알 수 없는 오류');
+					SessionExpired();
+				}
+				// console.log(err);
 			});
 	},
-	getMemberInfo({ commit }) {
-		if (!localStorage.getItem('access_token')) {
-			commit('loginNotYet');
-		} else {
-			let token = localStorage.getItem('access_token');
-			let config = {
-				headers: {
-					Authorization: 'JWT ' + token,
-					'Content-Type': 'application/json',
-				},
-			};
-			getMemberInfo(config)
-				.then(response => {
-					let userInfo = response.data.username;
-
-					commit('loginSuccess', userInfo);
-				})
-				.catch(() => {
-					commit('loginError');
-				});
-		}
-	},
-	signup(dispatch, signupObj) {
+	// getMemberInfo({ commit }) {
+	// 	if (!localStorage.getItem('access_token')) {
+	// 		commit('loginNotYet');
+	// 	} else {
+	// 		return getMemberInfo()
+	// 			.then(({ data }) => commit('loginSuccess', data.username))
+	// 			.catch(() => {
+	// 				SessionExpired();
+	// 			});
+	// 	}
+	// },
+	signup({ commit, dispatch }, signupObj) {
+		commit('SET_LOADING', true);
 		// login --> 토큰 반환
-		if (
-			this.state.random_user.username &&
-			this.state.random_user.email &&
-			this.state.random_user.password1 &&
-			this.state.random_user.password2
-		) {
-			let quickLogin = {};
+		if (this.state.random_user) {
+			const { username, email, password1, password2 } = this.state.random_user;
 
-			let login_info = {};
+			let quickLogin = {
+				username,
+				email,
+				password: password1,
+				// password2,
+			};
 
-			quickLogin['username'] = this.state.random_user.username;
-			quickLogin['email'] = this.state.random_user.email;
-			quickLogin['password1'] = this.state.random_user.password1;
-			quickLogin['password2'] = this.state.random_user.password2;
-
-			login_info['username'] = quickLogin.username;
-			login_info['password'] = quickLogin.password1;
-			login_info['from_signup'] = true;
+			let login_info = {
+				username,
+				password: password1,
+				from_signup: true,
+			};
 
 			Signup(quickLogin)
 				.then(async res => {
-					await this.dispatch('resetRandomUser');
+					await dispatch('resetRandomUser');
 					alert('회원가입이 성공적으로 이뤄졌습니다.');
-					this.dispatch('login', login_info);
-					console.log(res);
+					commit('SET_LOADING', false);
+
+					await dispatch('login', login_info);
+					// console.log(res);
 				})
-				.catch(() => {
-					alert('이메일과 비밀번호를 확인하세요.');
+				.catch(err => {
+					// console.log(e.response.status);
+					if (err.response.status === 400) {
+						//이미 존재하는 오류
+						if (err.response.data.errmsg) {
+							const errmsg = err.response.data.errmsg;
+
+							if (errmsg.includes('email')) alert('이미 존재하는 이메일입니다.');
+							else if (errmsg.includes('username')) alert('이미 존재하는 아이디입니다.');
+						}
+						//validation 오류
+						else {
+							const errmsg = err.response.data.message;
+							if (errmsg.includes('email')) alert('유효하지 않은 이메일 형식입니다.');
+							else if (errmsg.includes('password')) alert('비밀번호는 최소 6자리 이상입니다.');
+						}
+					}
+					// if (e.response.status === 400) alert('이미 있는 아이디거나 비밀번호 입니다.');
+					// alert('이메일과 비밀번호를 확인하세요.');
+					commit('SET_LOADING', false);
 				});
 		} else {
+			// console.log(signupObj);
 			Signup(signupObj)
 				.then(res => {
-					console.log(signupObj);
+					// console.log(signupObj);
 					let login_info = {};
 
-					login_info['username'] = signupObj.username;
-					login_info['password'] = signupObj.password1;
-					login_info['from_signup'] = true;
+					login_info.username = signupObj.username;
+					login_info.password = signupObj.password;
+					login_info.from_signup = true;
 
 					alert('회원가입이 성공적으로 이뤄졌습니다.');
-
+					commit('SET_LOADING', false);
 					this.dispatch('login', login_info);
 				})
 				.catch(err => {
-					console.log(err.response);
-					if (err.response.data.username) alert('이미 존재하는 아이디입니다');
-					else if (err.response.data.email) alert('이미 존재하는 이메일입니다');
-					else if (err.response.data.non_field_errors) alert('패스워드가 같지 않습니다.');
-					else if (err.response.data.password1) {
-						alert(err.response.data.password1[0]);
+					// console.log(err.response);
+					if (err.response.status === 400) {
+						//이미 존재하는 오류
+						if (err.response.data.errmsg) {
+							const errmsg = err.response.data.errmsg;
+
+							if (errmsg.includes('email')) alert('이미 존재하는 이메일입니다.');
+							else if (errmsg.includes('username')) alert('이미 존재하는 아이디입니다.');
+						}
+						//validation 오류
+						else {
+							const errmsg = err.response.data.message;
+							if (errmsg.includes('email')) alert('유효하지 않은 이메일 형식입니다.');
+							else if (errmsg.includes('password')) alert('비밀번호는 최소 6자리 이상입니다.');
+						}
 					}
+					commit('SET_LOADING', false);
 				});
 		}
 	},
@@ -137,126 +178,85 @@ export default {
 	},
 
 	getProfileInfo({ commit }) {
-		let token = localStorage.getItem('access_token');
-		let config = {
-			headers: {
-				Authorization: 'JWT ' + token,
-				'Content-Type': 'application/json',
-			},
-		};
-
-		getProfileInfo(config)
+		return getProfileInfo()
 			.then(({ data }) => {
 				commit('SET_PROFILE', data);
-				return new Promise(function(resolve, reject) {
-					resolve(10);
-				});
 			})
 			.catch(error => {
-				console.log(error);
-				return new Promise((resolve, reject) => {
-					reject();
-				});
+				SessionExpired();
 			});
 	},
 	getStomachInfo({ commit }, stomachId) {
-		let token = localStorage.getItem('access_token');
-		let config = {
-			headers: {
-				Authorization: 'JWT ' + token,
-				'Content-Type': 'application/json',
-			},
-		};
-
-		getStomachInfo(stomachId, config)
+		return getStomachInfo(stomachId)
 			.then(({ data }) => {
-				console.log(data);
 				commit('SET_STOMACH', data);
-				return new Promise((resolve, rejcet) => {
-					resolve();
-				});
 			})
 			.catch(error => {
-				console.log(error);
+				SessionExpired();
 			});
 	},
+
 	getSurveyHistory({ commit }) {
-		let token = localStorage.getItem('access_token');
-		let config = {
-			headers: {
-				Authorization: 'JWT ' + token,
-				'Content-Type': 'application/json',
-			},
-		};
-		getSurveyHistory(config)
+		return getSurveyHistory()
 			.then(({ data }) => {
 				commit('SET_SURVEY_HISTORY', data);
-				return new Promise((resolve, reject) => {
-					resolve();
-				});
 			})
 			.catch(error => {
-				console.log(error);
+				SessionExpired();
 			});
 	},
 	// 지환 : 랜덤 계정을 생성해서 회원가입 폼에 보냄
 	start({ commit }) {
-		let startObj = {};
 		let username = '';
 		let possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+
 		for (var i = 0; i < 12; i++)
 			username += possible.charAt(Math.floor(Math.random() * possible.length));
-		let email = username;
+
+		let email = username + '@naver.com';
+
 		let password1 = '60dbfighithing!!';
 		let password2 = password1;
 
-		startObj['username'] = username;
-		startObj['email'] = email + '@naver.com';
-		startObj['password1'] = password1;
-		startObj['password2'] = password2;
+		let startObj = {
+			username,
+			email,
+			password1,
+			password2,
+		};
+
 		commit('SET_QUICK_START', startObj);
+
 		router.push({
 			name: 'signup',
 		});
 	},
-	updateProfileInfo(dispatch, update) {
-		let token = localStorage.getItem('access_token');
-		let config = {
-			headers: {
-				Authorization: 'JWT ' + token,
-				'Content-Type': 'application/json',
-			},
-		};
-		updateProfileInfo(config, update)
-			.then(() => {
-				router.push({
-					name: 'profiles',
-				});
-			})
-			.catch(error => {
-				console.log(error);
+	async updateProfileInfo({ commit }, update) {
+		commit('SET_LOADING', true);
+		try {
+			await updateProfileInfo(update);
+			const profile = await getProfileInfo();
+			// console.log(profile);
+			commit('SET_PROFILE', profile.data);
+			router.push({
+				name: 'profiles',
 			});
+		} catch (e) {
+			if (e.response.status === 400) alert('다시 입력해주세요');
+			else if (e.response.status === 401) SessionExpired();
+		}
 	},
 	shootSurveyData({ commit }, survey_data) {
-		let token = localStorage.getItem('access_token');
-		let config = {
-			headers: {
-				Authorization: 'JWT ' + token,
-				'Content-Type': 'application/json',
-			},
-		};
-		// let stomachData = this.state.answer;
-		console.log(survey_data);
-		shootSurveyData(survey_data, config)
-			.then(res => {
-				console.log(res);
-				let id = res.data.id;
-				commit('RESET_SURVEY');
+		shootSurveyData(survey_data)
+			.then(({ data }) => {
+				// commit('RESET_SURVEY');
 				router.push({
-					path: `/stomach/${id}`,
+					path: `/stomach/${data.id}`,
 				});
 			})
 			.catch(error => {
+				if (error.response.status === 400) alert('다시 입력해주세요.');
+				else if (error.response.status === 401) SessionExpired();
 				console.log(error);
 			});
 	},
@@ -264,7 +264,6 @@ export default {
 		commit('RESET_RANDOM_USER');
 	},
 	alreadyLogin({ commit }) {
-		console.log('로그인이 되어있을때');
 		commit('ALREADY_LOGIN');
 	},
 };

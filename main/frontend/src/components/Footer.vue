@@ -15,14 +15,12 @@
 </template>
 <script>
 // main.js에서 mdbvue라는 부트스트랩 모듈을 받아왔음. npm install --save mdbvue를 하고 나서 main.js에 관련 라이브러리 호출 코드를 넣을 것! main.js 참고
-import { mdbFooter, mdbContainer, mdbRow, mdbCol } from 'mdbvue';
+import { mdbFooter, mdbContainer } from 'mdbvue';
 export default {
 	name: 'FooterPage',
 	components: {
 		mdbFooter,
 		mdbContainer,
-		mdbRow,
-		mdbCol,
 	},
 };
 </script>

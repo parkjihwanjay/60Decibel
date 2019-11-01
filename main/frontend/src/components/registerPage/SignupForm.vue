@@ -12,7 +12,7 @@
 				<form class="signup-box">
 					<p>아이디</p>
 					<input
-						v-if="random_user.username"
+						v-if="random_user"
 						type="text"
 						name="username"
 						v-bind:value="random_user.username"
@@ -27,18 +27,13 @@
 					/>
 
 					<p>이메일</p>
-					<input
-						v-if="random_user.email"
-						type="text"
-						name="email"
-						v-bind:value="random_user.email"
-					/>
+					<input v-if="random_user" type="text" name="email" v-bind:value="random_user.email" />
 					<input v-else type="text" v-model="email" name="email" placeholder="이메일 입력" />
 
 					<p>비밀번호</p>
 
 					<input
-						v-if="random_user.password1"
+						v-if="random_user"
 						type="password"
 						name="userpassword1"
 						v-bind:value="random_user.password1"
@@ -52,7 +47,7 @@
 					/>
 					<p>비밀번호 확인</p>
 					<input
-						v-if="random_user.password2"
+						v-if="random_user"
 						type="password"
 						@keyup.enter="signup({ username, email, password1, password2 })"
 						name="userpassword2"
@@ -75,11 +70,10 @@
 				</div>
 				<div class="login-btn">
 					<input
-						v-if="random_user"
 						type="submit"
 						class="button"
 						name="submit"
-						@click="signup({ username, email, password1, password2 })"
+						@click="signup({ username, email, password: password1 })"
 						value="회원가입"
 					/>
 				</div>

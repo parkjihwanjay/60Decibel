@@ -44,9 +44,6 @@ export default {
 		...mapState(['profile']),
 		...mapState(['stomach']),
 	},
-	// updated() {
-	// 	this.$emit('successMount');
-	// },
 };
 </script>
 

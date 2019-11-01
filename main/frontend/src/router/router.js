@@ -1,203 +1,223 @@
-import Vue from "vue";
-import Router from "vue-router";
-import Home from "../views/Home.vue";
-import store from "../store/store.js";
-
 import {requireAuth, checkProfile} from './functions.js';
-Vue.use(Router);
+import store from '../store/store.js';
 
-const router =  new Router({
-  hashbang: false,
-  mode: "history",
-  routes: [
-    {
-      path: "/",
-      name: "home",
-      component: Home
-    },
-    {
-      path: "/card",
-      name: "card",
-      component: () =>
-        import("../views/Card.vue")
-    },
-    {
-      path: "/about",
-      name: "about",
-      component: () =>
-        import("../views/About.vue")
-    },
-    {
-      path: "/survey",
-      beforeEnter: ((to, from, next) => {
-        if(requireAuth() === 'login')
-        {
-          store.dispatch('getProfileInfo')
-          .then(data => {
+const Card = () => 
+  import(/* webpackChunkName: "common" */"../views/Card.vue");
 
-            let check = checkProfile();
+const Home = () => 
+  import(/* webpackChunkName: "common" */"../views/Home.vue");
 
-            if(!check)
-            {
-              alert('프로필을 다 입력해주세요.');
-              next('/profileupdate');
-            }
-            else{
-              next();
-            }
-          })
+const About = () => 
+  import(/* webpackChunkName: "common" */"../views/About.vue");
+
+const Survey = () => 
+  import(/* webpackChunkName: "common" */"../views/Survey.vue"); 
+
+const Login = () => 
+  import(/* webpackChunkName: "common" */"../views/Login.vue");
+
+const Signup = () => 
+  import(/* webpackChunkName: "common" */"../views/Signup.vue");
+
+const ProfileUpdate = () => 
+  import(/* webpackChunkName: "common" */"../views/ProfileUpdate.vue");
+
+const Profiles = () => 
+  import(/* webpackChunkName: "common" */"../views/Profiles.vue");
+
+const SurveyList = () => 
+  import(/* webpackChunkName: "common" */"../views/SurveyList.vue");
+
+const Result = () => 
+  import(/* webpackChunkName: "common" */"../views/Result.vue");
+
+const routes = [
+  {
+    path: "/",
+    name: "home",
+    component: Home
+  },
+  {
+    path: "/card",
+    name: "card",
+    component: Card
+  },
+  {
+    path: "/about",
+    name: "about",
+    component: About
+  },
+  {
+    path: "/survey",
+    beforeEnter: (async (to, from, next) => {
+      store.commit('SET_LOADING', true);
+      if(requireAuth() === 'login')
+      {
+        if(!checkProfile())
+        {
+          alert('프로필을 다 입력해주세요.');
+          next('/profileupdate');
         }
-        else{
-          next('/');
-        }
-      }) ,
-      redirect: "/sec1",
-      name: "survey",
-      component: () => import("../views/Survey.vue"),
-      children: [
-        {
-          path: "/sec1",
-          name: "sec1",
-          meta: {
-            page: 1
-          },
-          component: () => import("../components/surveyPage/Sec1.vue")
+
+        if(!store.state.profile)
+          await store.dispatch('getProfileInfo')
+
+        next();
+      }
+      else{
+        next('/');
+      }
+    }) ,
+    redirect: "/sec1",
+    name: "survey",
+    component: Survey,
+    children: [
+      {
+        path: "/sec1",
+        name: "sec1",
+        meta: {
+          page: 1
         },
-        {
-          path: "/sec2",
-          name: "sec2",
-          meta: {
-            page: 2
-          },
-          component: () => import("../components/surveyPage/Sec2.vue")
+        component: () => import("../components/surveyPage/Sec1.vue")
+      },
+      {
+        path: "/sec2",
+        name: "sec2",
+        meta: {
+          page: 2
         },
-        {
-          path: "/sec3",
-          name: "sec3",
-          meta: {
-            page: 3
-          },
-          component: () => import("../components/surveyPage/Sec3.vue")
+        component: () => import("../components/surveyPage/Sec2.vue")
+      },
+      {
+        path: "/sec3",
+        name: "sec3",
+        meta: {
+          page: 3
         },
-        {
-          path: "/sec4",
-          name: "sec4",
-          meta: {
-            page: 4
-          },
-          component: () => import("../components/surveyPage/Sec4.vue")
+        component: () => import("../components/surveyPage/Sec3.vue")
+      },
+      {
+        path: "/sec4",
+        name: "sec4",
+        meta: {
+          page: 4
         },
-        {
-          path: "/sec5",
-          name: "sec5",
-          meta: {
-            page: 5
-          },
-          component: () => import("../components/surveyPage/Sec5.vue")
+        component: () => import("../components/surveyPage/Sec4.vue")
+      },
+      {
+        path: "/sec5",
+        name: "sec5",
+        meta: {
+          page: 5
         },
-        {
-          path: "/sec6",
-          name: "sec6",
-          meta: {
-            page: 6
-          },
-          component: () => import("../components/surveyPage/Sec6.vue")
-        }
-      ]
-    },
-    {
-      path: "/login",
-      name: "login",
-      component: () => import("../views/Login.vue")
-    },
-    {
-      path: "/signup",
-      name: "signup",
-      component: () => import("../views/Signup.vue")
-    },
-    {
-      path: "/profileupdate",
-      name: "profileupdate",
-      beforeEnter: async (to, from, next) => {
-        if(requireAuth() === 'login')
-        {
-          store.commit('SET_LOADING', true);
+        component: () => import("../components/surveyPage/Sec5.vue")
+      },
+      {
+        path: "/sec6",
+        name: "sec6",
+        meta: {
+          page: 6
+        },
+        component: () => import("../components/surveyPage/Sec6.vue")
+      }
+    ]
+  },
+  {
+    path: "/login",
+    name: "login",
+    component: Login
+  },
+  {
+    path: "/signup",
+    name: "signup",
+    component: Signup
+  },
+  {
+    path: "/profileupdate",
+    name: "profileupdate",
+    beforeEnter: async (to, from, next) => {
+      store.commit('SET_LOADING', true);
+
+      if(requireAuth() === 'login')
+      {
+        if(!store.state.profile)
           await store.dispatch("getProfileInfo")
-          next();
-        }
-        else{
-          next('/');
-        }
-      },
-      component: () => import("../views/ProfileUpdate.vue")
-    },
-    {
-      path: "/profiles",
-      name: "profiles",
-      beforeEnter: (to, from, next) => {
-        if(requireAuth() === 'login'){
-          store.commit('SET_LOADING', true);
-          store.dispatch("getProfileInfo")
-          .then(next());
-        }
-        else{
-          next('/');
-        }
-      },
-      component: () => import("../views/Profiles.vue")
-    },
-    {
-      path: "/stomach/:id",
-      name: "stomach-retrieve",
-      beforeEnter: async (to, from, next) => {
-        
-        if(requireAuth() === 'login'){
-          store.commit('SET_LOADING', true);
-          await store.dispatch("getProfileInfo")
-          await store.dispatch("getStomachInfo", to.params.id)
-          next();
-        }
-        else{
-          next('/');
-        }
-      },
-      component: () => import("../views/Result.vue"),
-    },
-    {
-      path: "/surveys",
-      name: "survey-history",
-      beforeEnter: (to, from, next) => {
-        if(requireAuth() === 'login')
-        {
-          store.commit('SET_LOADING', true);
-          store.dispatch('getSurveyHistory')
-          .then(next())
-        }
-        else{
-          next('/');
-        }
-      },
-      component: () => import("../views/SurveyList.vue")
-    },
-    {
-      path : '*',
-      beforeEnter : (to, from, next) => {
-        alert("요청하시는 주소는 없는 주소입니다.");
+        next();
+      }
+      else{
         next('/');
       }
     },
-  ]
-});
+    component: ProfileUpdate
+  },
+  {
+    path: "/profiles",
+    name: "profiles",
+    beforeEnter: async(to, from, next) => {
+      store.commit('SET_LOADING', true);
 
-router.beforeEach(async (to, from, next) => {
-  store.commit('SET_LOADING', true);
-  store.dispatch('getMemberInfo')
-  setTimeout(function(){
-    store.commit('SET_LOADING', false);
-    next();
-  }, 300)
-});
+      if(requireAuth() === 'login'){
+        
+        try{
+          if(!store.state.profile)
+            await store.dispatch("getProfileInfo");
+          next();
+        }
+        catch(e){
+          console.log(e);
+        }
+      }
+      else{
+        next('/');
+      }
+    },
+    component: Profiles
+  },
+  {
+    path: "/stomach/:id",
+    name: "stomach-retrieve",
+    beforeEnter: async (to, from, next) => {
+      store.commit('SET_LOADING', true);
 
-export default router;
+      if(requireAuth() === 'login'){
+        if(!store.state.profile)
+          await store.dispatch("getProfileInfo")
+        await store.dispatch("getStomachInfo", to.params.id)
+        next();
+      }
+      else{
+        next('/');
+      }
+    },
+    component: Result
+  },
+  {
+    path: "/surveys",
+    name: "survey-history",
+    beforeEnter: async(to, from, next) => {
+      store.commit('SET_LOADING', true);
+      if(requireAuth() === 'login')
+      {
+        // if(!store.state.survey_history){
+          await store.dispatch('getSurveyHistory');
+        // }
+        next();
+      }
+      else{
+        next('/');
+      }
+    },
+    component: SurveyList
+  },
+  {
+    path : '*',
+    beforeEnter : (to, from, next) => {
+      alert("요청하시는 주소는 없는 주소입니다.");
+      next('/');
+    }
+  },
+]
+
+export default routes;
 
 

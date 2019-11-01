@@ -11,10 +11,10 @@
 			<p>주로 {{ stomach.symptom_location }}가 아픕니다.</p>
 
 			<p>통증 부위의 이동 여부 : {{ stomach.location_move }}</p>
-			<p v-if="`${stomach.pain_spread}`">통증이 {{ stomach.pain_spread_where }} 퍼졌습니다.</p>
+			<p v-if="stomach.pain_spread">통증이 {{ stomach.pain_spread_where }} 퍼졌습니다.</p>
 			<p>통증이 한 번 발생하면 {{ stomach.pain_duration }}만큼 지속됩니다.</p>
 
-			<p v-if="`${stomach.pain_repeated}`">통증의 빈도 : {{ stomach.pain_repeated }}</p>
+			<p v-if="stomach.pain_repeated">통증의 빈도 : {{ stomach.pain_repeated }}</p>
 			<!-- 인우 : p태그 안에 들어가는 변수는 stomach.pain_how_often_day나 stomach.pain_how_often_many여야 하는 것 
       같은데, 일단 설문지에서 선택지가 없음-->
 
@@ -31,9 +31,6 @@ export default {
 	computed: {
 		...mapState(['stomach']),
 	},
-	// updated() {
-	// 	this.$emit('successMount');
-	// },
 };
 </script>
 

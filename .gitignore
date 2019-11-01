@@ -1,3 +1,5 @@
 *.sqlite3
-./main/frontend/node_modules/
 **/migrations/
+node_modules
+
+pass.js
