@@ -1,9 +1,12 @@
 import axios from 'axios';
 
+const djangoIP = 'http://13.125.155.180:8000/api/';
+const nodeIP = 'http://localhost:3000';
+
 axios.defaults.xsrfCookieName = 'csrftoken';
 axios.defaults.xsrfHeaderName = 'X-CSRFToken';
 
-axios.defaults.baseURL = 'http://13.125.155.180:8000/api/';
+axios.defaults.baseURL = nodeIP;
 
 const releaseApi = {
 	login: 'rest-auth/login/',
@@ -16,27 +19,37 @@ const releaseApi = {
 	stomach: 'surveys/stomach/',
 };
 
-const Login = loginObj => axios.post(releaseApi.login, loginObj);
-
-const Logout = userInfo => axios.post(releaseApi.logout, userInfo);
-
-const Signup = signupObj => axios.post(releaseApi.registration, signupObj);
-
-const getMemberInfo = config => axios.get(releaseApi.user, config);
-
-const getProfileInfo = config => axios.get(releaseApi.profile, config);
-
-const getStomachInfo = (stomachId, config) => {
-	const getStomachUrl = `${releaseApi.stomach}${stomachId}`;
-	return axios.get(getStomachUrl, config);
+const nodeAPI = {
+	login: '/users/login',
+	logout: '/users/logout',
+	registration: '/users',
+	user: '/users',
+	profile: '/profile',
+	surveys: '/surveys/stomach',
+	profileupdate: '/profile',
+	stomach: '/surveys/stomach',
 };
 
-const getSurveyHistory = config => axios.get(releaseApi.surveys, config);
+const Login = loginObj => axios.post(nodeAPI.login, loginObj);
 
-const updateProfileInfo = (config, update) => axios.put(releaseApi.profileupdate, update, config);
+const Logout = empty => axios.post(nodeAPI.logout, empty);
 
-const shootSurveyData = (stomachData, config) =>
-	axios.post(releaseApi.stomach, stomachData, config);
+const Signup = signupObj => axios.post(nodeAPI.registration, signupObj);
+
+const getMemberInfo = () => axios.get(nodeAPI.user);
+
+const getProfileInfo = () => axios.get(nodeAPI.profile);
+
+const getStomachInfo = stomachId => {
+	const getStomachUrl = `${nodeAPI.stomach}/${stomachId}`;
+	return axios.get(getStomachUrl);
+};
+
+const getSurveyHistory = () => axios.get(nodeAPI.surveys);
+
+const updateProfileInfo = update => axios.patch(nodeAPI.profileupdate, update);
+
+const shootSurveyData = stomachData => axios.post(nodeAPI.stomach, stomachData);
 
 export {
 	Login,

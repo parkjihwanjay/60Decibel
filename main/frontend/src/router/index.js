@@ -1,6 +1,7 @@
 import routes from './router.js';
 import VueRouter from 'vue-router';
 import store from '../store/store.js';
+import axios from 'axios';
 
 const router = new VueRouter({
 	mode: 'history',
@@ -12,14 +13,13 @@ const router = new VueRouter({
 });
 
 router.beforeEach(async (to, from, next) => {
-	try {
-		store.commit('SET_LOADING', true);
-		await store.dispatch('getMemberInfo');
-		store.commit('SET_LOADING', false);
-		next();
-	} catch (error) {
-		alert(error);
+	if (localStorage.getItem('isLogin')) {
+		axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem(
+			'access_token',
+		)}`;
+		axios.defaults.headers.common['Content-Type'] = 'application/json';
 	}
+	next();
 });
 
 export default router;

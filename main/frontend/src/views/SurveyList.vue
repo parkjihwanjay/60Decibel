@@ -2,8 +2,8 @@
 	<div class="survey-history">
 		<Navbar />
 		<ul>
-			<router-link :to="`/stomach/${item.id}`" v-for="item in survey_history" :key="item.id">
-				증상 : {{ item.symptom }} / <small>작성일 : {{ item.created_at }}</small>
+			<router-link :to="`/stomach/${item._id}`" v-for="item in survey_history" :key="item.id">
+				증상 : 복통 / <small>작성일 : {{ item.createdAt }}</small>
 				<br />
 				<br />
 			</router-link>

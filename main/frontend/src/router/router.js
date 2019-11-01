@@ -50,19 +50,19 @@ const routes = [
   {
     path: "/survey",
     beforeEnter: (async (to, from, next) => {
+      store.commit('SET_LOADING', true);
       if(requireAuth() === 'login')
       {
-        store.dispatch('getProfileInfo')
-        .then(() => {
+        if(!checkProfile())
+        {
+          alert('프로필을 다 입력해주세요.');
+          next('/profileupdate');
+        }
 
-          if(!checkProfile())
-          {
-            alert('프로필을 다 입력해주세요.');
-            next('/profileupdate');
-          }
-          
-          next();
-        })
+        if(!store.state.profile)
+          await store.dispatch('getProfileInfo')
+
+        next();
       }
       else{
         next('/');
@@ -136,10 +136,12 @@ const routes = [
     path: "/profileupdate",
     name: "profileupdate",
     beforeEnter: async (to, from, next) => {
+      store.commit('SET_LOADING', true);
+
       if(requireAuth() === 'login')
       {
-        store.commit('SET_LOADING', true);
-        await store.dispatch("getProfileInfo")
+        if(!store.state.profile)
+          await store.dispatch("getProfileInfo")
         next();
       }
       else{
@@ -152,11 +154,13 @@ const routes = [
     path: "/profiles",
     name: "profiles",
     beforeEnter: async(to, from, next) => {
+      store.commit('SET_LOADING', true);
+
       if(requireAuth() === 'login'){
-        store.commit('SET_LOADING', true);
         
         try{
-          await store.dispatch("getProfileInfo")
+          if(!store.state.profile)
+            await store.dispatch("getProfileInfo");
           next();
         }
         catch(e){
@@ -173,10 +177,11 @@ const routes = [
     path: "/stomach/:id",
     name: "stomach-retrieve",
     beforeEnter: async (to, from, next) => {
-      
+      store.commit('SET_LOADING', true);
+
       if(requireAuth() === 'login'){
-        store.commit('SET_LOADING', true);
-        await store.dispatch("getProfileInfo")
+        if(!store.state.profile)
+          await store.dispatch("getProfileInfo")
         await store.dispatch("getStomachInfo", to.params.id)
         next();
       }
@@ -190,10 +195,12 @@ const routes = [
     path: "/surveys",
     name: "survey-history",
     beforeEnter: async(to, from, next) => {
+      store.commit('SET_LOADING', true);
       if(requireAuth() === 'login')
       {
-        store.commit('SET_LOADING', true);
-        await store.dispatch('getSurveyHistory');
+        // if(!store.state.survey_history){
+          await store.dispatch('getSurveyHistory');
+        // }
         next();
       }
       else{

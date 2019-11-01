@@ -13,13 +13,20 @@ import {
 	shootSurveyData,
 } from '../api/axios.js';
 
+import { SessionExpired, LoginSuccess } from './actions-fun.js';
 export default {
 	login({ commit }, loginObj) {
+		commit('SET_LOADING', true);
 		Login(loginObj)
 			.then(res => {
-				localStorage.setItem('access_token', res.data.token);
+				LoginSuccess(res);
+				// console.log(res.status);
+				// commit('SET_TOKEN');
 
-				axios.defaults.headers.common['Authorization'] = res.data.token;
+				// axios.defaults.headers.common['Authorization'] = `Bearer ${res.data.token}`;
+				// axios.defaults.headers.common['Content-Type'] = 'application/json';
+
+				commit('SET_LOADING', false);
 
 				if (loginObj.from_signup) {
 					router.push({
@@ -30,60 +37,64 @@ export default {
 						name: 'home',
 					});
 			})
-			.catch(() => {
-				alert('이메일과 비밀번호를 확인하세요.');
+			.catch(e => {
+				// console.log(e.response.status);
+				if (e.response.status === 400) alert('이메일과 비밀번호를 확인하세요.');
+				else alert('알 수 없는 오류');
+				commit('SET_LOADING', false);
 			});
 	},
 	// 로그아웃 function
 	logout({ commit }) {
-		Logout(this.state.userInfo)
+		commit('SET_LOADING', true);
+		return Logout({})
 			.then(res => {
 				alert('로그아웃이 성공적으로 이루어졌습니다.');
-				commit('logout', 'RESET_RANDOM_USER');
-				axios.defaults.headers.common['Authorization'] = undefined;
+				commit('RESET_RANDOM_USER');
+				// axios.defaults.headers.common['Authorization'] = undefined;
+				// axios.defaults.headers.common['Content-Type'] = '';
+				// this.state.isLoading = false;
+
+				commit('SET_LOADING', false);
+				location.reload(true);
 				localStorage.clear();
-				router.push({
-					name: 'home',
-				});
+				// router.push({
+				// 	name: 'home',
+				// });
 			})
 			.catch(err => {
-				console.log(err);
+				// console.log(err.response.status);
+				// debugger;
+				if (err.response.status === 401) SessionExpired();
+				else {
+					alert('알 수 없는 오류');
+					SessionExpired();
+				}
+				// console.log(err);
 			});
 	},
-	getMemberInfo({ commit }) {
-		if (!localStorage.getItem('access_token')) {
-			commit('loginNotYet');
-		} else {
-			let token = localStorage.getItem('access_token');
-			let config = {
-				headers: {
-					Authorization: 'JWT ' + token,
-					'Content-Type': 'application/json',
-				},
-			};
-
-			return getMemberInfo(config)
-				.then(({ data }) => commit('loginSuccess', data.username))
-				.catch(() => {
-					commit('loginError');
-				});
-		}
-	},
-	signup(dispatch, signupObj) {
+	// getMemberInfo({ commit }) {
+	// 	if (!localStorage.getItem('access_token')) {
+	// 		commit('loginNotYet');
+	// 	} else {
+	// 		return getMemberInfo()
+	// 			.then(({ data }) => commit('loginSuccess', data.username))
+	// 			.catch(() => {
+	// 				SessionExpired();
+	// 			});
+	// 	}
+	// },
+	signup({ commit, dispatch }, signupObj) {
+		commit('SET_LOADING', true);
 		// login --> 토큰 반환
-		if (
-			this.state.random_user.username &&
-			this.state.random_user.email &&
-			this.state.random_user.password1 &&
-			this.state.random_user.password2
-		) {
+		if (this.state.random_user) {
 			const { username, email, password1, password2 } = this.state.random_user;
 
 			let quickLogin = {
 				username,
 				email,
-				password1,
-				password2,
+				password: password1,
+				// password2,
 			};
 
 			let login_info = {
@@ -94,36 +105,67 @@ export default {
 
 			Signup(quickLogin)
 				.then(async res => {
-					await this.dispatch('resetRandomUser');
+					await dispatch('resetRandomUser');
 					alert('회원가입이 성공적으로 이뤄졌습니다.');
-					this.dispatch('login', login_info);
-					console.log(res);
+					commit('SET_LOADING', false);
+
+					await dispatch('login', login_info);
+					// console.log(res);
 				})
-				.catch(() => {
-					alert('이메일과 비밀번호를 확인하세요.');
+				.catch(err => {
+					// console.log(e.response.status);
+					if (err.response.status === 400) {
+						//이미 존재하는 오류
+						if (err.response.data.errmsg) {
+							const errmsg = err.response.data.errmsg;
+
+							if (errmsg.includes('email')) alert('이미 존재하는 이메일입니다.');
+							else if (errmsg.includes('username')) alert('이미 존재하는 아이디입니다.');
+						}
+						//validation 오류
+						else {
+							const errmsg = err.response.data.message;
+							if (errmsg.includes('email')) alert('유효하지 않은 이메일 형식입니다.');
+							else if (errmsg.includes('password')) alert('비밀번호는 최소 6자리 이상입니다.');
+						}
+					}
+					// if (e.response.status === 400) alert('이미 있는 아이디거나 비밀번호 입니다.');
+					// alert('이메일과 비밀번호를 확인하세요.');
+					commit('SET_LOADING', false);
 				});
 		} else {
+			// console.log(signupObj);
 			Signup(signupObj)
 				.then(res => {
-					console.log(signupObj);
+					// console.log(signupObj);
 					let login_info = {};
 
-					login_info['username'] = signupObj.username;
-					login_info['password'] = signupObj.password1;
-					login_info['from_signup'] = true;
+					login_info.username = signupObj.username;
+					login_info.password = signupObj.password;
+					login_info.from_signup = true;
 
 					alert('회원가입이 성공적으로 이뤄졌습니다.');
-
+					commit('SET_LOADING', false);
 					this.dispatch('login', login_info);
 				})
 				.catch(err => {
-					console.log(err.response);
-					if (err.response.data.username) alert('이미 존재하는 아이디입니다');
-					else if (err.response.data.email) alert('이미 존재하는 이메일입니다');
-					else if (err.response.data.non_field_errors) alert('패스워드가 같지 않습니다.');
-					else if (err.response.data.password1) {
-						alert(err.response.data.password1[0]);
+					// console.log(err.response);
+					if (err.response.status === 400) {
+						//이미 존재하는 오류
+						if (err.response.data.errmsg) {
+							const errmsg = err.response.data.errmsg;
+
+							if (errmsg.includes('email')) alert('이미 존재하는 이메일입니다.');
+							else if (errmsg.includes('username')) alert('이미 존재하는 아이디입니다.');
+						}
+						//validation 오류
+						else {
+							const errmsg = err.response.data.message;
+							if (errmsg.includes('email')) alert('유효하지 않은 이메일 형식입니다.');
+							else if (errmsg.includes('password')) alert('비밀번호는 최소 6자리 이상입니다.');
+						}
 					}
+					commit('SET_LOADING', false);
 				});
 		}
 	},
@@ -136,54 +178,31 @@ export default {
 	},
 
 	getProfileInfo({ commit }) {
-		let token = localStorage.getItem('access_token');
-		let config = {
-			headers: {
-				Authorization: 'JWT ' + token,
-				'Content-Type': 'application/json',
-			},
-		};
-
-		return getProfileInfo(config)
+		return getProfileInfo()
 			.then(({ data }) => {
 				commit('SET_PROFILE', data);
 			})
 			.catch(error => {
-				console.log(error);
+				SessionExpired();
 			});
 	},
 	getStomachInfo({ commit }, stomachId) {
-		let token = localStorage.getItem('access_token');
-		let config = {
-			headers: {
-				Authorization: 'JWT ' + token,
-				'Content-Type': 'application/json',
-			},
-		};
-
-		return getStomachInfo(stomachId, config)
+		return getStomachInfo(stomachId)
 			.then(({ data }) => {
 				commit('SET_STOMACH', data);
 			})
 			.catch(error => {
-				console.log(error);
+				SessionExpired();
 			});
 	},
 
 	getSurveyHistory({ commit }) {
-		let token = localStorage.getItem('access_token');
-		let config = {
-			headers: {
-				Authorization: 'JWT ' + token,
-				'Content-Type': 'application/json',
-			},
-		};
-		return getSurveyHistory(config)
+		return getSurveyHistory()
 			.then(({ data }) => {
 				commit('SET_SURVEY_HISTORY', data);
 			})
 			.catch(error => {
-				console.log(error);
+				SessionExpired();
 			});
 	},
 	// 지환 : 랜덤 계정을 생성해서 회원가입 폼에 보냄
@@ -212,41 +231,32 @@ export default {
 			name: 'signup',
 		});
 	},
-	updateProfileInfo(dispatch, update) {
-		let token = localStorage.getItem('access_token');
-		let config = {
-			headers: {
-				Authorization: 'JWT ' + token,
-				'Content-Type': 'application/json',
-			},
-		};
-		updateProfileInfo(config, update)
-			.then(() => {
-				router.push({
-					name: 'profiles',
-				});
-			})
-			.catch(error => {
-				console.log(error);
+	async updateProfileInfo({ commit }, update) {
+		commit('SET_LOADING', true);
+		try {
+			await updateProfileInfo(update);
+			const profile = await getProfileInfo();
+			// console.log(profile);
+			commit('SET_PROFILE', profile.data);
+			router.push({
+				name: 'profiles',
 			});
+		} catch (e) {
+			if (e.response.status === 400) alert('다시 입력해주세요');
+			else if (e.response.status === 401) SessionExpired();
+		}
 	},
 	shootSurveyData({ commit }, survey_data) {
-		let token = localStorage.getItem('access_token');
-		let config = {
-			headers: {
-				Authorization: 'JWT ' + token,
-				'Content-Type': 'application/json',
-			},
-		};
-
-		shootSurveyData(survey_data, config)
+		shootSurveyData(survey_data)
 			.then(({ data }) => {
-				commit('RESET_SURVEY');
+				// commit('RESET_SURVEY');
 				router.push({
 					path: `/stomach/${data.id}`,
 				});
 			})
 			.catch(error => {
+				if (error.response.status === 400) alert('다시 입력해주세요.');
+				else if (error.response.status === 401) SessionExpired();
 				console.log(error);
 			});
 	},

@@ -44,10 +44,10 @@
 						<input type="date" v-model="update.birth_date" class="input-birth" />
 						<br />
 						<span>신장</span>
-						<input type="number" ref="height" v-model="update.height" />
+						<input type="number" ref="height" v-model.number="update.height" />
 						<br />
 						<span>체중</span>
-						<input type="number" ref="weight" v-model="update.weight" />
+						<input type="number" ref="weight" v-model.number="update.weight" />
 						<br />
 					</div>
 				</div>
@@ -64,7 +64,7 @@
 							v-model="update.had_checkup"
 							name="had_checkup"
 							id="yes"
-							value="true"
+							:value="true"
 						/>있음
 					</label>
 					<label for="no">
@@ -74,7 +74,7 @@
 							v-model="update.had_checkup"
 							name="had_checkup"
 							id="no"
-							value="false"
+							:value="false"
 						/>없음
 					</label>
 					<br />
@@ -145,7 +145,7 @@
 							v-model="update.taking_medicine"
 							name="taking_medicine"
 							id="yes"
-							value="true"
+							:value="true"
 						/>있음
 					</label>
 					<label for="no">
@@ -155,7 +155,7 @@
 							v-model="update.taking_medicine"
 							name="taking_medicine"
 							id="no"
-							value="false"
+							:value="false"
 						/>없음
 					</label>
 					<br />
@@ -189,7 +189,13 @@
 				<div class="upload-detail3">
 					<span class="span3">음주 여부</span>
 					<label for="yes">
-						<input type="radio" v-model="update.drinking" name="drinking" id="yes" value="True" />네
+						<input
+							type="radio"
+							v-model="update.drinking"
+							name="drinking"
+							id="yes"
+							:value="true"
+						/>네
 					</label>
 					<label for="no">
 						<input
@@ -197,7 +203,7 @@
 							v-model="update.drinking"
 							name="drinking"
 							id="no"
-							value="False"
+							:value="false"
 						/>아니오
 					</label>
 					<br />
@@ -211,7 +217,7 @@
 					<br />
 					<span class="span3">흡연 여부</span>
 					<label for="yes">
-						<input type="radio" v-model="update.smoking" name="smoking" id="yes" value="True" />네
+						<input type="radio" v-model="update.smoking" name="smoking" id="yes" :value="true" />네
 					</label>
 					<label for="no">
 						<input
@@ -219,7 +225,7 @@
 							v-model="update.smoking"
 							name="smoking"
 							id="no"
-							value="False"
+							:value="false"
 						/>아니오
 					</label>
 					<br />
@@ -228,7 +234,7 @@
 						class="inputsmall"
 						type="number"
 						ref="how_long_smoking"
-						v-model="update.how_long_smoking"
+						v-model.number="update.how_long_smoking"
 					/>
 					<br />
 					<span class="span3 spanlong">흡연 양(갑)(일주일)</span>
@@ -236,7 +242,7 @@
 						class="inputsmall"
 						type="number"
 						ref="how_much_smoking"
-						v-model="update.how_much_smoking"
+						v-model.number="update.how_much_smoking"
 					/>
 					<br />
 					<span class="span3">직업</span>
@@ -278,10 +284,7 @@
 export default {
 	computed: {
 		update: function() {
-			let update = { ...this.$store.state.profile };
-			update.family_history = [];
-			update.diagnosed_disease = [];
-			update.relevant_data = [];
+			const update = { ...this.$store.state.profile };
 			return update;
 		},
 	},
@@ -297,6 +300,7 @@ export default {
 		updateProfileInfo() {
 			for (let ans in this.update) {
 				if (!this.update[ans]) {
+					if (this.update[ans] === false) continue;
 					alert(`${ans}를 입력해주세요.`);
 					return;
 				}

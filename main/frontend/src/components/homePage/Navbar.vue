@@ -20,7 +20,7 @@
 		<transition-expand v-if="isLogin">
 			<div class="navexpand" v-if="expanded">
 				<a class="nav-menu">
-					<router-link to="/profiles">{{ userInfo }}님 프로필보기</router-link>
+					<router-link to="/profiles">{{ username }}님 프로필보기</router-link>
 				</a>
 				<br />
 				<a class="nav-menu">
@@ -65,7 +65,13 @@ export default {
 		};
 	},
 	computed: {
-		...mapState(['isLogin', 'isLoginError', 'userInfo']),
+		isLogin() {
+			return localStorage.getItem('isLogin');
+		},
+		username() {
+			return localStorage.getItem('username');
+		},
+		// ...mapState(['isLogin', 'isLoginError', 'userInfo']),
 	},
 	methods: {
 		...mapActions(['getMemberInfo', 'logout']),
