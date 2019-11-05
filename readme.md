@@ -59,10 +59,15 @@
 # main/frontend/package.json (Vue.js 모듈 설치 파일 위치로 이동)
 > npm install (Vue.js 모듈 설치 진행) 
 
-# 60db
+# 60db(python)
 > python -m venv 60db (가상환경 설치. pipenv or virtualenv 어떤 것이든 사용가능)
 > source 60db/Script/activate
 > (60db) pip install -r requirements.txt (백엔드 모듈 관련 부분 설치)
+
+# 60db(node.js)
+> main/node-back으로 이동
+> npm install
+> 설치 완료 후 npm run dev
 ```
 
 - 원활한 소프트웨어 활용을 위해 Package.json 과 requirements.txt에 명시된 모듈들을 모두 설치해주십시오.
