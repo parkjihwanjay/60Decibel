@@ -103,39 +103,84 @@
 					<br />
 					<span class="span2" for="disease_list">병 진단 이력</span>
 					<br />
-					<input
+					<!-- <input type="checkbox" class="select selectline" v-model="update.diagnosed_disease" /> -->
+					<!-- <input
 						type="checkbox"
 						class="select selectline"
-						v-model="update.diagnosed_disease"
+						v-for="(element, index)  in update.diagnosed_disease"
+						v-model="element.checked"
+						:key="index"
+					/>{{ element }} -->
+
+					<!-- <template v-for="(disease, index) in update.diagnosed_disease">
+						<input
+							type="checkbox"
+							class="select selectline"
+							:key="index"
+							@click="ClickDisease(label[index], index)"
+							:value="label[index]"
+						/>{{ label[index] }}
+					</template> -->
+					<!-- <template v-for="(disease, index) in update.diagnosed_disease">
+						<input
+							type="checkbox"
+							:key="index"
+							:value="disease"
+							@click="clickDisease(disease)"
+							class="select selectline"
+						/>{{ disease }}
+					</template> -->
+
+					<span v-for="disease in diseaseLabel" :key="disease">
+						<input
+							type="checkbox"
+							:name="disease"
+							:value="disease"
+							v-model="update.diagnosed_disease"
+						/>
+						<label :for="disease">{{ disease }}</label>
+					</span>
+					<template name="diseaseIF">
+						<div v-if="update.diagnosed_disease.includes('고혈압')">
+							고혈압
+						</div>
+						<div v-if="update.diagnosed_disease.includes('간염')">
+							간염
+						</div>
+					</template>
+					<!-- <input
+						type="checkbox"
+						class="select selectline"
 						value="고혈압"
+						v-model="update.diagnosed_disease"
 					/>고혈압
 					<input
 						class="select selectline"
+						value="간염"
 						type="checkbox"
 						v-model="update.diagnosed_disease"
-						value="간염"
 					/>간염
 					<input
 						class="select selectline"
+						value="결핵"
 						type="checkbox"
 						v-model="update.diagnosed_disease"
-						value="결핵"
 					/>결핵
 					<input
 						class="select selectline"
+						value="없음"
 						type="checkbox"
 						v-model="update.diagnosed_disease"
-						value="없음"
 					/>없음
 					<input
 						class="select selectline"
+						value="기타"
 						type="checkbox"
 						v-model="update.diagnosed_disease"
-						@click="diseaseRest"
-						value="기타"
-					/>기타
+					/>기타 -->
 					<br />
-					<input type="text" v-show="diagnosed_disease_rest" v-model="diagnosed_disease_restText" />
+					<!-- <input type="text" v-if="update.diagnosed_disease.indexOf('기타') >= 0" /> -->
+					<!-- <input type="text" v-show="diagnosed_disease_rest" v-model="diagnosed_disease_restText" /> -->
 					<span class="span2">복용중인 약</span>
 					<br />
 					<label for="yes">
@@ -164,7 +209,16 @@
 
 					<span for="family_disease">가족력</span>
 					<br />
-					<input
+					<span v-for="(disease, index) in diseaseLabel" :key="index">
+						<input
+							type="checkbox"
+							:name="disease"
+							:value="disease"
+							v-model="update.family_history"
+						/>
+						<label :for="disease">{{ disease }}</label>
+					</span>
+					<!-- <input
 						class="select"
 						type="checkbox"
 						v-model="update.family_history"
@@ -179,8 +233,7 @@
 						v-model="update.family_history"
 						value="기타"
 						@click="familyRest"
-					/>기타
-					<input type="text" v-model="family_history_restText" v-show="family_history_rest" />
+					/>기타 -->
 				</div>
 			</div>
 			<!-------- 사회력 -------->
@@ -253,7 +306,16 @@
 							>다음 중 해당되는 사항에 모두 체크해주세요</label
 						>
 						<br />
-						<input
+						<span v-for="factor in factorLabel" :key="factor">
+							<input
+								type="checkbox"
+								:name="factor"
+								:value="factor"
+								v-model="update.relevant_data"
+							/>
+							<label :for="factor">{{ factor }}</label>
+						</span>
+						<!-- <input
 							type="checkbox"
 							v-model="update.relevant_data"
 							value="스트레스를 많이 받는 편"
@@ -266,7 +328,7 @@
 							value="기름진 음식을 많이 먹음"
 						/>기름진 음식을 많이 먹음
 						<input type="checkbox" v-model="update.relevant_data" value="수면시간 불규칙" />수면시간
-						불규칙
+						불규칙 -->
 					</div>
 					<br />
 				</div>
@@ -282,18 +344,24 @@
 </template>
 <script>
 export default {
-	computed: {
-		update: function() {
-			const update = { ...this.$store.state.profile };
-			return update;
-		},
+	// computed: {
+	// 	profile: function() {
+	// 		return { ...this.$store.state.profile };
+	// 	},
+	// },
+	created() {
+		this.update = { ...this.$store.state.profile };
 	},
 	data() {
 		return {
-			diagnosed_disease_rest: false,
-			family_history_rest: false,
-			diagnosed_disease_restText: '',
-			family_history_restText: '',
+			update: {},
+			diseaseLabel: ['고혈압', '간염', '결핵', '없음', '기타'],
+			factorLabel: [
+				'스트레스를 많이 받는 편',
+				'식사 불규칙',
+				'기름진 음식을 많이 먹음',
+				'수면시간 불규칙',
+			],
 		};
 	},
 	methods: {
@@ -306,12 +374,6 @@ export default {
 				}
 			}
 			this.$store.dispatch('updateProfileInfo', this.update);
-		},
-		diseaseRest() {
-			this.diagnosed_disease_rest = !this.diagnosed_disease_rest;
-		},
-		familyRest() {
-			this.family_history_rest = !this.family_history_rest;
 		},
 	},
 };
