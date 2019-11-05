@@ -13,6 +13,9 @@ import axios from 'axios';
 import VueRouter from 'vue-router';
 // IE에서는 promise를 지원하지 않기 때문에 추가
 import ES6Promise from 'es6-promise';
+
+import VueAnalytics from 'vue-analytics';
+
 ES6Promise.polyfill();
 // aos
 import AOS from 'aos';
@@ -25,6 +28,10 @@ AOS.init({
 Vue.prototype.$axios = axios;
 Vue.config.productionTip = false;
 
+Vue.use(VueAnalytics, {
+	id: 'UA-151328015-1',
+	router,
+});
 Vue.use(VueRouter);
 
 new Vue({

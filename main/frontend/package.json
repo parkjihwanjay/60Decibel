@@ -15,6 +15,7 @@
     "es6-promise": "^4.2.8",
     "lingallery": "^1.0.26",
     "vue": "^2.6.10",
+    "vue-analytics": "^5.17.2",
     "vue-router": "^3.0.3",
     "vue-scrollactive": "^0.8.0",
     "vuetify": "^2.0.1",

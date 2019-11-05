@@ -19,6 +19,7 @@ export default {
 <style>
 .lds-facebook {
 	display: inline-block;
+	z-index: 9999;
 	position: fixed;
 	width: 64px;
 	height: 64px;
