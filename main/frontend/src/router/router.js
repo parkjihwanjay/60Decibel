@@ -145,6 +145,7 @@ const routes = [
         next();
       }
       else{
+        store.commit('SET_LOADING', false);
         next('/');
       }
     },

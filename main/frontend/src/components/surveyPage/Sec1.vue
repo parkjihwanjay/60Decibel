@@ -136,6 +136,9 @@
 import surveyMixin from '../../mixin/surveyMixin';
 export default {
 	mixins: [surveyMixin],
+	mounted() {
+		this.$store.commit('SET_LOADING', false);
+	},
 	data() {
 		return {
 			experience: [
