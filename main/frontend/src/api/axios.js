@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 // const djangoIP = 'http://13.125.155.180:8000/api/';
-const nodeLocalIP = 'https://localhost:3000';
+const nodeLocalIP = 'http://localhost:3000';
 const nodeIP = 'http://52.78.25.102';
 
 axios.defaults.xsrfCookieName = 'csrftoken';

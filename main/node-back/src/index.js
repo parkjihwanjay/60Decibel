@@ -18,18 +18,18 @@ app.use(userRouter);
 app.use(profileRouter);
 app.use(stomachRouter);
 
-https.createServer({
-  key: fs.readFileSync('./key.pem'),
-  cert: fs.readFileSync('./cert.pem'),
-  passphrase: '60decibel',
-}, app)
-.listen(3000, function () {
-  console.log('Example app listening on port 3000! Go to https://localhost:port/')
-})
-
-// app.listen(port, () => {
-//   console.log('server is up on port');
+// https.createServer({
+//   key: fs.readFileSync('./key.pem'),
+//   cert: fs.readFileSync('./cert.pem'),
+//   passphrase: '60decibel',
+// }, app)
+// .listen(3000, function () {
+//   console.log('Example app listening on port 3000! Go to https://localhost:port/')
 // })
+
+app.listen(port, () => {
+  console.log('server is up on port');
+})
 
 
 
