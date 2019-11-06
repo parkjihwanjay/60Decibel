@@ -1,4 +1,6 @@
 const express = require('express');
+const fs = require('fs');
+const https = require('https');
 const cors = require('cors');
 require('./db/mongoose.js');
 
@@ -16,9 +18,18 @@ app.use(userRouter);
 app.use(profileRouter);
 app.use(stomachRouter);
 
-app.listen(port, () => {
-  console.log('server is up on 3000');
+https.createServer({
+  key: fs.readFileSync('./key.pem'),
+  cert: fs.readFileSync('./cert.pem'),
+  passphrase: '60decibel',
+}, app)
+.listen(3000, function () {
+  console.log('Example app listening on port 3000! Go to https://localhost:port/')
 })
+
+// app.listen(port, () => {
+//   console.log('server is up on port');
+// })
 
 
 
