@@ -7,7 +7,7 @@ const nodeIP = 'http://52.78.25.102';
 axios.defaults.xsrfCookieName = 'csrftoken';
 axios.defaults.xsrfHeaderName = 'X-CSRFToken';
 
-axios.defaults.baseURL = nodeLocalIP;
+axios.defaults.baseURL = nodeIP;
 
 const releaseApi = {
 	login: 'rest-auth/login/',
