@@ -77,6 +77,10 @@ const symptomSchema = new mongoose.Schema({
     default : "",
     // required : true,
   },
+  pain_better : {
+    type : String,
+    default : "",
+  },
   pain_score : {
     type : Number,
     default : 5,
