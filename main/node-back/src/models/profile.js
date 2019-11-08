@@ -10,16 +10,16 @@ const profileSchema = new mongoose.Schema({
   gender : {
     type : String,
     // required : true,
-    default : "",
+   // default : "",
   },
   birth_date : {
     type : String,
     // required : true,
-    default : "",
+    // default : "",
   },
   height : {
     type : Number,
-    default : 160,
+    //default : 160,
     // required : true,
     validate(value){
       if(value<=0)
@@ -28,7 +28,7 @@ const profileSchema = new mongoose.Schema({
   },
   weight : {
     type : Number,
-    default : 60,
+    //default : 60,
     // required : true,
     validate(value){
       if(value<=0)
@@ -37,23 +37,23 @@ const profileSchema = new mongoose.Schema({
   },
   name : {
     type : String,
-    default : "",
+    //default : "",
     // required : true,
     trim : true,
   },
   had_checkup : {
     type : Boolean,
     // required : true,
-    default : false,
+    // default : false,
   },
   had_checkup_true : {
     type : String,
-    default : "",
+    //default : "",
     // required : true,
   },
   had_checkup_comment : {
     type : String,
-    default : "",
+    //default : "",
   },
   diagnosed_disease : {
     type : Array,
@@ -93,7 +93,7 @@ const profileSchema = new mongoose.Schema({
   },
   taking_medicine : {
     type : String,
-    default : "",
+    //default : "",
     // required : true,
   },
   taking_healthy : {
@@ -110,15 +110,15 @@ const profileSchema = new mongoose.Schema({
   },
   coffee : {
     type : String,
-    default : "",
+    //default : "",
   },
   stress_recent : {
     type : Boolean,
-    default : false,
+    //default : false,
   },
   what_medicine : {
     type : String,
-    default : "",
+    //default : "",
     // required : true,
   },
   family_history : {
@@ -129,39 +129,39 @@ const profileSchema = new mongoose.Schema({
   drinking : {
     type : Boolean,
     // required : true,
-    default : false,
+    //default : false,
   },
   drinking_per_week : {
     type : String,
-    default : "",
+    //default : "",
     // required : true,
   },
   smoking : {
     type : Boolean,
     // required : true,
-    default : false,
+    //default : false,
   },
   how_long_smoking : {
     type : String,
-    default : "",
+    //default : "",
     // required : true,
   },
   how_much_smoking : {
     type : String,
-    default : "",
+    //default : "",
     // required : true,
   },
   how_much_smoking_before : {
     type : String,
-    default : "",
+    //default : "",
   },
   quit_smoking : {
     type : String,
-    default : "",
+    //default : "",
   },
   job : {
     type : String,
-    default : "",
+    //default : "",
     // required : true,
   },
   relevant_data : {
