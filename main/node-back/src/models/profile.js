@@ -51,15 +51,70 @@ const profileSchema = new mongoose.Schema({
     default : "",
     // required : true,
   },
+  had_checkup_comment : {
+    type : String,
+    default : "",
+  },
   diagnosed_disease : {
     type : Array,
-    default : [],
+    default : [
+      {
+        name : "고혈압",
+        checked : false,
+        history : "",
+        medicine : "",
+      },
+      {
+        name : "간염",
+        checked : false,
+        history : "",
+        medicine : "",
+      },
+      {
+        name : "결핵",
+        checked : false,
+        history : "",
+        medicine : "",
+      },
+      {
+        name : "없음",
+        checked : false,
+      },
+      {
+        name : "기타",
+        disease : "",
+        checked : false,
+        history : "",
+        medicine : "",
+        where : "",
+      },
+    ],
     // required : true,
   },
   taking_medicine : {
     type : String,
     default : "",
     // required : true,
+  },
+  taking_healthy : {
+    type : Array,
+    default : [],
+  },
+  family_history_true : {
+    type : Array,
+    default : [],
+  },
+  allergy : {
+    type : Array,
+    default : [],
+  },
+  coffee : {
+    type : String,
+    default : "",
+  },
+  stress_recent : {
+    type : Boolean,
+    default : false,
   },
   what_medicine : {
     type : String,
@@ -95,6 +150,14 @@ const profileSchema = new mongoose.Schema({
     type : String,
     default : "",
     // required : true,
+  },
+  how_much_smoking_before : {
+    type : String,
+    default : "",
+  },
+  quit_smoking : {
+    type : String,
+    default : "",
   },
   job : {
     type : String,
