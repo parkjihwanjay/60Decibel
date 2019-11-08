@@ -9,9 +9,26 @@ router.get('/profile', auth, async (req, res) => {
     const profile = await Profile.findOne({
       user : req.user._id,
     })
+    if(!profile){
+      res.status(404).send(e);
+    }
+
     res.send(profile);
   }catch(e){
     res.status(404).send(e);
+  }
+})
+
+router.post('/profile', auth, async(req, res) => {
+  const profile = new Profile({
+    ...req.body,
+    user : req.user._id,
+  });
+  try{
+    await profile.save();
+    res.status(201).send(profile);
+  }catch(e){
+    res.status(400).send(e);
   }
 })
 

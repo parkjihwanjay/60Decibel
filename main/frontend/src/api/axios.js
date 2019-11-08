@@ -7,7 +7,8 @@ const nodeIP = 'http://52.78.25.102';
 axios.defaults.xsrfCookieName = 'csrftoken';
 axios.defaults.xsrfHeaderName = 'X-CSRFToken';
 
-axios.defaults.baseURL = nodeIP;
+// axios.defaults.baseURL = nodeIP;
+axios.defaults.baseURL = nodeLocalIP;
 
 const releaseApi = {
 	login: 'rest-auth/login/',
@@ -27,7 +28,7 @@ const nodeAPI = {
 	user: '/users',
 	profile: '/profile',
 	surveys: '/surveys/stomach',
-	profileupdate: '/profile',
+	// profileupdate: '/profile',
 	stomach: '/surveys/stomach',
 };
 
@@ -48,7 +49,9 @@ const getStomachInfo = stomachId => {
 
 const getSurveyHistory = () => axios.get(nodeAPI.surveys);
 
-const updateProfileInfo = update => axios.patch(nodeAPI.profileupdate, update);
+const postProfileInfo = update => axios.post(nodeAPI.profile, update);
+
+const updateProfileInfo = update => axios.patch(nodeAPI.profile, update);
 
 const shootSurveyData = stomachData => axios.post(nodeAPI.stomach, stomachData);
 
@@ -60,6 +63,7 @@ export {
 	getProfileInfo,
 	getStomachInfo,
 	getSurveyHistory,
+	postProfileInfo,
 	updateProfileInfo,
 	shootSurveyData,
 };

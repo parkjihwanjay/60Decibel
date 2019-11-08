@@ -22,6 +22,8 @@ const Signup = () =>
 const ProfileUpdate = () => 
   import(/* webpackChunkName: "common" */"../views/ProfileUpdate.vue");
 
+const ProfilePost = () => import("../views/ProfilePost.vue");
+
 const Profiles = () => 
   import(/* webpackChunkName: "common" */"../views/Profiles.vue");
 
@@ -150,6 +152,21 @@ const routes = [
       }
     },
     component: ProfileUpdate
+  },
+  {
+    path : "/profilepost",
+    name : "profilepost",
+    beforeEnter: async (to, from, next) => {
+      store.commit('SET_LOADING', true);
+
+      if(requireAuth() === 'login')
+        next();
+      else{
+        store.commit('SET_LOADING', false);
+        next('/');
+      }
+    },
+    component : ProfilePost
   },
   {
     path: "/profiles",

@@ -9,18 +9,18 @@ const profileSchema = new mongoose.Schema({
   },
   gender : {
     type : String,
-    // required : true,
+    required : true,
    // default : "",
   },
   birth_date : {
     type : String,
-    // required : true,
+    required : true,
     // default : "",
   },
   height : {
     type : Number,
     //default : 160,
-    // required : true,
+    required : true,
     validate(value){
       if(value<=0)
         throw new Error('키는 최소 0 이상입니다.');
@@ -29,7 +29,7 @@ const profileSchema = new mongoose.Schema({
   weight : {
     type : Number,
     //default : 60,
-    // required : true,
+    required : true,
     validate(value){
       if(value<=0)
         throw new Error('체중은 최소 0 이상입니다.');
@@ -38,12 +38,12 @@ const profileSchema = new mongoose.Schema({
   name : {
     type : String,
     //default : "",
-    // required : true,
+    required : true,
     trim : true,
   },
   had_checkup : {
     type : Boolean,
-    // required : true,
+    required : true,
     // default : false,
   },
   had_checkup_true : {
@@ -57,44 +57,45 @@ const profileSchema = new mongoose.Schema({
   },
   diagnosed_disease : {
     type : Array,
-    default : [
-      {
-        name : "고혈압",
-        checked : false,
-        history : "",
-        medicine : "",
-      },
-      {
-        name : "간염",
-        checked : false,
-        history : "",
-        medicine : "",
-      },
-      {
-        name : "결핵",
-        checked : false,
-        history : "",
-        medicine : "",
-      },
-      {
-        name : "없음",
-        checked : false,
-      },
-      {
-        name : "기타",
-        disease : "",
-        checked : false,
-        history : "",
-        medicine : "",
-        where : "",
-      },
-    ],
+    default : [],
+    // default : [
+    //   {
+    //     name : "고혈압",
+    //     checked : false,
+    //     history : "",
+    //     medicine : "",
+    //   },
+    //   {
+    //     name : "간염",
+    //     checked : false,
+    //     history : "",
+    //     medicine : "",
+    //   },
+    //   {
+    //     name : "결핵",
+    //     checked : false,
+    //     history : "",
+    //     medicine : "",
+    //   },
+    //   {
+    //     name : "없음",
+    //     checked : false,
+    //   },
+    //   {
+    //     name : "기타",
+    //     disease : "",
+    //     checked : false,
+    //     history : "",
+    //     medicine : "",
+    //     where : "",
+    //   },
+    // ],
     // required : true,
   },
   taking_medicine : {
     type : Boolean,
     //default : "",
-    // required : true,
+    required : true,
   },
   taking_healthy : {
     type : Array,
@@ -115,6 +116,7 @@ const profileSchema = new mongoose.Schema({
   },
   stress_recent : {
     type : Boolean,
+    // required : true,
     // default : false,
   },
   what_medicine : {
@@ -129,7 +131,7 @@ const profileSchema = new mongoose.Schema({
   },
   drinking : {
     type : Boolean,
-    // required : true,
+    required : true,
     //default : false,
   },
   drinking_per_week : {
@@ -139,7 +141,7 @@ const profileSchema = new mongoose.Schema({
   },
   smoking : {
     type : Boolean,
-    // required : true,
+    required : true,
     //default : false,
   },
   how_long_smoking : {
@@ -163,7 +165,7 @@ const profileSchema = new mongoose.Schema({
   job : {
     type : String,
     //default : "",
-    // required : true,
+    required : true,
   },
   relevant_data : {
     type : Array,

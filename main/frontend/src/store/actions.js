@@ -9,6 +9,7 @@ import {
 	getProfileInfo,
 	getStomachInfo,
 	getSurveyHistory,
+	postProfileInfo,
 	updateProfileInfo,
 	shootSurveyData,
 } from '../api/axios.js';
@@ -183,7 +184,12 @@ export default {
 				commit('SET_PROFILE', data);
 			})
 			.catch(error => {
-				SessionExpired();
+				if (error.response.status === 404) {
+					alert('설문조사를 해주세요');
+					router.push({
+						name: 'profilepost',
+					});
+				} else SessionExpired();
 			});
 	},
 	getStomachInfo({ commit }, stomachId) {
@@ -230,6 +236,22 @@ export default {
 		router.push({
 			name: 'signup',
 		});
+	},
+	async postProfileInfo({ commit }, update) {
+		commit('SET_LOADING', true);
+		try {
+			await postProfileInfo(update);
+			const profile = await getProfileInfo();
+			commit('SET_PROFILE', profile.data);
+			router.push({
+				name: 'profiles',
+			});
+		} catch (e) {
+			if (e.response.status === 400) {
+				alert('다시 입력해주세요');
+				this.commit('SET_LOADING', false);
+			} else if (e.response.status === 401) SessionExpired();
+		}
 	},
 	async updateProfileInfo({ commit }, update) {
 		commit('SET_LOADING', true);

@@ -140,7 +140,7 @@
 						/>
 						<label :for="disease">{{ disease }}</label>
 					</span>
-					<template name="diseaseIF">
+					<template name="diseaseIF" v-if="update.diagnosed_disease">
 						<div v-if="update.diagnosed_disease.includes('고혈압')">
 							고혈압
 						</div>
@@ -315,29 +315,13 @@
 							/>
 							<label :for="factor">{{ factor }}</label>
 						</span>
-						<!-- <input
-							type="checkbox"
-							v-model="update.relevant_data"
-							value="스트레스를 많이 받는 편"
-						/>스트레스를 많이 받음
-						<input type="checkbox" v-model="update.relevant_data" value="식사 불규칙" />식사 불규칙
-						<br />
-						<input
-							type="checkbox"
-							v-model="update.relevant_data"
-							value="기름진 음식을 많이 먹음"
-						/>기름진 음식을 많이 먹음
-						<input type="checkbox" v-model="update.relevant_data" value="수면시간 불규칙" />수면시간
-						불규칙 -->
 					</div>
 					<br />
 				</div>
 			</div>
 		</form>
 		<div class="updatecomplete">
-			<v-btn @click.native="updateProfileInfo()" class="button" color="#669999"
-				>프로필 업데이트</v-btn
-			>
+			<v-btn @click.native="postProfileInfo()" class="button" color="#669999">프로필 작성</v-btn>
 			<div class="pluslist"></div>
 		</div>
 	</div>
@@ -349,12 +333,62 @@ export default {
 	// 		return { ...this.$store.state.profile };
 	// 	},
 	// },
-	created() {
-		this.update = { ...this.$store.state.profile };
-	},
+	// created() {
+	// 	this.update = { ...this.$store.state.profile };
+	// },
 	data() {
 		return {
-			update: {},
+			update: {
+				// gender: '',
+				// birth_date: '',
+				// height: '',
+				// weight: '',
+				// name: '',
+				// had_checkup: '',
+				diagnosed_disease: [
+					// {
+					// 	name: '고혈압',
+					// 	checked: false,
+					// 	history: '',
+					// 	medicine: '',
+					// },
+					// {
+					// 	name: '간염',
+					// 	checked: false,
+					// 	history: '',
+					// 	medicine: '',
+					// },
+					// {
+					// 	name: '결핵',
+					// 	checked: false,
+					// 	history: '',
+					// 	medicine: '',
+					// },
+					// {
+					// 	name: '없음',
+					// 	checked: false,
+					// },
+					// {
+					// 	name: '기타',
+					// 	disease: '',
+					// 	checked: false,
+					// 	history: '',
+					// 	medicine: '',
+					// 	where: '',
+					// },
+				],
+				// taking_medicine: '',
+				taking_healthy: [],
+				family_history_true: [],
+				allergy: [],
+				// coffee: '',
+				// stress_recent: '',
+				family_history: [],
+				// drinking: '',
+				// smoking: '',
+				// job: '',
+				relevant_data: [],
+			},
 			diseaseLabel: ['고혈압', '간염', '결핵', '없음', '기타'],
 			factorLabel: [
 				'스트레스를 많이 받는 편',
@@ -365,15 +399,8 @@ export default {
 		};
 	},
 	methods: {
-		updateProfileInfo() {
-			// for (let ans in this.update) {
-			// 	if (!this.update[ans]) {
-			// 		if (this.update[ans] === false) continue;
-			// 		alert(`${ans}를 입력해주세요.`);
-			// 		return;
-			// 	}
-			// }
-			this.$store.dispatch('updateProfileInfo', this.update);
+		postProfileInfo() {
+			this.$store.dispatch('postProfileInfo', this.update);
 		},
 	},
 };

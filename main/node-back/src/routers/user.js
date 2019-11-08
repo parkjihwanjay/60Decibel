@@ -19,10 +19,10 @@ router.post('/users', async(req, res) => {
   try{
     await user.save();
     const token = await user.generateAuthToken();
-    const profile = new Profile({
-      user : user._id,
-    })
-    await profile.save();
+    // const profile = new Profile({
+    //   user : user._id,
+    // })
+    // await profile.save();
     res.status(201).send({
       username : user.username,
       token
